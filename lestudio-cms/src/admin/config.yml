@@ -1,0 +1,184 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: fr
+site_url: https://www.lestudiodesign.fr
+display_url: https://www.lestudiodesign.fr
+
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  # ── Réglages globaux ──────────────────────────────
+  - name: "reglages"
+    label: "Réglages du site"
+    files:
+      - name: "settings"
+        label: "Coordonnées & chiffres"
+        file: "src/_data/settings.json"
+        fields:
+          - { name: "email", label: "Email de contact", widget: "string" }
+          - { name: "telephone", label: "Téléphone (format +33...)", widget: "string" }
+          - { name: "whatsapp", label: "Lien WhatsApp (wa.me/...)", widget: "string" }
+          - { name: "rdv", label: "Lien de prise de RDV", widget: "string" }
+          - { name: "linkedin", label: "LinkedIn", widget: "string" }
+          - { name: "instagram", label: "Instagram", widget: "string", required: false }
+          - { name: "twitter", label: "X / Twitter", widget: "string", required: false }
+          - name: "chiffres"
+            label: "Chiffres de preuve"
+            widget: "object"
+            fields:
+              - { name: "projets", label: "Nombre de projets (ex: +100)", widget: "string" }
+              - { name: "note", label: "Note moyenne (ex: 4.9/5)", widget: "string" }
+              - { name: "anciennete", label: "Depuis (année)", widget: "string" }
+
+  # ── Services / Packs ──────────────────────────────
+  - name: "services"
+    label: "Services (packs)"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    sort_by: ["order"]
+    fields:
+      - { name: "title", label: "Nom du pack", widget: "string" }
+      - { name: "price", label: "Prix (ex: À partir de 1 500 €)", widget: "string" }
+      - { name: "cible", label: "Cible (ex: E-commerce et vitrine, national)", widget: "string" }
+      - { name: "description", label: "Description courte (le problème client)", widget: "text" }
+      - { name: "outils", label: "Outils affichés", widget: "list", field: { name: "outil", label: "Outil", widget: "string" } }
+      - { name: "inclus", label: "Ce qui est inclus", widget: "list", field: { name: "item", label: "Élément", widget: "string" } }
+      - { name: "seo_title", label: "Balise title SEO", widget: "string", required: false }
+      - { name: "seo_description", label: "Meta description", widget: "text", required: false }
+      - { name: "h1", label: "Titre H1 de la page offre", widget: "string", required: false }
+      - { name: "accroche", label: "Accroche sous le H1", widget: "text", required: false }
+      - { name: "pour_qui", label: "Cette offre est pour vous si...", widget: "list", required: false, field: { name: "item", label: "Point", widget: "string" } }
+      - { name: "pas_pour_qui", label: "Elle n'est pas pour vous si...", widget: "list", required: false, field: { name: "item", label: "Point", widget: "string" } }
+      - name: "roadmap"
+        label: "Déroulé de l'offre"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "periode", label: "Période (ex: Semaine 1)", widget: "string" }
+          - { name: "titre", label: "Titre de l'étape", widget: "string" }
+          - { name: "points", label: "Points", widget: "list", field: { name: "point", label: "Point", widget: "string" } }
+      - name: "faq"
+        label: "FAQ de l'offre"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "q", label: "Question", widget: "string" }
+          - { name: "r", label: "Réponse", widget: "text" }
+      - { name: "order", label: "Ordre d'affichage", widget: "number", default: 1 }
+
+  # ── Témoignages ───────────────────────────────────
+  - name: "temoignages"
+    label: "Témoignages"
+    folder: "src/content/temoignages"
+    create: true
+    slug: "{{slug}}"
+    sort_by: ["order"]
+    fields:
+      - { name: "name", label: "Nom", widget: "string" }
+      - { name: "role", label: "Rôle / Entreprise", widget: "string" }
+      - { name: "type", label: "Type", widget: "select", options: ["texte", "video"], default: "texte" }
+      - { name: "quote", label: "Citation", widget: "text", required: false, hint: "Entourer les mots à surligner de **double astérisque**." }
+      - { name: "video", label: "Fichier vidéo", widget: "file", required: false }
+      - { name: "avatar", label: "Photo", widget: "image", required: false }
+      - { name: "published", label: "Publié", widget: "boolean", default: false, hint: "Laisser décoché tant que le témoignage n'est pas confirmé. Jamais de placeholder en ligne." }
+      - { name: "order", label: "Ordre", widget: "number", default: 10 }
+
+  # ── Réalisations / Cas clients ────────────────────
+  - name: "realisations"
+    label: "Réalisations"
+    folder: "src/content/realisations"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Titre (ex: Refonte du parcours d'achat de Cuure)", widget: "string" }
+      - { name: "client", label: "Client", widget: "string" }
+      - { name: "secteur", label: "Secteur", widget: "relation", collection: "secteurs", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false }
+      - { name: "type", label: "Type de site", widget: "select", options: ["ecommerce", "vitrine"] }
+      - { name: "year", label: "Année", widget: "number" }
+      - { name: "tags", label: "Tags", widget: "list", field: { name: "tag", label: "Tag", widget: "string" } }
+      - { name: "description", label: "Description courte (carte)", widget: "text" }
+      - { name: "cover", label: "Image de couverture", widget: "image", required: false }
+      - { name: "video", label: "Vidéo de preview (hover)", widget: "file", required: false }
+      - { name: "probleme", label: "Accroche · le problème (1-2 phrases)", widget: "text", required: false }
+      - { name: "mission", label: "Accroche · la mission (1-2 phrases)", widget: "text", required: false }
+      - name: "overview"
+        label: "Vue d'ensemble"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "statement", label: "Titre de synthèse (H2)", widget: "string", required: false }
+          - { name: "qui", label: "Qui est le client", widget: "text", required: false }
+          - { name: "depart", label: "Le point de départ", widget: "text", required: false }
+      - { name: "services", label: "Services rendus", widget: "list", required: false, field: { name: "service", label: "Service", widget: "string" } }
+      - name: "phases"
+        label: "Phases du projet"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "titre", label: "Titre de la phase", widget: "string" }
+          - { name: "intro", label: "Introduction", widget: "text", required: false }
+          - name: "blocs"
+            label: "Blocs de détail"
+            widget: "list"
+            required: false
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "texte", label: "Texte", widget: "text" }
+          - { name: "images", label: "Images", widget: "list", required: false, field: { name: "image", label: "Image", widget: "image" } }
+      - name: "resultats"
+        label: "Résultats chiffrés (max 3)"
+        widget: "list"
+        required: false
+        hint: "Uniquement des chiffres réels et vérifiables. Ex: chiffre '+32%', label 'de taux de conversion'."
+        fields:
+          - { name: "chiffre", label: "Chiffre", widget: "string" }
+          - { name: "label", label: "Libellé", widget: "string" }
+      - { name: "temoignage", label: "Témoignage lié", widget: "relation", collection: "temoignages", search_fields: ["name"], value_field: "{{slug}}", display_fields: ["name"], required: false }
+      - { name: "published", label: "Publié", widget: "boolean", default: true }
+      - { name: "body", label: "Contenu additionnel", widget: "markdown", required: false }
+
+  # ── Pages secteurs (SEO) ──────────────────────────
+  - name: "secteurs"
+    label: "Pages secteurs"
+    folder: "src/content/secteurs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Nom du secteur (ex: Cosmétiques)", widget: "string" }
+      - { name: "seo_title", label: "Balise title SEO", widget: "string", hint: "Ex: Refonte UX/UI e-commerce cosmétiques · LeStudio" }
+      - { name: "seo_description", label: "Meta description", widget: "text" }
+      - { name: "h1", label: "Titre H1 de la page", widget: "string" }
+      - { name: "intro", label: "Introduction", widget: "text" }
+      - { name: "enjeux", label: "Enjeux du secteur", widget: "list", fields: [ { name: "titre", label: "Titre", widget: "string" }, { name: "texte", label: "Texte", widget: "text" } ] }
+      - { name: "published", label: "Publié", widget: "boolean", default: false }
+      - { name: "body", label: "Contenu additionnel", widget: "markdown", required: false }
+
+  # ── FAQ ───────────────────────────────────────────
+  - name: "faq"
+    label: "FAQ"
+    folder: "src/content/faq"
+    create: true
+    slug: "{{slug}}"
+    sort_by: ["order"]
+    fields:
+      - { name: "question", label: "Question", widget: "string" }
+      - { name: "reponse", label: "Réponse", widget: "text" }
+      - { name: "order", label: "Ordre", widget: "number", default: 10 }
+
+  # ── Blog ──────────────────────────────────────────
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: "title", label: "Titre", widget: "string" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "description", label: "Description (SEO + carte)", widget: "text" }
+      - { name: "cover", label: "Image de couverture", widget: "image", required: false }
+      - { name: "published", label: "Publié", widget: "boolean", default: false }
+      - { name: "body", label: "Article", widget: "markdown" }

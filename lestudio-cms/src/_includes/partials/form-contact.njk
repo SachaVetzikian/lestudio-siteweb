@@ -1,0 +1,83 @@
+{# ── Formulaire multi-étapes Netlify Forms ── #}
+<section id="contact" style="border-top:1px solid var(--line);padding:56px 0;">
+<h2 style="margin-top:0;">Discutons de votre projet</h2>
+<p class="lede" style="margin-bottom:32px;">Trois questions, trente secondes. Vous recevez une réponse sous 24h ouvrées, avec un premier avis honnête sur votre besoin.</p>
+
+<form name="contact-offre" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field" class="ls-form" style="max-width:560px;">
+<input type="hidden" name="form-name" value="contact-offre"/>
+<input type="hidden" name="offre" value="{{ title }}"/>
+<p style="display:none;"><label>Ne pas remplir : <input name="bot-field"/></label></p>
+
+<div class="ls-form-progress">
+<span class="ls-dot active" data-dot="1">1</span><span class="ls-bar"></span>
+<span class="ls-dot" data-dot="2">2</span><span class="ls-bar"></span>
+<span class="ls-dot" data-dot="3">3</span>
+</div>
+
+<fieldset class="ls-step active" data-step="1">
+<label>Prénom *<input type="text" name="prenom" required/></label>
+<label>Nom *<input type="text" name="nom" required/></label>
+<label>E-mail *<input type="email" name="email" required/></label>
+<div class="ls-form-nav"><button type="button" class="ls-next btn-form">Suivant →</button></div>
+</fieldset>
+
+<fieldset class="ls-step" data-step="2">
+<label>Entreprise *<input type="text" name="entreprise" required/></label>
+<label>Votre site internet<input type="url" name="site" placeholder="https://"/></label>
+<label>Type de site *
+<select name="type_site" required>
+<option value="">Choisir…</option>
+<option>E-commerce</option>
+<option>Site vitrine</option>
+<option>Landing page</option>
+</select></label>
+<div class="ls-form-nav"><button type="button" class="ls-prev btn-form ghost">← Retour</button><button type="button" class="ls-next btn-form">Suivant →</button></div>
+</fieldset>
+
+<fieldset class="ls-step" data-step="3">
+<label>Votre besoin en quelques mots *<textarea name="message" rows="4" required placeholder="Ce qui vous amène, vos objectifs, votre échéance…"></textarea></label>
+<div class="ls-form-nav"><button type="button" class="ls-prev btn-form ghost">← Retour</button><button type="submit" class="btn-form submit">Envoyer ma demande ›</button></div>
+</fieldset>
+</form>
+</section>
+
+<style>
+.ls-form-progress{display:flex;align-items:center;gap:8px;margin-bottom:28px;}
+.ls-dot{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;color:var(--grey);background:#fff;transition:all .2s;}
+.ls-dot.active{background:var(--orange);border-color:var(--orange);color:var(--ink);}
+.ls-dot.done{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+.ls-bar{flex:1;height:1px;background:var(--line);}
+.ls-step{display:none;border:none;padding:0;margin:0;}
+.ls-step.active{display:block;}
+.ls-form label{display:block;font-size:13px;font-weight:500;color:var(--grey);margin-bottom:16px;}
+.ls-form input,.ls-form select,.ls-form textarea{display:block;width:100%;margin-top:6px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);box-sizing:border-box;}
+.ls-form input:focus,.ls-form select:focus,.ls-form textarea:focus{outline:none;border-color:var(--orange);}
+.ls-form-nav{display:flex;gap:12px;margin-top:8px;}
+.btn-form{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:12px 24px;border-radius:100px;border:none;cursor:pointer;background:var(--orange);color:var(--ink);}
+.btn-form.ghost{background:transparent;border:1px solid var(--line);color:var(--grey);}
+</style>
+
+<script>
+(function(){
+  var form = document.querySelector('.ls-form');
+  if(!form) return;
+  function go(n){
+    form.querySelectorAll('.ls-step').forEach(function(s){ s.classList.toggle('active', s.dataset.step == n); });
+    form.querySelectorAll('.ls-dot').forEach(function(d){
+      d.classList.toggle('active', d.dataset.dot == n);
+      d.classList.toggle('done', +d.dataset.dot < n);
+    });
+  }
+  form.querySelectorAll('.ls-next').forEach(function(b){
+    b.addEventListener('click', function(){
+      var step = b.closest('.ls-step');
+      var ok = true;
+      step.querySelectorAll('input[required],select[required],textarea[required]').forEach(function(f){ if(!f.reportValidity()) ok = false; });
+      if(ok) go(+step.dataset.step + 1);
+    });
+  });
+  form.querySelectorAll('.ls-prev').forEach(function(b){
+    b.addEventListener('click', function(){ go(+b.closest('.ls-step').dataset.step - 1); });
+  });
+})();
+</script>

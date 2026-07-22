@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+---
+<h1>{{ h1 }}</h1>
+<p class="lede">{{ intro }}</p>
+
+<h2>Les enjeux du secteur</h2>
+{% for e in enjeux %}
+<div class="card"><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
+{% endfor %}
+
+{% set casSecteur = collections.realisations | inSecteur(page.fileSlug) %}
+{% if casSecteur.length %}
+<h2>Nos réalisations dans ce secteur</h2>
+<div class="case-grid">
+{% for r in casSecteur %}
+<div class="card"><h3>{{ r.data.client }}</h3><p>{{ r.data.description }}</p><p style="margin-top:8px;font-size:13px;">{{ r.data.year }}</p></div>
+{% endfor %}
+</div>
+{% endif %}
+
+{{ content | safe }}
+
+<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener">Prendre rendez-vous avec Sacha ›</a>

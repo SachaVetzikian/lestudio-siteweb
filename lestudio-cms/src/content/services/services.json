@@ -1,0 +1,8 @@
+{
+  "layout": "layouts/offre.njk",
+  "permalink": "/offres/{{ page.fileSlug }}/",
+  "eleventyComputed": {
+    "seo_title": "{{ seo_title or title }}",
+    "seo_description": "{{ seo_description or description }}"
+  }
+}

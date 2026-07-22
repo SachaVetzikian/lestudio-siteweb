@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+permalink: /cas-clients/
+seo_title: Cas clients · Refontes UX/UI e-commerce et vitrine · LeStudio
+seo_description: Toutes nos réalisations UX/UI, e-commerce et vitrine. Yves Rocher, Cuure, Juliette Has A Gun, Caalme, Apoticaria et plus.
+---
+<h1>Des marques qui nous ont fait <em>confiance.</em></h1>
+<p class="lede">Chaque projet part du même point : un site qui ne convertit pas à la hauteur de la marque.</p>
+
+<div class="case-grid">
+{% for r in collections.realisations %}
+<a class="card" href="/realisations/{{ r.fileSlug }}/">
+<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);margin-bottom:10px;">{{ r.data.tags | join(" · ") }} · {{ r.data.year }}</p>
+<h3>{{ r.data.client }}</h3>
+{% if r.data.resultats %}<p style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;color:var(--orange);margin:4px 0 8px;">{{ r.data.resultats[0].chiffre }} <span style="font-size:13px;font-weight:400;color:var(--grey);">{{ r.data.resultats[0].label }}</span></p>{% endif %}
+<p>{{ r.data.description }}</p>
+<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Voir le projet</p>
+</a>
+{% endfor %}
+</div>
+
+<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener">Prendre rendez-vous avec Sacha ›</a>
