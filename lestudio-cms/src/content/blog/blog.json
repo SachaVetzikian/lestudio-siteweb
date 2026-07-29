@@ -1,1 +1,10 @@
-{ "permalink": false }
+{
+  "layout": "layouts/blog-post.njk",
+  "permalink": "/blog/{{ page.fileSlug }}/",
+  "eleventyComputed": {
+    "seo_title": "{{ title }} · LeStudio",
+    "seo_description": "{{ description }}",
+    "og_type": "article",
+    "seo_image": "{{ cover }}"
+  }
+}

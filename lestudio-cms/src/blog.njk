@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+permalink: /blog/
+seo_title: Blog · Design UX/UI, CRO et conversion e-commerce · LeStudio
+seo_description: Articles sur le design UX/UI, l'optimisation de conversion et la stratégie produit pour sites e-commerce et vitrines.
+title: Blog
+---
+<h1>Le <em>blog.</em></h1>
+<p class="lede">Design UX/UI, CRO et stratégie produit pour sites e-commerce et vitrines.</p>
+
+{% if collections.blog.length %}
+<div class="case-grid">
+{% for post in collections.blog %}
+<a class="card" href="{{ post.url }}">
+<p style="font-size:13px;color:var(--grey);margin-bottom:10px;">{{ post.data.date | readableDate }}</p>
+<h3>{{ post.data.title }}</h3>
+<p>{{ post.data.description }}</p>
+<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Lire l'article</p>
+</a>
+{% endfor %}
+</div>
+{% else %}
+<p class="lede">Les premiers articles arrivent bientôt.</p>
+{% endif %}

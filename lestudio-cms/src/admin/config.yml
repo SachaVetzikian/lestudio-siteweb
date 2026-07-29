@@ -157,6 +157,22 @@ collections:
       - { name: "published", label: "Publié", widget: "boolean", default: false }
       - { name: "body", label: "Contenu additionnel", widget: "markdown", required: false }
 
+  # ── Pages locales (SEO) ────────────────────────────
+  - name: "villes"
+    label: "Pages locales (villes)"
+    folder: "src/content/villes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Nom de la ville (ex: Paris)", widget: "string" }
+      - { name: "seo_title", label: "Balise title SEO", widget: "string", hint: "Ex: Designer UX/UI & CRO à Paris · LeStudio" }
+      - { name: "seo_description", label: "Meta description", widget: "text" }
+      - { name: "h1", label: "Titre H1 de la page", widget: "string" }
+      - { name: "intro", label: "Introduction", widget: "text", hint: "Rester honnête : pas d'adresse ou de bureau physique inventé." }
+      - { name: "points", label: "Points clés", widget: "list", fields: [ { name: "titre", label: "Titre", widget: "string" }, { name: "texte", label: "Texte", widget: "text" } ] }
+      - { name: "published", label: "Publié", widget: "boolean", default: false }
+      - { name: "body", label: "Contenu additionnel", widget: "markdown", required: false }
+
   # ── FAQ ───────────────────────────────────────────
   - name: "faq"
     label: "FAQ"

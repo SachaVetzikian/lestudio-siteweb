@@ -3,6 +3,7 @@
   "permalink": "/realisations/{{ page.fileSlug }}/",
   "eleventyComputed": {
     "seo_title": "{{ title }} · LeStudio",
-    "seo_description": "{{ description }}"
+    "seo_description": "{{ description }}",
+    "seo_image": "{{ cover }}"
   }
 }

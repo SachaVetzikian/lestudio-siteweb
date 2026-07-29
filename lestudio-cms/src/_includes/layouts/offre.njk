@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
 ---
-<p style="margin-top:80px;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);"><a href="/#offres">← Toutes les offres</a></p>
+<p style="margin-top:80px;font-size:12px;letter-spacing:0.04em;color:var(--grey);"><a href="/#offres">← Toutes les offres</a></p>
 <h1 style="margin-top:16px;">{{ h1 or title }}</h1>
 <p class="lede">{{ accroche or description }}</p>
-<p style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;margin-bottom:8px;">{{ price }}</p>
+<p style="font-family:'Inter',sans-serif;font-size:22px;font-weight:600;margin-bottom:8px;">{{ price }}</p>
 <p style="font-size:13px;color:var(--grey);margin-bottom:28px;">Cible · {{ cible }}</p>
 <a class="btn-primary" style="margin:0 0 64px;" href="{{ settings.rdv }}" target="_blank" rel="noopener">Prendre rendez-vous avec Sacha ›</a>
 
@@ -27,9 +27,9 @@ layout: layouts/base.njk
 <h2>Le déroulé, sans surprise</h2>
 {% for step in roadmap %}
 <div style="display:grid;grid-template-columns:140px 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--line);" class="offre-step">
-<p style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--orange);">{{ step.periode }}</p>
+<p style="font-family:'Inter',sans-serif;font-weight:600;color:var(--orange);">{{ step.periode }}</p>
 <div>
-<h3 style="font-family:'Space Grotesk',sans-serif;font-size:18px;margin-bottom:8px;">{{ step.titre }}</h3>
+<h3 style="font-family:'Inter',sans-serif;font-size:18px;margin-bottom:8px;">{{ step.titre }}</h3>
 {% for pt in step.points %}<p style="font-size:15px;line-height:1.7;color:var(--grey);">— {{ pt }}</p>{% endfor %}
 </div>
 </div>
@@ -43,8 +43,8 @@ layout: layouts/base.njk
 {% for item in inclus %}<p style="padding:8px 0;border-top:1px solid var(--line);">✓&nbsp; {{ item }}</p>{% endfor %}
 </div>
 <div class="card" style="margin-bottom:0;background:var(--orange);border:none;display:flex;flex-direction:column;justify-content:center;">
-<p style="font-size:13px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink);opacity:0.7;margin-bottom:8px;">Tarif</p>
-<p style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;color:var(--ink);margin-bottom:6px;">{{ price }}</p>
+<p style="font-size:13px;letter-spacing:0.04em;color:var(--ink);opacity:0.7;margin-bottom:8px;">Tarif</p>
+<p style="font-family:'Inter',sans-serif;font-size:30px;font-weight:600;color:var(--ink);margin-bottom:6px;">{{ price }}</p>
 <p style="font-size:14px;color:var(--ink);opacity:0.75;margin-bottom:20px;">Le montant exact dépend de votre périmètre, fixé ensemble après le premier appel.</p>
 <p style="font-size:13px;color:var(--ink);opacity:0.7;">Outils : {{ outils | join(" · ") }}</p>
 </div>
@@ -56,7 +56,7 @@ layout: layouts/base.njk
 <div style="margin-bottom:64px;">
 {% for f in faq %}
 <details style="border-top:1px solid var(--line);padding:18px 0;">
-<summary style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">{{ f.q }}</summary>
+<summary style="font-family:'Inter',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">{{ f.q }}</summary>
 <p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">{{ f.r }}</p>
 </details>
 {% endfor %}

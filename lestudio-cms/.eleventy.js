@@ -1,8 +1,26 @@
+const markdownIt = require("markdown-it");
+
 module.exports = function (eleventyConfig) {
+  // Le contenu markdown du CMS s'affiche toujours dans une mise en page qui a
+  // déjà son propre <h1> : on décale les titres Markdown d'un niveau (# -> h2)
+  // pour qu'une page ne se retrouve jamais avec deux <h1>.
+  const md = markdownIt({ html: true, linkify: true });
+  md.core.ruler.push("bump-heading-levels", (state) => {
+    for (const token of state.tokens) {
+      if (token.type === "heading_open" || token.type === "heading_close") {
+        const level = Math.min(parseInt(token.tag.slice(1), 10) + 1, 6);
+        token.tag = "h" + level;
+      }
+    }
+  });
+  eleventyConfig.setLibrary("md", md);
+
   // Fichiers copiés tels quels (site actuel + admin + assets)
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/static");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/sacha-avatar.webp");
 
   // Collections
   eleventyConfig.addCollection("services", (c) =>
@@ -20,6 +38,9 @@ module.exports = function (eleventyConfig) {
   );
   eleventyConfig.addCollection("secteurs", (c) =>
     c.getFilteredByGlob("src/content/secteurs/*.md").filter((s) => s.data.published)
+  );
+  eleventyConfig.addCollection("villes", (c) =>
+    c.getFilteredByGlob("src/content/villes/*.md").filter((v) => v.data.published)
   );
   eleventyConfig.addCollection("faq", (c) =>
     c.getFilteredByGlob("src/content/faq/*.md").sort((a, b) => a.data.order - b.data.order)
@@ -73,6 +94,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("inSecteur", (realisations, slug) =>
     (realisations || []).filter((r) => r.data.secteur === slug)
   );
+
+  const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+  eleventyConfig.addFilter("readableDate", (d) => {
+    const date = new Date(d);
+    return `${date.getUTCDate()} ${MOIS[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+  });
+  eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
 
   return {
     dir: { input: "src", output: "_site", includes: "_includes", data: "_data" },
