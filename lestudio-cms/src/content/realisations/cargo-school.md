@@ -1,6 +1,7 @@
 ---
 title: Repositionnement du site de Cargo School
 client: Cargo School
+secteur: formation
 type: vitrine
 year: 2024
 tags: [Formation · Vitrine, Éducation]
