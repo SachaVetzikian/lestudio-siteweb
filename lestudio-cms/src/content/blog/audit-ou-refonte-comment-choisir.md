@@ -3,6 +3,17 @@ title: "Audit ou refonte : comment choisir sans se tromper"
 date: 2026-07-29
 description: "Deux façons d'améliorer un site qui ne convertit pas assez. Comment savoir laquelle correspond à votre situation, et pourquoi l'ordre compte."
 category: Méthode
+reponse_courte: "Si votre site a déjà du trafic et des données, commencez par l'audit. S'il est à créer ou visuellement obsolète, partez directement sur la refonte : elle intègre sa propre phase d'analyse."
+pour_qui:
+  - Votre site a du trafic et des données exploitables (Analytics, Hotjar, avis clients)
+  - Vous voulez corriger ce qui bloque vraiment la conversion avant de tout refaire
+pas_pour_qui:
+  - Votre site n'existe pas encore ou n'a pas de trafic significatif à analyser
+  - Votre site est visuellement obsolète au point que le constat est déjà connu sans audit
+bon_a_savoir: "Un audit n'a de valeur que s'il y a des données réelles à analyser. Sur un site sans trafic significatif, il ne produirait que des hypothèses, pas un diagnostic."
+ressources_utiles:
+  - { label: "Notre offre Audit UX/UI & CRO", url: "/offres/audit-ux-ui-cro/" }
+  - { label: "Notre offre Création / Refonte de site", url: "/offres/creation-refonte-site/" }
 key_takeaways:
   - "Si votre site a du trafic et des données, commencez par l'audit : il évite de corriger au feeling ce que les données peuvent déjà expliquer."
   - Si votre site est à créer ou visuellement obsolète, la refonte intègre directement sa propre phase d'analyse.

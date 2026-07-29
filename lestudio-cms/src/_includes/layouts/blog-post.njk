@@ -3,6 +3,8 @@ layout: layouts/base.njk
 ---
 {% set toc = content | toc %}
 {% set minutes = content | readingTime %}
+{% set shareUrl = "https://www.lestudiodesign.fr" + page.url %}
+{% set sharePrompt = "Résume cet article : " + shareUrl %}
 <p style="margin-top:80px;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);"><a href="/blog/">← Tous les articles</a></p>
 
 <p style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--grey);margin-top:16px;">
@@ -20,10 +22,30 @@ layout: layouts/base.njk
 <img src="{{ cover }}" alt="{{ title }}" width="1600" height="1000" fetchpriority="high" style="width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;border:1px solid var(--line);margin:0 0 40px;"/>
 {% endif %}
 
+{% if reponse_courte %}
+<div class="card" style="background:#FFF7E6;border:1px solid #F5DFA6;">
+<h3 style="margin-bottom:12px;">💡 La réponse courte</h3>
+<p style="color:var(--ink);">{{ reponse_courte }}</p>
+</div>
+{% endif %}
+
 {% if key_takeaways %}
 <div class="card" style="background:var(--orange-light);border:none;">
-<h3 style="margin-bottom:12px;">L'essentiel</h3>
+<h3 style="margin-bottom:12px;">✓ L'essentiel</h3>
 {% for k in key_takeaways %}<p style="padding:6px 0;">✓&nbsp; {{ k }}</p>{% endfor %}
+</div>
+{% endif %}
+
+{% if pour_qui or pas_pour_qui %}
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;" class="offre-qualif">
+<div class="card" style="margin-bottom:0;">
+<h3 style="margin-bottom:16px;">🏆 Fait pour vous si...</h3>
+{% for p in pour_qui %}<p style="padding:8px 0;border-top:1px solid var(--line);">✓&nbsp; {{ p }}</p>{% endfor %}
+</div>
+<div class="card" style="margin-bottom:0;background:var(--ink);color:var(--paper);border:none;">
+<h3 style="margin-bottom:16px;color:var(--paper);">Pas pour vous si...</h3>
+{% for p in pas_pour_qui %}<p style="padding:8px 0;border-top:1px solid rgba(245,243,239,0.15);color:rgba(245,243,239,0.85);">✕&nbsp; {{ p }}</p>{% endfor %}
+</div>
 </div>
 {% endif %}
 
@@ -42,6 +64,13 @@ layout: layouts/base.njk
 {{ content | safe }}
 </div>
 
+{% if bon_a_savoir %}
+<div class="card" style="background:#fff;border:1px solid var(--line);">
+<h3 style="margin-bottom:12px;">ℹ️ Bon à savoir</h3>
+<p style="color:var(--grey);">{{ bon_a_savoir }}</p>
+</div>
+{% endif %}
+
 {% if faq %}
 <h2>Questions fréquentes</h2>
 <div style="margin-bottom:48px;">
@@ -54,6 +83,24 @@ layout: layouts/base.njk
 </div>
 {% endif %}
 
+{% set shareBtn = "display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:100px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink);background:#fff;" %}
+<div class="card">
+<h3 style="margin-bottom:16px;">Résumer cet article avec :</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<a href="https://chatgpt.com/?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">ChatGPT</a>
+<a href="https://www.perplexity.ai/search?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">Perplexity</a>
+<a href="https://claude.ai/new?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">Claude</a>
+<a href="https://grok.com/?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">Grok</a>
+</div>
+</div>
+
+{% if sources %}
+<div class="card" style="background:#EAF2FF;border:1px solid #CFE0FF;">
+<h3 style="margin-bottom:12px;">📚 Sources</h3>
+{% for s in sources %}<p style="padding:4px 0;">• <a href="{{ s.url }}" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:underline;">{{ s.label }}</a></p>{% endfor %}
+</div>
+{% endif %}
+
 <div class="card" style="display:flex;gap:16px;align-items:center;margin:48px 0;">
 <img src="/sacha-avatar.webp" alt="Sacha Vetzikian" width="56" height="56" loading="lazy" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;"/>
 <div>
@@ -61,6 +108,13 @@ layout: layouts/base.njk
 <p style="font-size:13px;color:var(--grey);">Fondateur de LeStudio, designer UX/UI &amp; CRO depuis 2015 · <a href="https://www.linkedin.com/in/sacha-vetzikian/" target="_blank" rel="noopener" style="color:var(--orange);">LinkedIn</a></p>
 </div>
 </div>
+
+{% if ressources_utiles %}
+<h2>Ressources utiles</h2>
+<div style="margin-bottom:32px;">
+{% for r in ressources_utiles %}<p style="padding:4px 0;">• <a href="{{ r.url }}" style="color:var(--orange);">{{ r.label }}</a></p>{% endfor %}
+</div>
+{% endif %}
 
 {% if collections.blog.length > 1 %}
 {% set shown = 0 %}
@@ -89,7 +143,7 @@ layout: layouts/base.njk
  "author":{"@type":"Person","name":"Sacha Vetzikian"},
  "publisher":{"@type":"Organization","name":"LeStudio","logo":{"@type":"ImageObject","url":"https://www.lestudiodesign.fr/static/icon-192.png"}},
  {% if cover %}"image":"https://www.lestudiodesign.fr{{ cover }}",{% endif %}
- "mainEntityOfPage":{"@type":"WebPage","@id":"https://www.lestudiodesign.fr{{ page.url }}"}
+ "mainEntityOfPage":{"@type":"WebPage","@id":"{{ shareUrl }}"}
 }
 </script>
 {% if faq %}
@@ -106,7 +160,7 @@ layout: layouts/base.njk
  "itemListElement":[
   {"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.lestudiodesign.fr/"},
   {"@type":"ListItem","position":2,"name":"Blog","item":"https://www.lestudiodesign.fr/blog/"},
-  {"@type":"ListItem","position":3,"name":{{ title | dump | safe }},"item":"https://www.lestudiodesign.fr{{ page.url }}"}
+  {"@type":"ListItem","position":3,"name":{{ title | dump | safe }},"item":"{{ shareUrl }}"}
  ]
 }
 </script>
@@ -118,4 +172,5 @@ layout: layouts/base.njk
 .article-body img{width:100%;border-radius:14px;margin:24px 0;}
 .article-body ul,.article-body ol{margin:0 0 16px 20px;color:var(--grey);line-height:1.7;}
 .article-body hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
+@media (max-width:640px){ .offre-qualif{grid-template-columns:1fr !important;} }
 </style>

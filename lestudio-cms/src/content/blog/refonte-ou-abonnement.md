@@ -3,6 +3,16 @@ title: "Refonte ou abonnement : comment faire vivre son site après le lancement
 date: 2026-07-29
 description: "Une refonte a un début et une fin. Un site, lui, continue à vivre après : nouvelles pages, campagnes, itérations. Comment choisir entre un projet cadré et un abonnement continu."
 category: Offres
+reponse_courte: "Un besoin ponctuel et cadré relève du pack au projet. Un besoin continu, qui reviendrait sans cesse en petits devis, relève du design par abonnement."
+pour_qui:
+  - Vous avez des demandes de design régulières (pages, itérations, campagnes) après le lancement du site
+  - Vous préférez un coût mensuel maîtrisé à des devis ponctuels répétés
+pas_pour_qui:
+  - Votre besoin est unique et borné dans le temps (un nouveau site, une refonte complète)
+  - Vous cherchez de la maintenance technique ou du développement, pas du design
+ressources_utiles:
+  - { label: "Notre offre Création / Refonte de site", url: "/offres/creation-refonte-site/" }
+  - { label: "Notre offre Design par abonnement", url: "/offres/design-abonnement/" }
 key_takeaways:
   - Un besoin ponctuel et borné dans le temps reste couvert par un pack au projet (création, refonte, audit).
   - Un besoin continu (pages, itérations, campagnes) qui reviendrait sans cesse en devis ponctuels relève du design par abonnement.

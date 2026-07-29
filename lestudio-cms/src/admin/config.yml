@@ -197,7 +197,25 @@ collections:
       - { name: "description", label: "Description (SEO + carte)", widget: "text" }
       - { name: "category", label: "Catégorie", widget: "select", options: ["Stratégie", "Méthode", "Offres", "Secteurs"], default: "Stratégie" }
       - { name: "cover", label: "Image de couverture", widget: "image", required: false }
-      - { name: "key_takeaways", label: "L'essentiel (points clés en tête d'article)", widget: "list", required: false, field: { name: "point", label: "Point", widget: "string" } }
+      - { name: "reponse_courte", label: "💡 La réponse courte (1-2 phrases, tout en haut)", widget: "text", required: false }
+      - { name: "key_takeaways", label: "✓ L'essentiel (points clés en tête d'article)", widget: "list", required: false, field: { name: "point", label: "Point", widget: "string" } }
+      - { name: "pour_qui", label: "🏆 Fait pour vous si...", widget: "list", required: false, field: { name: "item", label: "Point", widget: "string" } }
+      - { name: "pas_pour_qui", label: "Pas pour vous si...", widget: "list", required: false, field: { name: "item", label: "Point", widget: "string" } }
+      - { name: "bon_a_savoir", label: "ℹ️ Bon à savoir (nuance ou idée reçue à corriger)", widget: "text", required: false }
+      - name: "sources"
+        label: "📚 Sources externes (avec lien)"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "label", label: "Libellé", widget: "string" }
+          - { name: "url", label: "URL", widget: "string" }
+      - name: "ressources_utiles"
+        label: "Ressources utiles (liens internes : offres, secteurs...)"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "label", label: "Libellé", widget: "string" }
+          - { name: "url", label: "URL (ex: /offres/audit-ux-ui-cro/)", widget: "string" }
       - name: "faq"
         label: "FAQ de l'article"
         widget: "list"
