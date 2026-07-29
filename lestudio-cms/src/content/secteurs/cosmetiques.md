@@ -9,5 +9,5 @@ enjeux:
     texte: Composition, certifications, provenance. L'acheteuse de cosmétiques lit avant d'acheter. L'interface doit rendre cette lecture fluide, pas la cacher dans un onglet.
   - titre: Le réachat et l'abonnement
     texte: La rentabilité se joue sur la deuxième commande. Le parcours doit préparer la fidélisation dès le premier achat.
-published: false
+published: true
 ---

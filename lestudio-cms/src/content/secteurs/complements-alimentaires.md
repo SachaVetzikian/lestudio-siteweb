@@ -9,5 +9,5 @@ enjeux:
     texte: Le modèle DTC repose sur l'abonnement. Chaque friction du tunnel se paie en churn dès le premier mois.
   - titre: La crédibilité scientifique
     texte: Études, dosages, transparence. L'interface doit vulgariser sans infantiliser, et rassurer sans jargonner.
-published: false
+published: true
 ---

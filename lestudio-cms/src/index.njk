@@ -784,6 +784,13 @@ Avis Trustpilot
 <a href="#cas">Cas clients</a>
 <a href="#offres">Offres</a>
 <a href="#faq">FAQ</a>
+<a href="/blog/">Blog</a>
+</div>
+<div class="footer-col">
+<h4>Secteurs</h4>
+{% for s in collections.secteurs %}
+<a href="/secteur/{{ s.fileSlug }}/">{{ s.data.title }}</a>
+{% endfor %}
 </div>
 <div class="footer-col">
 <h4>Suivre</h4>
@@ -791,8 +798,8 @@ Avis Trustpilot
 </div>
 <div class="footer-col">
 <h4>Légal</h4>
-<a href="mentions-legales.html">Mentions légales</a>
-<a href="confidentialite.html">Politique de confidentialité</a>
+<a href="/mentions-legales/">Mentions légales</a>
+<a href="/confidentialite/">Politique de confidentialité</a>
 <button id="reopenCookies" style="background:none; border:none; padding:0; font-size:14px; margin-bottom:10px; color:var(--ink); text-align:left; cursor:pointer; font-family:'DM Sans',sans-serif; display:block;">Gérer mes cookies</button>
 </div>
 </div>
