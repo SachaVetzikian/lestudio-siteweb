@@ -29,15 +29,44 @@ Une refonte se termine. C'est même son objectif : cadrer un projet avec un déb
 
 Mais un site ne s'arrête pas d'évoluer le jour de sa mise en ligne. De nouvelles pages, des campagnes, des tests, des déclinaisons continuent d'apparaître. La question n'est plus "quel projet ?" mais "qui s'en occupe, ensuite ?".
 
+<div class="card" style="padding:28px;">
+<div style="margin-bottom:20px;">
+<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);margin-bottom:8px;">Refonte</p>
+<div style="display:flex;align-items:center;gap:8px;">
+<div style="width:12px;height:12px;border-radius:50%;background:var(--ink);flex-shrink:0;"></div>
+<div style="flex:1;height:2px;background:var(--line);"></div>
+<div style="width:12px;height:12px;border-radius:50%;background:var(--ink);flex-shrink:0;"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:12.5px;color:var(--grey);margin-top:6px;"><span>Début</span><span>Fin, handoff livré</span></div>
+</div>
+<div>
+<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange);margin-bottom:8px;">Abonnement</p>
+<div style="display:flex;align-items:center;gap:8px;">
+<div style="width:12px;height:12px;border-radius:50%;background:var(--orange);flex-shrink:0;"></div>
+<div style="flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--orange),var(--orange) 6px,transparent 6px,transparent 12px);"></div>
+<span style="color:var(--orange);font-weight:600;">→</span>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:12.5px;color:var(--grey);margin-top:6px;"><span>Onboarding</span><span>Continue tant que le besoin existe</span></div>
+</div>
+</div>
+
 ## Quand le projet cadré suffit
 
-Si le besoin est ponctuel, borné dans le temps, avec un livrable clair (un nouveau site, une refonte complète, un audit), un [pack au projet](/offres/creation-refonte-site/) reste le bon format. Début, milieu, fin, facture.
+Si le besoin est ponctuel, borné dans le temps, avec un livrable clair, un [pack au projet](/offres/creation-refonte-site/) reste le bon format. Début, milieu, fin, facture. Par exemple :
+
+- Un nouveau site à créer
+- Une refonte complète
+- Un audit UX/CRO
 
 ## Quand le besoin devient continu
 
-Passé le lancement, beaucoup de sites accumulent des demandes de design qui, prises une par une, ne justifient pas un nouveau projet cadré : une page landing pour une campagne, une itération sur un tunnel, une déclinaison pour un nouveau marché. Multiplier les devis ponctuels pour chacune coûte cher et prend du temps à recadrer à chaque fois.
+Passé le lancement, beaucoup de sites accumulent des demandes de design qui, prises une par une, ne justifient pas un nouveau projet cadré :
 
-C'est l'usage du [design par abonnement](/offres/design-abonnement/) : un designer dédié chaque mois, des demandes traitées par ordre de priorité, sans négocier un nouveau périmètre à chaque itération.
+- Une page landing pour une campagne
+- Une itération sur un tunnel qui convertit mal
+- Une déclinaison pour un nouveau marché
+
+Multiplier les devis ponctuels pour chacune coûte cher et prend du temps à recadrer à chaque fois. C'est l'usage du [design par abonnement](/offres/design-abonnement/) : un designer dédié chaque mois, des demandes traitées par ordre de priorité, sans négocier un nouveau périmètre à chaque itération.
 
 ## Les deux ne s'opposent pas
 

@@ -18,6 +18,84 @@ layout: layouts/base.njk
 <h1 style="margin-top:12px;">{{ title }}</h1>
 <p class="lede">{{ description }}</p>
 
+{% set shareBtn = "display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:100px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink);background:#fff;" %}
+<div class="card">
+<h3 style="margin-bottom:16px;">Résumer cet article avec :</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<a href="https://chatgpt.com/?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">ChatGPT</a>
+<a href="https://www.perplexity.ai/search?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">Perplexity</a>
+<a href="https://claude.ai/new?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">Claude</a>
+<a href="https://grok.com/?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">Grok</a>
+</div>
+</div>
+
+{% if quiz %}
+<div class="card" id="quiz-box" style="padding:32px 28px;">
+<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange);margin-bottom:10px;">Quiz interactif</p>
+<h3 style="margin-bottom:4px;">{{ quiz.title }}</h3>
+<p id="quiz-progress-label" style="font-size:13px;color:var(--grey);margin-bottom:16px;">Question 1/{{ quiz.questions.length }}</p>
+<div style="width:100%;height:4px;background:var(--line);border-radius:4px;margin-bottom:24px;overflow:hidden;">
+<div id="quiz-progress-bar" style="width:{{ (100/quiz.questions.length) }}%;height:100%;background:var(--orange);transition:width .3s ease;"></div>
+</div>
+{% for q in quiz.questions %}
+<div class="quiz-question" style="{% if not loop.first %}display:none;{% endif %}">
+<p style="font-weight:500;margin-bottom:14px;">{{ q.q }}</p>
+{% for opt in q.options %}
+<button type="button" class="quiz-option" data-value="{{ opt.value }}" style="display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px;background:#fff;cursor:pointer;font-size:14.5px;color:var(--ink);">{{ opt.label }}</button>
+{% endfor %}
+</div>
+{% endfor %}
+<div id="quiz-results" style="display:none;">
+{% for r in quiz.results %}
+<div class="quiz-result" data-value="{{ r.value }}" style="display:none;">
+<p style="font-weight:600;font-size:18px;margin-bottom:8px;color:var(--ink);">{{ r.title }}</p>
+<p style="color:var(--grey);margin-bottom:16px;">{{ r.text }}</p>
+{% if r.cta_url %}<a class="btn-primary" style="margin:0;" href="{{ r.cta_url }}">{{ r.cta_label or "En savoir plus" }} ›</a>{% endif %}
+</div>
+{% endfor %}
+</div>
+</div>
+<script>
+(function(){
+  var box = document.getElementById('quiz-box');
+  if (!box) return;
+  var questions = Array.prototype.slice.call(box.querySelectorAll('.quiz-question'));
+  var total = questions.length;
+  var progressLabel = document.getElementById('quiz-progress-label');
+  var progressBar = document.getElementById('quiz-progress-bar');
+  var resultsBox = document.getElementById('quiz-results');
+  var scores = {};
+  var current = 0;
+  questions.forEach(function (qEl) {
+    Array.prototype.slice.call(qEl.querySelectorAll('.quiz-option')).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var val = btn.getAttribute('data-value');
+        scores[val] = (scores[val] || 0) + 1;
+        current++;
+        if (current < total) {
+          qEl.style.display = 'none';
+          questions[current].style.display = 'block';
+          progressLabel.textContent = 'Question ' + (current + 1) + '/' + total;
+          progressBar.style.width = Math.round(((current + 1) / total) * 100) + '%';
+        } else {
+          qEl.style.display = 'none';
+          progressLabel.style.display = 'none';
+          var winner = null, max = 0;
+          Object.keys(scores).forEach(function (k) {
+            if (scores[k] > max) { max = scores[k]; winner = k; }
+          });
+          resultsBox.style.display = 'block';
+          Array.prototype.slice.call(resultsBox.querySelectorAll('.quiz-result')).forEach(function (r) {
+            if (r.getAttribute('data-value') === winner) r.style.display = 'block';
+          });
+        }
+      });
+    });
+  });
+})();
+</script>
+{% endif %}
+
 {% if cover %}
 <img src="{{ cover }}" alt="{{ title }}" width="1600" height="1000" fetchpriority="high" style="width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;border:1px solid var(--line);margin:0 0 40px;"/>
 {% endif %}
@@ -82,17 +160,6 @@ layout: layouts/base.njk
 {% endfor %}
 </div>
 {% endif %}
-
-{% set shareBtn = "display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:100px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink);background:#fff;" %}
-<div class="card">
-<h3 style="margin-bottom:16px;">Résumer cet article avec :</h3>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-<a href="https://chatgpt.com/?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">ChatGPT</a>
-<a href="https://www.perplexity.ai/search?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">Perplexity</a>
-<a href="https://claude.ai/new?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">Claude</a>
-<a href="https://grok.com/?q={{ sharePrompt | urlencode }}" target="_blank" rel="noopener" style="{{ shareBtn }}">Grok</a>
-</div>
-</div>
 
 {% if sources %}
 <div class="card" style="background:#EAF2FF;border:1px solid #CFE0FF;">

@@ -197,6 +197,32 @@ collections:
       - { name: "description", label: "Description (SEO + carte)", widget: "text" }
       - { name: "category", label: "Catégorie", widget: "select", options: ["Stratégie", "Méthode", "Offres", "Secteurs"], default: "Stratégie" }
       - { name: "cover", label: "Image de couverture", widget: "image", required: false }
+      - name: "quiz"
+        label: "🧩 Quiz interactif (en haut de l'article)"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "title", label: "Titre du quiz", widget: "string" }
+          - name: "questions"
+            label: "Questions"
+            widget: "list"
+            fields:
+              - { name: "q", label: "Question", widget: "string" }
+              - name: "options"
+                label: "Réponses"
+                widget: "list"
+                fields:
+                  - { name: "label", label: "Libellé de la réponse", widget: "string" }
+                  - { name: "value", label: "Catégorie de résultat associée", widget: "string" }
+          - name: "results"
+            label: "Résultats possibles"
+            widget: "list"
+            fields:
+              - { name: "value", label: "Catégorie (doit correspondre aux réponses)", widget: "string" }
+              - { name: "title", label: "Titre du résultat", widget: "string" }
+              - { name: "text", label: "Texte", widget: "text" }
+              - { name: "cta_label", label: "Libellé du bouton", widget: "string", required: false }
+              - { name: "cta_url", label: "Lien du bouton", widget: "string", required: false }
       - { name: "reponse_courte", label: "💡 La réponse courte (1-2 phrases, tout en haut)", widget: "text", required: false }
       - { name: "key_takeaways", label: "✓ L'essentiel (points clés en tête d'article)", widget: "list", required: false, field: { name: "point", label: "Point", widget: "string" } }
       - { name: "pour_qui", label: "🏆 Fait pour vous si...", widget: "list", required: false, field: { name: "item", label: "Point", widget: "string" } }
