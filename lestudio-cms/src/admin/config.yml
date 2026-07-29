@@ -195,6 +195,15 @@ collections:
       - { name: "title", label: "Titre", widget: "string" }
       - { name: "date", label: "Date", widget: "datetime" }
       - { name: "description", label: "Description (SEO + carte)", widget: "text" }
+      - { name: "category", label: "Catégorie", widget: "select", options: ["Stratégie", "Méthode", "Offres", "Secteurs"], default: "Stratégie" }
       - { name: "cover", label: "Image de couverture", widget: "image", required: false }
+      - { name: "key_takeaways", label: "L'essentiel (points clés en tête d'article)", widget: "list", required: false, field: { name: "point", label: "Point", widget: "string" } }
+      - name: "faq"
+        label: "FAQ de l'article"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "q", label: "Question", widget: "string" }
+          - { name: "r", label: "Réponse", widget: "text" }
       - { name: "published", label: "Publié", widget: "boolean", default: false }
       - { name: "body", label: "Article", widget: "markdown" }

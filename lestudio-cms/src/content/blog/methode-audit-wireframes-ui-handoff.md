@@ -2,6 +2,17 @@
 title: "Notre méthode en 4 étapes, de l'audit UX au handoff design"
 date: 2026-07-29
 description: "Comment se déroule concrètement un projet de refonte chez LeStudio : audit, architecture, UI design et handoff, avec un livrable à chaque étape."
+category: Méthode
+key_takeaways:
+  - "Étape 1, Audit UX/CRO : rapport d'audit et quick wins actionnables."
+  - "Étape 2, Architecture et wireframes : parcours et gabarits validés avant le moindre pixel."
+  - "Étape 3, UI design : maquettes responsive de tous les gabarits, retours illimités."
+  - "Étape 4, Handoff : fichier Figma structuré et documenté, pour zéro friction avec le développeur."
+faq:
+  - q: Chaque étape a-t-elle une durée fixe ?
+    r: Oui, la durée de chaque étape est cadrée dès le premier appel, pas un forfait vague.
+  - q: Combien de retours puis-je demander pendant l'étape UI design ?
+    r: Les retours sont illimités tant que le projet est en cours, pour que le résultat final corresponde vraiment à ce que vous attendiez.
 published: true
 ---
 

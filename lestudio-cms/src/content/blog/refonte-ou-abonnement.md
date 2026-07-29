@@ -2,6 +2,16 @@
 title: "Refonte ou abonnement : comment faire vivre son site après le lancement"
 date: 2026-07-29
 description: "Une refonte a un début et une fin. Un site, lui, continue à vivre après : nouvelles pages, campagnes, itérations. Comment choisir entre un projet cadré et un abonnement continu."
+category: Offres
+key_takeaways:
+  - Un besoin ponctuel et borné dans le temps reste couvert par un pack au projet (création, refonte, audit).
+  - Un besoin continu (pages, itérations, campagnes) qui reviendrait sans cesse en devis ponctuels relève du design par abonnement.
+  - "Les deux ne s'opposent pas : la refonte construit, l'abonnement fait vivre, sans engagement de durée."
+faq:
+  - q: Le design par abonnement remplace-t-il une refonte ?
+    r: Non. La refonte est un projet cadré pour transformer le site en profondeur ; l'abonnement prend le relais ensuite pour le faire vivre au mois le mois.
+  - q: Y a-t-il un engagement de durée sur l'abonnement ?
+    r: "Non, sans engagement de durée signifie sans engagement de durée : vous suspendez, reprenez ou arrêtez quand vous voulez."
 published: true
 ---
 

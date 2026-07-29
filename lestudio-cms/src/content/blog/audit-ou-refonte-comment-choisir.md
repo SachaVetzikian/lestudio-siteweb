@@ -2,6 +2,17 @@
 title: "Audit ou refonte : comment choisir sans se tromper"
 date: 2026-07-29
 description: "Deux façons d'améliorer un site qui ne convertit pas assez. Comment savoir laquelle correspond à votre situation, et pourquoi l'ordre compte."
+category: Méthode
+key_takeaways:
+  - "Si votre site a du trafic et des données, commencez par l'audit : il évite de corriger au feeling ce que les données peuvent déjà expliquer."
+  - Si votre site est à créer ou visuellement obsolète, la refonte intègre directement sa propre phase d'analyse.
+  - Faire une refonte sans audit préalable sur un site qui a déjà du trafic revient à changer un moteur sans avoir ouvert le capot.
+  - "Le cas le plus fréquent : les deux s'enchaînent, et le montant de l'audit est déduit du pack refonte."
+faq:
+  - q: Faut-il toujours commencer par un audit ?
+    r: "Non. L'audit n'a de valeur que s'il y a des données réelles à analyser. Un site sans trafic significatif ou à créer n'en a pas encore : la refonte intègre alors sa propre phase d'analyse."
+  - q: Le prix de l'audit est-il perdu si on enchaîne sur une refonte ?
+    r: Non, il est déduit du pack création ou refonte si vous enchaînez, ce qui est le cas le plus fréquent.
 published: true
 ---
 

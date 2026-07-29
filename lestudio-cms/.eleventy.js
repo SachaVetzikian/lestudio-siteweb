@@ -1,5 +1,14 @@
 const markdownIt = require("markdown-it");
 
+const slugify = (text) =>
+  (text || "")
+    .toString()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
 module.exports = function (eleventyConfig) {
   // Le contenu markdown du CMS s'affiche toujours dans une mise en page qui a
   // déjà son propre <h1> : on décale les titres Markdown d'un niveau (# -> h2)
@@ -10,6 +19,25 @@ module.exports = function (eleventyConfig) {
       if (token.type === "heading_open" || token.type === "heading_close") {
         const level = Math.min(parseInt(token.tag.slice(1), 10) + 1, 6);
         token.tag = "h" + level;
+      }
+    }
+  });
+  // Ajoute un id stable aux h2/h3 pour le sommaire (table des matières) des articles.
+  md.core.ruler.push("heading-ids", (state) => {
+    const seen = {};
+    for (let i = 0; i < state.tokens.length; i++) {
+      const token = state.tokens[i];
+      if (token.type === "heading_open" && (token.tag === "h2" || token.tag === "h3")) {
+        const inline = state.tokens[i + 1];
+        const text = inline && inline.type === "inline" ? inline.content : "";
+        let slug = slugify(text) || "section";
+        if (seen[slug]) {
+          seen[slug] += 1;
+          slug = `${slug}-${seen[slug]}`;
+        } else {
+          seen[slug] = 1;
+        }
+        token.attrSet("id", slug);
       }
     }
   });
@@ -101,6 +129,22 @@ module.exports = function (eleventyConfig) {
     return `${date.getUTCDate()} ${MOIS[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
   });
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
+
+  // Sommaire : extrait les h2/h3 (avec id) du HTML déjà rendu d'un article.
+  eleventyConfig.addFilter("toc", (html) => {
+    const matches = [...(html || "").matchAll(/<h([23]) id="([^"]+)">(.*?)<\/h\1>/g)];
+    return matches.map((m) => ({
+      level: Number(m[1]),
+      id: m[2],
+      text: m[3].replace(/<[^>]+>/g, ""),
+    }));
+  });
+
+  // Temps de lecture estimé (~200 mots/minute) à partir du HTML rendu.
+  eleventyConfig.addFilter("readingTime", (html) => {
+    const words = (html || "").replace(/<[^>]+>/g, " ").trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 200));
+  });
 
   return {
     dir: { input: "src", output: "_site", includes: "_includes", data: "_data" },

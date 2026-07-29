@@ -2,6 +2,16 @@
 title: "Pourquoi un seul interlocuteur change tout sur un projet de refonte"
 date: 2026-07-29
 description: "Commercial, chef de projet, designer junior puis senior : dans une agence classique, un brief traverse plusieurs personnes avant d'aboutir. Ce que ça change de n'en avoir qu'une."
+category: Stratégie
+key_takeaways:
+  - Chaque relais entre commercial, chef de projet et designer est une occasion de perdre de la nuance sur le besoin réel.
+  - Un interlocuteur unique tranche les questions pendant l'appel, sans arbitrage interne à attendre.
+  - "La contrepartie honnête : une capacité de production différente d'une agence multi-équipes, d'où des offres cadrées dans le temps."
+faq:
+  - q: Un interlocuteur unique est-il toujours plus rapide ?
+    r: Pas à n'importe quel prix. Ça veut dire que le temps du projet sert le projet plutôt que la coordination entre plusieurs personnes, pas que tout se fait instantanément.
+  - q: Que faire si mon besoin dépasse la capacité d'un interlocuteur unique ?
+    r: C'est le rôle du design par abonnement, pour les besoins continus (nouvelles pages, itérations, campagnes) qui dépasseraient la capacité d'un projet cadré classique.
 published: true
 ---
 
