@@ -9,5 +9,5 @@ enjeux:
     texte: Programmes, prérequis, débouchés, financement. L'information doit être hiérarchisée, pas empilée. Un candidat qui ne comprend pas l'offre en 30 secondes part voir un concurrent.
   - titre: Le tunnel de candidature
     texte: Formulaire de préinscription, prise de rendez-vous, dossier à fournir. Chaque étape doit rassurer plutôt que décourager, sans perdre en rigueur administrative.
-published: false
+published: true
 ---

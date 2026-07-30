@@ -9,5 +9,5 @@ points:
     texte: Rendez-vous en visio aux horaires de la journée de travail parisienne, restitutions enregistrées si besoin.
   - titre: Un seul interlocuteur, pas d'agence
     texte: Pas de commercial ni de chef de projet entre vous et le design, du brief à la livraison.
-published: false
+published: true
 ---

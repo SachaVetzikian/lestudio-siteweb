@@ -9,5 +9,5 @@ enjeux:
     texte: Un visiteur doit comprendre la proposition de valeur et choisir son plan sans avoir à ouvrir un chat pour poser des questions basiques. La page pricing est souvent la page la plus consultée et la moins soignée.
   - titre: Le tunnel d'essai gratuit ou de démo
     texte: Chaque champ en trop dans un formulaire d'inscription ou de demande de démo réduit le taux de conversion. Le site doit qualifier juste assez, sans décourager.
-published: false
+published: true
 ---

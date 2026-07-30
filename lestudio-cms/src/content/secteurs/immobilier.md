@@ -9,5 +9,5 @@ enjeux:
     texte: Filtres, carte, fiches détaillées. Un visiteur qui ne trouve pas rapidement un bien pertinent quitte le site pour un concurrent ou une plateforme généraliste.
   - titre: La prise de contact ou de rendez-vous
     texte: "Visite, estimation, dossier de location : chaque formulaire est un moment de friction où la réassurance (avis, références, réactivité affichée) fait la différence."
-published: false
+published: true
 ---

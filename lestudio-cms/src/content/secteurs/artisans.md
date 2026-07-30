@@ -9,5 +9,5 @@ enjeux:
     texte: Réalisations, certifications, avis clients. Sans vitrine physique, le site est la seule preuve tangible du sérieux de l'artisan avant le premier rendez-vous.
   - titre: La demande de devis
     texte: Un formulaire trop long ou trop technique décourage. Il doit qualifier juste assez pour préparer le premier appel, sans devenir un obstacle.
-published: false
+published: true
 ---

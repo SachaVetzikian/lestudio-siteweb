@@ -74,9 +74,11 @@ footer{border-top:1px solid var(--line);padding:40px 0;margin-top:40px;font-size
 <main class="wrap">
 {{ content | safe }}
 </main>
-<footer><div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;">
+<footer><div class="wrap" style="display:flex;flex-wrap:wrap;gap:12px;flex-direction:column;">
 <p>© 2026 LeStudio · <a href="mailto:{{ settings.email }}">{{ settings.email }}</a></p>
 <p><a href="/offres/audit-ux-ui-cro/">Audit UX/UI & CRO</a> · <a href="/offres/creation-refonte-site/">Création / Refonte</a> · <a href="/offres/design-abonnement/">Design par abonnement</a> · <a href="/cas-clients/">Cas clients</a> · <a href="/blog/">Blog</a> · <a href="/mentions-legales/">Mentions légales</a> · <a href="/confidentialite/">Confidentialité</a></p>
+{% if collections.secteurs.length %}<p>Secteurs : {% for s in collections.secteurs %}<a href="/secteur/{{ s.fileSlug }}/">{{ s.data.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+{% if collections.villes.length %}<p>Villes : {% for v in collections.villes %}<a href="/designer-ux-ui/{{ v.fileSlug }}/">{{ v.data.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
 </div></footer>
 
 <a class="wa-float" href="{{ settings.whatsapp }}?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20lestudiodesign.fr.%20J%27aimerais%20plus%20d%27informations." target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">

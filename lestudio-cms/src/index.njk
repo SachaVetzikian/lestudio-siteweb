@@ -793,6 +793,12 @@ Avis Trustpilot
 {% endfor %}
 </div>
 <div class="footer-col">
+<h4>Villes</h4>
+{% for v in collections.villes %}
+<a href="/designer-ux-ui/{{ v.fileSlug }}/">{{ v.data.title }}</a>
+{% endfor %}
+</div>
+<div class="footer-col">
 <h4>Suivre</h4>
 <a href="https://www.linkedin.com/in/sacha-vetzikian/" rel="noopener" target="_blank">LinkedIn</a>
 </div>
