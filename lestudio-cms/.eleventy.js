@@ -1,4 +1,15 @@
+const fs = require("fs");
+const path = require("path");
 const markdownIt = require("markdown-it");
+
+const assetExists = (p) => {
+  if (!p) return false;
+  try {
+    return fs.existsSync(path.join(__dirname, "src", p.replace(/^\//, "")));
+  } catch (e) {
+    return false;
+  }
+};
 
 const slugify = (text) =>
   (text || "")
@@ -90,6 +101,8 @@ module.exports = function (eleventyConfig) {
   // Conversion **mot** -> surlignage orange
   const hl = (q) => (q || "").replace(/\*\*(.+?)\*\*/g, '<span style="color:var(--orange);">$1</span>');
 
+  eleventyConfig.addFilter("assetExists", assetExists);
+
   eleventyConfig.addFilter("casesJson", (items) =>
     JSON.stringify(items.map((r) => ({
       name: r.data.client,
@@ -97,7 +110,7 @@ module.exports = function (eleventyConfig) {
       tag1: (r.data.tags || [])[0] || "",
       tag2: (r.data.tags || [])[1] || "",
       desc: r.data.description,
-      video: r.data.video || "",
+      video: assetExists(r.data.video) ? r.data.video : "",
       type: r.data.type,
     })))
   );
