@@ -13,7 +13,7 @@ title: Blog
 {% for post in collections.blog %}
 <a class="card" href="{{ post.url }}">
 <p style="display:flex;gap:8px;align-items:center;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);margin-bottom:10px;">
-<span style="color:var(--orange);">{{ post.data.category or "Stratégie" }}</span>
+<span style="color:var(--orange-text);">{{ post.data.category or "Stratégie" }}</span>
 <span>·</span>
 <span>{{ post.data.date | readableDate }}</span>
 <span>·</span>
@@ -21,7 +21,7 @@ title: Blog
 </p>
 <h3>{{ post.data.title }}</h3>
 <p>{{ post.data.description }}</p>
-<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Lire l'article</p>
+<p style="margin-top:14px;color:var(--orange-text);font-weight:500;font-size:14px;">→ Lire l'article</p>
 </a>
 {% endfor %}
 </div>

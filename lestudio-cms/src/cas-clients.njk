@@ -12,9 +12,9 @@ seo_description: Toutes nos réalisations UX/UI, e-commerce et vitrine. Yves Roc
 <a class="card" href="/realisations/{{ r.fileSlug }}/">
 <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);margin-bottom:10px;">{{ r.data.tags | join(" · ") }} · {{ r.data.year }}</p>
 <h3>{{ r.data.client }}</h3>
-{% if r.data.resultats %}<p style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;color:var(--orange);margin:4px 0 8px;">{{ r.data.resultats[0].chiffre }} <span style="font-size:13px;font-weight:400;color:var(--grey);">{{ r.data.resultats[0].label }}</span></p>{% endif %}
+{% if r.data.resultats %}<p style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;color:var(--orange-text);margin:4px 0 8px;">{{ r.data.resultats[0].chiffre }} <span style="font-size:13px;font-weight:400;color:var(--grey);">{{ r.data.resultats[0].label }}</span></p>{% endif %}
 <p>{{ r.data.description }}</p>
-<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Voir le projet</p>
+<p style="margin-top:14px;color:var(--orange-text);font-weight:500;font-size:14px;">→ Voir le projet</p>
 </a>
 {% endfor %}
 </div>
