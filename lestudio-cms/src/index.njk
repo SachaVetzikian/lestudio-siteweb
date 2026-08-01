@@ -259,7 +259,8 @@ permalink: /index.html
   .testi-video{display:none; align-items:center; justify-content:center; aspect-ratio:16/9; background:var(--orange-light); border-radius:12px; margin-bottom:24px;}
   .testi-video .play{width:56px; height:56px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center;}
   .testi-person{display:flex; align-items:center; gap:12px; margin-bottom:28px;}
-  .testi-avatar{width:40px; height:40px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:500;}
+  .testi-avatar{width:40px; height:40px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:500; overflow:hidden;}
+  .testi-avatar img{width:100%; height:100%; object-fit:cover; border-radius:50%;}
   .testi-name{font-size:14px; font-weight:500;}
   .testi-role{font-size:13px; color:var(--grey);}
   .testi-tabs{display:flex; flex-wrap:wrap; gap:8px;}
@@ -992,7 +993,9 @@ Avis Trustpilot
     }
     if(!isVideo){
       document.getElementById('t-quote').innerHTML = t.quote;
-      document.getElementById('t-avatar').textContent = t.initials;
+      var avatarEl = document.getElementById('t-avatar');
+      avatarEl.innerHTML = t.photo ? '<img src="' + t.photo + '" alt="' + t.name + '" loading="lazy">' : '';
+      if(!t.photo) avatarEl.textContent = t.initials;
     }
     document.getElementById('t-name').textContent = t.name;
     document.getElementById('t-role').textContent = t.role;

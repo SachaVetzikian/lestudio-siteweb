@@ -124,6 +124,7 @@ module.exports = function (eleventyConfig) {
       role: t.data.role,
       quote: hl(t.data.quote),
       video: t.data.video || "",
+      photo: assetExists(t.data.photo) ? t.data.photo : "",
     })))
   );
 
