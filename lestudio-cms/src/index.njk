@@ -915,12 +915,19 @@ Avis Trustpilot
       '</div>';
   }
 
+  function caseVisual(c){
+    if(c.cover){
+      return '<img src="' + c.cover + '" alt="' + c.name + '" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">';
+    }
+    return caseFallback(c.name);
+  }
+
   var caseGrid = document.getElementById('caseGrid');
   if(caseGrid){
     caseGrid.innerHTML = cases.map(function(c){
       return '<div class="case-card">' +
         '<div class="case-preview">' +
-          caseFallback(c.name) +
+          caseVisual(c) +
           (c.video ? '<video muted loop playsinline preload="none" onerror="this.style.display=\'none\'"><source src="' + c.video + '" type="video/mp4"></video>' : '') +
         '</div>' +
         '<div class="case-tags"><span class="case-tag">' + c.tag1 + '</span><span class="case-tag">' + c.tag2 + '</span></div>' +

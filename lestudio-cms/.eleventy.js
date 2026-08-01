@@ -111,6 +111,7 @@ module.exports = function (eleventyConfig) {
       tag2: (r.data.tags || [])[1] || "",
       desc: r.data.description,
       video: assetExists(r.data.video) ? r.data.video : "",
+      cover: assetExists(r.data.cover) ? r.data.cover : "",
       type: r.data.type,
     })))
   );

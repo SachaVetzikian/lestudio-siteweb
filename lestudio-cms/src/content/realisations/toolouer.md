@@ -5,6 +5,7 @@ type: ecommerce
 year: 2024
 tags: [BTP, Location]
 description: Refonte du parcours d'achat pour la location et vente d'outillage professionnel.
+cover: /assets/uploads/cover-toolouer.webp
 probleme: Une marketplace BTP où chaque friction du parcours coûte une commande à des professionnels pressés.
 overview:
   statement: Un parcours location/achat enfin clair pour des professionnels pressés.

@@ -5,6 +5,7 @@ type: ecommerce
 year: 2025
 tags: [Accessoires de luxe, Lifestyle]
 description: Création complète du site e-commerce pour une marque lifestyle.
+cover: /assets/uploads/cover-riviera-club.webp
 probleme: Des bijoux waterproof haut de gamme, un univers lifestyle qui n'existait pas encore en ligne.
 overview:
   statement: Un site créé from scratch, aussi premium que les bijoux qu'il présente.
