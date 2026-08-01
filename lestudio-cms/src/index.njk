@@ -121,6 +121,7 @@ permalink: /index.html
   .marquee-wrap:hover .marquee-track{animation-play-state:paused;}
   @media (prefers-reduced-motion: reduce){ .marquee-track{animation:none;} }
   .marquee-item{display:flex; align-items:center; padding:0 44px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:18px; color:var(--grey); white-space:nowrap; opacity:0.7;}
+  .marquee-item img{height:26px; width:auto; filter:grayscale(1); opacity:0.8;}
   @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
 
   section{padding:80px 0;}
@@ -972,10 +973,26 @@ Avis Trustpilot
   }
 </script>
 <script>
-  var clients = ["YVES ROCHER","CUURE","TRIUMVIRAT","ARRAGO","RUMO","LE PETIT FUMEUR","JULIETTE HAS A GUN","CARGO SCHOOL","DISNEY"];
+  var clients = [
+    { name: "YVES ROCHER" },
+    { name: "CUURE" },
+    { name: "TRIUMVIRAT" },
+    { name: "ARRAGO", logo: "/assets/uploads/logo-arrago.webp" },
+    { name: "SPIDEO" },
+    { name: "LE PETIT FUMEUR", logo: "/assets/uploads/logo-le-petit-fumeur.webp" },
+    { name: "JULIETTE HAS A GUN" },
+    { name: "CARGO SCHOOL" },
+    { name: "DISNEY" },
+    { name: "DYNVEO", logo: "/assets/uploads/logo-dynveo.webp" },
+    { name: "KALENT", logo: "/assets/uploads/logo-kalent.webp" }
+  ];
   var track = document.getElementById('marquee-track');
   var doubled = clients.concat(clients);
-  track.innerHTML = doubled.map(function(name){ return '<span class="marquee-item">' + name + '</span>'; }).join('');
+  track.innerHTML = doubled.map(function(c){
+    return c.logo
+      ? '<span class="marquee-item"><img src="' + c.logo + '" alt="' + c.name + '" loading="lazy"></span>'
+      : '<span class="marquee-item">' + c.name + '</span>';
+  }).join('');
 </script>
 <script>
   var testimonials = {{ collections.temoignages | temoignagesJson | safe }};
@@ -984,15 +1001,18 @@ Avis Trustpilot
   function renderTesti(){
     var t = testimonials[tActive];
     var isVideo = t.type === 'video';
-    document.getElementById('t-quote').style.display = isVideo ? 'none' : 'block';
+    var hasQuote = !!t.quote;
+    document.getElementById('t-quote').style.display = hasQuote ? 'block' : 'none';
     var vBox = document.getElementById('t-video');
     vBox.style.display = isVideo ? 'flex' : 'none';
     document.getElementById('t-avatar').style.display = isVideo ? 'none' : 'flex';
     if(isVideo && t.video){
       vBox.innerHTML = '<video controls playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"><source src="' + t.video + '" type="video/mp4"></video>';
     }
-    if(!isVideo){
+    if(hasQuote){
       document.getElementById('t-quote').innerHTML = t.quote;
+    }
+    if(!isVideo){
       var avatarEl = document.getElementById('t-avatar');
       avatarEl.innerHTML = t.photo ? '<img src="' + t.photo + '" alt="' + t.name + '" loading="lazy">' : '';
       if(!t.photo) avatarEl.textContent = t.initials;
