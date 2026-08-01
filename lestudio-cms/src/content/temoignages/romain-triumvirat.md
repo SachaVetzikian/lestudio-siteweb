@@ -1,5 +1,5 @@
 ---
-name: Romain M.
+name: Romain Morice
 role: Fondateur · Triumvirat
 type: texte
 photo: /assets/uploads/photo-romain-triumvirat.webp
