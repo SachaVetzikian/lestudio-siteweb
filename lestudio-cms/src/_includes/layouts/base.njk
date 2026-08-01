@@ -79,6 +79,38 @@ footer{border-top:1px solid var(--line);padding:40px 0;margin-top:40px;font-size
 @keyframes shiny-shimmer{to{rotate:360deg;}}
 @keyframes shiny-breathe{from,to{scale:1;}50%{scale:1.2;}}
 @media (prefers-reduced-motion: reduce){.shiny,.shiny::before,.shiny::after{animation:none;}}
+
+/* ── Footer cinématique : fond encre, grille, halo, wordmark géant, marquee ── */
+footer{position:relative;overflow:hidden;background:var(--ink);color:rgba(244,244,245,.75);padding:72px 0 32px;margin-top:40px;}
+footer a{color:rgba(244,244,245,.85);}
+footer a:hover{color:var(--orange);}
+.cine-grid{position:absolute;inset:0;z-index:0;pointer-events:none;background-size:56px 56px;
+  background-image:linear-gradient(to right,rgba(244,244,245,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(244,244,245,.05) 1px,transparent 1px);
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 25%);mask-image:linear-gradient(to bottom,transparent,#000 25%);}
+.cine-aurora{position:absolute;z-index:0;pointer-events:none;left:50%;top:-10%;width:60vw;height:60vw;max-width:640px;max-height:640px;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(255,90,0,.28) 0%,rgba(255,90,0,.08) 45%,transparent 70%);filter:blur(50px);border-radius:50%;
+  animation:cine-breathe 8s ease-in-out infinite alternate;}
+@keyframes cine-breathe{0%{transform:translateX(-50%) scale(1);opacity:.7;}100%{transform:translateX(-50%) scale(1.15);opacity:1;}}
+.cine-giant{position:absolute;z-index:0;pointer-events:none;left:50%;bottom:-3.5vw;transform:translateX(-50%);white-space:nowrap;user-select:none;
+  font-family:'DM Sans',sans-serif;font-weight:800;font-size:15vw;line-height:.8;letter-spacing:-0.03em;color:transparent;
+  background:linear-gradient(180deg,rgba(244,244,245,.08) 0%,transparent 65%);-webkit-background-clip:text;background-clip:text;}
+.cine-marquee{position:relative;z-index:1;overflow:hidden;border-top:1px solid rgba(244,244,245,.12);border-bottom:1px solid rgba(244,244,245,.12);padding:14px 0;margin-bottom:48px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+.cine-marquee-track{display:flex;width:max-content;animation:footer-scroll-left 30s linear infinite;}
+.cine-marquee-track span{display:flex;align-items:center;padding:0 18px;font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(244,244,245,.5);white-space:nowrap;}
+.cine-marquee-track span.dot{color:var(--orange);padding:0 2px;}
+@keyframes footer-scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.footer-content{position:relative;z-index:1;}
+.footer-content p{margin-bottom:14px;}
+.footer-bottom{border-top:1px solid rgba(244,244,245,.12);padding:20px 90px 0 0;margin-top:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12.5px;color:rgba(244,244,245,.5);text-transform:uppercase;letter-spacing:.03em;}
+.cine-credit{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:100px;background:rgba(244,244,245,.05);border:1px solid rgba(244,244,245,.12);backdrop-filter:blur(8px);text-transform:none;}
+.cine-heart{color:var(--orange);display:inline-block;animation:cine-heartbeat 2s ease-in-out infinite;}
+@keyframes cine-heartbeat{0%,100%{transform:scale(1);}25%{transform:scale(1.3);}40%{transform:scale(1);}}
+.cine-top{width:38px;height:38px;border-radius:50%;background:rgba(244,244,245,.05);border:1px solid rgba(244,244,245,.15);color:rgba(244,244,245,.7);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);flex-shrink:0;}
+.cine-top:hover{background:rgba(244,244,245,.12);color:#fff;transform:translateY(-3px);}
+.cine-reveal{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.cine-reveal.in{opacity:1;transform:translateY(0);}
+@media (prefers-reduced-motion: reduce){.cine-aurora,.cine-heart{animation:none;}.cine-marquee-track{animation:none;}.cine-reveal{transition:none;opacity:1;transform:none;}}
 </style>
 
 <script type="application/ld+json">
@@ -107,12 +139,42 @@ footer{border-top:1px solid var(--line);padding:40px 0;margin-top:40px;font-size
 <main class="wrap">
 {{ content | safe }}
 </main>
-<footer><div class="wrap" style="display:flex;flex-wrap:wrap;gap:12px;flex-direction:column;">
+<footer>
+<div class="cine-grid" aria-hidden="true"></div>
+<div class="cine-aurora" aria-hidden="true"></div>
+<div class="cine-giant" aria-hidden="true">LESTUDIO</div>
+<div class="cine-marquee">
+<div class="cine-marquee-track">
+<span>Design UX/UI</span><span class="dot">✦</span><span>CRO &amp; conversion</span><span class="dot">✦</span><span>E-commerce</span><span class="dot">✦</span><span>Sites vitrines</span><span class="dot">✦</span><span>Design UX/UI</span><span class="dot">✦</span><span>CRO &amp; conversion</span><span class="dot">✦</span><span>E-commerce</span><span class="dot">✦</span><span>Sites vitrines</span><span class="dot">✦</span>
+</div>
+</div>
+<div class="wrap footer-content cine-reveal" id="footerReveal" style="display:flex;flex-wrap:wrap;gap:12px;flex-direction:column;">
 <p>© 2026 LeStudio · <a href="mailto:{{ settings.email }}">{{ settings.email }}</a></p>
 <p><a href="/offres/audit-ux-ui-cro/">Audit UX/UI & CRO</a> · <a href="/offres/creation-refonte-site/">Création / Refonte</a> · <a href="/offres/design-abonnement/">Design par abonnement</a> · <a href="/cas-clients/">Cas clients</a> · <a href="/blog/">Blog</a> · <a href="/mentions-legales/">Mentions légales</a> · <a href="/confidentialite/">Confidentialité</a></p>
 {% if collections.secteurs.length %}<p>Secteurs : {% for s in collections.secteurs %}<a href="/secteur/{{ s.fileSlug }}/">{{ s.data.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
 {% if collections.villes.length %}<p>Villes : {% for v in collections.villes %}<a href="/designer-ux-ui/{{ v.fileSlug }}/">{{ v.data.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
-</div></footer>
+<div class="footer-bottom">
+<span>Design et UX par LeStudio</span>
+<span class="cine-credit"><span class="cine-heart">❤</span> Conçu avec passion par LeStudio</span>
+<button class="cine-top" id="footerToTop" aria-label="Retour en haut" type="button">
+<svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+</button>
+</div>
+</div>
+</footer>
+<script>
+(function(){
+  var reveal = document.getElementById('footerReveal');
+  if(reveal && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ reveal.classList.add('in'); io.disconnect(); } });
+    }, { threshold: 0.15 });
+    io.observe(reveal);
+  } else if(reveal){ reveal.classList.add('in'); }
+  var toTop = document.getElementById('footerToTop');
+  if(toTop) toTop.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
 
 <a class="wa-float" href="{{ settings.whatsapp }}?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20lestudiodesign.fr.%20J%27aimerais%20plus%20d%27informations." target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">
 <svg height="30" style="color:#fff;" viewbox="0 0 24 24" width="30"><path d="M9 12a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" fill="currentColor"></path><path clip-rule="evenodd" d="M22.75 12c0-5.937-4.813-10.75-10.75-10.75S1.25 6.063 1.25 12c0 1.718.404 3.345 1.122 4.787c.107.215.13.435.08.62l-.595 2.226c-.408 1.524.986 2.918 2.51 2.51l2.226-.596a.9.9 0 0 1 .62.08A10.7 10.7 0 0 0 12 22.75c5.937 0 10.75-4.813 10.75-10.75M12 2.75a9.25 9.25 0 0 1 0 18.5a9.2 9.2 0 0 1-4.118-.965a2.38 2.38 0 0 0-1.676-.187l-2.227.596a.55.55 0 0 1-.673-.674l.596-2.226a2.38 2.38 0 0 0-.187-1.676A9.2 9.2 0 0 1 2.75 12A9.25 9.25 0 0 1 12 2.75" fill="currentColor" fill-rule="evenodd"></path></svg>
