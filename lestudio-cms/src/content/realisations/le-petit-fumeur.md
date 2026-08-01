@@ -5,6 +5,8 @@ type: ecommerce
 year: 2025
 tags: [Cigarettes électroniques, Retail]
 description: Refonte de la boutique en ligne pour clarifier l'offre et le parcours d'achat.
+featured: true
+home_order: 9
 probleme: 250 000 clients, un catalogue massif devenu presque impossible à naviguer.
 overview:
   statement: Une refonte complète pour rendre un catalogue massif enfin navigable.

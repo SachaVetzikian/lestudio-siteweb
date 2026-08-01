@@ -6,6 +6,9 @@ type: ecommerce
 year: 2025
 tags: [Compléments alimentaires, Page produit]
 description: Refonte de la page produit pour une boutique de produits naturels et bien-être.
+cover: /assets/uploads/cover-apoticaria.webp
+featured: true
+home_order: 7
 probleme: Un large catalogue de produits naturels, mais une page produit qui ne mettait pas en valeur l'expertise de la marque.
 overview:
   statement: Une page produit repensée pour refléter l'expertise plutôt que la diluer.
