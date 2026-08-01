@@ -15,9 +15,9 @@ layout: layouts/base.njk
 <h3 style="margin-bottom:16px;">Cette offre est pour vous si...</h3>
 {% for p in pour_qui %}<p style="padding:8px 0;border-top:1px solid var(--line);">✓&nbsp; {{ p }}</p>{% endfor %}
 </div>
-<div class="card" style="margin-bottom:0;background:var(--ink);color:var(--paper);border:none;">
+<div class="card" style="margin-bottom:0;background:var(--slate);color:var(--paper);border:none;">
 <h3 style="margin-bottom:16px;color:var(--paper);">Elle n'est pas pour vous si...</h3>
-{% for p in pas_pour_qui %}<p style="padding:8px 0;border-top:1px solid rgba(245,243,239,0.15);color:rgba(245,243,239,0.85);">✕&nbsp; {{ p }}</p>{% endfor %}
+{% for p in pas_pour_qui %}<p style="padding:8px 0;border-top:1px solid rgba(244,244,245,0.15);color:rgba(244,244,245,0.85);">✕&nbsp; {{ p }}</p>{% endfor %}
 </div>
 </div>
 {% endif %}
@@ -42,11 +42,11 @@ layout: layouts/base.njk
 <h3 style="margin-bottom:16px;">Ce qui est inclus</h3>
 {% for item in inclus %}<p style="padding:8px 0;border-top:1px solid var(--line);">✓&nbsp; {{ item }}</p>{% endfor %}
 </div>
-<div class="card" style="margin-bottom:0;background:var(--orange);border:none;display:flex;flex-direction:column;justify-content:center;">
-<p style="font-size:13px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink);opacity:0.7;margin-bottom:8px;">Tarif</p>
-<p style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:600;color:var(--ink);margin-bottom:6px;">{{ price }}</p>
-<p style="font-size:14px;color:var(--ink);opacity:0.75;margin-bottom:20px;">Le montant exact dépend de votre périmètre, fixé ensemble après le premier appel.</p>
-<p style="font-size:13px;color:var(--ink);opacity:0.7;">Outils : {{ outils | join(" · ") }}</p>
+<div class="card" style="margin-bottom:0;background:var(--slate);border:none;display:flex;flex-direction:column;justify-content:center;">
+<p style="font-size:13px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange);margin-bottom:8px;">Tarif</p>
+<p style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:600;color:#fff;margin-bottom:6px;">{{ price }}</p>
+<p style="font-size:14px;color:rgba(255,255,255,0.75);margin-bottom:20px;">Le montant exact dépend de votre périmètre, fixé ensemble après le premier appel.</p>
+<p style="font-size:13px;color:rgba(255,255,255,0.7);">Outils : {{ outils | join(" · ") }}</p>
 </div>
 </div>
 

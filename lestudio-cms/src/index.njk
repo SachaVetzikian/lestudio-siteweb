@@ -27,8 +27,8 @@ permalink: /index.html
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --ink:#141413; --paper:#F5F3EF; --orange:#FD5C1C; --orange-light:#FFE3D2; --grey:#615D72;
-    --line:rgba(20,20,19,0.12);
+    --ink:#09090b; --slate:#27272a; --paper:#f4f4f5; --orange:#ff5a00; --orange-light:#ffe4d6; --grey:#3f3f46;
+    --line:#ececee;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'DM Sans',sans-serif; background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased;}
@@ -40,12 +40,12 @@ permalink: /index.html
 
   header.nav{
     position:sticky; top:0; z-index:100;
-    background:rgba(245,243,239,0.75); backdrop-filter:blur(14px);
+    background:rgba(244,244,245,0.75); backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line);
     transition:background .3s ease, box-shadow .3s ease;
   }
   header.nav.scrolled{
-    background:rgba(245,243,239,0.94);
+    background:rgba(244,244,245,0.94);
     box-shadow:0 6px 24px -12px rgba(20,18,31,0.2);
   }
   .nav-inner{width:100%; box-sizing:border-box; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;}
@@ -54,7 +54,7 @@ permalink: /index.html
   .nav-links{display:flex; gap:36px; font-size:14px; font-weight:500;}
   @media (max-width:860px){ .nav-links{display:none;} }
   .nav-cta{
-    font-size:13.5px; font-weight:500; background:var(--orange); color:var(--ink);
+    font-size:13.5px; font-weight:400; background:var(--ink); color:#fff;
     padding:11px 20px; border-radius:100px;
   }
   .nav-cta-short{display:none;}
@@ -72,7 +72,7 @@ permalink: /index.html
 
   .badge{
     display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:0.04em; text-transform:uppercase;
-    border:1px solid var(--line); border-radius:100px; padding:8px 16px; margin-bottom:32px;
+    border:1px solid var(--line); border-radius:12px; padding:8px 16px; margin-bottom:32px;
     background:rgba(255,255,255,0.6); position:relative;
   }
   .badge .pulse{width:8px;height:8px;border-radius:50%;background:var(--orange);}
@@ -91,7 +91,7 @@ permalink: /index.html
     border:3px solid var(--orange); margin-right:-18px; z-index:2;
   }
   .avatar-inline{border:2px solid #fff; margin-right:0; flex-shrink:0;}
-  .cta-glow{position:relative; display:inline-flex; border-radius:100px; overflow:hidden; isolation:isolate;}
+  .cta-glow{position:relative; display:inline-flex; border-radius:14px; overflow:hidden; isolation:isolate;}
   .cta-glow::before{
     content:''; position:absolute; z-index:0; top:50%; left:50%;
     width:250%; height:250%; transform:translate(-50%,-50%);
@@ -100,12 +100,12 @@ permalink: /index.html
   }
   .cta-glow::after{
     content:''; position:absolute; z-index:1; inset:3px;
-    background:var(--orange); border-radius:inherit;
+    background:var(--ink); border-radius:inherit;
   }
   .btn-primary{
-    position:relative; z-index:2; background:transparent; color:var(--ink);
-    font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600;
-    padding:10px 30px 10px 10px; border-radius:100px;
+    position:relative; z-index:2; background:transparent; color:#fff;
+    font-family:'DM Sans',sans-serif; font-size:15px; font-weight:400;
+    padding:10px 30px 10px 10px; border-radius:12px;
     display:flex; align-items:center; gap:12px; white-space:nowrap;
   }
   @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
@@ -114,7 +114,7 @@ permalink: /index.html
 
   .trust{
     display:inline-flex; align-items:center; gap:12px; background:rgba(255,255,255,0.6);
-    border:1px solid var(--line); border-radius:100px; padding:10px 20px; position:relative;
+    border:1px solid var(--line); border-radius:12px; padding:10px 20px; position:relative;
     text-decoration:none; color:inherit; transition:border-color .2s ease;
   }
   .trust:hover{border-color:var(--orange);}
@@ -142,7 +142,7 @@ permalink: /index.html
 
   .btn-secondary{
     background:transparent; color:var(--ink); border:1px solid var(--line);
-    font-size:15px; font-weight:500; padding:14px 26px; border-radius:100px; display:inline-flex; align-items:center; gap:8px;
+    font-size:15px; font-weight:400; padding:14px 26px; border-radius:14px; display:inline-flex; align-items:center; gap:8px;
   }
 
   /* Cards grid: diagnostic, pourquoi */
@@ -179,7 +179,7 @@ permalink: /index.html
   .card .mockup{margin-bottom:16px;}
 
   /* Asset mockups riches - étapes méthode */
-  .asset-mock{background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; max-width:300px; margin-top:22px; box-shadow:0 10px 28px -14px rgba(20,20,19,0.18);}
+  .asset-mock{background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; max-width:300px; margin-top:22px; box-shadow:0 10px 28px -14px rgba(9,9,11,0.18);}
   .asset-mock .am-chrome{display:flex; align-items:center; justify-content:space-between; padding:9px 12px; border-bottom:1px solid var(--line);}
   .asset-mock .am-dots{display:flex; gap:5px;}
   .asset-mock .am-dots span{width:6px;height:6px;border-radius:50%;background:var(--line);}
@@ -203,7 +203,7 @@ permalink: /index.html
   @media (max-width:760px){ .offer-tabs{grid-template-columns:1fr;} }
   .offer-tab-card{background:var(--paper); border:none; border-right:1px solid var(--line); padding:28px 20px; text-align:center; cursor:pointer; font-family:'DM Sans',sans-serif;}
   .offer-tab-card:last-child{border-right:none;}
-  .offer-tab-card.active{background:#fff; position:relative; box-shadow:0 10px 28px -14px rgba(20,20,19,0.2);}
+  .offer-tab-card.active{background:#fff; position:relative; box-shadow:0 10px 28px -14px rgba(9,9,11,0.2);}
   .offer-dots{display:grid; grid-template-columns:repeat(4,1fr); gap:3px; width:30px; margin:0 auto 14px;}
   .offer-dots span{width:4px; height:4px; border-radius:50%; background:var(--line);}
   .offer-tab-card.active .offer-dots span{background:var(--orange);}
@@ -220,23 +220,23 @@ permalink: /index.html
   .offer-block h4{font-size:11.5px; text-transform:uppercase; letter-spacing:0.03em; color:var(--grey); margin-bottom:6px;}
   .offer-block p{font-size:14.5px; line-height:1.6; color:var(--ink); margin:0;}
   .offer-tags{display:flex; gap:8px; flex-wrap:wrap;}
-  .offer-tags span{font-size:12px; border:1px solid var(--line); border-radius:100px; padding:5px 12px; color:var(--ink);}
+  .offer-tags span{font-size:12px; border:1px solid var(--line); border-radius:12px; padding:5px 12px; color:var(--ink);}
   .offer-included-title{font-family:'DM Sans',sans-serif; font-weight:600; font-size:15px; margin-bottom:14px;}
   .offer-check{display:flex; align-items:center; gap:10px; background:rgba(34,150,80,0.08); border-radius:8px; padding:11px 14px; margin-bottom:8px; font-size:13.5px; color:var(--ink);}
   .offer-check svg{color:#229650; flex-shrink:0;}
-  .offer-stats{background:var(--ink); color:#fff; border-radius:14px; padding:26px; display:flex; flex-direction:column; gap:18px;}
+  .offer-stats{background:var(--slate); color:#fff; border-radius:14px; padding:26px; display:flex; flex-direction:column; gap:18px;}
   .offer-stat-num{font-family:'DM Sans',sans-serif; font-weight:600; font-size:26px;}
-  .offer-stat-label{font-size:11.5px; color:rgba(245,243,239,0.6); margin-top:2px;}
+  .offer-stat-label{font-size:11.5px; color:rgba(244,244,245,0.6); margin-top:2px;}
   .offer-stats .btn-secondary{margin-top:6px; text-align:center; justify-content:center;}
 
   /* Cas clients */
   .case-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px; margin-bottom:36px;}
   @media (max-width:640px){ .case-grid{grid-template-columns:1fr;} }
-  .case-preview{position:relative; border-radius:14px; overflow:hidden; aspect-ratio:4/3; background:var(--ink); margin-bottom:16px;}
+  .case-preview{position:relative; border-radius:36px; overflow:hidden; aspect-ratio:4/3; background:var(--slate); margin-bottom:16px;}
   .case-preview video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .3s ease;}
   .case-preview.hovering video{opacity:1;}
   .case-tags{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;}
-  .case-tag{font-size:11.5px; padding:5px 12px; border-radius:100px; background:var(--surface,#fff); border:1px solid var(--line); color:var(--ink);}
+  .case-tag{font-size:11.5px; padding:5px 12px; border-radius:12px; background:var(--surface,#fff); border:1px solid var(--line); color:var(--ink);}
   .case-card h3{font-family:'DM Sans',sans-serif; font-weight:600; font-size:19px; margin-bottom:8px;}
   .case-card p{color:var(--grey); font-size:14px; line-height:1.6; margin-bottom:12px;}
   .case-link{font-size:14px; color:var(--orange); text-decoration:none; border-bottom:1px solid transparent;}
@@ -262,7 +262,7 @@ permalink: /index.html
   .testi-name{font-size:14px; font-weight:500;}
   .testi-role{font-size:13px; color:var(--grey);}
   .testi-tabs{display:flex; flex-wrap:wrap; gap:8px;}
-  .testi-tabs button{font-size:12.5px; padding:8px 14px; border-radius:100px; border:1px solid var(--line); background:transparent; color:var(--grey); cursor:pointer; font-family:'DM Sans',sans-serif;}
+  .testi-tabs button{font-size:12.5px; padding:8px 14px; border-radius:12px; border:1px solid var(--line); background:transparent; color:var(--grey); cursor:pointer; font-family:'DM Sans',sans-serif;}
   .testi-tabs button.active{border-color:var(--orange); color:var(--orange);}
 
   /* FAQ accordion */
@@ -275,10 +275,11 @@ permalink: /index.html
   .faq-a p{padding:0 4px 22px; color:var(--grey); font-size:15px; line-height:1.6; max-width:640px;}
 
   /* Final CTA */
-  .final-cta{background:var(--ink); color:var(--paper); text-align:center; padding:96px 0;}
+  .final-cta{background:var(--slate); color:var(--paper); text-align:center; padding:96px 0;}
   .final-cta h2{color:var(--paper); margin:0 auto 16px;}
-  .final-cta p{color:rgba(245,243,239,0.7); max-width:440px; margin:0 auto 36px;}
+  .final-cta p{color:rgba(244,244,245,0.7); max-width:440px; margin:0 auto 36px;}
   .final-cta .cta-glow::after{background:var(--orange);}
+  .final-cta .btn-primary{color:var(--ink);}
 
   /* Footer */
   footer{padding:56px 0 32px;}
@@ -293,14 +294,14 @@ permalink: /index.html
   .cookie-banner{
     position:fixed; left:20px; right:20px; bottom:20px; max-width:520px; margin:0 auto;
     background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:22px 24px;
-    box-shadow:0 12px 40px -12px rgba(20,20,19,0.25); z-index:1000; display:none;
+    box-shadow:0 12px 40px -12px rgba(9,9,11,0.25); z-index:1000; display:none;
   }
   .cookie-banner p{font-size:13.5px; line-height:1.6; color:var(--ink); margin-bottom:16px;}
   .cookie-banner p a{color:var(--orange); text-decoration:underline;}
   .cookie-banner .cookie-actions{display:flex; gap:10px;}
-  .cookie-banner .cookie-actions button{flex:1; font-size:13.5px; padding:11px 16px; border-radius:100px; cursor:pointer; font-family:'DM Sans',sans-serif;}
+  .cookie-banner .cookie-actions button{flex:1; font-size:13.5px; padding:11px 16px; border-radius:12px; cursor:pointer; font-family:'DM Sans',sans-serif;}
   .cookie-banner .btn-refuse{background:transparent; border:1px solid var(--line); color:var(--ink);}
-  .cookie-banner .btn-accept{background:var(--orange); border:none; color:#fff;}
+  .cookie-banner .btn-accept{background:var(--ink); border:none; color:#fff;}
 
   .burger{display:none; background:none; border:none; cursor:pointer; width:40px; height:40px; padding:10px; flex-direction:column; justify-content:center; gap:6px;}
   .burger span{display:block; height:1.5px; background:var(--ink); transition:transform .25s ease, opacity .25s ease;}
@@ -424,7 +425,7 @@ permalink: /index.html
 </div>
 </div>
 <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.03em; color:var(--grey); text-align:center; margin-bottom:14px;">Isolé · Aucune donnée client</div>
-<div style="border:1px solid var(--line); border-radius:100px; padding:10px; text-align:center; font-size:13px; color:var(--grey); display:flex; align-items:center; justify-content:center; gap:6px;">
+<div style="border:1px solid var(--line); border-radius:12px; padding:10px; text-align:center; font-size:13px; color:var(--grey); display:flex; align-items:center; justify-content:center; gap:6px;">
 <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M12 7.25a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0V8a.75.75 0 0 1 .75-.75M12 17a1 1 0 1 0 0-2a1 1 0 0 0 0 2"/><path fill="currentColor" fill-rule="evenodd" d="M8.294 4.476C9.366 3.115 10.502 2.25 12 2.25s2.634.865 3.706 2.226c1.054 1.34 2.17 3.32 3.6 5.855l.436.772c1.181 2.095 2.115 3.75 2.605 5.077c.5 1.358.62 2.59-.138 3.677c-.735 1.055-1.962 1.486-3.51 1.69c-1.541.203-3.615.203-6.274.203h-.85c-2.66 0-4.733 0-6.274-.203c-1.548-.204-2.775-.635-3.51-1.69c-.758-1.087-.639-2.32-.138-3.677c.49-1.328 1.424-2.982 2.605-5.077l.436-.772c1.429-2.535 2.546-4.516 3.6-5.855m1.179.928C8.499 6.641 7.437 8.52 5.965 11.13l-.364.645c-1.226 2.174-2.097 3.724-2.54 4.925c-.438 1.186-.378 1.814-.04 2.3c.361.516 1.038.87 2.476 1.06c1.432.188 3.406.19 6.14.19h.727c2.733 0 4.707-.002 6.14-.19c1.437-.19 2.114-.544 2.474-1.06c.339-.486.4-1.114-.038-2.3c-.444-1.201-1.315-2.751-2.541-4.925l-.364-.645c-1.472-2.61-2.534-4.489-3.508-5.726C13.562 4.18 12.813 3.75 12 3.75s-1.562.429-2.527 1.654" clip-rule="evenodd"/></svg>
 Ne convertit pas
 </div>
@@ -443,19 +444,19 @@ Ne convertit pas
 <line x1="187" y1="82" x2="150" y2="34" stroke="var(--orange)" stroke-width="1.5" opacity="0.5"/>
 <line x1="262" y1="82" x2="150" y2="34" stroke="var(--orange)" stroke-width="1.5" opacity="0.5"/>
 </svg>
-<div style="position:absolute; top:0; left:50%; transform:translateX(-50%); background:var(--ink); color:#fff; border-radius:100px; padding:8px 16px; font-size:12.5px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap;">
+<div style="position:absolute; top:0; left:50%; transform:translateX(-50%); background:var(--ink); color:#fff; border-radius:12px; padding:8px 16px; font-size:12.5px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap;">
 <svg width="14" height="14" viewBox="0 0 24 24" style="color:var(--orange-light);"><path fill="currentColor" fill-rule="evenodd" d="M15.635 2.124c.327-.832 1.503-.832 1.83 0l.428 1.09l1.084.429c.83.328.83 1.504 0 1.832l-1.084.43l-.428 1.089c-.327.832-1.503.832-1.83 0l-.428-1.09l-1.085-.429c-.83-.328-.83-1.504 0-1.832l1.085-.43zm.915.406l.415 1.055c.1.254.3.455.553.556l1.057.418l-1.057.419a.98.98 0 0 0-.553.555l-.415 1.055l-.415-1.055a.98.98 0 0 0-.554-.555l-1.057-.419l1.057-.418a.98.98 0 0 0 .554-.556zm-13.236.784a3.633 3.633 0 0 1 5.139 0l12.233 12.233a3.633 3.633 0 0 1-5.139 5.139L3.314 8.453a3.633 3.633 0 0 1 0-5.139m4.078 1.06a2.133 2.133 0 1 0-3.017 3.018L5.96 8.978l3.017-3.017zm9.216 15.251L7.022 10.04l3.017-3.017l9.586 9.586a2.133 2.133 0 1 1-3.017 3.017m4.724-10.679c-.327-.833-1.503-.833-1.83 0l-.155.393l-.391.155c-.83.328-.83 1.504 0 1.832l.391.155l.155.394c.327.832 1.503.832 1.83 0l.154-.394l.392-.155c.83-.328.83-1.504 0-1.832l-.392-.155zm-.915.405l-.141.36c-.1.253-.3.455-.554.555l-.364.144l.364.144c.254.1.454.302.554.555l.14.36l.142-.36c.1-.253.3-.454.554-.555l.364-.144l-.364-.144a.98.98 0 0 1-.554-.555zM4.668 15.124c.327-.832 1.503-.832 1.83 0l.155.394l.39.154c.83.329.83 1.505 0 1.833l-.39.155l-.155.393c-.327.833-1.503.833-1.83 0l-.155-.393l-.391-.155c-.83-.328-.83-1.504 0-1.832l.391-.155zm.774.765l.14-.36l.142.36c.1.254.3.455.554.556l.364.144l-.364.144a.98.98 0 0 0-.554.555l-.141.36l-.141-.36a.98.98 0 0 0-.554-.555l-.364-.144l.364-.144a.98.98 0 0 0 .554-.556" clip-rule="evenodd"/></svg>
 LeStudio
 </div>
 <div style="position:absolute; bottom:0; left:0; right:0; display:flex; gap:6px;">
-<div style="flex:1; border:1px solid var(--line); border-radius:100px; padding:6px 4px; text-align:center; font-size:10px; background:#fff;">Recherche UX</div>
-<div style="flex:1; border:1px solid var(--line); border-radius:100px; padding:6px 4px; text-align:center; font-size:10px; background:#fff;">Data CRO</div>
-<div style="flex:1; border:1px solid var(--line); border-radius:100px; padding:6px 4px; text-align:center; font-size:10px; background:#fff;">Design system</div>
-<div style="flex:1; border:1px solid var(--line); border-radius:100px; padding:6px 4px; text-align:center; font-size:10px; background:#fff;">Tests</div>
+<div style="flex:1; border:1px solid var(--line); border-radius:12px; padding:6px 4px; text-align:center; font-size:10px; background:#fff;">Recherche UX</div>
+<div style="flex:1; border:1px solid var(--line); border-radius:12px; padding:6px 4px; text-align:center; font-size:10px; background:#fff;">Data CRO</div>
+<div style="flex:1; border:1px solid var(--line); border-radius:12px; padding:6px 4px; text-align:center; font-size:10px; background:#fff;">Design system</div>
+<div style="flex:1; border:1px solid var(--line); border-radius:12px; padding:6px 4px; text-align:center; font-size:10px; background:#fff;">Tests</div>
 </div>
 </div>
 <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.03em; color:var(--orange); text-align:center; margin-bottom:14px;">Pensé pour convertir</div>
-<div style="border:1px solid var(--orange); border-radius:100px; padding:10px; text-align:center; font-size:13px; color:var(--orange); display:flex; align-items:center; justify-content:center; gap:6px;">
+<div style="border:1px solid var(--orange); border-radius:12px; padding:10px; text-align:center; font-size:13px; color:var(--orange); display:flex; align-items:center; justify-content:center; gap:6px;">
 <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M16.03 10.03a.75.75 0 1 0-1.06-1.06l-4.47 4.47l-1.47-1.47a.75.75 0 0 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0z"/><path fill="currentColor" fill-rule="evenodd" d="M12 1.25C6.063 1.25 1.25 6.063 1.25 12S6.063 22.75 12 22.75S22.75 17.937 22.75 12S17.937 1.25 12 1.25M2.75 12a9.25 9.25 0 1 1 18.5 0a9.25 9.25 0 0 1-18.5 0" clip-rule="evenodd"/></svg>
 Optimisé
 </div>
@@ -677,8 +678,8 @@ padding: 16px<br>radius: 8px
 <div class="offer-stats">
 <div><div class="offer-stat-num">100+</div><div class="offer-stat-label">Projets livrés</div></div>
 <div><div class="offer-stat-num">{{ svc.data.delai }}</div><div class="offer-stat-label">{% if svc.data.tab_id == "tab-abo" %}Engagement{% else %}Temps de livraison{% endif %}</div></div>
-<div class="price" style="color:rgba(245,243,239,0.85); margin:4px 0 0;">{{ svc.data.price }}</div>
-<a class="btn-secondary" href="/offres/{{ svc.fileSlug }}/" style="background:var(--orange); border-color:var(--orange); color:var(--ink);">Découvrir l'offre ›</a>
+<div class="price" style="color:rgba(244,244,245,0.85); margin:4px 0 0;">{{ svc.data.price }}</div>
+<a class="btn-secondary" href="/offres/{{ svc.fileSlug }}/" style="background:var(--ink); border-color:var(--ink); color:#fff;">Découvrir l'offre ›</a>
 </div>
 </div>
 {% endfor %}
@@ -705,11 +706,11 @@ padding: 16px<br>radius: 8px
 <div class="wrap section-head">
 <h2>Ce qu'ils en disent.</h2>
 <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;">
-<a href="https://maps.app.goo.gl/Mf8NG4F4ACxs2e857?g_st=ic" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:100px; padding:8px 14px; font-size:13px; color:var(--ink); text-decoration:none;">
+<a href="https://maps.app.goo.gl/Mf8NG4F4ACxs2e857?g_st=ic" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:12px; padding:8px 14px; font-size:13px; color:var(--ink); text-decoration:none;">
 <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M12 10.2v3.9h5.6c-.25 1.4-1.7 4.1-5.6 4.1-3.37 0-6.12-2.8-6.12-6.2s2.75-6.2 6.12-6.2c1.92 0 3.2.82 3.94 1.52l2.68-2.58C17.1 3.02 14.8 2 12 2 6.98 2 2.9 6.03 2.9 11s4.08 9 9.1 9c5.25 0 8.74-3.7 8.74-8.9 0-.6-.07-1.05-.15-1.5z"/></svg>
 Avis Google
 </a>
-<a href="https://fr.trustpilot.com/review/lestudiodesign.fr" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:100px; padding:8px 14px; font-size:13px; color:var(--ink); text-decoration:none;">
+<a href="https://fr.trustpilot.com/review/lestudiodesign.fr" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:12px; padding:8px 14px; font-size:13px; color:var(--ink); text-decoration:none;">
 <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#00B67A" d="M12 2l2.6 7.6H22l-6.2 4.5l2.4 7.6L12 17.2L5.8 21.7l2.4-7.6L2 9.6h7.4z"/></svg>
 Avis Trustpilot
 </a>
@@ -823,8 +824,8 @@ Avis Trustpilot
 
   function caseFallback(name){
     var initials = (name || '').split(' ').map(function(w){ return w[0]; }).join('').slice(0, 2).toUpperCase();
-    return '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(255,107,53,0.18),rgba(245,243,239,0.06));">' +
-      '<span style="font-family:\'DM Sans\',sans-serif;font-weight:600;font-size:30px;letter-spacing:0.02em;color:rgba(245,243,239,0.75);">' + initials + '</span>' +
+    return '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(255,107,53,0.18),rgba(244,244,245,0.06));">' +
+      '<span style="font-family:\'DM Sans\',sans-serif;font-weight:600;font-size:30px;letter-spacing:0.02em;color:rgba(244,244,245,0.75);">' + initials + '</span>' +
       '</div>';
   }
 
@@ -1078,7 +1079,7 @@ Avis Trustpilot
 <svg height="30" style="color:#fff;" viewbox="0 0 24 24" width="30"><path d="M9 12a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" fill="currentColor"></path><path clip-rule="evenodd" d="M22.75 12c0-5.937-4.813-10.75-10.75-10.75S1.25 6.063 1.25 12c0 1.718.404 3.345 1.122 4.787c.107.215.13.435.08.62l-.595 2.226c-.408 1.524.986 2.918 2.51 2.51l2.226-.596a.9.9 0 0 1 .62.08A10.7 10.7 0 0 0 12 22.75c5.937 0 10.75-4.813 10.75-10.75M12 2.75a9.25 9.25 0 0 1 0 18.5a9.2 9.2 0 0 1-4.118-.965a2.38 2.38 0 0 0-1.676-.187l-2.227.596a.55.55 0 0 1-.673-.674l.596-2.226a2.38 2.38 0 0 0-.187-1.676A9.2 9.2 0 0 1 2.75 12A9.25 9.25 0 0 1 12 2.75" fill="currentColor" fill-rule="evenodd"></path></svg>
 </a>
 <style>
-.wa-float{position:fixed;bottom:22px;right:22px;z-index:98;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(20,20,19,0.4);transition:transform .2s;}
+.wa-float{position:fixed;bottom:22px;right:22px;z-index:98;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(9,9,11,0.4);transition:transform .2s;}
 .wa-float:hover{transform:scale(1.08);}
 </style>
 </body>

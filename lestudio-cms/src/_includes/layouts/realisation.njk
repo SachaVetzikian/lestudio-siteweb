@@ -11,7 +11,7 @@ layout: layouts/base.njk
 {% elif cover %}
 <img src="{{ cover }}" alt="{{ title }}" width="1600" height="1000" fetchpriority="high" style="width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;border:1px solid var(--line);margin:24px 0 56px;"/>
 {% else %}
-<div style="width:100%;aspect-ratio:16/10;border-radius:14px;border:1px solid var(--line);margin:24px 0 56px;background:linear-gradient(135deg,rgba(255,107,53,0.16),rgba(20,20,19,0.04));display:flex;align-items:center;justify-content:center;">
+<div style="width:100%;aspect-ratio:16/10;border-radius:14px;border:1px solid var(--line);margin:24px 0 56px;background:linear-gradient(135deg,rgba(255,90,0,0.16),rgba(9,9,11,0.04));display:flex;align-items:center;justify-content:center;">
 <span style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.04em;color:var(--grey);">{{ client }} · {{ tags | join(" · ") }}</span>
 </div>
 {% endif %}
@@ -74,10 +74,10 @@ layout: layouts/base.njk
 {% if temoignage %}
 {% for t in collections.temoignages %}{% if t.fileSlug == temoignage %}
 <section style="border-top:1px solid var(--line);padding:56px 0;">
-<div class="card" style="background:var(--ink);color:var(--paper);border:none;">
+<div class="card" style="background:var(--slate);color:var(--paper);border:none;">
 <p style="font-weight:500;font-size:20px;line-height:1.5;margin-bottom:20px;color:var(--paper);">« {{ t.data.quote | replace("**","") }} »</p>
 <p style="font-weight:500;color:var(--paper);">{{ t.data.name }}</p>
-<p style="font-size:13px;color:rgba(245,243,239,0.65);">{{ t.data.role }}</p>
+<p style="font-size:13px;color:rgba(244,244,245,0.65);">{{ t.data.role }}</p>
 </div>
 </section>
 {% endif %}{% endfor %}
