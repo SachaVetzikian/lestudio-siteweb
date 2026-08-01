@@ -40,11 +40,11 @@ Mais un site ne s'arrête pas d'évoluer le jour de sa mise en ligne. De nouvell
 <div style="display:flex;justify-content:space-between;font-size:12.5px;color:var(--grey);margin-top:6px;"><span>Début</span><span>Fin, handoff livré</span></div>
 </div>
 <div>
-<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange-text);margin-bottom:8px;">Abonnement</p>
+<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange);margin-bottom:8px;">Abonnement</p>
 <div style="display:flex;align-items:center;gap:8px;">
 <div style="width:12px;height:12px;border-radius:50%;background:var(--orange);flex-shrink:0;"></div>
 <div style="flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--orange),var(--orange) 6px,transparent 6px,transparent 12px);"></div>
-<span style="color:var(--orange-text);font-weight:600;">→</span>
+<span style="color:var(--orange);font-weight:600;">→</span>
 </div>
 <div style="display:flex;justify-content:space-between;font-size:12.5px;color:var(--grey);margin-top:6px;"><span>Onboarding</span><span>Continue tant que le besoin existe</span></div>
 </div>

@@ -27,7 +27,7 @@ Dans une agence classique, un projet de refonte passe souvent par plusieurs main
 <div style="border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:14px;">Designer senior</div>
 </div>
 <div>
-<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange-text);margin-bottom:12px;">LeStudio</p>
+<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange);margin-bottom:12px;">LeStudio</p>
 <div style="border:2px solid var(--orange);border-radius:8px;padding:10px 14px;background:var(--orange-light);font-weight:500;font-size:14px;">Un seul interlocuteur, du brief à la livraison</div>
 </div>
 </div>

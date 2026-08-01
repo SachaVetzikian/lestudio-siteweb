@@ -20,7 +20,7 @@ layout: layouts/base.njk
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin:-24px 0 56px;">
 {% for res in resultats %}
 <div class="card" style="margin-bottom:0;text-align:center;">
-<p style="font-family:'DM Sans',sans-serif;font-size:34px;font-weight:600;color:var(--orange-text);">{{ res.chiffre }}</p>
+<p style="font-family:'DM Sans',sans-serif;font-size:34px;font-weight:600;color:var(--orange);">{{ res.chiffre }}</p>
 <p style="font-size:14px;color:var(--grey);">{{ res.label }}</p>
 </div>
 {% endfor %}
@@ -51,7 +51,7 @@ layout: layouts/base.njk
 {# ── Phases numérotées ── #}
 {% for ph in phases %}
 <section style="border-top:1px solid var(--line);padding:56px 0;">
-<h2 style="margin-top:0;"><span style="color:var(--orange-text);">{{ loop.index }}.</span> {{ ph.titre }}</h2>
+<h2 style="margin-top:0;"><span style="color:var(--orange);">{{ loop.index }}.</span> {{ ph.titre }}</h2>
 {% if ph.intro %}<p style="line-height:1.7;color:var(--grey);max-width:640px;margin-bottom:28px;">{{ ph.intro }}</p>{% endif %}
 {% if ph.blocs %}
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:28px;">
@@ -95,7 +95,7 @@ layout: layouts/base.njk
 {% set shown = shown + 1 %}
 <a class="card" href="/realisations/{{ r.fileSlug }}/">
 <h3>{{ r.data.client }}</h3><p>{{ r.data.description }}</p>
-<p style="margin-top:14px;color:var(--orange-text);font-weight:500;font-size:14px;">→ Découvrir</p>
+<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Découvrir</p>
 </a>
 {% endif %}
 {% endfor %}

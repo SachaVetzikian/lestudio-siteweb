@@ -59,12 +59,12 @@ Quand un site ne convertit pas à la hauteur de son trafic, la première questio
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;text-align:center;">
 <div>
 <div style="border:1px solid var(--line);border-radius:10px;padding:14px;"><p style="margin:0;font-weight:500;color:var(--ink);">Trafic + données existantes</p></div>
-<p style="color:var(--orange-text);font-size:20px;margin:6px 0;">↓</p>
+<p style="color:var(--orange);font-size:20px;margin:6px 0;">↓</p>
 <div style="border:2px solid var(--orange);border-radius:10px;padding:14px;background:var(--orange-light);"><p style="margin:0;font-weight:600;color:var(--ink);">Auditer d'abord</p></div>
 </div>
 <div>
 <div style="border:1px solid var(--line);border-radius:10px;padding:14px;"><p style="margin:0;font-weight:500;color:var(--ink);">Site à créer ou obsolète</p></div>
-<p style="color:var(--orange-text);font-size:20px;margin:6px 0;">↓</p>
+<p style="color:var(--orange);font-size:20px;margin:6px 0;">↓</p>
 <div style="border:2px solid var(--orange);border-radius:10px;padding:14px;background:var(--orange-light);"><p style="margin:0;font-weight:600;color:var(--ink);">Refondre d'abord</p></div>
 </div>
 </div>

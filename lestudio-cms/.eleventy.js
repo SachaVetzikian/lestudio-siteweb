@@ -99,7 +99,7 @@ module.exports = function (eleventyConfig) {
   );
 
   // Conversion **mot** -> surlignage orange
-  const hl = (q) => (q || "").replace(/\*\*(.+?)\*\*/g, '<span style="color:var(--orange-text);">$1</span>');
+  const hl = (q) => (q || "").replace(/\*\*(.+?)\*\*/g, '<span style="color:var(--orange);">$1</span>');
 
   eleventyConfig.addFilter("assetExists", assetExists);
 

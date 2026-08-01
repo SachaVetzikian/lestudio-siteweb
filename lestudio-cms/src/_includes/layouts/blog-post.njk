@@ -8,7 +8,7 @@ layout: layouts/base.njk
 <p style="margin-top:80px;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);"><a href="/blog/">← Tous les articles</a></p>
 
 <p style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--grey);margin-top:16px;">
-<span style="color:var(--orange-text);font-weight:500;">{{ category or "Stratégie" }}</span>
+<span style="color:var(--orange);font-weight:500;">{{ category or "Stratégie" }}</span>
 <span>·</span>
 <span>{{ date | readableDate }}</span>
 <span>·</span>
@@ -31,7 +31,7 @@ layout: layouts/base.njk
 
 {% if quiz %}
 <div class="card" id="quiz-box" style="padding:32px 28px;">
-<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange-text);margin-bottom:10px;">Quiz interactif</p>
+<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange);margin-bottom:10px;">Quiz interactif</p>
 <h3 style="margin-bottom:4px;">{{ quiz.title }}</h3>
 <p id="quiz-progress-label" style="font-size:13px;color:var(--grey);margin-bottom:16px;">Question 1/{{ quiz.questions.length }}</p>
 <div style="width:100%;height:4px;background:var(--line);border-radius:4px;margin-bottom:24px;overflow:hidden;">
@@ -172,14 +172,14 @@ layout: layouts/base.njk
 <img src="/sacha-avatar.webp" alt="Sacha Vetzikian" width="56" height="56" loading="lazy" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;"/>
 <div>
 <p style="font-weight:500;color:var(--ink);">Sacha Vetzikian</p>
-<p style="font-size:13px;color:var(--grey);">Fondateur de LeStudio, designer UX/UI &amp; CRO depuis 2015 · <a href="https://www.linkedin.com/in/sacha-vetzikian/" target="_blank" rel="noopener" style="color:var(--orange-text);">LinkedIn</a></p>
+<p style="font-size:13px;color:var(--grey);">Fondateur de LeStudio, designer UX/UI &amp; CRO depuis 2015 · <a href="https://www.linkedin.com/in/sacha-vetzikian/" target="_blank" rel="noopener" style="color:var(--orange);">LinkedIn</a></p>
 </div>
 </div>
 
 {% if ressources_utiles %}
 <h2>Ressources utiles</h2>
 <div style="margin-bottom:32px;">
-{% for r in ressources_utiles %}<p style="padding:4px 0;">• <a href="{{ r.url }}" style="color:var(--orange-text);">{{ r.label }}</a></p>{% endfor %}
+{% for r in ressources_utiles %}<p style="padding:4px 0;">• <a href="{{ r.url }}" style="color:var(--orange);">{{ r.label }}</a></p>{% endfor %}
 </div>
 {% endif %}
 
@@ -192,7 +192,7 @@ layout: layouts/base.njk
 {% set shown = shown + 1 %}
 <a class="card" href="{{ p.url }}">
 <h3>{{ p.data.title }}</h3><p>{{ p.data.description }}</p>
-<p style="margin-top:14px;color:var(--orange-text);font-weight:500;font-size:14px;">→ Lire l'article</p>
+<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Lire l'article</p>
 </a>
 {% endif %}
 {% endfor %}
