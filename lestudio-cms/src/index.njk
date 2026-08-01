@@ -176,6 +176,19 @@ permalink: /index.html
   .asset-mock .am-toolbar{display:flex; gap:12px; padding:8px 14px; border-top:1px solid var(--line); color:var(--grey);}
   .asset-mock .am-cursor{position:absolute; background:var(--ink); color:#fff; font-size:9px; font-weight:500; padding:4px 9px; border-radius:8px 8px 8px 2px; white-space:nowrap;}
   .asset-mock .am-swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
+  .am-wrap{position:relative; max-width:300px; margin-top:22px;}
+  .am-wrap .asset-mock{margin-top:0;}
+  .am-sticker{position:absolute; z-index:3; background:var(--orange); color:#fff; font-family:'DM Sans',sans-serif; font-weight:700; font-size:11px; padding:7px 14px; border-radius:8px; transform:rotate(-6deg); box-shadow:0 10px 24px -8px rgba(255,90,0,0.55); white-space:nowrap;}
+  .am-chatbubble{display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:16px; padding:9px 16px 9px 9px; font-size:12px; font-weight:600; color:var(--ink); box-shadow:0 10px 24px -12px rgba(9,9,11,0.2);}
+  .am-chatbubble img{width:24px; height:24px; border-radius:50%; object-fit:cover; flex-shrink:0;}
+  .am-timeline{position:relative; height:56px; margin:8px 0 16px;}
+  .am-timeline .am-ruler{position:absolute; top:8px; left:0; right:0; height:1px; background:var(--line);}
+  .am-timeline .am-marker{position:absolute; top:8px; width:1.5px; height:24px; background:var(--orange);}
+  .am-timeline .am-marker::before{content:''; position:absolute; top:-4px; left:50%; transform:translateX(-50%); width:7px; height:7px; border-radius:50%; background:var(--orange); box-shadow:0 0 0 3px var(--orange-light);}
+  .am-timeline .am-tick{position:absolute; top:40px; font-size:8.5px; color:var(--grey); font-family:monospace; letter-spacing:.02em; transform:translateX(-50%);}
+  .am-timeline .am-tick:first-child{transform:none;}
+  .am-timeline .am-tick:last-child{transform:translateX(-100%);}
+  .am-filetag{display:inline-flex; align-items:center; gap:6px; border:1px dashed var(--line); border-radius:8px; padding:6px 10px; font-size:10px; color:var(--grey); font-family:monospace; background:#fff;}
 
   /* Offers */
   .pack-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-bottom:1px;}
@@ -401,7 +414,7 @@ permalink: /index.html
 <a aria-label="Contacter sur WhatsApp" href="{{ settings.whatsapp }}" style="width:40px;height:40px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
 <svg height="20" style="color:#fff;" viewbox="0 0 24 24" width="20"><path d="M9 12a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" fill="currentColor"></path><path clip-rule="evenodd" d="M22.75 12c0-5.937-4.813-10.75-10.75-10.75S1.25 6.063 1.25 12c0 1.718.404 3.345 1.122 4.787c.107.215.13.435.08.62l-.595 2.226c-.408 1.524.986 2.918 2.51 2.51l2.226-.596a.9.9 0 0 1 .62.08A10.7 10.7 0 0 0 12 22.75c5.937 0 10.75-4.813 10.75-10.75M12 2.75a9.25 9.25 0 0 1 0 18.5a9.2 9.2 0 0 1-4.118-.965a2.38 2.38 0 0 0-1.676-.187l-2.227.596a.55.55 0 0 1-.673-.674l.596-2.226a2.38 2.38 0 0 0-.187-1.676A9.2 9.2 0 0 1 2.75 12A9.25 9.25 0 0 1 12 2.75" fill="currentColor" fill-rule="evenodd"></path></svg>
 </a>
-<a class="nav-cta shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener"><span class="nav-cta-full">Réserver un appel découverte ›</span><span class="nav-cta-short">RDV ›</span></a>
+<a class="nav-cta shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="nav-cta-full">Réserver un appel découverte ›</span><span class="nav-cta-short">RDV ›</span></a>
 <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
 <span></span><span></span>
 </button>
@@ -413,7 +426,7 @@ permalink: /index.html
 <a href="#methode">Méthode</a>
 <a href="#offres">Offres</a>
 <a href="#faq">FAQ</a>
-<a class="mobile-menu-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener">Réserver un appel découverte ›</a>
+<a class="mobile-menu-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Réserver un appel découverte ›</a>
 </nav>
 <section class="hero">
 <div class="blob blob-1"></div>
@@ -423,7 +436,7 @@ permalink: /index.html
 <h1>Votre site doit <em>convertir</em>, pas juste présenter votre service.</h1>
 <p class="lede">Audit, refonte UX/UI, CRO, design system : on réduit les frictions de conversion par la stratégie et le design.</p>
 <div class="cta-row">
-<a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha ›</span></a>
+<a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha ›</span></a>
 </div>
 <a class="trust" href="#temoignages">
 <div class="stack">
@@ -581,6 +594,7 @@ Optimisé
 <h3>Audit UX/CRO</h3>
 <p>On identifie ce qui bloque vraiment la conversion, avec un benchmark de vos concurrents.</p>
 <div class="deliverable">Vous repartez avec : rapport d'audit et quick wins</div>
+<div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
 <div class="am-dots"><span></span><span></span><span></span></div>
@@ -597,6 +611,8 @@ Optimisé
 <div class="am-cursor" style="top:8px; right:10px;">Benchmark ↗</div>
 </div>
 </div>
+<div class="am-sticker" style="bottom:-14px; left:-16px;">3 points bloquants ⚡</div>
+</div>
 </div>
 </div>
 
@@ -606,6 +622,7 @@ Optimisé
 <h3>Architecture et wireframes</h3>
 <p>On pose la structure et les parcours avant de dessiner le moindre pixel.</p>
 <div class="deliverable">On construit : wireframes validés</div>
+<div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
 <div class="am-dots"><span></span><span></span><span></span></div>
@@ -616,14 +633,18 @@ Optimisé
 <div style="height:30px; border:1.5px dashed var(--grey); border-radius:4px;"></div>
 <div style="height:30px; border:1.5px dashed var(--grey); border-radius:4px;"></div>
 </div>
-<div style="height:16px; border:1.5px dashed var(--grey); border-radius:4px; margin-bottom:8px;"></div>
-<div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
-<div style="height:24px; border:1.5px dashed var(--grey); border-radius:4px;"></div>
-<div style="height:24px; border:1.5px dashed var(--grey); border-radius:4px;"></div>
-<div style="height:24px; border:1.5px dashed var(--orange); border-radius:4px;"></div>
+<div style="height:16px; border:1.5px dashed var(--grey); border-radius:4px; margin-bottom:14px;"></div>
+<div class="am-timeline">
+<span class="am-tick" style="left:0;">V1</span>
+<span class="am-tick" style="left:44%;">V2</span>
+<span class="am-tick" style="left:88%;">Final</span>
+<div class="am-ruler"></div>
+<div class="am-marker" style="left:44%;"></div>
 </div>
-<div class="am-cursor" style="bottom:6px; right:8px;">Structure</div>
+<div class="am-cursor" style="bottom:6px; right:8px;">Structure ↗</div>
 </div>
+</div>
+<div class="am-sticker" style="top:-14px; right:-12px;">Valider ✓</div>
 </div>
 </div>
 </div>
@@ -634,6 +655,7 @@ Optimisé
 <h3>UI design</h3>
 <p>Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire.</p>
 <div class="deliverable">Vous obtenez : maquettes Figma haute fidélité</div>
+<div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
 <div class="am-dots"><span></span><span></span><span></span></div>
@@ -653,6 +675,8 @@ Optimisé
 <svg width="13" height="13" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 5h14M12 5v14"/></svg>
 </div>
 </div>
+<div class="am-sticker" style="bottom:-14px; right:-10px;">Design system ✓</div>
+</div>
 </div>
 </div>
 
@@ -662,6 +686,7 @@ Optimisé
 <h3>Handoff design</h3>
 <p>Specs et composants documentés, prêts pour votre développeur ou votre agence.</p>
 <div class="deliverable">On vous livre : dossier de handoff complet</div>
+<div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
 <div class="am-dots"><span></span><span></span><span></span></div>
@@ -673,11 +698,16 @@ Optimisé
 <div style="height:8px; width:40%; background:var(--line); border-radius:3px;"></div>
 <div style="position:absolute; top:-8px; right:-8px; background:var(--orange); color:#fff; font-size:8px; padding:2px 6px; border-radius:4px;">16px</div>
 </div>
-<div style="background:var(--ink); border-radius:6px; padding:8px 10px; font-family:monospace; font-size:9px; color:var(--orange-light); line-height:1.6;">
+<div style="background:var(--ink); border-radius:6px; padding:8px 10px; font-family:monospace; font-size:9px; color:var(--orange-light); line-height:1.6; margin-bottom:12px;">
 padding: 16px<br>radius: 8px
 </div>
-<div class="am-cursor" style="top:6px; right:8px;">Handoff</div>
+<div style="display:flex; gap:8px; flex-wrap:wrap;">
+<span class="am-filetag"><svg width="11" height="11" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M14 2v6h6"/></svg>Handoff.pdf</span>
+<span class="am-filetag"><svg width="11" height="11" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M14 2v6h6"/></svg>LeStudio.fig</span>
 </div>
+</div>
+</div>
+<div class="am-sticker" style="bottom:-14px; left:-12px;">Livré ✓</div>
 </div>
 </div>
 </div>
@@ -801,7 +831,7 @@ Avis Trustpilot
 <h2>Prêt à arrêter de perdre des clients sur votre propre site ?</h2>
 <p>30 minutes, gratuit. On regarde ensemble ce qui bloque la conversion.</p>
 <div style="display:flex; align-items:center; justify-content:center;">
-<a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha ›</span></a>
+<a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha ›</span></a>
 </div>
 </div>
 </section>
@@ -1151,5 +1181,11 @@ Avis Trustpilot
 .wa-float{position:fixed;bottom:22px;right:22px;z-index:98;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(9,9,11,0.4);transition:transform .2s;}
 .wa-float:hover{transform:scale(1.08);}
 </style>
+
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "20min", {origin:"https://cal.com"});
+Cal.ns["20min"]("ui", {"theme":"light","styles":{"branding":{"brandColor":"#ff5a00"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
 </body>
 </html>
