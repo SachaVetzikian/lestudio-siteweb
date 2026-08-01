@@ -7,6 +7,7 @@ year: 2023
 tags: [Cosmétiques, Retail]
 description: Refonte du parcours d'achat pour aligner l'expérience digitale sur le rayonnement de la marque.
 video: /assets/cas-clients/yves-rocher.mp4
+cover: /assets/uploads/cover-yves-rocher.webp
 featured: true
 home_order: 1
 probleme: Une marque de cosmétiques leader en Europe, un parcours d'achat qui ne reflétait plus son exigence.

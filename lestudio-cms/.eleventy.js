@@ -91,11 +91,12 @@ module.exports = function (eleventyConfig) {
   );
 
 
-  // Cas mis en avant sur la home
+  // Cas mis en avant sur la home (toujours limité à 6 maximum)
   eleventyConfig.addCollection("homeCases", (c) =>
     c.getFilteredByGlob("src/content/realisations/*.md")
       .filter((r) => r.data.published && r.data.featured)
       .sort((a, b) => (a.data.home_order || 99) - (b.data.home_order || 99))
+      .slice(0, 6)
   );
 
   // Conversion **mot** -> surlignage orange
