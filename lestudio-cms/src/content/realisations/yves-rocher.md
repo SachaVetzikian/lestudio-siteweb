@@ -13,8 +13,8 @@ probleme: Une marque de cosmétiques leader en Europe, un parcours d'achat qui n
 mission: "Notre mission : repenser les parcours e-commerce pour des marchés aux comportements d'achat très différents."
 overview:
   statement: Des parcours d'achat repensés pour chaque marché, à la hauteur de la marque.
-  qui: "Yves Rocher est une marque française de cosmétiques d'origine végétale, présente sur des dizaines de marchés. Chaque marché a ses comportements d'achat, ses attentes et ses contraintes propres. [À COMPLÉTER : contexte précis de la mission]"
-  depart: "[À COMPLÉTER : le point de départ, ce qui bloquait, les objectifs fixés]"
+  qui: "Yves Rocher est une marque française de cosmétiques d'origine végétale, présente sur des dizaines de marchés. Chaque marché a ses comportements d'achat, ses attentes et ses contraintes propres. L'expérience mobile restait perfectible, les fiches produits manquaient d'optimisation et des opportunités de conversion n'étaient pas exploitées."
+  depart: "Moderniser l'interface tout en restant fidèle à l'identité de la marque (végétal, naturel, accessible), sur un e-commerce déployé sur des marchés aux comportements d'achat très différents."
 services:
   - Audit UX/CRO
   - Architecture et wireframes
@@ -22,13 +22,17 @@ services:
   - Handoff design
 phases:
   - titre: Audit & diagnostic
-    intro: "[À COMPLÉTER : ce qui a été analysé, ce qui a été découvert]"
+    intro: "Analyse de l'expérience mobile et des fiches produits pour identifier les opportunités de conversion non exploitées, marché par marché."
   - titre: Architecture et wireframes
-    intro: "[À COMPLÉTER : décisions de structure, arbitrages]"
+    intro: "Parcours d'achat repensé mobile-first, avec une stratégie de cross-sell et d'upsell intégrée naturellement plutôt que plaquée."
   - titre: UI design
-    intro: "[À COMPLÉTER : direction visuelle, composants clés]"
+    intro: "Fiches produits redesignées avec une hiérarchie visuelle claire, et design system créé pour la cohérence visuelle sur tous les marchés."
   - titre: Handoff design
-    intro: "[À COMPLÉTER : livrables, documentation, intégration]"
+    intro: "Maquettes Figma complètes livrées, alignées sur l'identité Yves Rocher (végétal, naturel, accessible)."
 temoignage: fatima-bouhelalem
 published: true
 ---
+
+## Résultat
+
+Refonte implémentée en production, avec deux ans de collaboration continue : livrables réguliers et missions récurrentes d'optimisation.
