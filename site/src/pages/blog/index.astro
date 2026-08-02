@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { sanityClient, urlForImage } from "../../lib/sanity";
+import { articlesQuery } from "../../lib/queries";
+import type { Article } from "../../lib/types";
+
+const articles = await sanityClient.fetch<Article[]>(articlesQuery);
+---
+
+<Layout title="Blog — LeStudio" description="Articles publiés par LeStudio.">
+  <main>
+    <h1>Blog</h1>
+    <ul class="card-list">
+      {
+        articles.map((article) => (
+          <li>
+            <a href={`/blog/${article.slug.current}/`}>
+              {article.imageCouverture && (
+                <img
+                  src={urlForImage(article.imageCouverture).width(800).height(450).fit("crop").url()}
+                  alt={article.imageCouverture.alt ?? ""}
+                  width="800"
+                  height="450"
+                />
+              )}
+              <h2>{article.titre}</h2>
+              {article.extrait && <p>{article.extrait}</p>}
+              <time datetime={article.datePublication}>
+                {new Date(article.datePublication).toLocaleDateString("fr-FR")}
+              </time>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    {articles.length === 0 && <p>Aucun article publié pour le moment.</p>}
+  </main>
+</Layout>

@@ -1,0 +1,35 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { sanityClient, urlForImage } from "../../lib/sanity";
+import { etudesDeCasQuery } from "../../lib/queries";
+import type { EtudeDeCas } from "../../lib/types";
+
+const etudes = await sanityClient.fetch<EtudeDeCas[]>(etudesDeCasQuery);
+---
+
+<Layout title="Études de cas — LeStudio" description="Cas clients publiés par LeStudio.">
+  <main>
+    <h1>Études de cas</h1>
+    <ul class="card-list">
+      {
+        etudes.map((etude) => (
+          <li>
+            <a href={`/etudes-de-cas/${etude.slug.current}/`}>
+              {etude.client?.logo && (
+                <img
+                  src={urlForImage(etude.client.logo).width(160).height(80).fit("max").url()}
+                  alt={etude.client.logo.alt ?? etude.client.nom}
+                  width="160"
+                  height="80"
+                />
+              )}
+              <h2>{etude.titre}</h2>
+              {etude.client?.nom && <p>{etude.client.nom}</p>}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    {etudes.length === 0 && <p>Aucune étude de cas publiée pour le moment.</p>}
+  </main>
+</Layout>

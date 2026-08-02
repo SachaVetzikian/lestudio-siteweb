@@ -1,0 +1,52 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { sanityClient, urlForImage } from "../../lib/sanity";
+import { realisationBySlugQuery, realisationSlugsQuery } from "../../lib/queries";
+import type { Realisation } from "../../lib/types";
+
+export async function getStaticPaths() {
+  const slugs = await sanityClient.fetch<string[]>(realisationSlugsQuery);
+  return slugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const realisation = await sanityClient.fetch<Realisation | null>(realisationBySlugQuery, { slug });
+
+if (!realisation) {
+  throw new Error(`Réalisation "${slug}" introuvable ou non publiée au moment du build.`);
+}
+
+const firstImageUrl = realisation.images?.[0]
+  ? urlForImage(realisation.images[0]).width(1200).height(630).fit("crop").url()
+  : undefined;
+---
+
+<Layout
+  title={realisation.seo?.metaTitre || realisation.titre}
+  description={realisation.seo?.metaDescription || realisation.descriptionCourte}
+  ogImage={firstImageUrl}
+>
+  <main>
+    <article>
+      <h1>{realisation.titre}</h1>
+      {realisation.categorieService && <p>{realisation.categorieService}</p>}
+      {realisation.descriptionCourte && <p>{realisation.descriptionCourte}</p>}
+
+      {realisation.images && realisation.images.length > 0 && (
+        <section>
+          {realisation.images.map((image) => (
+            <img src={urlForImage(image).width(1200).url()} alt={image.alt ?? ""} />
+          ))}
+        </section>
+      )}
+
+      {realisation.lienExterne && (
+        <p>
+          <a href={realisation.lienExterne} target="_blank" rel="noopener noreferrer">
+            Voir le site
+          </a>
+        </p>
+      )}
+    </article>
+  </main>
+</Layout>

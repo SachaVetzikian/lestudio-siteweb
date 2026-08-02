@@ -1,0 +1,80 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { sanityClient, urlForImage } from "../../lib/sanity";
+import { etudeDeCasBySlugQuery, etudeDeCasSlugsQuery } from "../../lib/queries";
+import type { EtudeDeCas } from "../../lib/types";
+
+export async function getStaticPaths() {
+  const slugs = await sanityClient.fetch<string[]>(etudeDeCasSlugsQuery);
+  return slugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const etude = await sanityClient.fetch<EtudeDeCas | null>(etudeDeCasBySlugQuery, { slug });
+
+if (!etude) {
+  throw new Error(`Étude de cas "${slug}" introuvable ou non publiée au moment du build.`);
+}
+
+const firstImageUrl = etude.images?.[0]
+  ? urlForImage(etude.images[0]).width(1200).height(630).fit("crop").url()
+  : undefined;
+---
+
+<Layout
+  title={etude.seo?.metaTitre || etude.titre}
+  description={etude.seo?.metaDescription || etude.problematique}
+  ogImage={firstImageUrl}
+>
+  <main>
+    <article>
+      <h1>{etude.titre}</h1>
+      {etude.client?.nom && <p>Client : {etude.client.nom}{etude.client.secteur && ` — ${etude.client.secteur}`}</p>}
+
+      {etude.problematique && (
+        <section>
+          <h2>Problématique</h2>
+          <p>{etude.problematique}</p>
+        </section>
+      )}
+
+      {etude.solution && (
+        <section>
+          <h2>Solution apportée</h2>
+          <p>{etude.solution}</p>
+        </section>
+      )}
+
+      {etude.resultats && etude.resultats.length > 0 && (
+        <section>
+          <h2>Résultats</h2>
+          <ul>
+            {etude.resultats.map((resultat) => (
+              <li>{resultat}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {etude.images && etude.images.length > 0 && (
+        <section>
+          {etude.images.map((image) => (
+            <img src={urlForImage(image).width(1200).url()} alt={image.alt ?? ""} />
+          ))}
+        </section>
+      )}
+
+      {etude.temoignage?.citation && (
+        <blockquote>
+          <p>{etude.temoignage.citation}</p>
+          {etude.temoignage.nom && (
+            <footer>
+              {etude.temoignage.nom}
+              {etude.temoignage.role && `, ${etude.temoignage.role}`}
+            </footer>
+          )}
+        </blockquote>
+      )}
+    </article>
+  </main>
+</Layout>

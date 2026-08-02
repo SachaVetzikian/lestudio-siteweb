@@ -1,0 +1,58 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { sanityClient, urlForImage } from "../../lib/sanity";
+import { articleBySlugQuery, articleSlugsQuery } from "../../lib/queries";
+import { portableTextToHtml } from "../../lib/portableText";
+import type { Article } from "../../lib/types";
+
+export async function getStaticPaths() {
+  const slugs = await sanityClient.fetch<string[]>(articleSlugsQuery);
+  return slugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const article = await sanityClient.fetch<Article | null>(articleBySlugQuery, { slug });
+
+if (!article) {
+  throw new Error(`Article "${slug}" introuvable ou non publié au moment du build.`);
+}
+
+const coverImageUrl = article.imageCouverture
+  ? urlForImage(article.imageCouverture).width(1200).height(630).fit("crop").url()
+  : undefined;
+
+const contentHtml = portableTextToHtml(article.contenu);
+---
+
+<Layout
+  title={article.seo?.metaTitre || article.titre}
+  description={article.seo?.metaDescription || article.extrait}
+  ogImage={coverImageUrl}
+>
+  <main>
+    <article>
+      <h1>{article.titre}</h1>
+      <p>
+        {
+          new Date(article.datePublication).toLocaleDateString("fr-FR", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }
+        {article.auteur && <> — {article.auteur}</>}
+      </p>
+      {coverImageUrl && <img src={coverImageUrl} alt={article.imageCouverture?.alt ?? ""} />}
+      <div set:html={contentHtml} />
+      {
+        article.tags && article.tags.length > 0 && (
+          <ul>
+            {article.tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </article>
+  </main>
+</Layout>

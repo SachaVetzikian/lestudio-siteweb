@@ -1,0 +1,14 @@
+# build output
+dist/
+
+# dependencies
+node_modules/
+
+# environment variables
+.env
+
+# Sanity
+.sanity/
+
+# macOS
+.DS_Store
