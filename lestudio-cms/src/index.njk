@@ -235,15 +235,18 @@ permalink: /index.html
   /* Cas clients */
   .case-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px; margin-bottom:36px;}
   @media (max-width:640px){ .case-grid{grid-template-columns:1fr;} }
+  .case-card{display:block;}
   .case-preview{position:relative; border-radius:36px; overflow:hidden; aspect-ratio:4/3; background:var(--slate); margin-bottom:16px;}
-  .case-preview video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .3s ease;}
+  .case-preview img{transition:transform .5s cubic-bezier(.16,1,.3,1);}
+  .case-preview video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .3s ease, transform .5s cubic-bezier(.16,1,.3,1);}
   .case-preview.hovering video{opacity:1;}
+  .case-card:hover .case-preview img, .case-card:hover .case-preview video{transform:scale(1.06);}
   .case-tags{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;}
   .case-tag{font-size:11.5px; padding:5px 12px; border-radius:12px; background:var(--surface,#fff); border:1px solid var(--line); color:var(--ink);}
   .case-card h3{font-family:'DM Sans',sans-serif; font-weight:600; font-size:19px; margin-bottom:8px;}
   .case-card p{color:var(--grey); font-size:14px; line-height:1.6; margin-bottom:12px;}
   .case-link{font-size:14px; color:var(--orange); text-decoration:none; border-bottom:1px solid transparent;}
-  .case-link:hover{border-bottom-color:var(--orange);}
+  .case-card:hover .case-link{border-bottom-color:var(--orange);}
   .case-more{text-align:center;}
 
   /* Compare table */
@@ -973,7 +976,7 @@ Avis Trustpilot
   var caseGrid = document.getElementById('caseGrid');
   if(caseGrid){
     caseGrid.innerHTML = cases.map(function(c){
-      return '<div class="case-card">' +
+      return '<a class="case-card" href="/realisations/' + c.slug + '/">' +
         '<div class="case-preview">' +
           caseVisual(c) +
           (c.video ? '<video muted loop playsinline preload="none" onerror="this.style.display=\'none\'"><source src="' + c.video + '" type="video/mp4"></video>' : '') +
@@ -981,8 +984,8 @@ Avis Trustpilot
         '<div class="case-tags"><span class="case-tag">' + c.tag1 + '</span><span class="case-tag">' + c.tag2 + '</span></div>' +
         '<h3>' + c.name + '</h3>' +
         '<p>' + c.desc + '</p>' +
-        '<a href="/realisations/' + c.slug + '/" class="case-link">→ Voir le projet</a>' +
-      '</div>';
+        '<span class="case-link">→ Voir le projet</span>' +
+      '</a>';
     }).join('');
 
     caseGrid.querySelectorAll('.case-preview').forEach(function(preview){
@@ -1029,7 +1032,7 @@ Avis Trustpilot
 </script>
 <script>
   var clients = [
-    { name: "YVES ROCHER" },
+    { name: "YVES ROCHER", logo: "/assets/uploads/logo-yves-rocher-mark.webp" },
     { name: "CUURE" },
     { name: "TRIUMVIRAT" },
     { name: "ARRAGO", logo: "/assets/uploads/logo-arrago.webp" },
@@ -1039,7 +1042,9 @@ Avis Trustpilot
     { name: "CARGO SCHOOL" },
     { name: "DISNEY" },
     { name: "DYNVEO", logo: "/assets/uploads/logo-dynveo.webp" },
-    { name: "KALENT", logo: "/assets/uploads/logo-kalent.webp" }
+    { name: "KALENT", logo: "/assets/uploads/logo-kalent.webp" },
+    { name: "RIVIERA CLUB", logo: "/assets/uploads/logo-riviera-club.webp" },
+    { name: "AG2R LA MONDIALE", logo: "/assets/uploads/logo-ag2r-la-mondiale.webp" }
   ];
   var track = document.getElementById('marquee-track');
   var doubled = clients.concat(clients);
