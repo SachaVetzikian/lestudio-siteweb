@@ -747,7 +747,7 @@ padding: 16px<br>radius: 8px
 <div class="offer-col">
 <span class="eyebrow" style="color:var(--orange);">Cible · {{ svc.data.cible }}</span>
 <h3>Pack <span style="color:var(--orange);">{{ svc.data.title }}</span></h3>
-<div class="offer-block"><h4>Le besoin</h4><p>{{ svc.data.description }}</p></div>
+<div class="offer-block"><h4>Le besoin</h4><p>{{ svc.data.description }}</p>{% if svc.data.highlights %}<div class="offer-tags" style="margin-top:12px;">{% for h in svc.data.highlights %}<span>{{ h }}</span>{% endfor %}</div>{% endif %}</div>
 <div class="offer-block"><h4>Outils utilisés</h4><div class="offer-tags">{% for o in svc.data.outils %}<span>{{ o }}</span>{% endfor %}</div></div>
 </div>
 <div class="offer-col">

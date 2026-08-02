@@ -2,7 +2,8 @@
 title: Création ou refonte de site web
 price: À partir de 1 000 €
 cible: E-commerce, vitrine, landing
-description: Votre site ne reflète plus votre positionnement, ou ne convertit pas assez pour justifier le trafic qu'il reçoit.
+description: Refonte complète ou partielle de votre boutique. Maquettes Figma optimisées, design system, hand-off dev. Livré en 2 à 4 semaines.
+highlights: [Audit UX/UI, Maquettes Figma, Design system, Recommandations implémentation, CRO]
 outils: [Figma, Webflow, Shopify]
 inclus:
   - Stratégie de contenu et copywriting inclus

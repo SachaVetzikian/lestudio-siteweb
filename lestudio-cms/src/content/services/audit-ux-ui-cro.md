@@ -2,7 +2,8 @@
 title: Audit UX/UI & CRO
 price: À partir de 1 500 €
 cible: E-commerce et vitrine, national
-description: Votre site a du trafic mais les ventes ne suivent pas. Vous ne savez pas précisément où vos visiteurs décrochent.
+description: On analyse votre site e-commerce page par page. Vous repartez avec un diagnostic clair et un plan d'action priorisé.
+highlights: [Benchmark, Design UX/UI, Analyse parcours, Recommandations, CRO]
 outils: [Google Analytics, Hotjar, Figma]
 inclus:
   - Audit complet du parcours d'achat
