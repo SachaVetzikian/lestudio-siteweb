@@ -102,10 +102,6 @@ export const TestimonialSlider = ({
               {String(currentIndex + 1).padStart(2, "0")} /{" "}
               {String(reviews.length).padStart(2, "0")}
             </span>
-            {/* Vertical "Reviews" Text */}
-            <h2 className="text-sm font-medium tracking-widest uppercase [writing-mode:vertical-rl] md:rotate-180 hidden md:block">
-              Reviews
-            </h2>
           </div>
 
           {/* Thumbnail Navigation */}
@@ -154,7 +150,7 @@ export const TestimonialSlider = ({
         {/* === Right Column: Text and Navigation === */}
         <div className="md:col-span-5 flex flex-col justify-between md:pl-8 order-3 md:order-3">
           {/* Text Content */}
-          <div className="relative overflow-hidden pt-4 md:pt-24 min-h-[200px]">
+          <div className="relative overflow-hidden pt-4 md:pt-16 min-h-[280px] md:min-h-[300px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -171,11 +167,43 @@ export const TestimonialSlider = ({
                 <h3 className="text-xl font-semibold mt-1">
                   {activeReview.name}
                 </h3>
-                <blockquote className="mt-6 text-2xl md:text-3xl font-medium leading-snug">
+                <blockquote className="mt-6 text-lg md:text-xl font-medium leading-relaxed">
                   "{activeReview.quote}"
                 </blockquote>
               </motion.div>
             </AnimatePresence>
+          </div>
+
+          {/* Review site badges (static, same for every review) */}
+          <div className="flex items-center gap-2 flex-wrap mb-8 md:mb-0">
+            <a
+              href="https://maps.app.goo.gl/Mf8NG4F4ACxs2e857?g_st=ic"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-border px-3.5 py-2 text-sm text-foreground no-underline hover:bg-accent transition-colors"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24">
+                <path
+                  fill="#4285F4"
+                  d="M12 10.2v3.9h5.6c-.25 1.4-1.7 4.1-5.6 4.1-3.37 0-6.12-2.8-6.12-6.2s2.75-6.2 6.12-6.2c1.92 0 3.2.82 3.94 1.52l2.68-2.58C17.1 3.02 14.8 2 12 2 6.98 2 2.9 6.03 2.9 11s4.08 9 9.1 9c5.25 0 8.74-3.7 8.74-8.9 0-.6-.07-1.05-.15-1.5z"
+                />
+              </svg>
+              Avis Google
+            </a>
+            <a
+              href="https://fr.trustpilot.com/review/lestudiodesign.fr"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-border px-3.5 py-2 text-sm text-foreground no-underline hover:bg-accent transition-colors"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24">
+                <path
+                  fill="#00B67A"
+                  d="M12 2l2.6 7.6H22l-6.2 4.5l2.4 7.6L12 17.2L5.8 21.7l2.4-7.6L2 9.6h7.4z"
+                />
+              </svg>
+              Avis Trustpilot
+            </a>
           </div>
 
           {/* Navigation Buttons */}
