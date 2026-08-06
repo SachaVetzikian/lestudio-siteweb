@@ -99,9 +99,6 @@ module.exports = function (eleventyConfig) {
       .slice(0, 6)
   );
 
-  // Conversion **mot** -> surlignage orange
-  const hl = (q) => (q || "").replace(/\*\*(.+?)\*\*/g, '<span style="color:var(--orange);">$1</span>');
-
   eleventyConfig.addFilter("assetExists", assetExists);
 
   eleventyConfig.addFilter("casesJson", (items) =>
@@ -114,19 +111,6 @@ module.exports = function (eleventyConfig) {
       video: assetExists(r.data.video) ? r.data.video : "",
       cover: assetExists(r.data.cover) ? r.data.cover : "",
       type: r.data.type,
-    })))
-  );
-
-  eleventyConfig.addFilter("temoignagesJson", (items) =>
-    JSON.stringify(items.map((t) => ({
-      client: t.data.tab_label || t.data.name,
-      type: t.data.type === "video" ? "video" : "quote",
-      initials: (t.data.name || "").split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase(),
-      name: t.data.name,
-      role: t.data.role,
-      quote: hl(t.data.quote),
-      video: t.data.video || "",
-      photo: assetExists(t.data.photo) ? t.data.photo : "",
     })))
   );
 

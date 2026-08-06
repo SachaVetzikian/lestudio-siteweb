@@ -269,20 +269,6 @@ permalink: /index.html
   .compare-hint{display:none; font-size:12px; color:var(--grey); margin-top:10px;}
   @media (max-width:760px){ .compare-hint{display:block;} }
 
-  /* Testimonials */
-  .testi-box{border:1px solid var(--line); border-radius:16px; padding:40px 36px;}
-  .testi-quote{font-weight:500; font-size:22px; line-height:1.5; margin-bottom:24px; min-height:96px;}
-  .testi-video{display:none; align-items:center; justify-content:center; aspect-ratio:16/9; background:var(--orange-light); border-radius:12px; margin-bottom:24px;}
-  .testi-video .play{width:56px; height:56px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center;}
-  .testi-person{display:flex; align-items:center; gap:12px; margin-bottom:28px;}
-  .testi-avatar{width:40px; height:40px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:500; overflow:hidden;}
-  .testi-avatar img{width:100%; height:100%; object-fit:cover; border-radius:50%;}
-  .testi-name{font-size:14px; font-weight:500;}
-  .testi-role{font-size:13px; color:var(--grey);}
-  .testi-tabs{display:flex; flex-wrap:wrap; gap:8px;}
-  .testi-tabs button{font-size:12.5px; padding:8px 14px; border-radius:12px; border:1px solid var(--line); background:transparent; color:var(--grey); cursor:pointer; font-family:'DM Sans',sans-serif;}
-  .testi-tabs button.active{border-color:var(--orange); color:var(--orange);}
-
   /* FAQ accordion */
   .faq-item{border-top:1px solid var(--line);}
   .faq-item:last-child{border-bottom:1px solid var(--line);}
@@ -456,7 +442,7 @@ permalink: /index.html
 <div class="cta-row">
 <a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha ›</span></a>
 </div>
-<a class="trust" href="#temoignages">
+<a class="trust" href="#temoignages-slider">
 <div class="stack">
 <svg height="26" style="margin-right:-9px;border-radius:50%;border:2px solid var(--paper);" viewbox="0 0 26 26" width="26"><circle cx="13" cy="13" fill="var(--orange)" r="13"></circle><circle cx="9" cy="11" fill="#fff" r="1.6"></circle><circle cx="17" cy="11" fill="#fff" r="1.6"></circle><path d="M8 16c1.5 2 8.5 2 10 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.6"></path></svg>
 <svg height="26" style="margin-right:-9px;border-radius:50%;border:2px solid var(--paper);" viewbox="0 0 26 26" width="26"><circle cx="13" cy="13" fill="var(--orange-light)" r="13"></circle><circle cx="9" cy="11" fill="var(--ink)" r="1.6"></circle><circle cx="17" cy="11" fill="var(--ink)" r="1.6"></circle><path d="M8 16c1.5 2 8.5 2 10 0" fill="none" stroke="var(--ink)" stroke-linecap="round" stroke-width="1.6"></path></svg>
@@ -843,33 +829,6 @@ padding: 16px<br>radius: 8px
 <script src="/assets/react/testimonial-slider.bundle.js" defer></script>
 </section>
 <div class="section-break"><span class="mark left"></span><span class="mark right"></span></div>
-<section id="temoignages">
-<div class="wrap section-head">
-<h2>Ce qu'ils en disent.</h2>
-<div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;">
-<a href="https://maps.app.goo.gl/Mf8NG4F4ACxs2e857?g_st=ic" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:12px; padding:8px 14px; font-size:13px; color:var(--ink); text-decoration:none;">
-<svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M12 10.2v3.9h5.6c-.25 1.4-1.7 4.1-5.6 4.1-3.37 0-6.12-2.8-6.12-6.2s2.75-6.2 6.12-6.2c1.92 0 3.2.82 3.94 1.52l2.68-2.58C17.1 3.02 14.8 2 12 2 6.98 2 2.9 6.03 2.9 11s4.08 9 9.1 9c5.25 0 8.74-3.7 8.74-8.9 0-.6-.07-1.05-.15-1.5z"/></svg>
-Avis Google
-</a>
-<a href="https://fr.trustpilot.com/review/lestudiodesign.fr" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:12px; padding:8px 14px; font-size:13px; color:var(--ink); text-decoration:none;">
-<svg width="14" height="14" viewBox="0 0 24 24"><path fill="#00B67A" d="M12 2l2.6 7.6H22l-6.2 4.5l2.4 7.6L12 17.2L5.8 21.7l2.4-7.6L2 9.6h7.4z"/></svg>
-Avis Trustpilot
-</a>
-</div>
-</div>
-<div class="wrap" style="max-width:760px;">
-<div class="testi-box">
-<p class="testi-quote" id="t-quote"></p>
-<div class="testi-video" id="t-video"><div class="play"><svg height="26" style="color:#fff;" viewbox="0 0 24 24" width="26"><path clip-rule="evenodd" d="M7.238 3.044C5.652 2.182 3.75 3.32 3.75 5.033v13.934c0 1.714 1.902 2.851 3.488 1.989l12.812-6.967c1.6-.87 1.6-3.108 0-3.977zM2.25 5.033c0-2.905 3.167-4.687 5.705-3.306l12.812 6.967c2.644 1.438 2.644 5.174 0 6.612L7.955 22.273c-2.538 1.38-5.705-.4-5.705-3.306z" fill="currentColor" fill-rule="evenodd"></path></svg></div></div>
-<div class="testi-person">
-<div class="testi-avatar" id="t-avatar"></div>
-<div><div class="testi-name" id="t-name"></div><div class="testi-role" id="t-role"></div></div>
-</div>
-<div class="testi-tabs" id="t-tabs"></div>
-</div>
-</div>
-</section>
-<div class="section-break"><span class="mark left"></span><span class="mark right"></span></div>
 <section id="pourquoi">
 <div class="wrap section-head">
 <h2>100% design, zéro dilution.</h2>
@@ -1035,12 +994,6 @@ Avis Trustpilot
       });
     });
 
-    gsap.utils.toArray('.testi-box').forEach(function(el){
-      gsap.from(el, {
-        opacity:0, y:24, duration:0.7, ease:'power2.out',
-        scrollTrigger:{ trigger: el, start:'top 85%' }
-      });
-    });
   }
 </script>
 <script>
@@ -1070,40 +1023,6 @@ Avis Trustpilot
   }).join('');
 </script>
 <script>
-  var testimonials = {{ collections.temoignages | temoignagesJson | safe }};
-  var tActive = 0;
-  var tTabs = document.getElementById('t-tabs');
-  function renderTesti(){
-    var t = testimonials[tActive];
-    var isVideo = t.type === 'video';
-    var hasQuote = !!t.quote;
-    document.getElementById('t-quote').style.display = hasQuote ? 'block' : 'none';
-    var vBox = document.getElementById('t-video');
-    vBox.style.display = isVideo ? 'flex' : 'none';
-    document.getElementById('t-avatar').style.display = isVideo ? 'none' : 'flex';
-    if(isVideo && t.video){
-      vBox.innerHTML = '<video controls playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"><source src="' + t.video + '" type="video/mp4"></video>';
-    }
-    if(hasQuote){
-      document.getElementById('t-quote').innerHTML = t.quote;
-    }
-    if(!isVideo){
-      var avatarEl = document.getElementById('t-avatar');
-      avatarEl.innerHTML = t.photo ? '<img src="' + t.photo + '" alt="' + t.name + '" loading="lazy">' : '';
-      if(!t.photo) avatarEl.textContent = t.initials;
-    }
-    document.getElementById('t-name').textContent = t.name;
-    document.getElementById('t-role').textContent = t.role;
-    Array.from(tTabs.children).forEach(function(btn, i){ btn.classList.toggle('active', i === tActive); });
-  }
-  testimonials.forEach(function(t, i){
-    var btn = document.createElement('button');
-    btn.textContent = t.client;
-    btn.onclick = function(){ tActive = i; renderTesti(); };
-    tTabs.appendChild(btn);
-  });
-  renderTesti();
-
   var faqs = {{ collections.faq | faqJson | safe }};
   var faqList = document.getElementById('faq-list');
   faqs.forEach(function(f){

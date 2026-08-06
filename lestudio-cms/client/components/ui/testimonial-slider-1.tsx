@@ -1,27 +1,30 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-
-// Define the type for a single review
-type Review = {
-  id: string | number;
-  name: string;
-  affiliation: string;
-  quote: string;
-  imageSrc: string;
-  thumbnailSrc: string;
-};
+import type { Review } from "@/data/testimonials";
 
 // Define the props for the slider component
 interface TestimonialSliderProps {
   reviews: Review[];
   /** Optional class name for the container */
   className?: string;
+}
+
+const QUOTE_TRUNCATE_LENGTH = 260;
+
+function initials(name: string) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
 }
 
 /**
@@ -36,8 +39,20 @@ export const TestimonialSlider = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   // 'direction' helps framer-motion understand slide direction (next vs. prev)
   const [direction, setDirection] = useState<"left" | "right">("right");
+  const [expanded, setExpanded] = useState(false);
+  const [playingVideo, setPlayingVideo] = useState(false);
+
+  useEffect(() => {
+    setExpanded(false);
+    setPlayingVideo(false);
+  }, [currentIndex]);
 
   const activeReview = reviews[currentIndex];
+  const isLongQuote = activeReview.quote.length > QUOTE_TRUNCATE_LENGTH;
+  const displayedQuote =
+    isLongQuote && !expanded
+      ? activeReview.quote.slice(0, QUOTE_TRUNCATE_LENGTH).trimEnd() + "…"
+      : activeReview.quote;
 
   const handleNext = () => {
     setDirection("right");
@@ -60,7 +75,7 @@ export const TestimonialSlider = ({
     .filter((_, i) => i !== currentIndex)
     .slice(0, 3);
 
-  // Animation variants for the main image
+  // Animation variants for the main visual
   const imageVariants = {
     enter: (direction: "left" | "right") => ({
       y: direction === "right" ? "100%" : "-100%",
@@ -118,32 +133,87 @@ export const TestimonialSlider = ({
                   className="overflow-hidden rounded-md w-16 h-20 md:w-20 md:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
                   aria-label={`View review from ${review.name}`}
                 >
-                  <img
-                    src={review.thumbnailSrc}
-                    alt={review.name}
-                    className="w-full h-full object-cover"
-                  />
+                  {review.thumbnailSrc ? (
+                    <img
+                      src={review.thumbnailSrc}
+                      alt={review.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="w-full h-full flex items-center justify-center bg-accent text-sm font-semibold">
+                      {initials(review.name)}
+                    </span>
+                  )}
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* === Center Column: Main Image === */}
+        {/* === Center Column: Main Visual === */}
         <div className="md:col-span-4 relative h-80 min-h-[400px] md:min-h-[500px] order-1 md:order-2">
           <AnimatePresence initial={false} custom={direction}>
-            <motion.img
-              key={currentIndex}
-              src={activeReview.imageSrc}
-              alt={activeReview.name}
-              custom={direction}
-              variants={imageVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }} // Cubic bezier for smooth ease
-              className="absolute inset-0 w-full h-full object-cover rounded-lg"
-            />
+            {activeReview.variant === "video" && activeReview.videoSrc ? (
+              <motion.div
+                key={currentIndex}
+                custom={direction}
+                variants={imageVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                className="absolute inset-0 rounded-lg overflow-hidden bg-slate-900"
+              >
+                {playingVideo ? (
+                  <video
+                    src={activeReview.videoSrc}
+                    controls
+                    autoPlay
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setPlayingVideo(true)}
+                    aria-label={`Lire le témoignage vidéo de ${activeReview.name}`}
+                    className="w-full h-full flex items-center justify-center focus:outline-none"
+                  >
+                    <span className="flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground">
+                      <Play className="w-6 h-6 ml-0.5" fill="currentColor" />
+                    </span>
+                  </button>
+                )}
+              </motion.div>
+            ) : activeReview.variant === "photo" && activeReview.imageSrc ? (
+              <motion.img
+                key={currentIndex}
+                src={activeReview.imageSrc}
+                alt={activeReview.name}
+                custom={direction}
+                variants={imageVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                className="absolute inset-0 w-full h-full object-cover rounded-lg"
+              />
+            ) : (
+              <motion.div
+                key={currentIndex}
+                custom={direction}
+                variants={imageVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                className="absolute inset-0 rounded-lg bg-accent flex items-center justify-center"
+              >
+                <span className="flex items-center justify-center w-20 h-20 rounded-full bg-primary text-primary-foreground text-xl font-semibold">
+                  {initials(activeReview.name)}
+                </span>
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
 
@@ -168,8 +238,17 @@ export const TestimonialSlider = ({
                   {activeReview.name}
                 </h3>
                 <blockquote className="mt-6 text-lg md:text-xl font-medium leading-relaxed">
-                  "{activeReview.quote}"
+                  "{displayedQuote}"
                 </blockquote>
+                {isLongQuote && (
+                  <button
+                    type="button"
+                    onClick={() => setExpanded((v) => !v)}
+                    className="mt-3 text-sm font-medium text-muted-foreground underline hover:text-foreground transition-colors"
+                  >
+                    {expanded ? "Réduire" : "Lire la suite"}
+                  </button>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
