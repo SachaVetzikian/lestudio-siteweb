@@ -113,6 +113,11 @@ permalink: /index.html
   .trust:hover{border-color:var(--orange);}
   .trust .stack{display:flex;}
   .trust .count{font-size:12.5px; font-weight:500; text-transform:uppercase; letter-spacing:0.03em; color:var(--ink);}
+  .trust .count-sub{font-size:12.5px; font-weight:500; color:var(--ink);}
+  .trust-dark{background:var(--ink); border-color:var(--ink);}
+  .trust-dark:hover{border-color:var(--orange);}
+  .trust-dark .count-sub{color:rgba(244,244,245,.7);}
+  .trust-stars{color:#f5b400; font-size:13px; letter-spacing:2px; line-height:1; margin-bottom:4px;}
   .section-break{position:relative; height:56px; width:100%; padding:0 32px; box-sizing:border-box;}
   .section-break::before{content:''; position:absolute; top:28px; left:0; right:0; height:1px; background:var(--line);}
   .section-break .mark{position:absolute; top:40px; width:14px; height:14px; border-top:1.5px solid var(--grey);}
@@ -462,15 +467,17 @@ permalink: /index.html
 <div class="cta-row">
 <a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha ›</span></a>
 </div>
-<a class="trust" href="#temoignages-slider">
+<a class="trust trust-dark" href="https://fr.trustpilot.com/review/lestudiodesign.fr" target="_blank" rel="noopener">
 <div class="stack">
-<svg height="26" style="margin-right:-9px;border-radius:50%;border:2px solid var(--paper);" viewbox="0 0 26 26" width="26"><circle cx="13" cy="13" fill="var(--orange)" r="13"></circle><circle cx="9" cy="11" fill="#fff" r="1.6"></circle><circle cx="17" cy="11" fill="#fff" r="1.6"></circle><path d="M8 16c1.5 2 8.5 2 10 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.6"></path></svg>
-<svg height="26" style="margin-right:-9px;border-radius:50%;border:2px solid var(--paper);" viewbox="0 0 26 26" width="26"><circle cx="13" cy="13" fill="var(--orange-light)" r="13"></circle><circle cx="9" cy="11" fill="var(--ink)" r="1.6"></circle><circle cx="17" cy="11" fill="var(--ink)" r="1.6"></circle><path d="M8 16c1.5 2 8.5 2 10 0" fill="none" stroke="var(--ink)" stroke-linecap="round" stroke-width="1.6"></path></svg>
-<svg height="26" style="border-radius:50%;border:2px solid var(--paper);" viewbox="0 0 26 26" width="26"><circle cx="13" cy="13" fill="var(--ink)" r="13"></circle><circle cx="9" cy="11" fill="#fff" r="1.6"></circle><circle cx="17" cy="11" fill="#fff" r="1.6"></circle><path d="M8 16c1.5 2 8.5 2 10 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.6"></path></svg>
+<img src="/assets/uploads/photo-fatima-bouhelalem.webp" alt="" loading="lazy" style="width:26px; height:26px; border-radius:50%; object-fit:cover; margin-right:-9px; border:2px solid var(--ink);"/>
+<img src="/assets/uploads/photo-teddy-herbaut.webp" alt="" loading="lazy" style="width:26px; height:26px; border-radius:50%; object-fit:cover; margin-right:-9px; border:2px solid var(--ink);"/>
+<img src="/assets/uploads/photo-romain-triumvirat.webp" alt="" loading="lazy" style="width:26px; height:26px; border-radius:50%; object-fit:cover; margin-right:-9px; border:2px solid var(--ink);"/>
+<img src="/assets/uploads/photo-matthieu-caffin.webp" alt="" loading="lazy" style="width:26px; height:26px; border-radius:50%; object-fit:cover; margin-right:-9px; border:2px solid var(--ink);"/>
+<img src="/assets/uploads/photo-killian-olivier.webp" alt="" loading="lazy" style="width:26px; height:26px; border-radius:50%; object-fit:cover; border:2px solid var(--ink);"/>
 </div>
 <div style="text-align:left;">
-<div class="count">{{ settings.chiffres.projets }}</div>
-<div class="count-sub">Voir les avis clients ›</div>
+<div class="trust-stars" aria-hidden="true">★★★★★</div>
+<div class="count-sub">20 avis clients ›</div>
 </div>
 </a>
 </div>
