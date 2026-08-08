@@ -309,7 +309,9 @@ permalink: /index.html
   .footer-col h4{font-size:12px; text-transform:uppercase; letter-spacing:0.04em; color:rgba(244,244,245,.4); margin-bottom:14px;}
   .footer-col a{display:block; font-size:14px; margin-bottom:10px; color:rgba(244,244,245,.85);}
   .footer-col a:hover{color:var(--orange);}
-  .footer-bottom{border-top:1px solid rgba(244,244,245,.12); padding:24px 90px 0 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; font-size:12.5px; color:rgba(244,244,245,.5); text-transform:uppercase; letter-spacing:0.03em;}
+  .footer-villes{font-size:13px; color:rgba(244,244,245,.5); margin-top:32px;}
+  .footer-villes a{color:rgba(244,244,245,.7);}
+  .footer-bottom{border-top:1px solid rgba(244,244,245,.12); padding:24px 90px 0 0; margin-top:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; font-size:12.5px; color:rgba(244,244,245,.5); text-transform:uppercase; letter-spacing:0.03em;}
   .cine-credit{display:inline-flex; align-items:center; gap:8px; padding:9px 18px; border-radius:100px; background:rgba(244,244,245,.05); border:1px solid rgba(244,244,245,.12); backdrop-filter:blur(8px); text-transform:none;}
   .cine-heart{color:var(--orange); display:inline-block; animation:cine-heartbeat 2s ease-in-out infinite;}
   @keyframes cine-heartbeat{0%,100%{transform:scale(1);} 25%{transform:scale(1.3);} 40%{transform:scale(1);}}
@@ -893,12 +895,6 @@ padding: 16px<br>radius: 8px
 {% endfor %}
 </div>
 <div class="footer-col">
-<h4>Villes</h4>
-{% for v in collections.villes %}
-<a href="/designer-ux-ui/{{ v.fileSlug }}/">{{ v.data.title }}</a>
-{% endfor %}
-</div>
-<div class="footer-col">
 <h4>Suivre</h4>
 <a href="https://www.linkedin.com/in/sacha-vetzikian/" rel="noopener" target="_blank">LinkedIn</a>
 </div>
@@ -910,6 +906,7 @@ padding: 16px<br>radius: 8px
 </div>
 </div>
 </div>
+{% if collections.villes.length %}<p class="footer-villes">Villes : {% for v in collections.villes %}<a href="/designer-ux-ui/{{ v.fileSlug }}/">{{ v.data.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
 <div class="footer-bottom">
 <span>© 2026 LeStudio. Tous droits réservés.</span>
 <span class="cine-credit"><span class="cine-heart">❤</span> Conçu avec passion par LeStudio</span>

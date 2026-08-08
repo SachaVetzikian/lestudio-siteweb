@@ -102,7 +102,15 @@ footer a:hover{color:var(--orange);}
 @keyframes footer-scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .footer-content{position:relative;z-index:1;}
 .footer-content p{margin-bottom:14px;}
-.footer-bottom{border-top:1px solid rgba(244,244,245,.12);padding:20px 90px 0 0;margin-top:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12.5px;color:rgba(244,244,245,.5);text-transform:uppercase;letter-spacing:.03em;}
+.footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:32px;}
+.footer-desc{max-width:320px;color:rgba(244,244,245,.6);font-size:14px;line-height:1.6;margin-top:16px;}
+.footer-links{display:flex;gap:56px;flex-wrap:wrap;}
+.footer-col h4{font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:rgba(244,244,245,.4);margin-bottom:14px;}
+.footer-col a{display:block;font-size:14px;margin-bottom:10px;color:rgba(244,244,245,.85);}
+.footer-col a:hover{color:var(--orange);}
+.footer-villes{font-size:13px;color:rgba(244,244,245,.5);}
+.footer-villes a{color:rgba(244,244,245,.7);}
+.footer-bottom{border-top:1px solid rgba(244,244,245,.12);padding:20px 90px 0 0;margin-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12.5px;color:rgba(244,244,245,.5);text-transform:uppercase;letter-spacing:.03em;}
 .cine-credit{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:100px;background:rgba(244,244,245,.05);border:1px solid rgba(244,244,245,.12);backdrop-filter:blur(8px);text-transform:none;}
 .cine-heart{color:var(--orange);display:inline-block;animation:cine-heartbeat 2s ease-in-out infinite;}
 @keyframes cine-heartbeat{0%,100%{transform:scale(1);}25%{transform:scale(1.3);}40%{transform:scale(1);}}
@@ -151,14 +159,41 @@ footer a:hover{color:var(--orange);}
 <span>Design UX/UI</span><span class="dot">✦</span><span>CRO &amp; conversion</span><span class="dot">✦</span><span>E-commerce</span><span class="dot">✦</span><span>Sites vitrines</span><span class="dot">✦</span><span>Design UX/UI</span><span class="dot">✦</span><span>CRO &amp; conversion</span><span class="dot">✦</span><span>E-commerce</span><span class="dot">✦</span><span>Sites vitrines</span><span class="dot">✦</span>
 </div>
 </div>
-<div class="wrap footer-content cine-reveal" id="footerReveal" style="display:flex;flex-wrap:wrap;gap:12px;flex-direction:column;">
+<div class="wrap footer-content cine-reveal" id="footerReveal">
+<div class="footer-top">
+<div>
 <a href="/" aria-label="LeStudio" style="display:flex; align-items:center; color:inherit;">{% include "partials/logo.njk" %}</a>
-<p>© 2026 LeStudio · <a href="mailto:{{ settings.email }}">{{ settings.email }}</a></p>
-<p><a href="/a-propos/">À propos</a> · <a href="/offres/audit-ux-ui-cro/">Audit UX/UI & CRO</a> · <a href="/offres/creation-refonte-site/">Création / Refonte</a> · <a href="/offres/design-abonnement/">Design par abonnement</a> · <a href="/cas-clients/">Cas clients</a> · <a href="/blog/">Blog</a> · <a href="/mentions-legales/">Mentions légales</a> · <a href="/confidentialite/">Confidentialité</a></p>
-{% if collections.secteurs.length %}<p>Secteurs : {% for s in collections.secteurs %}<a href="/secteur/{{ s.fileSlug }}/">{{ s.data.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
-{% if collections.villes.length %}<p>Villes : {% for v in collections.villes %}<a href="/designer-ux-ui/{{ v.fileSlug }}/">{{ v.data.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+<p class="footer-desc">Studio UX/UI spécialisé e-commerce et sites vitrines. On conçoit des interfaces qui donnent envie d'acheter.</p>
+</div>
+<div class="footer-links">
+<div class="footer-col">
+<h4>Services</h4>
+<a href="/offres/audit-ux-ui-cro/">Audit UX/UI & CRO</a>
+<a href="/offres/creation-refonte-site/">Création / Refonte</a>
+<a href="/offres/design-abonnement/">Design par abonnement</a>
+</div>
+<div class="footer-col">
+<h4>Découvrir</h4>
+<a href="/a-propos/">À propos</a>
+<a href="/cas-clients/">Cas clients</a>
+<a href="/blog/">Blog</a>
+</div>
+{% if collections.secteurs.length %}
+<div class="footer-col">
+<h4>Secteurs</h4>
+{% for s in collections.secteurs %}<a href="/secteur/{{ s.fileSlug }}/">{{ s.data.title }}</a>{% endfor %}
+</div>
+{% endif %}
+<div class="footer-col">
+<h4>Légal</h4>
+<a href="/mentions-legales/">Mentions légales</a>
+<a href="/confidentialite/">Confidentialité</a>
+</div>
+</div>
+</div>
+{% if collections.villes.length %}<p class="footer-villes">Villes : {% for v in collections.villes %}<a href="/designer-ux-ui/{{ v.fileSlug }}/">{{ v.data.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
 <div class="footer-bottom">
-<span>Design et UX par LeStudio</span>
+<span>© 2026 LeStudio · <a href="mailto:{{ settings.email }}" style="color:inherit;">{{ settings.email }}</a></span>
 <span class="cine-credit"><span class="cine-heart">❤</span> Conçu avec passion par LeStudio</span>
 <button class="cine-top" id="footerToTop" aria-label="Retour en haut" type="button">
 <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
