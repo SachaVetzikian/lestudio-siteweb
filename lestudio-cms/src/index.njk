@@ -278,23 +278,30 @@ permalink: /index.html
   .faq-a{max-height:0; overflow:hidden; transition:max-height .3s ease;}
   .faq-a p{padding:0 4px 22px; color:var(--grey); font-size:15px; line-height:1.6; max-width:640px;}
 
-  /* Ask IA */
-  .ask-chips{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;}
-  .ask-chip{font-size:13px; padding:10px 16px; border-radius:100px; border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer; font-family:'DM Sans',sans-serif; transition:border-color .2s ease, color .2s ease;}
+  /* Ask IA — barre flottante fixe, toujours accessible */
+  .ask-box{
+    position:fixed; left:50%; bottom:88px; width:min(640px, calc(100% - 32px));
+    transform:translateX(-50%) translateY(16px); opacity:0; pointer-events:none;
+    border:1px solid var(--line); border-radius:16px; background:#fff; overflow:hidden;
+    box-shadow:0 20px 44px -16px rgba(9,9,11,0.32); z-index:70;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .ask-box.visible{opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0);}
+  .ask-chips{display:flex; gap:8px; flex-wrap:wrap; padding:14px 14px 0;}
+  .ask-chip{font-size:12px; padding:8px 13px; border-radius:100px; border:1px solid var(--line); background:var(--paper); color:var(--ink); cursor:pointer; font-family:'DM Sans',sans-serif; transition:border-color .2s ease, color .2s ease; white-space:nowrap;}
   .ask-chip:hover{border-color:var(--orange); color:var(--orange);}
-  .ask-box{border:1px solid var(--line); border-radius:16px; background:#fff; overflow:hidden;}
-  .ask-answer:not(:empty){padding:20px 20px 0; font-size:14.5px; line-height:1.6; color:var(--ink);}
+  .ask-answer:not(:empty){padding:14px 14px 0; font-size:14px; line-height:1.6; color:var(--ink); max-height:180px; overflow-y:auto;}
   .ask-answer.loading{color:var(--grey); font-style:italic;}
   .ask-answer.error{color:#dc2626;}
-  .ask-form{display:flex; align-items:center; gap:10px; padding:14px 14px 14px 18px;}
+  .ask-form{display:flex; align-items:center; gap:10px; padding:12px 12px 12px 16px;}
   .ask-spark{color:var(--orange); font-size:16px; flex-shrink:0;}
   .ask-input{flex:1; min-width:0; border:none; outline:none; font-family:'DM Sans',sans-serif; font-size:14.5px; background:transparent; color:var(--ink);}
   .ask-input::placeholder{color:var(--grey);}
-  .ask-submit{width:38px; height:38px; border-radius:50%; background:var(--ink); color:#fff; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; transition:background .2s ease;}
+  .ask-submit{width:36px; height:36px; border-radius:50%; background:var(--ink); color:#fff; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; transition:background .2s ease;}
   .ask-submit:hover{background:var(--orange);}
   .ask-submit:disabled{opacity:0.5; cursor:not-allowed;}
-  .ask-disclaimer{font-size:12.5px; color:var(--grey); text-align:center; margin-top:14px;}
-  .ask-disclaimer a{color:var(--orange); text-decoration:underline;}
+  .ask-disclaimer{font-size:11px; color:var(--grey); text-align:center; padding:0 14px 12px;}
+  @media (max-width:480px){ .ask-chips{display:none;} }
 
   /* Final CTA */
   .final-cta{background:var(--slate); color:var(--paper); text-align:center; padding:96px 0;}
@@ -862,22 +869,14 @@ padding: 16px<br>radius: 8px
 </div>
 <div class="wrap" style="max-width:720px;">
 <div class="faq-list" id="faq-list"></div>
-<p style="margin-top:28px; font-size:14.5px; color:var(--grey);">Une autre question ? <a href="#ask-ia" style="color:var(--orange); text-decoration:underline;">Posez-la juste en dessous ›</a></p>
 </div>
 </section>
-<div class="section-break"><span class="mark left"></span><span class="mark right"></span></div>
-<section id="ask-ia">
-<div class="wrap section-head">
-<h2>Une question sur votre projet ?</h2>
-<p class="section-intro">Posez-la, l'IA répond à partir des offres et du FAQ de LeStudio.</p>
-</div>
-<div class="wrap" style="max-width:720px;">
+<div class="ask-box" id="askBox">
 <div class="ask-chips" id="askChips">
 <button type="button" class="ask-chip">Vous faites quoi exactement ?</button>
 <button type="button" class="ask-chip">Combien coûte un audit UX/UI ?</button>
-<button type="button" class="ask-chip">Vous faites aussi le développement ?</button>
+<button type="button" class="ask-chip">Combien de temps prend un projet ?</button>
 </div>
-<div class="ask-box">
 <div class="ask-answer" id="askAnswer"></div>
 <form class="ask-form" id="askForm">
 <span class="ask-spark" aria-hidden="true">✦</span>
@@ -886,10 +885,8 @@ padding: 16px<br>radius: 8px
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"></path></svg>
 </button>
 </form>
+<p class="ask-disclaimer">Réponses générées par IA à partir du contenu du site.</p>
 </div>
-<p class="ask-disclaimer">Réponses générées par IA à partir du contenu du site. <a href="{{ settings.rdv }}" target="_blank" rel="noopener">Réservez un appel</a> pour une réponse personnalisée.</p>
-</div>
-</section>
 <section class="final-cta" id="cta-final">
 <div class="wrap">
 <h2>Prêt à arrêter de perdre des clients sur votre propre site ?</h2>
@@ -1122,6 +1119,15 @@ padding: 16px<br>radius: 8px
     chips.querySelectorAll('.ask-chip').forEach(function(chip){
       chip.addEventListener('click', function(){ ask(chip.textContent); });
     });
+  }
+
+  var askBox = document.getElementById('askBox');
+  if(askBox){
+    var toggleAskBox = function(){
+      askBox.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
+    };
+    window.addEventListener('scroll', toggleAskBox, { passive: true });
+    toggleAskBox();
   }
 })();
 </script>

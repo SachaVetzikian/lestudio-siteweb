@@ -1,6 +1,6 @@
-// Widget "Une question sur votre projet ?" — répond en s'appuyant
+// Widget de question posé depuis le FAQ — répond en s'appuyant
 // uniquement sur le contenu réel du site (offres, FAQ, contact).
-// Nécessite la variable d'environnement ANTHROPIC_API_KEY sur Vercel.
+// Nécessite la variable d'environnement OPENAI_API_KEY sur Vercel.
 
 const SYSTEM_PROMPT = `Tu es l'assistant du site LeStudio (lestudiodesign.fr), un studio de design UX/UI & CRO fondé par Sacha Vetzikian en France.
 
@@ -27,7 +27,7 @@ Email : contact@lestudiodesign.fr
 
 Si la réponse implique une prochaine étape, propose de réserver un appel découverte plutôt que d'inventer un process.`;
 
-const MODEL = "claude-haiku-4-5-20251001";
+const MODEL = "gpt-4o-mini";
 const MAX_QUESTION_LENGTH = 300;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX = 8;
@@ -67,39 +67,40 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    console.error("ANTHROPIC_API_KEY is not set");
+    console.error("OPENAI_API_KEY is not set");
     res.status(500).json({ error: "not_configured", message: "Le service n'est pas encore configuré." });
     return;
   }
 
   try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
+        authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         model: MODEL,
         max_tokens: 300,
         temperature: 0.4,
-        system: SYSTEM_PROMPT,
-        messages: [{ role: "user", content: question }],
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: question },
+        ],
       }),
     });
 
     if (!response.ok) {
       const detail = await response.text();
-      console.error("Anthropic API error", response.status, detail);
+      console.error("OpenAI API error", response.status, detail);
       res.status(502).json({ error: "upstream_error", message: "Réponse indisponible pour le moment." });
       return;
     }
 
     const data = await response.json();
-    const answer = data.content?.[0]?.text?.trim();
+    const answer = data.choices?.[0]?.message?.content?.trim();
     if (!answer) {
       res.status(502).json({ error: "empty_answer", message: "Réponse indisponible pour le moment." });
       return;
