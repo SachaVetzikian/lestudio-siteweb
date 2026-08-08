@@ -31,7 +31,7 @@ permalink: /index.html
     --line:#ececee;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'DM Sans',sans-serif; background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased;}
+  body{position:relative; font-family:'DM Sans',sans-serif; background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased;}
   a{color:inherit; text-decoration:none;}
   @media (prefers-reduced-motion: reduce){ .spin{animation:none !important;} }
 
@@ -41,12 +41,13 @@ permalink: /index.html
 
   header.nav{
     position:sticky; top:0; z-index:100;
-    background:rgba(244,244,245,0.75); backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--line);
-    transition:background .3s ease, box-shadow .3s ease;
+    background:rgba(244,244,245,0.28); backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;
+    transition:background .3s ease, box-shadow .3s ease, border-color .3s ease;
   }
   header.nav.scrolled{
     background:rgba(244,244,245,0.94);
+    border-bottom-color:var(--line);
     box-shadow:0 6px 24px -12px rgba(20,18,31,0.2);
   }
   .nav-inner{width:100%; box-sizing:border-box; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;}
@@ -69,8 +70,8 @@ permalink: /index.html
   .hero{position:relative; overflow:hidden; padding:120px 0 100px; text-align:center;}
   .blob{position:absolute; border-radius:50%; filter:blur(80px); opacity:0.3; pointer-events:none;}
   .blob-2{width:340px; height:340px; background:radial-gradient(circle, #ffffff, transparent 70%); top:40px; right:-100px; opacity:0.6;}
-  .hero-bg-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.85; filter:blur(10px) saturate(1.2); transform:scale(1.08); pointer-events:none;}
-  .hero-bg-fade{position:absolute; inset:0; background:linear-gradient(180deg, transparent 0%, transparent 40%, var(--paper) 88%); pointer-events:none;}
+  .hero-bg-video{position:absolute; top:0; left:0; z-index:0; width:100%; height:100vh; object-fit:cover; opacity:0.85; filter:blur(10px) saturate(1.2); transform:scale(1.08); pointer-events:none;}
+  .hero-bg-fade{position:absolute; top:0; left:0; z-index:0; width:100%; height:100vh; background:linear-gradient(180deg, transparent 0%, transparent 40%, var(--paper) 82%); pointer-events:none;}
   @media (prefers-reduced-motion: reduce){ .hero-bg-video{display:none;} }
 
   .badge{
@@ -286,27 +287,28 @@ permalink: /index.html
 
   /* Ask IA — barre flottante fixe, toujours accessible */
   .ask-box{
-    position:fixed; left:50%; bottom:88px; width:min(640px, calc(100% - 32px));
+    position:fixed; left:50%; bottom:64px; width:min(640px, calc(100% - 32px));
     transform:translateX(-50%) translateY(16px); opacity:0; pointer-events:none;
-    border:1px solid var(--line); border-radius:16px; background:#fff; overflow:hidden;
+    border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden;
     box-shadow:0 20px 44px -16px rgba(9,9,11,0.32); z-index:70;
     transition:opacity .3s ease, transform .3s ease;
   }
   .ask-box.visible{opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0);}
-  .ask-chips{display:flex; gap:8px; flex-wrap:wrap; padding:14px 14px 0;}
-  .ask-chip{font-size:12px; padding:8px 13px; border-radius:100px; border:1px solid var(--line); background:var(--paper); color:var(--ink); cursor:pointer; font-family:'DM Sans',sans-serif; transition:border-color .2s ease, color .2s ease; white-space:nowrap;}
+  .ask-chips{display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x proximity; padding:10px 14px 0; max-width:420px; scrollbar-width:none;}
+  .ask-chips::-webkit-scrollbar{display:none;}
+  .ask-chip{font-size:11.5px; padding:7px 12px; border-radius:100px; border:1px solid var(--line); background:var(--paper); color:var(--ink); cursor:pointer; font-family:'DM Sans',sans-serif; transition:border-color .2s ease, color .2s ease; white-space:nowrap; flex-shrink:0; scroll-snap-align:start;}
   .ask-chip:hover{border-color:var(--orange); color:var(--orange);}
-  .ask-answer:not(:empty){padding:14px 14px 0; font-size:14px; line-height:1.6; color:var(--ink); max-height:180px; overflow-y:auto;}
+  .ask-answer:not(:empty){padding:10px 14px 0; font-size:13.5px; line-height:1.5; color:var(--ink); max-height:150px; overflow-y:auto;}
   .ask-answer.loading{color:var(--grey); font-style:italic;}
   .ask-answer.error{color:#dc2626;}
-  .ask-form{display:flex; align-items:center; gap:10px; padding:12px 12px 12px 16px;}
+  .ask-form{display:flex; align-items:center; gap:10px; padding:10px 10px 10px 16px;}
   .ask-spark{color:var(--orange); font-size:16px; flex-shrink:0;}
-  .ask-input{flex:1; min-width:0; border:none; outline:none; font-family:'DM Sans',sans-serif; font-size:14.5px; background:transparent; color:var(--ink);}
+  .ask-input{flex:1; min-width:0; border:none; outline:none; font-family:'DM Sans',sans-serif; font-size:14px; background:transparent; color:var(--ink);}
   .ask-input::placeholder{color:var(--grey);}
-  .ask-submit{width:36px; height:36px; border-radius:50%; background:var(--ink); color:#fff; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; transition:background .2s ease;}
+  .ask-submit{width:32px; height:32px; border-radius:50%; background:var(--ink); color:#fff; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; transition:background .2s ease;}
   .ask-submit:hover{background:var(--orange);}
   .ask-submit:disabled{opacity:0.5; cursor:not-allowed;}
-  .ask-disclaimer{font-size:11px; color:var(--grey); text-align:center; padding:0 14px 12px;}
+  .ask-disclaimer{font-size:10.5px; color:var(--grey); text-align:center; padding:0 14px 10px;}
   @media (max-width:480px){ .ask-chips{display:none;} }
 
   /* Final CTA */
@@ -428,6 +430,11 @@ permalink: /index.html
 </script>
 </head>
 <body>
+<video class="hero-bg-video" autoplay muted loop playsinline aria-hidden="true">
+<source src="/assets/uploads/hero-gradient-bg.webm" type="video/webm"/>
+<source src="/assets/uploads/hero-gradient-bg.mp4" type="video/mp4"/>
+</video>
+<div class="hero-bg-fade"></div>
 <header class="nav">
 <div class="nav-inner">
 <a class="logo" href="/" aria-label="LeStudio" style="display:flex; align-items:center;">
@@ -441,7 +448,7 @@ permalink: /index.html
 <a href="#faq">FAQ</a>
 </nav>
 <div style="display:flex; align-items:center; gap:12px;">
-<a aria-label="Contacter sur WhatsApp" href="{{ settings.whatsapp }}" style="width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 32% 26%, #8cf0a6 0%, #3fdb79 22%, #22c55e 58%, #16a34a 100%);box-shadow:inset 0 2px 3px rgba(255,255,255,.55), inset 0 -6px 10px rgba(0,0,0,.18), 0 6px 16px -6px rgba(34,197,94,.55);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+<a aria-label="Contacter sur WhatsApp" href="{{ settings.whatsapp }}" style="width:40px;height:40px;border-radius:100px;background:linear-gradient(#57d163 0%, #23b33a 100%);border:1.5px solid #5ced6b;box-shadow:0 8px 28px rgba(20,20,19,0.16);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
 <svg height="20" style="color:#fff;" viewbox="0 0 24 24" width="20"><path d="M9 12a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" fill="currentColor"></path><path clip-rule="evenodd" d="M22.75 12c0-5.937-4.813-10.75-10.75-10.75S1.25 6.063 1.25 12c0 1.718.404 3.345 1.122 4.787c.107.215.13.435.08.62l-.595 2.226c-.408 1.524.986 2.918 2.51 2.51l2.226-.596a.9.9 0 0 1 .62.08A10.7 10.7 0 0 0 12 22.75c5.937 0 10.75-4.813 10.75-10.75M12 2.75a9.25 9.25 0 0 1 0 18.5a9.2 9.2 0 0 1-4.118-.965a2.38 2.38 0 0 0-1.676-.187l-2.227.596a.55.55 0 0 1-.673-.674l.596-2.226a2.38 2.38 0 0 0-.187-1.676A9.2 9.2 0 0 1 2.75 12A9.25 9.25 0 0 1 12 2.75" fill="currentColor" fill-rule="evenodd"></path></svg>
 </a>
 <a class="nav-cta shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="nav-cta-full">Réserver un appel découverte ›</span><span class="nav-cta-short">RDV ›</span></a>
@@ -459,11 +466,6 @@ permalink: /index.html
 <a class="mobile-menu-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Réserver un appel découverte ›</a>
 </nav>
 <section class="hero">
-<video class="hero-bg-video" autoplay muted loop playsinline aria-hidden="true">
-<source src="/assets/uploads/hero-gradient-bg.webm" type="video/webm"/>
-<source src="/assets/uploads/hero-gradient-bg.mp4" type="video/mp4"/>
-</video>
-<div class="hero-bg-fade"></div>
 <div class="blob blob-2"></div>
 <div class="wrap">
 <span class="badge"><span class="pulse"></span>Agence de design UX/UI &amp; CRO</span>
@@ -1300,7 +1302,8 @@ padding: 16px<br>radius: 8px
 <svg height="30" style="color:#fff;" viewbox="0 0 24 24" width="30"><path d="M9 12a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" fill="currentColor"></path><path clip-rule="evenodd" d="M22.75 12c0-5.937-4.813-10.75-10.75-10.75S1.25 6.063 1.25 12c0 1.718.404 3.345 1.122 4.787c.107.215.13.435.08.62l-.595 2.226c-.408 1.524.986 2.918 2.51 2.51l2.226-.596a.9.9 0 0 1 .62.08A10.7 10.7 0 0 0 12 22.75c5.937 0 10.75-4.813 10.75-10.75M12 2.75a9.25 9.25 0 0 1 0 18.5a9.2 9.2 0 0 1-4.118-.965a2.38 2.38 0 0 0-1.676-.187l-2.227.596a.55.55 0 0 1-.673-.674l.596-2.226a2.38 2.38 0 0 0-.187-1.676A9.2 9.2 0 0 1 2.75 12A9.25 9.25 0 0 1 12 2.75" fill="currentColor" fill-rule="evenodd"></path></svg>
 </a>
 <style>
-.wa-float{position:fixed;bottom:22px;right:22px;z-index:98;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 32% 26%, #8cf0a6 0%, #3fdb79 22%, #22c55e 58%, #16a34a 100%);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 3px 4px rgba(255,255,255,.55), inset 0 -8px 12px rgba(0,0,0,.18), 0 10px 24px -8px rgba(9,9,11,0.4);transition:transform .2s;}
+.wa-float{position:fixed;bottom:22px;right:22px;z-index:98;width:56px;height:56px;border-radius:100px;background:linear-gradient(#57d163 0%, #23b33a 100%);border:1.5px solid #5ced6b;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 28px rgba(20,20,19,0.16);transition:transform .15s;}
+@media (max-width:900px){ .wa-float{width:52px;height:52px;} }
 .wa-float:hover{transform:scale(1.08);}
 </style>
 
