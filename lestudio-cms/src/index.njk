@@ -68,8 +68,10 @@ permalink: /index.html
 
   .hero{position:relative; overflow:hidden; padding:120px 0 100px; text-align:center;}
   .blob{position:absolute; border-radius:50%; filter:blur(80px); opacity:0.3; pointer-events:none;}
-  .blob-1{width:480px; height:480px; background:radial-gradient(circle, var(--orange), transparent 70%); top:-180px; left:-100px; opacity:0.35;}
   .blob-2{width:340px; height:340px; background:radial-gradient(circle, #ffffff, transparent 70%); top:40px; right:-100px; opacity:0.6;}
+  .hero-bg-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.85; filter:blur(10px) saturate(1.2); transform:scale(1.08); pointer-events:none;}
+  .hero-bg-fade{position:absolute; inset:0; background:linear-gradient(180deg, transparent 0%, transparent 40%, var(--paper) 88%); pointer-events:none;}
+  @media (prefers-reduced-motion: reduce){ .hero-bg-video{display:none;} }
 
   .badge{
     display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:0.04em; text-transform:uppercase;
@@ -114,9 +116,8 @@ permalink: /index.html
   .trust .stack{display:flex;}
   .trust .count{font-size:12.5px; font-weight:500; text-transform:uppercase; letter-spacing:0.03em; color:var(--ink);}
   .trust .count-sub{font-size:12.5px; font-weight:500; color:var(--ink);}
-  .trust-dark{background:var(--ink); border-color:var(--ink);}
-  .trust-dark:hover{border-color:var(--orange);}
-  .trust-dark .count-sub{color:rgba(244,244,245,.7);}
+  .trust-dark{background:transparent; border-color:transparent; transition:opacity .2s ease;}
+  .trust-dark:hover{opacity:0.75;}
   .trust-stars{color:#f5b400; font-size:13px; letter-spacing:2px; line-height:1; margin-bottom:4px;}
   .section-break{position:relative; height:56px; width:100%; padding:0 32px; box-sizing:border-box;}
   .section-break::before{content:''; position:absolute; top:28px; left:0; right:0; height:1px; background:var(--line);}
@@ -440,7 +441,7 @@ permalink: /index.html
 <a href="#faq">FAQ</a>
 </nav>
 <div style="display:flex; align-items:center; gap:12px;">
-<a aria-label="Contacter sur WhatsApp" href="{{ settings.whatsapp }}" style="width:40px;height:40px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+<a aria-label="Contacter sur WhatsApp" href="{{ settings.whatsapp }}" style="width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 32% 26%, #8cf0a6 0%, #3fdb79 22%, #22c55e 58%, #16a34a 100%);box-shadow:inset 0 2px 3px rgba(255,255,255,.55), inset 0 -6px 10px rgba(0,0,0,.18), 0 6px 16px -6px rgba(34,197,94,.55);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
 <svg height="20" style="color:#fff;" viewbox="0 0 24 24" width="20"><path d="M9 12a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" fill="currentColor"></path><path clip-rule="evenodd" d="M22.75 12c0-5.937-4.813-10.75-10.75-10.75S1.25 6.063 1.25 12c0 1.718.404 3.345 1.122 4.787c.107.215.13.435.08.62l-.595 2.226c-.408 1.524.986 2.918 2.51 2.51l2.226-.596a.9.9 0 0 1 .62.08A10.7 10.7 0 0 0 12 22.75c5.937 0 10.75-4.813 10.75-10.75M12 2.75a9.25 9.25 0 0 1 0 18.5a9.2 9.2 0 0 1-4.118-.965a2.38 2.38 0 0 0-1.676-.187l-2.227.596a.55.55 0 0 1-.673-.674l.596-2.226a2.38 2.38 0 0 0-.187-1.676A9.2 9.2 0 0 1 2.75 12A9.25 9.25 0 0 1 12 2.75" fill="currentColor" fill-rule="evenodd"></path></svg>
 </a>
 <a class="nav-cta shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="nav-cta-full">Réserver un appel découverte ›</span><span class="nav-cta-short">RDV ›</span></a>
@@ -458,7 +459,11 @@ permalink: /index.html
 <a class="mobile-menu-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Réserver un appel découverte ›</a>
 </nav>
 <section class="hero">
-<div class="blob blob-1"></div>
+<video class="hero-bg-video" autoplay muted loop playsinline aria-hidden="true">
+<source src="/assets/uploads/hero-gradient-bg.webm" type="video/webm"/>
+<source src="/assets/uploads/hero-gradient-bg.mp4" type="video/mp4"/>
+</video>
+<div class="hero-bg-fade"></div>
 <div class="blob blob-2"></div>
 <div class="wrap">
 <span class="badge"><span class="pulse"></span>Agence de design UX/UI &amp; CRO</span>
@@ -1295,7 +1300,7 @@ padding: 16px<br>radius: 8px
 <svg height="30" style="color:#fff;" viewbox="0 0 24 24" width="30"><path d="M9 12a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" fill="currentColor"></path><path clip-rule="evenodd" d="M22.75 12c0-5.937-4.813-10.75-10.75-10.75S1.25 6.063 1.25 12c0 1.718.404 3.345 1.122 4.787c.107.215.13.435.08.62l-.595 2.226c-.408 1.524.986 2.918 2.51 2.51l2.226-.596a.9.9 0 0 1 .62.08A10.7 10.7 0 0 0 12 22.75c5.937 0 10.75-4.813 10.75-10.75M12 2.75a9.25 9.25 0 0 1 0 18.5a9.2 9.2 0 0 1-4.118-.965a2.38 2.38 0 0 0-1.676-.187l-2.227.596a.55.55 0 0 1-.673-.674l.596-2.226a2.38 2.38 0 0 0-.187-1.676A9.2 9.2 0 0 1 2.75 12A9.25 9.25 0 0 1 12 2.75" fill="currentColor" fill-rule="evenodd"></path></svg>
 </a>
 <style>
-.wa-float{position:fixed;bottom:22px;right:22px;z-index:98;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(9,9,11,0.4);transition:transform .2s;}
+.wa-float{position:fixed;bottom:22px;right:22px;z-index:98;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 32% 26%, #8cf0a6 0%, #3fdb79 22%, #22c55e 58%, #16a34a 100%);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 3px 4px rgba(255,255,255,.55), inset 0 -8px 12px rgba(0,0,0,.18), 0 10px 24px -8px rgba(9,9,11,0.4);transition:transform .2s;}
 .wa-float:hover{transform:scale(1.08);}
 </style>
 
