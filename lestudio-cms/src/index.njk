@@ -58,8 +58,20 @@ permalink: /index.html
   .nav-inner{width:100%; box-sizing:border-box; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;}
   @media (max-width:480px){ .nav-inner{padding:16px 16px;} }
   .logo{font-family:'DM Sans',sans-serif; font-size:20px; font-weight:600; display:flex; align-items:center; gap:8px;}
-  .nav-links{display:flex; gap:36px; font-size:14px; font-weight:500;}
+  .nav-links{display:flex; align-items:center; gap:36px; font-size:14px; font-weight:500;}
   @media (max-width:860px){ .nav-links{display:none;} }
+  .nav-dropdown{position:relative;}
+  .nav-dropdown-toggle{display:inline-flex; align-items:center; gap:6px; background:none; border:none; font:inherit; color:inherit; cursor:pointer; padding:0;}
+  .nav-dropdown-toggle svg{transition:transform .2s ease;}
+  .nav-dropdown:hover .nav-dropdown-toggle svg, .nav-dropdown.open .nav-dropdown-toggle svg{transform:rotate(180deg);}
+  .nav-dropdown-menu{position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:14px; display:none; z-index:110;}
+  .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown.open .nav-dropdown-menu{display:block;}
+  .nav-dropdown-menu-inner{
+    background:#fff; border:1px solid var(--line); border-radius:14px; padding:8px;
+    box-shadow:0 20px 40px -20px rgba(9,9,11,0.25); display:flex; flex-direction:column; min-width:210px;
+  }
+  .nav-dropdown-menu-inner a{padding:10px 14px; border-radius:8px; font-size:14px; font-weight:500; white-space:nowrap;}
+  .nav-dropdown-menu-inner a:hover{background:var(--paper); color:var(--orange);}
   .nav-cta{
     font-size:13.5px; font-weight:400; background:var(--ink); color:#fff;
     padding:11px 20px; border-radius:100px;
@@ -454,10 +466,31 @@ permalink: /index.html
 {% include "partials/logo.njk" %}
 </a>
 <nav class="nav-links">
-<a href="/a-propos/">À propos</a>
-<a href="#methode">Méthode</a>
-<a href="#offres">Offres</a>
-<a href="#faq">FAQ</a>
+<div class="nav-dropdown">
+<button class="nav-dropdown-toggle" type="button" aria-expanded="false">Services
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+<div class="nav-dropdown-menu">
+<div class="nav-dropdown-menu-inner">
+<a href="/offres/audit-ux-ui-cro/">Audit UX/UI &amp; CRO</a>
+<a href="/offres/creation-refonte-site/">Création / Refonte</a>
+<a href="/offres/design-abonnement/">Design par abonnement</a>
+</div>
+</div>
+</div>
+<a href="/cas-clients/">Réalisations</a>
+<div class="nav-dropdown">
+<button class="nav-dropdown-toggle" type="button" aria-expanded="false">Ressources
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+<div class="nav-dropdown-menu">
+<div class="nav-dropdown-menu-inner">
+<a href="/blog/">Blog</a>
+<a href="/a-propos/">Qui sommes-nous ?</a>
+</div>
+</div>
+</div>
+<a href="mailto:{{ settings.email }}">Contactez-nous</a>
 </nav>
 <div style="display:flex; align-items:center; gap:12px;">
 <a class="nav-cta shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="nav-cta-full">Réserver un appel ›</span><span class="nav-cta-short">Réserver un appel ›</span></a>
@@ -1232,6 +1265,27 @@ padding: 16px<br>radius: 8px
         item.classList.toggle('open', !isOpen);
         btn.setAttribute('aria-expanded', !isOpen);
       });
+    });
+  })();
+</script>
+
+<script>
+  (function(){
+    var dropdowns = document.querySelectorAll('.nav-dropdown');
+    if(!dropdowns.length) return;
+    dropdowns.forEach(function(dd){
+      var btn = dd.querySelector('.nav-dropdown-toggle');
+      if(!btn) return;
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var isOpen = dd.classList.contains('open');
+        dropdowns.forEach(function(other){ if(other !== dd){ other.classList.remove('open'); other.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', false); } });
+        dd.classList.toggle('open', !isOpen);
+        btn.setAttribute('aria-expanded', !isOpen);
+      });
+    });
+    document.addEventListener('click', function(){
+      dropdowns.forEach(function(dd){ dd.classList.remove('open'); dd.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', false); });
     });
   })();
 </script>
