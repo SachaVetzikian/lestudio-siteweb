@@ -14,7 +14,7 @@ inclus:
   - Dossier de handoff complet pour votre développeur
 tab_title: "Pack Création / Refonte"
 tab_sub: "Site web"
-delai: "3-4 sem."
+delai: "3-4 semaines"
 tab_id: "tab-site"
 seo_title: "Création et refonte de site e-commerce et vitrine · UX/UI · LeStudio"
 seo_description: "Refonte ou création complète de votre site e-commerce ou vitrine : stratégie, wireframes, UI design, maquettes prêtes à coder. À partir de 1 000 €."

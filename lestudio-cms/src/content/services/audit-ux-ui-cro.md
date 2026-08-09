@@ -14,7 +14,7 @@ inclus:
   - Support illimité pendant 15 jours
 tab_title: "Pack Audit UX/UI & CRO"
 tab_sub: "Diagnostic"
-delai: "2 sem."
+delai: "2 semaines"
 tab_id: "tab-audit"
 seo_title: "Audit UX/UI & CRO de site e-commerce · À partir de 1 500 € · LeStudio"
 seo_description: "Audit complet du parcours d'achat de votre site e-commerce ou vitrine. Rapport priorisé par impact business, quick wins sous 48h. À partir de 1 500 €."
