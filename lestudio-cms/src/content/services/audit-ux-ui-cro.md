@@ -16,10 +16,10 @@ tab_title: "Pack Audit UX/UI & CRO"
 tab_sub: "Diagnostic"
 delai: "2 semaines"
 tab_id: "tab-audit"
-seo_title: "Audit UX Design & CRO - Le Studio | Paris"
-seo_description: "Audit UX design d'un site e-commerce ou vitrine : diagnostic chiffré, rapport priorisé par impact business, quick wins sous 48h. À partir de 1 500 €."
+seo_title: "Audit UX Design & Audit CRO - Le Studio | Paris"
+seo_description: "Audit UX design et audit CRO d'un site e-commerce ou vitrine : analyse UX complète, diagnostic chiffré, rapport priorisé par impact business, quick wins sous 48h. À partir de 1 500 €."
 h1: "Audit UX Design & CRO : sachez exactement où votre site perd des ventes"
-accroche: "Votre trafic ne convertit pas assez, et personne ne sait dire précisément pourquoi. En deux semaines, vous repartez avec un diagnostic chiffré et priorisé de ce qui freine vos ventes."
+accroche: "Votre trafic ne convertit pas assez, et personne ne sait dire précisément pourquoi. Notre analyse UX combine données réelles et audit heuristique pour livrer, en deux semaines, un diagnostic chiffré et priorisé de ce qui freine vos ventes."
 pour_qui:
   - Votre site e-commerce ou vitrine a du trafic mais convertit mal
   - Vous voulez des recommandations priorisées par impact, pas une liste de 200 points
@@ -48,6 +48,8 @@ roadmap:
 faq:
   - q: Qu'est-ce qu'un audit UX design ?
     r: C'est une évaluation structurée de l'expérience utilisateur d'un site ou d'une application - navigation, compréhension de l'offre, lisibilité, cohérence des patterns et charge cognitive. Il combine analyse des données réelles et audit heuristique pour identifier précisément ce qui freine vos visiteurs.
+  - q: Qu'est-ce qu'une analyse UX, concrètement ?
+    r: C'est la partie diagnostic de l'audit - l'étude de vos parcours réels (données Analytics et Hotjar, sessions enregistrées, avis clients) croisée avec un audit heuristique de l'interface. Elle sert à identifier où et pourquoi les visiteurs décrochent, avant de proposer la moindre recommandation.
   - q: Quelle est la différence entre audit UX et audit CRO ?
     r: L'audit UX se concentre sur la facilité d'usage, la clarté et la cohérence du parcours. L'audit CRO ajoute une lecture orientée conversion, avec des hypothèses testables et mesurables. Notre audit intègre les deux lectures dans un même rapport.
   - q: Qu'est-ce que je reçois concrètement à la fin ?

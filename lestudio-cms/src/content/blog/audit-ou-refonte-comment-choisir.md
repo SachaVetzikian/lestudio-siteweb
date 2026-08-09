@@ -72,7 +72,7 @@ Quand un site ne convertit pas à la hauteur de son trafic, la première questio
 
 ## Si votre site a du trafic et des données
 
-Un site qui reçoit déjà des visites laisse des traces qui disent où les visiteurs décrochent, souvent bien avant qu'un nouveau design ne soit nécessaire :
+Un site qui reçoit déjà des visites laisse des traces qui alimentent une [analyse UX](/offres/audit-ux-ui-cro/) fiable, disant où les visiteurs décrochent, souvent bien avant qu'un nouveau design ne soit nécessaire :
 
 - Taux de rebond, par page et par source de trafic
 - Pages de sortie du tunnel d'achat
