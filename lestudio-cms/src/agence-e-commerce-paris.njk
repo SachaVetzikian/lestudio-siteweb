@@ -1,0 +1,89 @@
+---
+layout: layouts/base.njk
+permalink: /agence-e-commerce-paris/
+seo_title: "Agence E-commerce Paris - Le Studio"
+seo_description: "Agence de design UX/UI spécialisée e-commerce, pour marques à Paris et partout en France. Audit, création, refonte et design par abonnement."
+title: "Agence e-commerce Paris"
+---
+<h1>Agence e-commerce à <em>Paris</em> : un design qui convertit, pas juste qui plaît</h1>
+<p class="lede">Le Studio accompagne des marques e-commerce à Paris et partout en France sur tout ce qui touche à l'expérience d'achat : diagnostic, refonte, création, et suivi continu. Un seul interlocuteur, du premier appel à la livraison.</p>
+
+<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min" style="margin-bottom:64px;"><span>Prendre rendez-vous avec Sacha ›</span></a>
+
+<h2>Ce que fait une agence e-commerce, concrètement</h2>
+<p style="font-size:16px;line-height:1.7;color:var(--grey);max-width:680px;margin-bottom:24px;">Une agence e-commerce généraliste mélange souvent développement, marketing et design dans une seule offre, avec plusieurs interlocuteurs entre le brief et la livraison. Le Studio se concentre sur une seule chose : la conception UX/UI et la conversion, pas le développement ni les campagnes publicitaires. C'est un choix délibéré, pour rester agnostique de votre stack technique (Shopify, WooCommerce, Prestashop) et de votre prestataire média.</p>
+<p style="font-size:16px;line-height:1.7;color:var(--grey);max-width:680px;margin-bottom:48px;">Concrètement, ça veut dire : un diagnostic chiffré de ce qui bloque vos ventes, des maquettes pensées pour convertir, et un dossier de handoff que votre développeur peut exécuter sans revenir vers vous à chaque question.</p>
+
+<h2>Nos trois formats d'accompagnement</h2>
+<div class="case-grid" style="margin-top:0;">
+<div class="card" style="margin-bottom:0;"><h3>Audit UX design</h3><p>Diagnostic priorisé de ce qui freine vos conversions, en deux semaines. Idéal si votre boutique a déjà du trafic.</p><p style="margin-top:14px;"><a href="/offres/audit-ux-ui-cro/" style="color:var(--orange);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></p></div>
+<div class="card" style="margin-bottom:0;"><h3>Création / Refonte</h3><p>Conception complète de votre boutique, de la stratégie aux maquettes prêtes à coder.</p><p style="margin-top:14px;"><a href="/offres/creation-refonte-site/" style="color:var(--orange);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></p></div>
+<div class="card" style="margin-bottom:0;"><h3>Design par abonnement</h3><p>Un designer dédié chaque mois pour vos besoins continus : pages, itérations, campagnes.</p><p style="margin-top:14px;"><a href="/offres/design-abonnement/" style="color:var(--orange);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></p></div>
+</div>
+
+<h2 style="margin-top:64px;">Une agence qui travaille avec des marques partout en France</h2>
+<p style="font-size:16px;line-height:1.7;color:var(--grey);max-width:680px;margin-bottom:24px;">Le Studio accompagne des marques e-commerce à Paris et partout en France, en visio du premier appel à la livraison. L'essentiel n'est pas la proximité géographique : c'est d'avoir un seul interlocuteur tout au long du projet, plutôt qu'un commercial, un chef de projet et un designer qui se relaient sur votre brief.</p>
+<p style="font-size:16px;line-height:1.7;color:var(--grey);max-width:680px;margin-bottom:64px;">Sacha Vetzikian, fondateur, a passé 5 ans en startup e-commerce (lancements de boutiques, migrations Prestashop, refontes complètes) puis 3 ans en cabinet de conseil aux côtés de marques comme Yves Rocher. Il mène personnellement chaque projet.</p>
+
+<h2>Nos réalisations e-commerce</h2>
+<div class="case-grid">
+{% set shown = 0 %}
+{% for r in collections.realisations %}
+{% if r.data.featured and r.data.type == "ecommerce" and shown < 3 %}
+{% set shown = shown + 1 %}
+<a class="card" href="/realisations/{{ r.fileSlug }}/">
+<h3>{{ r.data.client }}</h3><p>{{ r.data.description }}</p>
+<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Voir le projet</p>
+</a>
+{% endif %}
+{% endfor %}
+</div>
+<p style="margin:24px 0 64px;"><a href="/cas-clients/" style="color:var(--orange);font-weight:500;">→ Voir tous les cas clients</a></p>
+
+<h2 id="faq">Vos questions avant de vous décider</h2>
+<div style="margin-bottom:64px;">
+<details style="border-top:1px solid var(--line);padding:18px 0;">
+<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">L'agence est-elle uniquement pour des marques basées à Paris ?</summary>
+<p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">Non. Nous accompagnons des marques e-commerce à Paris et partout en France, entièrement en visio du premier appel à la livraison.</p>
+</details>
+<details style="border-top:1px solid var(--line);padding:18px 0;">
+<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">Faites-vous aussi le développement du site ?</summary>
+<p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">Non, et c'est volontaire. Nous livrons des maquettes prêtes à coder et un dossier de handoff complet, pour que vous gardiez la main sur votre développeur ou votre agence d'intégration.</p>
+</details>
+<details style="border-top:1px solid var(--line);padding:18px 0;">
+<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">Par quelle offre commencer si je ne sais pas encore ce dont j'ai besoin ?</summary>
+<p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">Si votre site a déjà du trafic, commencez par l'audit UX design : il évite de refaire au feeling ce que les données peuvent déjà expliquer. Si votre site est à créer, la refonte intègre directement sa propre phase d'analyse.</p>
+</details>
+</div>
+
+<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span>Prendre rendez-vous avec Sacha ›</span></a>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org","@type":"FAQPage",
+ "mainEntity":[
+  {"@type":"Question","name":"L'agence est-elle uniquement pour des marques basées à Paris ?","acceptedAnswer":{"@type":"Answer","text":"Non. Nous accompagnons des marques e-commerce à Paris et partout en France, entièrement en visio du premier appel à la livraison."}},
+  {"@type":"Question","name":"Faites-vous aussi le développement du site ?","acceptedAnswer":{"@type":"Answer","text":"Non, et c'est volontaire. Nous livrons des maquettes prêtes à coder et un dossier de handoff complet, pour que vous gardiez la main sur votre développeur ou votre agence d'intégration."}},
+  {"@type":"Question","name":"Par quelle offre commencer si je ne sais pas encore ce dont j'ai besoin ?","acceptedAnswer":{"@type":"Answer","text":"Si votre site a déjà du trafic, commencez par l'audit UX design : il évite de refaire au feeling ce que les données peuvent déjà expliquer. Si votre site est à créer, la refonte intègre directement sa propre phase d'analyse."}}
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org","@type":"ProfessionalService",
+ "name":"LeStudio","url":"https://www.lestudiodesign.fr/agence-e-commerce-paris/",
+ "description":"Agence de design UX/UI & CRO spécialisée e-commerce.",
+ "areaServed":"FR"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org","@type":"BreadcrumbList",
+ "itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.lestudiodesign.fr/"},
+  {"@type":"ListItem","position":2,"name":"Agence e-commerce Paris","item":"https://www.lestudiodesign.fr/agence-e-commerce-paris/"}
+ ]
+}
+</script>
+
+{% include "partials/form-contact.njk" %}
