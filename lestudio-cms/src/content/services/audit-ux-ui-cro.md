@@ -16,9 +16,9 @@ tab_title: "Pack Audit UX/UI & CRO"
 tab_sub: "Diagnostic"
 delai: "2 semaines"
 tab_id: "tab-audit"
-seo_title: "Audit UX/UI & CRO de site e-commerce · À partir de 1 500 € · LeStudio"
-seo_description: "Audit complet du parcours d'achat de votre site e-commerce ou vitrine. Rapport priorisé par impact business, quick wins sous 48h. À partir de 1 500 €."
-h1: "Audit UX/UI & CRO : sachez exactement où votre site perd des ventes"
+seo_title: "Audit UX Design & CRO - Le Studio | Paris"
+seo_description: "Audit UX design d'un site e-commerce ou vitrine : diagnostic chiffré, rapport priorisé par impact business, quick wins sous 48h. À partir de 1 500 €."
+h1: "Audit UX Design & CRO : sachez exactement où votre site perd des ventes"
 accroche: "Votre trafic ne convertit pas assez, et personne ne sait dire précisément pourquoi. En deux semaines, vous repartez avec un diagnostic chiffré et priorisé de ce qui freine vos ventes."
 pour_qui:
   - Votre site e-commerce ou vitrine a du trafic mais convertit mal
@@ -46,6 +46,10 @@ roadmap:
     points:
       - Support illimité pendant 15 jours pour vos questions d'implémentation
 faq:
+  - q: Qu'est-ce qu'un audit UX design ?
+    r: C'est une évaluation structurée de l'expérience utilisateur d'un site ou d'une application - navigation, compréhension de l'offre, lisibilité, cohérence des patterns et charge cognitive. Il combine analyse des données réelles et audit heuristique pour identifier précisément ce qui freine vos visiteurs.
+  - q: Quelle est la différence entre audit UX et audit CRO ?
+    r: L'audit UX se concentre sur la facilité d'usage, la clarté et la cohérence du parcours. L'audit CRO ajoute une lecture orientée conversion, avec des hypothèses testables et mesurables. Notre audit intègre les deux lectures dans un même rapport.
   - q: Qu'est-ce que je reçois concrètement à la fin ?
     r: Un rapport structuré par ordre d'impact sur vos ventes, avec pour chaque point le problème constaté, la preuve (donnée ou capture), et la recommandation. Plus une restitution en visio et 15 jours de support pour les questions.
   - q: En quoi c'est différent d'un audit automatique ou d'un outil ?
@@ -58,3 +62,31 @@ faq:
     r: Si votre site a du trafic et des données, commencez par l'audit, il évite de refaire au feeling ce qui devrait être corrigé aux données, et son montant est déduit si vous enchaînez sur la refonte. Si votre site est à créer ou visuellement obsolète, la refonte intègre déjà sa phase d'audit.
 order: 1
 ---
+
+# Ce qu'un audit UX design révèle sur votre site
+
+Un audit UX design est une évaluation structurée de l'expérience utilisateur : navigation, compréhension de l'offre, lisibilité des interfaces, cohérence des patterns, charge cognitive sur mobile comme sur desktop. Contrairement à un audit CRO pur, il ne se limite pas aux tests A/B et aux hypothèses de conversion : il regarde aussi si l'interface est simplement utilisable, claire et cohérente d'une page à l'autre. Chaque constat s'appuie sur une donnée réelle ou une observation reproductible, jamais sur un ressenti.
+
+Certains signaux reviennent presque systématiquement chez les sites qui nous contactent pour un audit ux sur mesure :
+
+- Le taux de rebond grimpe sur des pages qui devraient retenir l'attention
+- Le taux d'abandon panier reste élevé sans explication claire
+- Le trafic progresse mais les conversions stagnent, voire reculent
+- Personne en interne ne sait dire avec certitude où les visiteurs décrochent
+- Chaque refonte se décide au feeling plutôt qu'à partir de données réelles
+
+Un seul de ces signaux suffit rarement à justifier une refonte complète. Réunis, ils indiquent presque toujours qu'un diagnostic structuré coûtera moins cher qu'une nouvelle refonte décidée à l'aveugle.
+
+# Audit UX de site e-commerce
+
+Sur un site e-commerce, l'enjeu est double : faciliter la décision d'achat et aligner les messages avec les attentes créées par vos campagnes. Un visiteur qui arrive via une publicité précise et atterrit sur une fiche produit générique décroche avant même d'avoir vu le prix. L'audit passe en revue chaque gabarit du parcours, de la page catégorie à la confirmation de commande : fiches produit, panier et tunnel de commande, performance perçue et lisibilité sur mobile, cohérence entre messages publicitaires et contenu réel de la page.
+
+# Audit UX d'application ou interface métier
+
+Sur une webapp ou un outil interne, la logique change : la conversion n'est plus l'achat mais l'adoption et la répétition d'usage. Un utilisateur qui abandonne un outil métier après trois essais ne reviendra pas de lui-même. L'audit se concentre alors sur la charge cognitive, la cohérence des patterns d'un écran à l'autre, la facilité de prise en main pour un nouvel utilisateur, et la gestion des cas limites (erreurs, états vides, chargements longs). Le périmètre exact se cadre au premier appel, avant tout engagement.
+
+# Pourquoi confier votre audit UX à Le Studio
+
+Un audit qui ne regarde que l'esthétique ne dit rien de ce qui bloque vraiment vos ventes. Chaque recommandation part d'une donnée ou d'une observation concrète, jamais d'une préférence de design — c'est la différence entre un audit qui plaît et un audit qui sert. Et un rapport trop long finit non lu : le vôtre reste structuré par impact business, assez court pour être exploité dès la restitution, assez précis pour ne rien laisser dans le flou.
+
+Sacha Vetzikian, 8 ans à concevoir des parcours d'achat qui convertissent entre startups e-commerce et cabinet de conseil (Yves Rocher, Speedy, Société Générale), mène personnellement chaque audit — pas un chef de projet qui reformule votre besoin à un consultant junior.

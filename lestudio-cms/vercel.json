@@ -3,5 +3,21 @@
   "outputDirectory": "_site",
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" }
+  ],
+  "redirects": [
+    { "source": "/audit-ux-design", "destination": "/offres/audit-ux-ui-cro/", "permanent": true },
+    { "source": "/audit-ux-design/", "destination": "/offres/audit-ux-ui-cro/", "permanent": true },
+    { "source": "/audit-cro", "destination": "/offres/audit-ux-ui-cro/", "permanent": true },
+    { "source": "/audit-cro/", "destination": "/offres/audit-ux-ui-cro/", "permanent": true },
+    { "source": "/audit-site-e-commerce", "destination": "/offres/audit-ux-ui-cro/", "permanent": true },
+    { "source": "/audit-site-e-commerce/", "destination": "/offres/audit-ux-ui-cro/", "permanent": true },
+    { "source": "/services/audit-cro", "destination": "/offres/audit-ux-ui-cro/", "permanent": true },
+    { "source": "/services/audit-cro/", "destination": "/offres/audit-ux-ui-cro/", "permanent": true },
+    { "source": "/services/optimisation-cro", "destination": "/offres/audit-ux-ui-cro/", "permanent": true },
+    { "source": "/services/optimisation-cro/", "destination": "/offres/audit-ux-ui-cro/", "permanent": true },
+    { "source": "/refonte-site-e-commerce", "destination": "/offres/creation-refonte-site/", "permanent": true },
+    { "source": "/refonte-site-e-commerce/", "destination": "/offres/creation-refonte-site/", "permanent": true },
+    { "source": "/e-commerce", "destination": "/offres/creation-refonte-site/", "permanent": true },
+    { "source": "/e-commerce/", "destination": "/offres/creation-refonte-site/", "permanent": true }
   ]
 }
