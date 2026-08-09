@@ -285,7 +285,7 @@ permalink: /index.html
 
   /* Ask IA — barre flottante fixe, toujours accessible */
   .ask-box{
-    position:fixed; left:50%; bottom:64px; width:min(640px, calc(100% - 32px));
+    position:fixed; left:50%; bottom:48px; width:min(640px, calc(100% - 32px));
     transform:translateX(-50%) translateY(16px); opacity:0; pointer-events:none;
     border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden;
     box-shadow:0 20px 44px -16px rgba(9,9,11,0.32); z-index:70;
@@ -756,7 +756,7 @@ padding: 16px<br>radius: 8px
 <div><div class="offer-stat-num">+100</div><div class="offer-stat-label">Projets de refonte livrés</div></div>
 <div><div class="offer-stat-num">{{ svc.data.delai }}</div><div class="offer-stat-label">{% if svc.data.tab_id == "tab-abo" %}Engagement{% else %}Temps de livraison{% endif %}</div></div>
 <div class="price" style="color:rgba(244,244,245,0.85); margin:4px 0 0;">{{ svc.data.price }}</div>
-<a class="btn-secondary shiny" href="/offres/{{ svc.fileSlug }}/" style="color:#fff;"><span>Découvrir l'offre › {% include "partials/sparkle-icon.njk" %}</span></a>
+<a class="btn-secondary" href="/offres/{{ svc.fileSlug }}/" style="color:#fff;"><span>Découvrir l'offre ›</span></a>
 </div>
 </div>
 {% endfor %}
@@ -962,7 +962,7 @@ padding: 16px<br>radius: 8px
 <script>
   var clients = [
     { name: "TRIUMVIRAT", logo: "/assets/uploads/logo-triumvirat.webp" },
-    { name: "JABERSON" },
+    { name: "JABERSON", logo: "/assets/uploads/logo-jaberson.webp" },
     { name: "OCTOPUSH", logo: "/assets/uploads/logo-octopush.webp" },
     { name: "AG2R LA MONDIALE", logo: "/assets/uploads/logo-ag2r-la-mondiale.webp" },
     { name: "CRÉDIT DU NORD", logo: "/assets/uploads/logo-credit-du-nord.webp" },
@@ -970,7 +970,6 @@ padding: 16px<br>radius: 8px
     { name: "YVES ROCHER", logo: "/assets/uploads/logo-yves-rocher-mark.webp" },
     { name: "DISNEY", logo: "/assets/uploads/logo-disney.webp" },
     { name: "ARRAGO", logo: "/assets/uploads/logo-arrago.webp" },
-    { name: "SPIDEO" },
     { name: "LE PETIT FUMEUR", logo: "/assets/uploads/logo-le-petit-fumeur.webp" },
     { name: "JULIETTE HAS A GUN", logo: "/assets/uploads/logo-juliette-has-a-gun.webp" },
     { name: "CARGO SCHOOL", logo: "/assets/uploads/logo-cargo-school.webp" },
