@@ -76,12 +76,12 @@ permalink: /index.html
     font-size:13.5px; font-weight:400; background:var(--ink); color:#fff;
     padding:11px 20px; border-radius:100px;
   }
-  .nav-cta-short{display:none;}
+  .nav-cta .nav-cta-short{display:none;}
   @media (max-width:480px){
     .logo svg{width:100px; height:auto;}
     .nav-cta{padding:9px 14px;}
-    .nav-cta-full{display:none;}
-    .nav-cta-short{display:inline;}
+    .nav-cta .nav-cta-full{display:none;}
+    .nav-cta .nav-cta-short{display:inline-flex;}
   }
 
   .hero{position:relative; overflow:hidden; padding:64px 0 60px; text-align:center;}
@@ -418,16 +418,17 @@ permalink: /index.html
   .shiny::after{width:100%; aspect-ratio:1; background:linear-gradient(-50deg,transparent,var(--orange),transparent);
     mask-image:radial-gradient(circle at bottom,transparent 40%,black); opacity:.5;
     animation:shiny-shimmer 3s linear infinite, shiny-shimmer 7.5s linear infinite reverse paused; animation-composition:add;}
-  .shiny span{position:relative; z-index:1;}
+  .shiny span{position:relative; z-index:1; display:inline-flex; align-items:center; gap:6px;}
   .shiny span::before{content:''; pointer-events:none; position:absolute; inset-inline-start:50%; inset-block-start:50%; translate:-50% -50%;
     width:calc(100% + 1rem); height:calc(100% + 1rem); box-shadow:inset 0 -1ex 2rem 4px var(--orange); opacity:0;
     transition:opacity 800ms cubic-bezier(.25,1,.5,1); animation:shiny-breathe 4.5s linear infinite;}
   .shiny:is(:hover,:focus-visible){--gradient-percent:20%; --gradient-angle-offset:95deg; --gradient-shine:#ffb380;}
   .shiny:is(:hover,:focus-visible) span::before{opacity:1;}
+  .cta-sparkle{width:15px; height:15px; flex-shrink:0; filter:drop-shadow(0 0 3px currentColor); animation:shiny-breathe 4.5s linear infinite;}
   @keyframes shiny-angle{to{--gradient-angle:360deg;}}
   @keyframes shiny-shimmer{to{rotate:360deg;}}
   @keyframes shiny-breathe{from,to{scale:1;} 50%{scale:1.2;}}
-  @media (prefers-reduced-motion: reduce){.shiny,.shiny::before,.shiny::after{animation:none;}}
+  @media (prefers-reduced-motion: reduce){.shiny,.shiny::before,.shiny::after{animation:none;} .cta-sparkle{animation:none;}}
 </style>
 <script type="application/ld+json">
 {
@@ -481,7 +482,7 @@ permalink: /index.html
 <a href="mailto:{{ settings.email }}">Contactez-nous</a>
 </nav>
 <div style="display:flex; align-items:center; gap:12px;">
-<a class="nav-cta shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="nav-cta-full">Réserver un appel ›</span><span class="nav-cta-short">Réserver un appel ›</span></a>
+<a class="nav-cta shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="nav-cta-full">Réserver un appel › {% include "partials/sparkle-icon.njk" %}</span><span class="nav-cta-short">Réserver un appel › {% include "partials/sparkle-icon.njk" %}</span></a>
 <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
 <span></span><span></span>
 </button>
@@ -526,7 +527,7 @@ Diagnostic offert
 <h1>Le studio de design spécialisé en site web <em>business-driven</em>.</h1>
 <p class="lede">Audit CRO, refonte UX/UI, design system : on réduit les frictions de conversion par la stratégie et le design.</p>
 <div class="cta-row">
-<a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha ›</span></a>
+<a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha › {% include "partials/sparkle-icon.njk" %}</span></a>
 </div>
 <a class="trust trust-dark" href="https://fr.trustpilot.com/review/lestudiodesign.fr" target="_blank" rel="noopener">
 <div class="stack">
@@ -755,7 +756,7 @@ padding: 16px<br>radius: 8px
 <div><div class="offer-stat-num">+100</div><div class="offer-stat-label">Projets de refonte livrés</div></div>
 <div><div class="offer-stat-num">{{ svc.data.delai }}</div><div class="offer-stat-label">{% if svc.data.tab_id == "tab-abo" %}Engagement{% else %}Temps de livraison{% endif %}</div></div>
 <div class="price" style="color:rgba(244,244,245,0.85); margin:4px 0 0;">{{ svc.data.price }}</div>
-<a class="btn-secondary shiny" href="/offres/{{ svc.fileSlug }}/" style="color:#fff;"><span>Découvrir l'offre ›</span></a>
+<a class="btn-secondary shiny" href="/offres/{{ svc.fileSlug }}/" style="color:#fff;"><span>Découvrir l'offre › {% include "partials/sparkle-icon.njk" %}</span></a>
 </div>
 </div>
 {% endfor %}
@@ -828,7 +829,7 @@ padding: 16px<br>radius: 8px
 <h2>Prêt à arrêter de perdre des clients sur votre propre site ?</h2>
 <p>30 minutes, gratuit. On regarde ensemble ce qui bloque la conversion.</p>
 <div style="display:flex; align-items:center; justify-content:center;">
-<a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha ›</span></a>
+<a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha › {% include "partials/sparkle-icon.njk" %}</span></a>
 </div>
 </div>
 </section>
@@ -1120,7 +1121,7 @@ padding: 16px<br>radius: 8px
 <p>On utilise Google Analytics pour comprendre comment vous naviguez sur ce site. Vos données ne sont partagées avec personne d'autre. <a href="confidentialite.html">En savoir plus</a>.</p>
 <div class="cookie-actions">
 <button class="btn-refuse" id="cookieRefuse">Refuser</button>
-<button class="btn-accept shiny" id="cookieAccept"><span>Accepter</span></button>
+<button class="btn-accept shiny" id="cookieAccept"><span>Accepter {% include "partials/sparkle-icon.njk" %}</span></button>
 </div>
 </div>
 
