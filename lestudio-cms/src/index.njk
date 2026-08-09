@@ -110,7 +110,7 @@ permalink: /index.html
   }
   .avatar-inline{border:2px solid #fff; margin-right:0; flex-shrink:0;}
   .btn-primary{
-    color:#fff;
+    color:#fff; background:var(--ink);
     font-family:'DM Sans',sans-serif; font-size:15px; font-weight:400;
     padding:10px 30px 10px 10px; border-radius:12px;
     display:flex; align-items:center; gap:12px; white-space:nowrap; max-width:100%;
@@ -135,6 +135,9 @@ permalink: /index.html
   .trust-dark:hover{opacity:0.75;}
   .trust-stars{color:var(--orange); font-size:13px; letter-spacing:2px; line-height:1; margin-bottom:4px;}
   .section-break{position:relative; height:56px; width:100%; padding:0 32px; box-sizing:border-box;}
+  .section-break.standalone{width:auto; margin:0 32px; padding:0;}
+  @media (min-width:1464px){ .section-break.standalone{max-width:1400px; margin:0 auto;} }
+  @media (max-width:640px){ .section-break.standalone{margin:0 14px;} }
   .section-break::before{content:''; position:absolute; top:28px; left:0; right:0; height:1px; background:var(--line);}
   .section-break .mark{position:absolute; top:40px; width:14px; height:14px; border-top:1.5px solid var(--grey);}
   .section-break .mark.left{left:0; border-left:1.5px solid var(--grey);}
@@ -315,7 +318,7 @@ permalink: /index.html
   .final-cta h2{color:var(--paper); margin:0 auto 16px;}
   .final-cta p{color:rgba(244,244,245,0.7); max-width:440px; margin:0 auto 36px;}
   .final-cta .shiny{--shiny-fill:var(--orange);}
-  .final-cta .btn-primary{color:var(--ink);}
+  .final-cta .btn-primary{color:var(--ink); background:var(--orange);}
 
   /* Footer — cinématique : fond encre, grille, halo, wordmark géant, marquee */
   footer{position:relative; overflow:hidden; background:var(--ink); color:var(--paper); padding:72px 0 32px; margin-top:40px;}
@@ -528,7 +531,7 @@ Diagnostic offert
 <h1>Le studio de design spécialisé en site web <em id="hero-flip-root">business-driven</em>.</h1>
 <p class="lede">Audit CRO, refonte UX/UI, design system : on réduit les frictions de conversion par la stratégie et le design.</p>
 <div class="cta-row">
-<a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha › {% include "partials/sparkle-icon.njk" %}</span></a>
+<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha ›</span></a>
 </div>
 <a class="trust trust-dark" href="https://fr.trustpilot.com/review/lestudiodesign.fr" target="_blank" rel="noopener">
 <div class="stack">
@@ -545,7 +548,7 @@ Diagnostic offert
 </a>
 </div>
 </section>
-<div class="section-break"><span class="mark left"></span><span class="mark right"></span></div>
+<div class="section-break standalone"><span class="mark left"></span><span class="mark right"></span></div>
 <div class="page-frame">
 <section id="clients">
 <div class="wrap" style="padding:0 24px 28px;">
@@ -830,7 +833,7 @@ padding: 16px<br>radius: 8px
 <h2>Prêt à arrêter de perdre des clients sur votre propre site ?</h2>
 <p>30 minutes, gratuit. On regarde ensemble ce qui bloque la conversion.</p>
 <div style="display:flex; align-items:center; justify-content:center;">
-<a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha › {% include "partials/sparkle-icon.njk" %}</span></a>
+<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha ›</span></a>
 </div>
 </div>
 </section>
