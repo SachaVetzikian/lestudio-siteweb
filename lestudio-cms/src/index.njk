@@ -181,16 +181,16 @@ permalink: /index.html
   .scroll-side{position:sticky; top:96px; align-self:start; height:fit-content;}
   .scroll-rail{position:relative; width:2px; height:180px; background:var(--line); border-radius:2px; margin-bottom:20px; overflow:hidden;}
   .scroll-rail-fill{position:absolute; top:0; left:0; width:100%; background:var(--orange); border-radius:2px; height:0%;}
-  .scroll-num{font-family:'DM Sans',sans-serif; font-weight:600; font-size:44px; line-height:1; margin-top:8px;}
-  .scroll-duration{font-size:12.5px; color:var(--orange); text-transform:uppercase; letter-spacing:0.03em; margin-top:6px;}
+  .scroll-num{font-family:'DM Sans',sans-serif; font-weight:600; font-size:44px; line-height:1; margin-top:8px; color:var(--orange);}
   .scroll-block{padding:48px 0; border-top:1px solid var(--line); transition:background .3s ease;}
   .scroll-block:last-child{border-bottom:1px solid var(--line);}
   .scroll-block.active{background:var(--orange-light);}
-  .scroll-block.active p, .scroll-block.active .eyebrow{color:var(--ink);}
+  .scroll-block.active p{color:var(--ink);}
   .scroll-block-inner{padding:8px 28px;}
+  .step-duration{font-size:12px; text-transform:uppercase; letter-spacing:0.04em; color:var(--orange); font-weight:500;}
   .scroll-block h3{font-family:'DM Sans',sans-serif; font-weight:600; font-size:26px; margin:10px 0 14px;}
-  .scroll-block p{color:var(--grey); font-size:15.5px; line-height:1.7; max-width:480px; margin-bottom:14px;}
-  .deliverable{margin-top:4px; font-size:12.5px; text-transform:uppercase; letter-spacing:0.03em; color:var(--ink); font-weight:500;}
+  .scroll-block p{color:var(--grey); font-size:15.5px; line-height:1.5; max-width:480px; margin-bottom:14px;}
+  .deliverable{margin-top:4px; font-size:12.5px; color:var(--ink); font-weight:500;}
 
   /* Asset mockups riches - étapes méthode */
   .asset-mock{background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; max-width:300px; margin-top:22px; box-shadow:0 10px 28px -14px rgba(9,9,11,0.18);}
@@ -586,16 +586,15 @@ Diagnostic offert
 <div class="scroll-rail"><div class="scroll-rail-fill" id="railFill"></div></div>
 <span class="eyebrow">Étape</span>
 <div class="scroll-num" id="sideNum">01</div>
-<div class="scroll-duration" id="sideDuration">1 semaine</div>
 </div>
 <div class="scroll-main" id="scrollMain">
 
 <div class="scroll-block active" data-num="01" data-duration="1 semaine">
 <div class="scroll-block-inner">
-<span class="eyebrow">01 · 1 semaine</span>
+<span class="step-duration">1 semaine</span>
 <h3>Audit UX/CRO</h3>
-<p>On identifie ce qui bloque vraiment la conversion, avec un benchmark de vos concurrents.</p>
-<div class="deliverable">Vous repartez avec : rapport d'audit et quick wins</div>
+<p>On identifie ce qui bloque vraiment la conversion, en croisant data et audit terrain, avec un benchmark de vos concurrents directs.</p>
+<div class="deliverable">Livrables : rapport d'audit avec quick wins</div>
 <div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
@@ -620,7 +619,7 @@ Diagnostic offert
 
 <div class="scroll-block" data-num="02" data-duration="1 semaine">
 <div class="scroll-block-inner">
-<span class="eyebrow">02 · 1 semaine</span>
+<span class="step-duration">1 semaine</span>
 <h3>Architecture et wireframes</h3>
 <p>On pose la structure et les parcours avant de dessiner le moindre pixel.</p>
 <div class="deliverable">On construit : wireframes validés</div>
@@ -653,7 +652,7 @@ Diagnostic offert
 
 <div class="scroll-block" data-num="03" data-duration="1 à 2 semaines">
 <div class="scroll-block-inner">
-<span class="eyebrow">03 · 1 à 2 semaines</span>
+<span class="step-duration">1 à 2 semaines</span>
 <h3>UI design</h3>
 <p>Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire.</p>
 <div class="deliverable">Vous obtenez : maquettes Figma haute fidélité</div>
@@ -684,7 +683,7 @@ Diagnostic offert
 
 <div class="scroll-block" data-num="04" data-duration="Quelques jours">
 <div class="scroll-block-inner">
-<span class="eyebrow">04 · Quelques jours</span>
+<span class="step-duration">Quelques jours</span>
 <h3>Handoff design</h3>
 <p>Specs et composants documentés, prêts pour votre développeur ou votre agence.</p>
 <div class="deliverable">On vous livre : dossier de handoff complet</div>
@@ -1076,7 +1075,6 @@ padding: 16px<br>radius: 8px
     var scrollMain = document.getElementById('scrollMain');
     var railFill = document.getElementById('railFill');
     var sideNum = document.getElementById('sideNum');
-    var sideDuration = document.getElementById('sideDuration');
     if(!scrollMain) return;
     var blocks = scrollMain.querySelectorAll('.scroll-block');
     function update(){
@@ -1095,7 +1093,6 @@ padding: 16px<br>radius: 8px
       });
       current.classList.add('active');
       sideNum.textContent = current.getAttribute('data-num');
-      sideDuration.textContent = current.getAttribute('data-duration');
     }
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
