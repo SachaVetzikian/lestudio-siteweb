@@ -38,7 +38,7 @@ Avant de dessiner quoi que ce soit, on identifie ce qui bloque vraiment la conve
 - Audit heuristique complet du tunnel
 - Benchmark de trois concurrents directs
 
-Vous repartez avec un rapport d'audit et des quick wins actionnables.
+Vous repartez avec un rapport d'audit et des quick wins actionnables — c'est exactement l'objet de notre [audit UX design](/offres/audit-ux-ui-cro/).
 
 ## 2. Architecture et wireframes
 

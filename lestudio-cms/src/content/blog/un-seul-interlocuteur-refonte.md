@@ -53,7 +53,7 @@ Quand la même personne cadre le besoin, conçoit les wireframes, dessine l'inte
 
 Un interlocuteur unique, c'est aussi une capacité de production différente d'une agence avec plusieurs équipes en parallèle. C'est pour ça que :
 
-- Nos offres sont cadrées dans le temps (deux semaines pour un audit, trois à six pour une refonte)
+- Nos offres sont cadrées dans le temps (deux semaines pour un [audit UX design](/offres/audit-ux-ui-cro/), trois à six pour une refonte)
 - Le [design par abonnement](/offres/design-abonnement/) existe pour les besoins continus qui dépasseraient cette capacité
 
 ---

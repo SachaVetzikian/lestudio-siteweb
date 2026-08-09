@@ -56,7 +56,7 @@ Si le besoin est ponctuel, borné dans le temps, avec un livrable clair, un [pac
 
 - Un nouveau site à créer
 - Une refonte complète
-- Un audit UX/CRO
+- Un [audit UX design](/offres/audit-ux-ui-cro/)
 
 ## Quand le besoin devient continu
 

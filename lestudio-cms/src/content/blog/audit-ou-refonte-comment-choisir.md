@@ -79,7 +79,7 @@ Un site qui reçoit déjà des visites laisse des traces qui disent où les visi
 - Enregistrements de session (Hotjar ou équivalent)
 - Avis et retours clients déjà collectés
 
-Dans ce cas, l'audit vient en premier et évite de refaire au feeling ce que les données peuvent déjà expliquer. Il comprend :
+Dans ce cas, l'[audit UX design](/offres/audit-ux-ui-cro/) vient en premier et évite de refaire au feeling ce que les données peuvent déjà expliquer. Il comprend :
 
 - Un audit heuristique complet du tunnel, des fiches produit à la confirmation
 - Un benchmark de trois concurrents directs
