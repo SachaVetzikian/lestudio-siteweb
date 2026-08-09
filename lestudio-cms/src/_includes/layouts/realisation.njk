@@ -51,7 +51,7 @@ layout: layouts/base.njk
 {# ── Phases numérotées ── #}
 {% for ph in phases %}
 <section style="border-top:1px solid var(--line);padding:56px 0;">
-<h2 style="margin-top:0;"><span style="color:var(--orange);">{{ loop.index }}.</span> {{ ph.titre }}</h2>
+<h2 style="margin-top:0;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.01em;line-height:1.1;"><span style="color:var(--orange);">{{ loop.index }}.</span> {{ ph.titre }}</h2>
 {% if ph.intro %}<p style="line-height:1.7;color:var(--grey);max-width:640px;margin-bottom:28px;">{{ ph.intro }}</p>{% endif %}
 {% if ph.blocs %}
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:28px;">
