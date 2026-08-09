@@ -51,6 +51,10 @@ permalink: /index.html
     background:rgba(244,244,245,0.94);
     box-shadow:0 6px 24px -12px rgba(20,18,31,0.2);
   }
+  header.nav.menu-open{background:var(--ink) !important; border-bottom-color:transparent; box-shadow:none;}
+  header.nav.menu-open .logo{color:#fff;}
+  header.nav.menu-open .burger span{background:#fff;}
+  header.nav.menu-open .nav-cta{display:none;}
   .nav-inner{width:100%; box-sizing:border-box; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;}
   @media (max-width:480px){ .nav-inner{padding:16px 16px;} }
   .logo{font-family:'DM Sans',sans-serif; font-size:20px; font-weight:600; display:flex; align-items:center; gap:8px;}
@@ -367,11 +371,31 @@ permalink: /index.html
   .burger.open span:first-child{transform:translateY(3.75px) rotate(45deg);}
   .burger.open span:last-child{transform:translateY(-3.75px) rotate(-45deg);}
   @media (max-width:860px){ .burger{display:flex;} }
-  .mobile-menu{display:none; position:fixed; top:0; left:0; right:0; z-index:99; background:var(--paper); border-bottom:1px solid var(--line); padding:96px 32px 32px; flex-direction:column; gap:4px; box-shadow:0 20px 40px -24px rgba(20,18,31,0.25);}
+  .mobile-menu{display:none; position:fixed; inset:0; z-index:90; background:var(--ink); flex-direction:column; justify-content:center; padding:96px 28px 40px; overflow-y:auto;}
   .mobile-menu.open{display:flex;}
-  .mobile-menu a{font-family:'DM Sans',sans-serif; font-size:20px; font-weight:500; padding:14px 0; border-bottom:1px solid var(--line);}
-  .mobile-menu a:last-of-type{border-bottom:none;}
-  .mobile-menu-cta{color:var(--orange);}
+  .mobile-menu-inner{display:flex; flex-direction:column; align-items:stretch; gap:2px; margin:auto 0;}
+  .mobile-menu-item{width:100%;}
+  .mobile-menu-link, .mobile-menu-toggle{
+    font-family:'DM Sans',sans-serif; font-size:26px; font-weight:500; color:var(--paper);
+    padding:16px 0; background:none; border:none; width:100%; text-align:center;
+    display:flex; align-items:center; justify-content:center; gap:10px; cursor:pointer;
+  }
+  .mobile-menu-toggle svg{transition:transform .25s ease; flex-shrink:0;}
+  .mobile-menu-item.open .mobile-menu-toggle svg{transform:rotate(180deg);}
+  .mobile-submenu{display:none; flex-direction:column; gap:0; padding-bottom:10px;}
+  .mobile-menu-item.open .mobile-submenu{display:flex;}
+  .mobile-submenu a{display:block; font-size:16px; font-weight:400; color:rgba(244,244,245,0.6); padding:10px 0; text-align:center;}
+  .mobile-submenu a:hover{color:var(--orange);}
+  .mobile-menu-footer{display:flex; justify-content:center; padding-top:36px;}
+  .mobile-menu-cta{
+    display:inline-flex; align-items:center; gap:12px; background:var(--orange); color:var(--ink);
+    border-radius:100px; padding:8px 26px 8px 8px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:16px;
+  }
+  .mobile-menu-cta-icon{
+    width:34px; height:34px; border-radius:9px; background:var(--ink); color:#fff;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  @media (max-width:380px){ .mobile-menu-link, .mobile-menu-toggle{font-size:22px;} }
   .btn-outline{background:transparent !important; border-color:var(--line) !important; color:var(--ink) !important;}
   .btn-outline::before, .btn-outline::after{display:none !important;}
   .btn-outline{animation:none !important;}
@@ -445,10 +469,35 @@ permalink: /index.html
 </div>
 </header>
 <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
-<a href="#methode">Méthode</a>
-<a href="#offres">Offres</a>
-<a href="#faq">FAQ</a>
-<a class="mobile-menu-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Réserver un appel ›</a>
+<div class="mobile-menu-inner">
+<div class="mobile-menu-item">
+<button class="mobile-menu-toggle" type="button" aria-expanded="false">Services
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+<div class="mobile-submenu">
+<a href="/offres/audit-ux-ui-cro/">Audit UX/UI &amp; CRO</a>
+<a href="/offres/creation-refonte-site/">Création / Refonte</a>
+<a href="/offres/design-abonnement/">Design par abonnement</a>
+</div>
+</div>
+<a class="mobile-menu-link" href="/cas-clients/">Réalisations</a>
+<div class="mobile-menu-item">
+<button class="mobile-menu-toggle" type="button" aria-expanded="false">Ressources
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+<div class="mobile-submenu">
+<a href="/blog/">Blog</a>
+<a href="/a-propos/">Qui sommes-nous ?</a>
+</div>
+</div>
+<a class="mobile-menu-link" href="mailto:{{ settings.email }}">Contactez-nous</a>
+</div>
+<div class="mobile-menu-footer">
+<a class="mobile-menu-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">
+<span class="mobile-menu-cta-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+Diagnostic offert
+</a>
+</div>
 </nav>
 <section class="hero">
 <div class="blob blob-1"></div>
@@ -1160,6 +1209,7 @@ padding: 16px<br>radius: 8px
   (function(){
     var burger = document.getElementById('burger');
     var menu = document.getElementById('mobileMenu');
+    var header = document.querySelector('header.nav');
     if(!burger || !menu) return;
     function toggle(force){
       var open = force !== undefined ? force : !menu.classList.contains('open');
@@ -1167,9 +1217,24 @@ padding: 16px<br>radius: 8px
       burger.classList.toggle('open', open);
       burger.setAttribute('aria-expanded', open);
       menu.setAttribute('aria-hidden', !open);
+      if(header) header.classList.toggle('menu-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      document.body.classList.toggle('menu-open', open);
+      if(!open){
+        menu.querySelectorAll('.mobile-menu-item.open').forEach(function(item){ item.classList.remove('open'); });
+      }
     }
     burger.addEventListener('click', function(){ toggle(); });
     menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ toggle(false); }); });
+    menu.querySelectorAll('.mobile-menu-toggle').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var item = btn.closest('.mobile-menu-item');
+        var isOpen = item.classList.contains('open');
+        menu.querySelectorAll('.mobile-menu-item.open').forEach(function(other){ if(other !== item) other.classList.remove('open'); });
+        item.classList.toggle('open', !isOpen);
+        btn.setAttribute('aria-expanded', !isOpen);
+      });
+    });
   })();
 </script>
 
@@ -1195,6 +1260,7 @@ padding: 16px<br>radius: 8px
 <style>
 .wa-float{position:fixed;bottom:22px;right:22px;z-index:98;width:56px;height:56px;border-radius:100px;background:linear-gradient(#57d163 0%, #23b33a 100%);border:1.5px solid #5ced6b;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 28px rgba(20,20,19,0.16);transition:transform .15s;}
 @media (max-width:900px){ .wa-float{width:52px;height:52px;} }
+body.menu-open .wa-float, body.menu-open .ask-box{display:none !important;}
 .wa-float:hover{transform:scale(1.08);}
 </style>
 
