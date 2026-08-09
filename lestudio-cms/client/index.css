@@ -11,6 +11,8 @@
 .tw-scope {
   --background: 0 0% 96%;
   --foreground: 240 10% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 4%;
   --muted: 240 9% 93%;
   --muted-foreground: 240 6% 26%;
   --primary: 20 100% 50%;
