@@ -12,6 +12,8 @@ export type Review = {
   imageSrc?: string;
   thumbnailSrc?: string;
   videoSrc?: string;
+  /** Still frame shown behind the play button before the video is started. */
+  posterSrc?: string;
 };
 
 export const reviews: Review[] = [
@@ -22,6 +24,8 @@ export const reviews: Review[] = [
     affiliation: "Créateur de contenu Crypto",
     variant: "video",
     videoSrc: "/assets/uploads/temoignage-julien-roman.mp4",
+    posterSrc: "/assets/uploads/photo-julien-roman.webp",
+    thumbnailSrc: "/assets/uploads/photo-julien-roman.webp",
     quote:
       "Mon site internet est monté en gamme, j'ai eu que des supers retours, franchement merci beaucoup pour le travail. J'ai eu beaucoup de demandes qui n'étaient pas incluses dans la prestation et tu les as dépassées sans souci. Ce qui a été appréciable, c'est la prise de lead car je manque cruellement de temps, et tu n'as pas attendu d'avoir des retours pour avancer. J'ai que des bons retours sur mon nouveau site. Merci encore Sacha !",
   },
@@ -31,6 +35,8 @@ export const reviews: Review[] = [
     affiliation: "E-commerçant · Caalme",
     variant: "video",
     videoSrc: "/assets/uploads/temoignage-florian-piat.mp4",
+    posterSrc: "/assets/uploads/photo-florian-piat.webp",
+    thumbnailSrc: "/assets/uploads/photo-florian-piat.webp",
     quote:
       "Tes recommandations stratégiques et ton expertise technique en UX/UI ont été remplies de valeur. Tu as non seulement agi en tant que prestataire, mais tu t'es véritablement investi dans le succès de notre projet, comme si c'était le tien. C'est une qualité rare et précieuse que je tiens à souligner.",
   },
