@@ -12,14 +12,14 @@ await esbuild.build({
   sourcemap: false,
   format: "iife",
   target: "es2018",
-  outfile: `${outDir}/testimonial-slider.bundle.js`,
+  outfile: `${outDir}/react-islands.bundle.js`,
   jsx: "automatic",
   loader: { ".tsx": "tsx", ".ts": "ts" },
   define: { "process.env.NODE_ENV": '"production"' },
 });
 
 execSync(
-  `npx tailwindcss -i client/index.css -o ${outDir}/testimonial-slider.css --minify`,
+  `npx tailwindcss -i client/index.css -o ${outDir}/react-islands.css --minify`,
   { stdio: "inherit" },
 );
 
