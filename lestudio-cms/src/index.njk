@@ -146,7 +146,8 @@ permalink: /index.html
   .marquee-wrap:hover .marquee-track{animation-play-state:paused;}
   @media (prefers-reduced-motion: reduce){ .marquee-track{animation:none;} }
   .marquee-item{display:flex; align-items:center; padding:0 30px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:18px; color:var(--grey); white-space:nowrap; opacity:0.7;}
-  .marquee-item img{height:34px; width:auto; filter:grayscale(1); opacity:0.8;}
+  .marquee-item img{height:44px; width:auto; filter:grayscale(1); opacity:0.8;}
+  @media (max-width:640px){ .marquee-item img{height:32px;} }
   @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
 
   section{padding:80px 0;}
@@ -548,8 +549,10 @@ Diagnostic offert
 <div class="wrap" style="padding:0 24px 28px;">
 <h2 style="font-family:'DM Sans',sans-serif; font-weight:600; font-size:clamp(26px,3.4vw,40px); letter-spacing:-0.01em; margin-top:12px;">Ils nous font <em style="font-style:normal; font-weight:600; color:var(--orange);">confiance.</em></h2>
 </div>
+<div class="wrap">
 <div class="marquee-wrap">
 <div class="marquee-track" id="marquee-track"></div>
+</div>
 </div>
 </section>
 <div class="section-break"><span class="mark left"></span><span class="mark right"></span></div>
@@ -957,21 +960,22 @@ padding: 16px<br>radius: 8px
 </script>
 <script>
   var clients = [
-    { name: "YVES ROCHER", logo: "/assets/uploads/logo-yves-rocher-mark.webp" },
-    { name: "CUURE", logo: "/assets/uploads/logo-cuure.webp" },
     { name: "TRIUMVIRAT", logo: "/assets/uploads/logo-triumvirat.webp" },
+    { name: "JABERSON" },
+    { name: "OCTOPUSH", logo: "/assets/uploads/logo-octopush.webp" },
+    { name: "AG2R LA MONDIALE", logo: "/assets/uploads/logo-ag2r-la-mondiale.webp" },
+    { name: "CRÉDIT DU NORD", logo: "/assets/uploads/logo-credit-du-nord.webp" },
+    { name: "CUURE", logo: "/assets/uploads/logo-cuure.webp" },
+    { name: "YVES ROCHER", logo: "/assets/uploads/logo-yves-rocher-mark.webp" },
+    { name: "DISNEY", logo: "/assets/uploads/logo-disney.webp" },
     { name: "ARRAGO", logo: "/assets/uploads/logo-arrago.webp" },
     { name: "SPIDEO" },
     { name: "LE PETIT FUMEUR", logo: "/assets/uploads/logo-le-petit-fumeur.webp" },
     { name: "JULIETTE HAS A GUN", logo: "/assets/uploads/logo-juliette-has-a-gun.webp" },
     { name: "CARGO SCHOOL", logo: "/assets/uploads/logo-cargo-school.webp" },
-    { name: "DISNEY", logo: "/assets/uploads/logo-disney.webp" },
     { name: "DYNVEO", logo: "/assets/uploads/logo-dynveo.webp" },
     { name: "KALENT", logo: "/assets/uploads/logo-kalent.webp" },
-    { name: "CRÉDIT DU NORD", logo: "/assets/uploads/logo-credit-du-nord.webp" },
-    { name: "OCTOPUSH", logo: "/assets/uploads/logo-octopush.webp" },
-    { name: "RIVIERA CLUB", logo: "/assets/uploads/logo-riviera-club.webp" },
-    { name: "AG2R LA MONDIALE", logo: "/assets/uploads/logo-ag2r-la-mondiale.webp" }
+    { name: "RIVIERA CLUB", logo: "/assets/uploads/logo-riviera-club.webp" }
   ];
   var track = document.getElementById('marquee-track');
   var doubled = clients.concat(clients);
