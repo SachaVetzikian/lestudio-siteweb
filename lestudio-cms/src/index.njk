@@ -42,13 +42,12 @@ permalink: /index.html
 
   header.nav{
     position:sticky; top:0; z-index:100;
-    background:transparent;
-    border-bottom:1px solid transparent;
-    transition:background .3s ease, box-shadow .3s ease, border-color .3s ease;
+    background:rgba(244,244,245,0.75); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    transition:background .3s ease, box-shadow .3s ease;
   }
   header.nav.scrolled{
     background:rgba(244,244,245,0.94);
-    border-bottom-color:var(--line);
     box-shadow:0 6px 24px -12px rgba(20,18,31,0.2);
   }
   .nav-inner{width:100%; box-sizing:border-box; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;}
@@ -70,10 +69,8 @@ permalink: /index.html
 
   .hero{position:relative; overflow:hidden; padding:64px 0 60px; text-align:center;}
   .blob{position:absolute; border-radius:50%; filter:blur(80px); opacity:0.3; pointer-events:none;}
+  .blob-1{width:480px; height:480px; background:radial-gradient(circle, var(--orange), transparent 70%); top:-180px; left:-100px; opacity:0.35;}
   .blob-2{width:340px; height:340px; background:radial-gradient(circle, #ffffff, transparent 70%); top:40px; right:-100px; opacity:0.6;}
-  .hero-bg-video{position:absolute; top:0; left:0; z-index:0; width:100%; height:100vh; height:100dvh; object-fit:cover; opacity:0.85; filter:blur(10px) saturate(1.2); transform:scale(1.03); pointer-events:none;}
-  .hero-bg-fade{position:absolute; top:0; left:0; z-index:0; width:100%; height:100vh; height:100dvh; background:linear-gradient(180deg, transparent 0%, transparent 40%, var(--paper) 82%); pointer-events:none;}
-  @media (prefers-reduced-motion: reduce){ .hero-bg-video{display:none;} }
 
   .badge{
     display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:0.04em; text-transform:uppercase;
@@ -246,9 +243,10 @@ permalink: /index.html
 
   /* Cas clients */
   .case-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-bottom:36px;}
-  @media (max-width:640px){ .case-grid{grid-template-columns:1fr;} }
+  @media (max-width:640px){ .case-grid{grid-template-columns:1fr; gap:48px;} }
   .case-card{display:block;}
   .case-preview{position:relative; border-radius:36px; overflow:hidden; aspect-ratio:1/1; background:var(--slate); margin-bottom:16px;}
+  @media (max-width:640px){ .case-preview{aspect-ratio:3/4; border-radius:28px;} }
   .case-preview img{transition:transform .5s cubic-bezier(.16,1,.3,1);}
   .case-preview video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .3s ease, transform .5s cubic-bezier(.16,1,.3,1);}
   .case-preview.hovering video{opacity:1;}
@@ -256,9 +254,12 @@ permalink: /index.html
   .case-tags{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;}
   .case-tag{font-size:11.5px; padding:5px 12px; border-radius:12px; background:var(--surface,#fff); border:1px solid var(--line); color:var(--ink);}
   .case-card h3{font-family:'DM Sans',sans-serif; font-weight:600; font-size:19px; margin-bottom:8px;}
+  @media (max-width:640px){ .case-card h3{font-size:24px;} }
   .case-card p{color:var(--grey); font-size:14px; line-height:1.6; margin-bottom:12px;}
-  .case-link{font-size:14px; color:var(--orange); text-decoration:none; border-bottom:1px solid transparent;}
-  .case-card:hover .case-link{border-bottom-color:var(--orange);}
+  @media (max-width:640px){ .case-card p{font-size:15.5px;} }
+  .case-link{font-size:14px; font-weight:500; color:var(--ink); text-decoration:none; display:inline-flex; align-items:center; gap:10px;}
+  .case-link-icon{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:9px; background:var(--orange); color:#fff; font-size:14px; flex-shrink:0; transition:transform .2s ease;}
+  .case-card:hover .case-link-icon{transform:translateX(3px);}
   .case-more{text-align:center;}
 
   /* Compare table */
@@ -430,11 +431,6 @@ permalink: /index.html
 </script>
 </head>
 <body>
-<video class="hero-bg-video" autoplay muted loop playsinline aria-hidden="true">
-<source src="/assets/uploads/hero-gradient-bg.webm" type="video/webm"/>
-<source src="/assets/uploads/hero-gradient-bg.mp4" type="video/mp4"/>
-</video>
-<div class="hero-bg-fade"></div>
 <header class="nav">
 <div class="nav-inner">
 <a class="logo" href="/" aria-label="LeStudio" style="display:flex; align-items:center;">
@@ -463,11 +459,12 @@ permalink: /index.html
 <a class="mobile-menu-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Réserver un appel ›</a>
 </nav>
 <section class="hero">
+<div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="wrap">
 <span class="badge">Agence de design UX/UI &amp; CRO</span>
-<h1>Votre site doit <em>convertir</em>, pas juste présenter votre service.</h1>
-<p class="lede">Audit, refonte UX/UI, CRO, design system : on réduit les frictions de conversion par la stratégie et le design.</p>
+<h1>Le studio de design spécialisé en site web <em>business-driven</em>.</h1>
+<p class="lede">Audit CRO, refonte UX/UI, design system : on réduit les frictions de conversion par la stratégie et le design.</p>
 <div class="cta-row">
 <a class="btn-primary shiny" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha ›</span></a>
 </div>
@@ -994,7 +991,7 @@ padding: 16px<br>radius: 8px
         '<div class="case-tags"><span class="case-tag">' + c.tag1 + '</span><span class="case-tag">' + c.tag2 + '</span></div>' +
         '<h3>' + c.name + '</h3>' +
         '<p>' + c.desc + '</p>' +
-        '<span class="case-link">→ Voir le projet</span>' +
+        '<span class="case-link"><span class="case-link-icon">→</span> Voir le projet</span>' +
       '</a>';
     }).join('');
 
