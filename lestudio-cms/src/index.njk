@@ -152,6 +152,7 @@ permalink: /index.html
   .marquee-item{display:flex; align-items:center; padding:0 42px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:18px; color:var(--grey); white-space:nowrap; opacity:0.7;}
   .marquee-item img{height:calc(34px * var(--logo-scale,1)); width:auto; filter:grayscale(1); opacity:0.8;}
   @media (max-width:640px){ .marquee-item{padding:0 28px;} .marquee-item img{height:calc(26px * var(--logo-scale,1));} }
+  @media (max-width:640px){ .testimonial-wrap{padding-left:0; padding-right:0;} }
   @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
 
   section{padding:80px 0;}
@@ -783,7 +784,7 @@ padding: 16px<br>radius: 8px
 <div class="wrap section-head">
 <h2>Ils en parlent mieux que nous.</h2>
 </div>
-<div class="wrap">
+<div class="wrap testimonial-wrap">
 <div id="testimonial-slider-root"></div>
 <noscript>Activez JavaScript pour voir le carrousel de témoignages.</noscript>
 </div>
