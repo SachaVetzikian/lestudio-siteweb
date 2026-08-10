@@ -145,13 +145,13 @@ permalink: /index.html
 
   .eyebrow{font-size:12px; text-transform:uppercase; letter-spacing:0.04em; color:var(--grey);}
 
-  .marquee-wrap{overflow:hidden; padding:36px 0; border-top:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+  .marquee-wrap{overflow:hidden; padding:24px 0; border-top:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
   .marquee-track{display:flex; width:max-content; animation:scroll-left 26s linear infinite;}
   .marquee-wrap:hover .marquee-track{animation-play-state:paused;}
   @media (prefers-reduced-motion: reduce){ .marquee-track{animation:none;} }
   .marquee-item{display:flex; align-items:center; padding:0 42px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:18px; color:var(--grey); white-space:nowrap; opacity:0.7;}
-  .marquee-item img{height:34px; width:auto; filter:grayscale(1); opacity:0.8;}
-  @media (max-width:640px){ .marquee-item{padding:0 28px;} .marquee-item img{height:26px;} }
+  .marquee-item img{height:calc(34px * var(--logo-scale,1)); width:auto; filter:grayscale(1); opacity:0.8;}
+  @media (max-width:640px){ .marquee-item{padding:0 28px;} .marquee-item img{height:calc(26px * var(--logo-scale,1));} }
   @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
 
   section{padding:80px 0;}
@@ -486,7 +486,7 @@ permalink: /index.html
 <a href="mailto:{{ settings.email }}">Contactez-nous</a>
 </nav>
 <div style="display:flex; align-items:center; gap:12px;">
-<a class="nav-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="nav-cta-full">Réserver un appel ›</span><span class="nav-cta-short">Réserver un appel ›</span></a>
+<a class="nav-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="nav-cta-full">Réserver un appel</span><span class="nav-cta-short">Réserver un appel</span></a>
 <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
 <span></span><span></span>
 </button>
@@ -531,7 +531,7 @@ Diagnostic offert
 <h1>Le studio de design spécialisé en site web <em id="hero-flip-root">business-driven</em>.</h1>
 <p class="lede">Audit CRO, refonte UX/UI, design system : on réduit les frictions de conversion par la stratégie et le design.</p>
 <div class="cta-row">
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha ›</span></a>
+<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha</span></a>
 </div>
 <a class="trust trust-dark" href="https://fr.trustpilot.com/review/lestudiodesign.fr" target="_blank" rel="noopener">
 <div class="stack">
@@ -543,7 +543,7 @@ Diagnostic offert
 </div>
 <div style="text-align:left;">
 <div class="trust-stars" aria-hidden="true">★★★★★</div>
-<div class="count-sub">20 <span style="text-decoration:underline;">avis clients</span> ›</div>
+<div class="count-sub">20 <span style="text-decoration:underline;">avis clients</span></div>
 </div>
 </a>
 </div>
@@ -568,17 +568,17 @@ Diagnostic offert
 </div>
 <div class="wrap case-wrap">
 <div class="case-grid" id="caseGrid"></div>
-<div class="case-more"><a href="/cas-clients/" class="btn-secondary">Voir tous les cas clients ›</a></div>
+<div class="case-more"><a href="/cas-clients/" class="btn-secondary" style="background:var(--ink);color:#fff;border-color:var(--ink);border-radius:999px;">Voir tous les cas clients</a></div>
 </div>
 </section>
 <div class="section-break"><span class="mark left"></span><span class="mark right"></span></div>
 <div class="wrap" style="text-align:center; padding:0 24px 40px;">
-<p style="font-family:'DM Sans',sans-serif; font-weight:500; font-size:20px;">Vous vous reconnaissez ? <em style="font-style:normal; font-weight:600; color:var(--orange);">Alors la suite est pour vous.</em></p>
+<p style="font-family:'DM Sans',sans-serif; font-weight:500; font-size:20px; text-align:center; max-width:640px; margin:0 auto;">Vous vous reconnaissez ? <em style="font-style:normal; font-weight:600; color:var(--orange);">Alors la suite est pour vous.</em></p>
 </div>
 <div class="section-break"><span class="mark left"></span><span class="mark right"></span></div>
 <section id="methode">
 <div class="wrap section-head">
-<h2>Un parcours clair, du premier appel à la mise en ligne.</h2>
+<h2>Les 4 étapes d'un design qui convertit</h2>
 </div>
 <div class="wrap">
 <div class="scroll-method">
@@ -594,7 +594,7 @@ Diagnostic offert
 <span class="step-duration">1 semaine</span>
 <h3>Audit UX/CRO</h3>
 <p>On identifie ce qui bloque vraiment la conversion, en croisant data et audit terrain, avec un benchmark de vos concurrents directs.</p>
-<div class="deliverable">Livrables : rapport d'audit avec quick wins</div>
+<div class="deliverable">Ce que l'on vous livre : rapport d'audit avec quick wins</div>
 <div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
@@ -622,7 +622,7 @@ Diagnostic offert
 <span class="step-duration">1 semaine</span>
 <h3>Architecture et wireframes</h3>
 <p>On pose la structure et les parcours avant de dessiner le moindre pixel.</p>
-<div class="deliverable">On construit : wireframes validés</div>
+<div class="deliverable">Ce que l'on vous livre : wireframes validés</div>
 <div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
@@ -655,7 +655,7 @@ Diagnostic offert
 <span class="step-duration">1 à 2 semaines</span>
 <h3>UI design</h3>
 <p>Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire.</p>
-<div class="deliverable">Vous obtenez : maquettes Figma haute fidélité</div>
+<div class="deliverable">Ce que l'on vous livre : maquettes Figma haute fidélité</div>
 <div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
@@ -686,7 +686,7 @@ Diagnostic offert
 <span class="step-duration">Quelques jours</span>
 <h3>Handoff design</h3>
 <p>Specs et composants documentés, prêts pour votre développeur ou votre agence.</p>
-<div class="deliverable">On vous livre : dossier de handoff complet</div>
+<div class="deliverable">Ce que l'on vous livre : dossier de handoff complet</div>
 <div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
@@ -759,7 +759,7 @@ padding: 16px<br>radius: 8px
 <div><div class="offer-stat-num">+100</div><div class="offer-stat-label">Projets de refonte livrés</div></div>
 <div><div class="offer-stat-num">{{ svc.data.delai }}</div><div class="offer-stat-label">{% if svc.data.tab_id == "tab-abo" %}Engagement{% else %}Temps de livraison{% endif %}</div></div>
 <div class="price" style="color:rgba(244,244,245,0.85); margin:4px 0 0;">{{ svc.data.price }}</div>
-<a class="btn-secondary" href="/offres/{{ svc.fileSlug }}/" style="color:#fff;"><span>Découvrir l'offre ›</span></a>
+<a class="btn-secondary" href="/offres/{{ svc.fileSlug }}/" style="color:#fff;"><span>Découvrir l'offre</span></a>
 </div>
 </div>
 {% endfor %}
@@ -832,7 +832,7 @@ padding: 16px<br>radius: 8px
 <h2>Prêt à arrêter de perdre des clients sur votre propre site ?</h2>
 <p>30 minutes, gratuit. On regarde ensemble ce qui bloque la conversion.</p>
 <div style="display:flex; align-items:center; justify-content:center;">
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha ›</span></a>
+<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha</span></a>
 </div>
 </div>
 </section>
@@ -858,7 +858,7 @@ padding: 16px<br>radius: 8px
 <path d="M351.629 11.8177C350.226 8.59289 347.725 5.85313 344.035 3.88024V7.99643C341.618 4.91584 337.863 2.53657 332.647 1.20602C331.179 0.825861 329.594 0.530911 327.898 0.334277C326.073 0.111426 324.117 0 322.019 0C319.921 0 317.998 0.111426 316.185 0.327723C314.47 0.530911 312.879 0.825861 311.398 1.20602C304.213 3.05437 299.795 6.89528 297.846 11.8177C297.067 13.8037 296.684 15.9666 296.684 18.241V20.1353C296.684 21.8984 296.911 23.5895 297.385 25.1822C298.912 30.4323 303.024 34.6337 310.027 36.7901C311.872 37.3669 313.925 37.793 316.185 38.0617C317.998 38.278 319.94 38.3894 322.019 38.3894C324.098 38.3894 326.073 38.278 327.898 38.0552C330.152 37.7864 332.199 37.3604 334.044 36.7901C338.539 35.4072 341.839 33.1852 344.035 30.393V35.4661C348.595 33.0344 351.337 29.436 352.441 25.1822C352.818 23.7337 353 22.2065 353 20.6203V18.7261C353 16.2616 352.552 13.9348 351.629 11.8177ZM322.019 14.4526C326.021 14.4526 327.898 16.3468 327.898 18.9948V19.3881C327.898 22.0361 326.021 23.9303 322.019 23.9303C318.017 23.9303 316.185 22.0361 316.185 19.3881V18.9948C316.185 16.3468 318.011 14.4526 322.019 14.4526Z" fill="var(--paper)"></path>
 </svg></span>
 <p class="footer-desc">Studio UX/UI spécialisé e-commerce et sites vitrines. On conçoit des interfaces qui donnent envie d'acheter.</p>
-<a href="https://www.linkedin.com/in/sacha-vetzikian/" rel="noopener" target="_blank" style="display:inline-block; margin-top:16px; font-size:14px; color:rgba(244,244,245,.85);">LinkedIn ›</a>
+<a href="https://www.linkedin.com/in/sacha-vetzikian/" rel="noopener" target="_blank" style="display:inline-block; margin-top:16px; font-size:14px; color:rgba(244,244,245,.85);">LinkedIn</a>
 </div>
 <div class="footer-links">
 <div class="footer-col">
@@ -969,25 +969,26 @@ padding: 16px<br>radius: 8px
   var clients = [
     { name: "TRIUMVIRAT", logo: "/assets/uploads/logo-triumvirat.webp" },
     { name: "JABERSON", logo: "/assets/uploads/logo-jaberson.webp" },
-    { name: "OCTOPUSH", logo: "/assets/uploads/logo-octopush.webp" },
+    { name: "OCTOPUSH", logo: "/assets/uploads/logo-octopush.webp", scale: 1.2 },
     { name: "AG2R LA MONDIALE", logo: "/assets/uploads/logo-ag2r-la-mondiale.webp" },
     { name: "CRÉDIT DU NORD", logo: "/assets/uploads/logo-credit-du-nord.webp" },
-    { name: "CUURE", logo: "/assets/uploads/logo-cuure.webp" },
+    { name: "CUURE", logo: "/assets/uploads/logo-cuure.webp", scale: 0.8 },
     { name: "YVES ROCHER", logo: "/assets/uploads/logo-yves-rocher-mark.webp" },
     { name: "DISNEY", logo: "/assets/uploads/logo-disney.webp" },
-    { name: "ARRAGO", logo: "/assets/uploads/logo-arrago.webp" },
+    { name: "ARRAGO", logo: "/assets/uploads/logo-arrago.webp", scale: 1.25 },
     { name: "LE PETIT FUMEUR", logo: "/assets/uploads/logo-le-petit-fumeur.webp" },
-    { name: "JULIETTE HAS A GUN", logo: "/assets/uploads/logo-juliette-has-a-gun.webp" },
+    { name: "JULIETTE HAS A GUN", logo: "/assets/uploads/logo-juliette-has-a-gun.webp", scale: 0.8 },
     { name: "CARGO SCHOOL", logo: "/assets/uploads/logo-cargo-school.webp" },
-    { name: "DYNVEO", logo: "/assets/uploads/logo-dynveo.webp" },
-    { name: "KALENT", logo: "/assets/uploads/logo-kalent.webp" },
+    { name: "DYNVEO", logo: "/assets/uploads/logo-dynveo.webp", scale: 0.92 },
+    { name: "KALENT", logo: "/assets/uploads/logo-kalent.webp", scale: 0.92 },
     { name: "RIVIERA CLUB", logo: "/assets/uploads/logo-riviera-club.webp" }
   ];
   var track = document.getElementById('marquee-track');
   var doubled = clients.concat(clients);
   track.innerHTML = doubled.map(function(c){
+    var styleAttr = c.scale ? ' style="--logo-scale:' + c.scale + '"' : '';
     return c.logo
-      ? '<span class="marquee-item"><img src="' + c.logo + '" alt="' + c.name + '" loading="lazy"></span>'
+      ? '<span class="marquee-item"' + styleAttr + '><img src="' + c.logo + '" alt="' + c.name + '" loading="lazy"></span>'
       : '<span class="marquee-item">' + c.name + '</span>';
   }).join('');
 </script>
