@@ -5,7 +5,9 @@ seo_title: "Agence UX UI Design - Le Studio"
 seo_description: "Agence UX/UI design spécialisée e-commerce et sites vitrines : audit, refonte, création et design par abonnement. Un interlocuteur unique, du diagnostic à la livraison."
 title: "Agence UX/UI Design"
 ---
-<h1>Agence UX/UI Design : des interfaces pensées pour <em>convertir</em></h1>
+{% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Agence UX/UI Design"} ] %}
+{% include "partials/breadcrumb.njk" %}
+<h1 style="margin-top:16px;">Agence UX/UI Design : des interfaces pensées pour <em>convertir</em></h1>
 <p class="lede">Le Studio est une agence de design UX/UI spécialisée e-commerce et sites vitrines. On ne se contente pas de faire joli : chaque décision de design se justifie par une donnée, un comportement observé ou un objectif de conversion.</p>
 
 <a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min" style="margin-bottom:64px;"><span>Prendre rendez-vous avec Sacha</span></a>

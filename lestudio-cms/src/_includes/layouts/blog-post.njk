@@ -5,7 +5,8 @@ layout: layouts/base.njk
 {% set minutes = content | readingTime %}
 {% set shareUrl = "https://www.lestudiodesign.fr" + page.url %}
 {% set sharePrompt = "Résume cet article : " + shareUrl %}
-<p style="margin-top:80px;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);"><a href="/blog/">← Tous les articles</a></p>
+{% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Blog", url:"/blog/"}, {name: title} ] %}
+{% include "partials/breadcrumb.njk" %}
 
 <p style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--grey);margin-top:16px;">
 <span style="color:var(--orange);font-weight:500;">{{ category or "Stratégie" }}</span>

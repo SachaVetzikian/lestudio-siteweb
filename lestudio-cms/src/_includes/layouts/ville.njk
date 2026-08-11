@@ -1,7 +1,9 @@
 ---
 layout: layouts/base.njk
 ---
-<h1>{{ h1 }}</h1>
+{% set crumbs = [ {name:"Accueil", url:"/"}, {name: h1} ] %}
+{% include "partials/breadcrumb.njk" %}
+<h1 style="margin-top:16px;">{{ h1 }}</h1>
 <p class="lede">{{ intro }}</p>
 
 {% if points %}

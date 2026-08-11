@@ -1,7 +1,8 @@
 ---
 layout: layouts/base.njk
 ---
-<p style="margin-top:80px;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);"><a href="/#offres">← Toutes les offres</a></p>
+{% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Offres", url:"/#offres"}, {name: title} ] %}
+{% include "partials/breadcrumb.njk" %}
 <h1 style="margin-top:16px;">{{ h1 or title }}</h1>
 <p class="lede">{{ accroche or description }}</p>
 <p style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;margin-bottom:8px;">{{ price }}</p>

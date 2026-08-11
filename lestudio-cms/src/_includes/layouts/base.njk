@@ -15,11 +15,11 @@
 <meta property="og:title" content="{{ (seo_title or title) | safe }}"/>
 <meta property="og:description" content="{{ (seo_description or description) | safe }}"/>
 <meta property="og:url" content="https://www.lestudiodesign.fr{{ page.url }}"/>
-<meta property="og:image" content="https://www.lestudiodesign.fr{{ seo_image or '/static/og-image.jpg' }}"/>
+<meta property="og:image" content="https://www.lestudiodesign.fr{{ seo_image or cover or '/static/og-image.jpg' }}"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="{{ (seo_title or title) | safe }}"/>
 <meta name="twitter:description" content="{{ (seo_description or description) | safe }}"/>
-<meta name="twitter:image" content="https://www.lestudiodesign.fr{{ seo_image or '/static/og-image.jpg' }}"/>
+<meta name="twitter:image" content="https://www.lestudiodesign.fr{{ seo_image or cover or '/static/og-image.jpg' }}"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>

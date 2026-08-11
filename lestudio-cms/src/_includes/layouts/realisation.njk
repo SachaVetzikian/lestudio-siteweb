@@ -1,7 +1,8 @@
 ---
 layout: layouts/base.njk
 ---
-<p style="margin-top:80px;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);"><a href="/cas-clients/">← Tous les cas clients</a></p>
+{% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Cas clients", url:"/cas-clients/"}, {name: client} ] %}
+{% include "partials/breadcrumb.njk" %}
 <h1 style="margin-top:16px;">{{ title }}</h1>
 {% if probleme %}<p class="lede" style="margin-bottom:12px;">{{ probleme }}</p>{% endif %}
 {% if mission %}<p class="lede">{{ mission }}</p>{% elif not probleme %}<p class="lede">{{ description }}</p>{% endif %}
@@ -103,5 +104,16 @@ layout: layouts/base.njk
 </section>
 
 <a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span>Discuter d'un projet similaire</span></a>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org","@type":"BreadcrumbList",
+ "itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.lestudiodesign.fr/"},
+  {"@type":"ListItem","position":2,"name":"Cas clients","item":"https://www.lestudiodesign.fr/cas-clients/"},
+  {"@type":"ListItem","position":3,"name":{{ client | dump | safe }},"item":"https://www.lestudiodesign.fr{{ page.url }}"}
+ ]
+}
+</script>
 
 <style>@media (max-width:800px){ .case-overview{grid-template-columns:1fr !important;} }</style>

@@ -3,11 +3,15 @@ layout: layouts/base.njk
 permalink: /a-propos/
 seo_title: À propos · Sacha Vetzikian, fondateur de LeStudio
 seo_description: 8 ans à concevoir des parcours d'achat qui convertissent, entre startups e-commerce et cabinet de conseil. Découvrez l'histoire et la méthode de LeStudio.
+seo_image: /sacha-avatar.webp
 ---
-<h1>Le moment où un <em>inconnu</em> devient un client.</h1>
+{% set crumbs = [ {name:"Accueil", url:"/"}, {name:"À propos"} ] %}
+{% include "partials/breadcrumb.njk" %}
+<h1 style="margin-top:16px;">Le moment où un <em>inconnu</em> devient un client.</h1>
 <p class="lede">C'est ce moment précis qui m'a accroché dès le début. Et comment le design et la psychologie peuvent tout changer dans ce parcours.</p>
 
 <div class="card" style="background:var(--slate);border:none;margin-bottom:64px;">
+<img src="/sacha-avatar.webp" alt="Sacha Vetzikian, fondateur de LeStudio" width="88" height="88" style="width:88px;height:88px;border-radius:50%;object-fit:cover;margin-bottom:20px;"/>
 <p style="font-family:'DM Sans',sans-serif;font-size:20px;line-height:1.6;color:#fff;font-weight:500;">« Ce qui m'a accroché dès le début, c'est ce moment précis où un inconnu devient un client. Et comment le design et la psychologie peuvent tout changer dans ce parcours. »</p>
 <p style="margin-top:16px;font-size:14px;color:rgba(244,244,245,0.7);">— Sacha Vetzikian, fondateur de LeStudio</p>
 </div>
