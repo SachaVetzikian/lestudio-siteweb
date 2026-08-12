@@ -1,5 +1,5 @@
 {% if crumbs %}
 <nav aria-label="Fil d'Ariane" style="margin-top:80px;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);">
-{% for c in crumbs %}{% if not loop.last %}<a href="{{ c.url }}">{{ c.name }}</a><span style="margin:0 6px;color:var(--line);">/</span>{% else %}<span aria-current="page">{{ c.name }}</span>{% endif %}{% endfor %}
+{% for c in crumbs %}{% if not loop.last %}<a href="{{ c.url }}">{{ c.name }}</a><span style="margin:0 6px;color:var(--line);">&rsaquo;</span>{% else %}<span aria-current="page">{{ c.name }}</span>{% endif %}{% endfor %}
 </nav>
 {% endif %}
