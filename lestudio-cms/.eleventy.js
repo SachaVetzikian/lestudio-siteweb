@@ -60,6 +60,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/static");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/sacha-avatar.webp");
+  eleventyConfig.addPassthroughCopy("src/google9a8a2c2d569b707e.html");
 
   // Collections
   eleventyConfig.addCollection("services", (c) =>
