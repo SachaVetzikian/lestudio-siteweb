@@ -90,12 +90,22 @@ footer{border-top:1px solid var(--line);padding:40px 0;margin-top:40px;font-size
 .burger.open span:first-child{transform:translateY(3.75px) rotate(45deg);}
 .burger.open span:last-child{transform:translateY(-3.75px) rotate(-45deg);}
 @media (max-width:860px){.burger{display:flex;}}
-header.nav.menu-open{background:var(--ink) !important;border-bottom-color:transparent;box-shadow:none;}
-header.nav.menu-open .logo{color:#fff;}
-header.nav.menu-open .burger span{background:#fff;}
 header.nav.menu-open .nav-cta{display:none;}
-.mobile-menu{display:none;position:fixed;inset:0;z-index:90;background:var(--ink);flex-direction:column;justify-content:center;padding:96px 28px 40px;overflow-y:auto;}
-.mobile-menu.open{display:flex;}
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:91;
+  align-items:flex-end;justify-content:center;
+  background:rgba(9,9,11,0.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  opacity:0;transition:opacity .35s ease;
+}
+.mobile-menu.open{display:flex;opacity:1;}
+.mobile-menu-sheet{
+  width:100%;height:70%;background:var(--ink);border-radius:24px 24px 0 0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:40px 28px calc(40px + env(safe-area-inset-bottom));overflow-y:auto;
+  transform:translateY(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);
+}
+.mobile-menu.open .mobile-menu-sheet{transform:translateY(0);}
+@media (prefers-reduced-motion: reduce){.mobile-menu, .mobile-menu-sheet{transition:none;}}
 .mobile-menu-inner{display:flex;flex-direction:column;align-items:stretch;gap:2px;margin:auto 0;}
 .mobile-menu-item{width:100%;}
 .mobile-menu-link,.mobile-menu-toggle{
@@ -246,6 +256,7 @@ footer a:hover{color:var(--orange);}
 </div>
 </div></header>
 <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+<div class="mobile-menu-sheet">
 <div class="mobile-menu-inner">
 <div class="mobile-menu-item">
 <button class="mobile-menu-toggle" type="button" aria-expanded="false">Services
@@ -274,6 +285,7 @@ footer a:hover{color:var(--orange);}
 <span class="mobile-menu-cta-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
 Diagnostic offert
 </a>
+</div>
 </div>
 </nav>
 <main class="wrap">
