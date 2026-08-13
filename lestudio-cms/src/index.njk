@@ -76,12 +76,12 @@ permalink: /index.html
     font-size:13.5px; font-weight:400; background:var(--ink); color:#fff;
     padding:11px 20px; border-radius:100px;
   }
-  .nav-cta .nav-cta-short{display:none;}
+  .nav-cta .nav-cta-short{display:none !important;}
   @media (max-width:480px){
     .logo svg{width:100px; height:auto;}
     .nav-cta{padding:9px 14px;}
-    .nav-cta .nav-cta-full{display:none;}
-    .nav-cta .nav-cta-short{display:inline-flex;}
+    .nav-cta .nav-cta-full{display:none !important;}
+    .nav-cta .nav-cta-short{display:inline-flex !important;}
   }
 
   .hero{position:relative; overflow:hidden; padding:64px 0 60px; text-align:center;}
@@ -104,11 +104,6 @@ permalink: /index.html
   .lede{font-size:15.5px; line-height:1.3; color:var(--ink); max-width:520px; margin:0 auto 28px; position:relative;}
 
   .cta-row{display:flex; align-items:center; justify-content:center; margin-bottom:20px; position:relative;}
-  .avatar{
-    width:50px; height:50px; border-radius:50%; object-fit:cover; display:block;
-    border:3px solid var(--orange); margin-right:-18px; z-index:2;
-  }
-  .avatar-inline{border:2px solid #fff; margin-right:0; flex-shrink:0;}
   .btn-primary{
     color:#fff; background:var(--ink);
     font-family:'DM Sans',sans-serif; font-size:15px; font-weight:400;
@@ -117,7 +112,6 @@ permalink: /index.html
   }
   @media (max-width:480px){
     .btn-primary{font-size:13.5px; padding:9px 18px 9px 8px; gap:8px; white-space:normal;}
-    .btn-primary .avatar-inline{width:32px; height:32px;}
   }
 
   .meta{font-size:13px; color:var(--grey); margin-bottom:36px; position:relative;}
@@ -318,8 +312,6 @@ permalink: /index.html
   .final-cta{background:var(--slate); color:var(--paper); text-align:center; padding:96px 0;}
   .final-cta h2{color:var(--paper); margin:0 auto 16px;}
   .final-cta p{color:rgba(244,244,245,0.7); max-width:440px; margin:0 auto 36px;}
-  .final-cta .shiny{--shiny-fill:var(--orange);}
-  .final-cta .btn-primary{color:#fff; background:var(--orange);}
 
   /* Footer — cinématique : fond encre, grille, halo, wordmark géant, marquee */
   footer{position:relative; overflow:hidden; background:var(--ink); color:var(--paper); padding:72px 0 32px; margin-top:40px;}
@@ -403,36 +395,34 @@ permalink: /index.html
   .btn-outline::before, .btn-outline::after{display:none !important;}
   .btn-outline{animation:none !important;}
 
-  /* ── Shiny CTA : bordure animée en dégradé conique, appliquée aux actions principales ── */
-  @property --gradient-angle{syntax:'<angle>';initial-value:0deg;inherits:false;}
-  @property --gradient-angle-offset{syntax:'<angle>';initial-value:0deg;inherits:false;}
-  @property --gradient-percent{syntax:'<percentage>';initial-value:5%;inherits:false;}
-  @property --gradient-shine{syntax:'<color>';initial-value:#ff9955;inherits:false;}
-  .shiny{--shiny-fill:var(--ink); position:relative; overflow:hidden; isolation:isolate; outline-offset:4px; border:1px solid transparent;
-    background:linear-gradient(var(--shiny-fill),var(--shiny-fill)) padding-box,
-      conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)),transparent,var(--orange) var(--gradient-percent),var(--gradient-shine) calc(var(--gradient-percent) * 2),var(--orange) calc(var(--gradient-percent) * 3),transparent calc(var(--gradient-percent) * 4)) border-box;
-    box-shadow:inset 0 0 0 1px var(--slate); transition:800ms cubic-bezier(.25,1,.5,1); transition-property:--gradient-angle-offset,--gradient-percent,--gradient-shine;
-    animation:shiny-angle 3s linear infinite, shiny-angle 7.5s linear infinite reverse paused; animation-composition:add;}
-  .shiny::before, .shiny::after{content:''; pointer-events:none; position:absolute; inset-inline-start:50%; inset-block-start:50%; translate:-50% -50%; z-index:0;}
-  .shiny::before{--dot:2px; --space:calc(var(--dot) * 2); width:calc(100% - 6px); height:calc(100% - 6px);
-    background:radial-gradient(circle at var(--dot) var(--dot),rgba(255,255,255,.5) calc(var(--dot)/4),transparent 0) padding-box;
-    background-size:var(--space) var(--space); background-repeat:space;
-    mask-image:conic-gradient(from calc(var(--gradient-angle) + 45deg),black,transparent 10% 90%,black); border-radius:inherit; opacity:.35;
-    animation:shiny-angle 3s linear infinite, shiny-angle 7.5s linear infinite reverse paused; animation-composition:add;}
-  .shiny::after{width:100%; aspect-ratio:1; background:linear-gradient(-50deg,transparent,var(--orange),transparent);
-    mask-image:radial-gradient(circle at bottom,transparent 40%,black); opacity:.5;
-    animation:shiny-shimmer 3s linear infinite, shiny-shimmer 7.5s linear infinite reverse paused; animation-composition:add;}
-  .shiny span{position:relative; z-index:1; display:inline-flex; align-items:center; gap:6px;}
-  .shiny span::before{content:''; pointer-events:none; position:absolute; inset-inline-start:50%; inset-block-start:50%; translate:-50% -50%;
-    width:calc(100% + 1rem); height:calc(100% + 1rem); box-shadow:inset 0 -1ex 2rem 4px var(--orange); opacity:0;
-    transition:opacity 800ms cubic-bezier(.25,1,.5,1); animation:shiny-breathe 4.5s linear infinite;}
-  .shiny:is(:hover,:focus-visible){--gradient-percent:20%; --gradient-angle-offset:95deg; --gradient-shine:#ffb380;}
-  .shiny:is(:hover,:focus-visible) span::before{opacity:1;}
-  .cta-sparkle{width:15px; height:15px; flex-shrink:0; filter:drop-shadow(0 0 3px currentColor); animation:shiny-breathe 4.5s linear infinite;}
-  @keyframes shiny-angle{to{--gradient-angle:360deg;}}
-  @keyframes shiny-shimmer{to{rotate:360deg;}}
-  @keyframes shiny-breathe{from,to{scale:1;} 50%{scale:1.2;}}
-  @media (prefers-reduced-motion: reduce){.shiny,.shiny::before,.shiny::after{animation:none;} .cta-sparkle{animation:none;}}
+  /* ── Anti-metal CTA : pill sombre, accent orange qui se déploie au survol ── */
+  .btn-anti{
+    position:relative !important; display:inline-flex !important; align-items:center !important;
+    justify-content:flex-start !important; align-self:flex-start !important;
+    width:max-content !important; max-width:100% !important; flex:none !important;
+    overflow:hidden; isolation:isolate; cursor:pointer;
+    height:44px !important; padding:0 18px 0 48px !important; border-radius:12px !important; border:none !important;
+    background:var(--ink) !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 4px 12px rgba(0,0,0,.18);
+    transition:transform .15s ease;
+  }
+  .btn-anti:active{transform:scale(0.98);}
+  .btn-anti .anti-label{
+    position:relative; z-index:1; display:block; color:#fff !important; font-size:14px; font-weight:500;
+    letter-spacing:-0.01em; white-space:nowrap; font-family:'DM Sans',sans-serif;
+  }
+  .btn-anti .anti-accent{
+    position:absolute; left:4px; top:4px; bottom:4px; z-index:10;
+    display:flex; align-items:center; gap:6px; width:36px; padding-left:10px;
+    border-radius:8px; overflow:hidden; color:var(--ink);
+    background:linear-gradient(180deg,var(--orange-light) 0%,var(--orange) 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4), inset 0 -2px 4px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.08);
+    transition:width .2s cubic-bezier(.65,0,.35,1);
+  }
+  .btn-anti:is(:hover, :focus-visible) .anti-accent{width:calc(100% - 8px);}
+  .anti-dot{transform-box:fill-box; transform-origin:center; animation:anti-dot-wave 1.4s ease-in-out infinite;}
+  @keyframes anti-dot-wave{0%, 70%, 100%{opacity:.25; transform:scale(.85);} 35%{opacity:1; transform:scale(1);}}
+  @media (prefers-reduced-motion: reduce){.anti-dot{animation:none; opacity:1;} .btn-anti .anti-accent{transition:none;}}
 </style>
 <script type="application/ld+json">
 {
@@ -486,7 +476,7 @@ permalink: /index.html
 <a href="mailto:{{ settings.email }}">Contactez-nous</a>
 </nav>
 <div style="display:flex; align-items:center; gap:12px;">
-<a class="nav-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="nav-cta-full">Réserver un appel</span><span class="nav-cta-short">Réserver un appel</span></a>
+<a class="nav-cta btn-anti" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="anti-accent">{% include "partials/anti-chevrons.njk" %}</span><span class="anti-label nav-cta-full">Réserver un appel</span><span class="anti-label nav-cta-short">Réserver un appel</span></a>
 <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
 <span></span><span></span>
 </button>
@@ -531,7 +521,7 @@ Diagnostic offert
 <h1>Le studio de design spécialisé en site web <em id="hero-flip-root">orienté résultats</em></h1>
 <p class="lede">Audit CRO, refonte UX/UI, design system : on réduit les frictions de conversion par la stratégie et le design.</p>
 <div class="cta-row">
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" width="36" src="sacha-avatar.webp"/><span>Prendre rendez-vous avec Sacha</span></a>
+<a class="btn-primary btn-anti" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="anti-accent">{% include "partials/anti-chevrons.njk" %}</span><span class="anti-label">Prendre rendez-vous avec Sacha</span></a>
 </div>
 <a class="trust trust-dark" href="https://fr.trustpilot.com/review/lestudiodesign.fr" target="_blank" rel="noopener">
 <div class="stack">
@@ -568,7 +558,7 @@ Diagnostic offert
 </div>
 <div class="wrap case-wrap">
 <div class="case-grid" id="caseGrid"></div>
-<div class="case-more"><a href="/cas-clients/" class="btn-secondary" style="background:var(--ink);color:#fff;border-color:var(--ink);border-radius:999px;">Voir tous les cas clients</a></div>
+<div class="case-more"><a href="/cas-clients/" class="btn-secondary btn-anti"><span class="anti-accent">{% include "partials/anti-chevrons.njk" %}</span><span class="anti-label">Voir tous les cas clients</span></a></div>
 </div>
 </section>
 <div class="section-break"><span class="mark left"></span><span class="mark right"></span></div>
@@ -759,7 +749,7 @@ padding: 16px<br>radius: 8px
 <div><div class="offer-stat-num">+100</div><div class="offer-stat-label">Projets de refonte livrés</div></div>
 <div><div class="offer-stat-num">{{ svc.data.delai }}</div><div class="offer-stat-label">{% if svc.data.tab_id == "tab-abo" %}Engagement{% else %}Temps de livraison{% endif %}</div></div>
 <div class="price" style="color:rgba(244,244,245,0.85); margin:4px 0 0;">{{ svc.data.price }}</div>
-<a class="btn-secondary" href="/offres/{{ svc.fileSlug }}/" style="color:#fff;"><span>Découvrir l'offre</span></a>
+<a class="btn-secondary btn-anti" href="/offres/{{ svc.fileSlug }}/"><span class="anti-accent">{% include "partials/anti-chevrons.njk" %}</span><span class="anti-label">Découvrir l'offre</span></a>
 </div>
 </div>
 {% endfor %}
@@ -832,7 +822,7 @@ padding: 16px<br>radius: 8px
 <h2>Prêt à arrêter de perdre des clients sur votre propre site ?</h2>
 <p>30 minutes, gratuit. On regarde ensemble ce qui bloque la conversion.</p>
 <div style="display:flex; align-items:center; justify-content:center;">
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha</span></a>
+<a class="btn-primary btn-anti" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="anti-accent">{% include "partials/anti-chevrons.njk" %}</span><span class="anti-label">Prendre rendez-vous avec Sacha</span></a>
 </div>
 </div>
 </section>
@@ -1125,7 +1115,7 @@ padding: 16px<br>radius: 8px
 <p>On utilise Google Analytics pour comprendre comment vous naviguez sur ce site. Vos données ne sont partagées avec personne d'autre. <a href="confidentialite.html">En savoir plus</a>.</p>
 <div class="cookie-actions">
 <button class="btn-refuse" id="cookieRefuse">Refuser</button>
-<button class="btn-accept" id="cookieAccept"><span>Accepter</span></button>
+<button class="btn-accept btn-anti" id="cookieAccept"><span class="anti-accent">{% include "partials/anti-chevrons.njk" %}</span><span class="anti-label">Accepter</span></button>
 </div>
 </div>
 

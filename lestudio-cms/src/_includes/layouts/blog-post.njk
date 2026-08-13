@@ -51,7 +51,7 @@ layout: layouts/base.njk
 <div class="quiz-result" data-value="{{ r.value }}" style="display:none;">
 <p style="font-weight:600;font-size:18px;margin-bottom:8px;color:var(--ink);">{{ r.title }}</p>
 <p style="color:var(--grey);margin-bottom:16px;">{{ r.text }}</p>
-{% if r.cta_url %}<a class="btn-primary" style="margin:0;" href="{{ r.cta_url }}"><span>{{ r.cta_label or "En savoir plus" }}</span></a>{% endif %}
+{% if r.cta_url %}<a class="btn-primary btn-anti" style="margin:0;" href="{{ r.cta_url }}"><span class="anti-accent">{% include "partials/anti-chevrons.njk" %}</span><span class="anti-label">{{ r.cta_label or "En savoir plus" }}</span></a>{% endif %}
 </div>
 {% endfor %}
 </div>
@@ -200,7 +200,7 @@ layout: layouts/base.njk
 </div>
 {% endif %}
 
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span>Discuter d'un projet</span></a>
+<a class="btn-primary btn-anti" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="anti-accent">{% include "partials/anti-chevrons.njk" %}</span><span class="anti-label">Discuter d'un projet</span></a>
 
 <script type="application/ld+json">
 {

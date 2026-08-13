@@ -35,12 +35,12 @@ header.nav.scrolled{background:rgba(244,244,245,0.94);box-shadow:0 6px 24px -12p
 @media (max-width:480px){.nav-inner{padding:16px 16px;}}
 .logo{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:600;display:flex;align-items:center;gap:8px;}
 .nav-cta{font-size:13.5px;font-weight:400;background:var(--ink);color:#fff;padding:11px 20px;border-radius:100px;}
-.nav-cta .nav-cta-short{display:none;}
+.nav-cta .nav-cta-short{display:none !important;}
 @media (max-width:480px){
   .logo svg{width:100px;height:auto;}
   .nav-cta{padding:9px 14px;}
-  .nav-cta .nav-cta-full{display:none;}
-  .nav-cta .nav-cta-short{display:inline-flex;}
+  .nav-cta .nav-cta-full{display:none !important;}
+  .nav-cta .nav-cta-short{display:inline-flex !important;}
 }
 h1{font-family:'DM Sans',sans-serif;font-weight:600;line-height:1.15;letter-spacing:-0.02em;font-size:clamp(34px,4.8vw,60px);margin:80px 0 24px;}
 h1 em{font-style:normal;font-weight:600;color:var(--orange);}
@@ -117,36 +117,34 @@ header.nav.menu-open .nav-cta{display:none;}
 .btn-outline::before,.btn-outline::after{display:none !important;}
 .btn-outline{animation:none !important;}
 
-/* ── Shiny CTA : bordure animée en dégradé conique, appliquée aux actions principales ── */
-@property --gradient-angle{syntax:'<angle>';initial-value:0deg;inherits:false;}
-@property --gradient-angle-offset{syntax:'<angle>';initial-value:0deg;inherits:false;}
-@property --gradient-percent{syntax:'<percentage>';initial-value:5%;inherits:false;}
-@property --gradient-shine{syntax:'<color>';initial-value:#ff9955;inherits:false;}
-.shiny{--shiny-fill:var(--ink);position:relative;overflow:hidden;isolation:isolate;outline-offset:4px;border:1px solid transparent;
-  background:linear-gradient(var(--shiny-fill),var(--shiny-fill)) padding-box,
-    conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)),transparent,var(--orange) var(--gradient-percent),var(--gradient-shine) calc(var(--gradient-percent) * 2),var(--orange) calc(var(--gradient-percent) * 3),transparent calc(var(--gradient-percent) * 4)) border-box;
-  box-shadow:inset 0 0 0 1px var(--slate);transition:800ms cubic-bezier(.25,1,.5,1);transition-property:--gradient-angle-offset,--gradient-percent,--gradient-shine;
-  animation:shiny-angle 3s linear infinite,shiny-angle 7.5s linear infinite reverse paused;animation-composition:add;}
-.shiny::before,.shiny::after{content:'';pointer-events:none;position:absolute;inset-inline-start:50%;inset-block-start:50%;translate:-50% -50%;z-index:0;}
-.shiny::before{--dot:2px;--space:calc(var(--dot) * 2);width:calc(100% - 6px);height:calc(100% - 6px);
-  background:radial-gradient(circle at var(--dot) var(--dot),rgba(255,255,255,.5) calc(var(--dot)/4),transparent 0) padding-box;
-  background-size:var(--space) var(--space);background-repeat:space;
-  mask-image:conic-gradient(from calc(var(--gradient-angle) + 45deg),black,transparent 10% 90%,black);border-radius:inherit;opacity:.35;
-  animation:shiny-angle 3s linear infinite,shiny-angle 7.5s linear infinite reverse paused;animation-composition:add;}
-.shiny::after{width:100%;aspect-ratio:1;background:linear-gradient(-50deg,transparent,var(--orange),transparent);
-  mask-image:radial-gradient(circle at bottom,transparent 40%,black);opacity:.5;
-  animation:shiny-shimmer 3s linear infinite,shiny-shimmer 7.5s linear infinite reverse paused;animation-composition:add;}
-.shiny span{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;}
-.shiny span::before{content:'';pointer-events:none;position:absolute;inset-inline-start:50%;inset-block-start:50%;translate:-50% -50%;
-  width:calc(100% + 1rem);height:calc(100% + 1rem);box-shadow:inset 0 -1ex 2rem 4px var(--orange);opacity:0;
-  transition:opacity 800ms cubic-bezier(.25,1,.5,1);animation:shiny-breathe 4.5s linear infinite;}
-.shiny:is(:hover,:focus-visible){--gradient-percent:20%;--gradient-angle-offset:95deg;--gradient-shine:#ffb380;}
-.shiny:is(:hover,:focus-visible) span::before{opacity:1;}
-.cta-sparkle{width:15px;height:15px;flex-shrink:0;filter:drop-shadow(0 0 3px currentColor);animation:shiny-breathe 4.5s linear infinite;}
-@keyframes shiny-angle{to{--gradient-angle:360deg;}}
-@keyframes shiny-shimmer{to{rotate:360deg;}}
-@keyframes shiny-breathe{from,to{scale:1;}50%{scale:1.2;}}
-@media (prefers-reduced-motion: reduce){.shiny,.shiny::before,.shiny::after{animation:none;}.cta-sparkle{animation:none;}}
+/* ── Anti-metal CTA : pill sombre, accent orange qui se déploie au survol ── */
+.btn-anti{
+  position:relative !important;display:inline-flex !important;align-items:center !important;
+  justify-content:flex-start !important;align-self:flex-start !important;
+  width:max-content !important;max-width:100% !important;flex:none !important;
+  overflow:hidden;isolation:isolate;cursor:pointer;
+  height:44px !important;padding:0 18px 0 48px !important;border-radius:12px !important;border:none !important;
+  background:var(--ink) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 4px 12px rgba(0,0,0,.18);
+  transition:transform .15s ease;
+}
+.btn-anti:active{transform:scale(0.98);}
+.btn-anti .anti-label{
+  position:relative;z-index:1;display:block;color:#fff !important;font-size:14px;font-weight:500;
+  letter-spacing:-0.01em;white-space:nowrap;font-family:'DM Sans',sans-serif;
+}
+.btn-anti .anti-accent{
+  position:absolute;left:4px;top:4px;bottom:4px;z-index:10;
+  display:flex;align-items:center;gap:6px;width:36px;padding-left:10px;
+  border-radius:8px;overflow:hidden;color:var(--ink);
+  background:linear-gradient(180deg,var(--orange-light) 0%,var(--orange) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 4px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.08);
+  transition:width .2s cubic-bezier(.65,0,.35,1);
+}
+.btn-anti:is(:hover,:focus-visible) .anti-accent{width:calc(100% - 8px);}
+.anti-dot{transform-box:fill-box;transform-origin:center;animation:anti-dot-wave 1.4s ease-in-out infinite;}
+@keyframes anti-dot-wave{0%,70%,100%{opacity:.25;transform:scale(.85);}35%{opacity:1;transform:scale(1);}}
+@media (prefers-reduced-motion: reduce){.anti-dot{animation:none;opacity:1;}.btn-anti .anti-accent{transition:none;}}
 
 /* ── Footer cinématique : fond encre, grille, halo, wordmark géant, marquee ── */
 footer{position:relative;overflow:hidden;background:var(--ink);color:rgba(244,244,245,.75);padding:72px 0 32px;margin-top:40px;}
@@ -233,7 +231,7 @@ footer a:hover{color:var(--orange);}
 <a href="mailto:{{ settings.email }}">Contactez-nous</a>
 </nav>
 <div style="display:flex;align-items:center;gap:12px;">
-<a class="nav-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="nav-cta-full">Réserver un appel</span><span class="nav-cta-short">Réserver un appel</span></a>
+<a class="nav-cta btn-anti" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span class="anti-accent">{% include "partials/anti-chevrons.njk" %}</span><span class="anti-label nav-cta-full">Réserver un appel</span><span class="anti-label nav-cta-short">Réserver un appel</span></a>
 <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
 <span></span><span></span>
 </button>
