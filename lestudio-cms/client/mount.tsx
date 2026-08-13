@@ -6,9 +6,9 @@ import { FlipWords } from "@/components/ui/flip-words";
 import { reviews } from "@/data/testimonials";
 
 const HERO_FLIP_WORDS = [
-  "business-driven",
+  "orienté résultats",
   "orienté conversion",
-  "SEO-GEO friendly",
+  "optimisé Google & IA",
 ];
 
 const testimonialRootEl = document.getElementById("testimonial-slider-root");

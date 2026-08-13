@@ -3,6 +3,7 @@ title: "Notre méthode en 4 étapes, de l'audit UX au handoff design"
 date: 2026-07-29
 description: "Comment se déroule concrètement un projet de refonte chez LeStudio : audit, architecture, UI design et handoff, avec un livrable à chaque étape."
 category: Méthode
+reponse_courte: "Une refonte se déroule en 4 étapes cadrées : audit UX/CRO, architecture et wireframes, UI design, puis handoff. Chaque étape a une durée fixe définie au premier appel et livre un résultat concret avant de passer à la suivante."
 key_takeaways:
   - "Étape 1, Audit UX/CRO : rapport d'audit et quick wins actionnables."
   - "Étape 2, Architecture et wireframes : parcours et gabarits validés avant le moindre pixel."
