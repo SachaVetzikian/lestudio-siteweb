@@ -9,9 +9,18 @@ seo_description: Toutes nos réalisations UX/UI, e-commerce et vitrine. Yves Roc
 <h1 style="margin-top:16px;">Des marques qui nous ont fait <em>confiance.</em></h1>
 <p class="lede">Chaque projet part du même point : un site qui ne convertit pas à la hauteur de la marque.</p>
 
-<div class="case-grid">
+<div class="filter-tabs" id="filterTabs">
+<button class="filter-tab active" data-filter="all">Toutes</button>
+{% for s in collections.secteurs %}
+{% if (collections.realisations | inSecteur(s.fileSlug) | length) > 0 %}
+<button class="filter-tab" data-filter="{{ s.fileSlug }}">{{ s.data.title }}</button>
+{% endif %}
+{% endfor %}
+</div>
+
+<div class="case-grid" id="caseGrid">
 {% for r in collections.realisations %}
-<a class="case-card" href="/realisations/{{ r.fileSlug }}/">
+<a class="case-card" data-secteur="{{ r.data.secteur or '' }}" href="/realisations/{{ r.fileSlug }}/">
 {% if r.data.cover and (r.data.cover | assetExists) %}
 <div class="case-preview">
 <img src="{{ r.data.cover }}" alt="{{ r.data.client }}" loading="lazy"/>
@@ -36,4 +45,22 @@ seo_description: Toutes nos réalisations UX/UI, e-commerce et vitrine. Yves Roc
   {"@type":"ListItem","position":2,"name":"Cas clients","item":"https://www.lestudiodesign.fr/cas-clients/"}
  ]
 }
+</script>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('#filterTabs .filter-tab');
+  var cards = document.querySelectorAll('#caseGrid .case-card');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      var filter = tab.getAttribute('data-filter');
+      cards.forEach(function(card){
+        var show = filter === 'all' || card.getAttribute('data-secteur') === filter;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+})();
 </script>
