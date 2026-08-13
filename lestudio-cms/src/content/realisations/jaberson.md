@@ -1,6 +1,7 @@
 ---
 title: Refonte du site vitrine de Jaberson
 client: Jaberson
+secteur: juridique
 type: vitrine
 year: 2025
 tags: [Avocats & Conseil · Vitrine, B2B]

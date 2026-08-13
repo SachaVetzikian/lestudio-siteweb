@@ -1,6 +1,7 @@
 ---
 title: Refonte du parcours d'achat pour Toolouer
 client: Toolouer
+secteur: btp
 type: ecommerce
 year: 2024
 tags: [BTP, Location]

@@ -1,6 +1,7 @@
 ---
 title: Refonte du site vitrine de Julien Roman
 client: Julien Roman
+secteur: crypto
 type: vitrine
 year: 2025
 tags: [Créateur de contenu · Vitrine, Crypto]

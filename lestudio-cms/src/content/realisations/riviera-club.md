@@ -1,6 +1,7 @@
 ---
 title: Création du site e-commerce pour Riviera Club
 client: Riviera Club
+secteur: bijoux
 type: ecommerce
 year: 2025
 tags: [Accessoires de luxe, Lifestyle]

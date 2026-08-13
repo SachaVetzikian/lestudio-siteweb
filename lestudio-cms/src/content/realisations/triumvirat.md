@@ -1,6 +1,7 @@
 ---
 title: Refonte du site vitrine de Triumvirat
 client: Triumvirat
+secteur: sante
 type: vitrine
 year: 2024
 tags: [Conseil · Vitrine, B2B]
