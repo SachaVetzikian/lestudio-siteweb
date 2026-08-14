@@ -6,8 +6,8 @@ h1: Design UX/UI pour l'immobilier
 intro: "Un achat ou une location engage une décision lourde, souvent sur un site consulté une seule fois. Le design doit rendre la recherche efficace et donner confiance immédiatement, sans deuxième chance."
 enjeux:
   - titre: La recherche de biens
-    texte: Filtres, carte, fiches détaillées. Un visiteur qui ne trouve pas rapidement un bien pertinent quitte le site pour un concurrent ou une plateforme généraliste.
+    texte: "Filtres, carte, fiches détaillées. Un visiteur qui ne trouve pas rapidement un bien pertinent quitte le site pour un concurrent ou une plateforme généraliste. Des filtres mal pensés coûtent plus de visites qu'un manque de biens en catalogue."
   - titre: La prise de contact ou de rendez-vous
-    texte: "Visite, estimation, dossier de location : chaque formulaire est un moment de friction où la réassurance (avis, références, réactivité affichée) fait la différence."
+    texte: "Visite, estimation, dossier de location : chaque formulaire est un moment de friction où la réassurance (avis, références, réactivité affichée) fait la différence. Le délai de réponse annoncé compte autant que la promesse elle-même."
 published: true
 ---

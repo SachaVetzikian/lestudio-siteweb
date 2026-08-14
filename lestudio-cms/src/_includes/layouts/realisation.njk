@@ -28,25 +28,29 @@ layout: layouts/base.njk
 </div>
 {% endif %}
 
-{# ── Vue d'ensemble + méta ── #}
-<div style="display:grid;grid-template-columns:2fr 1fr;gap:48px;margin-bottom:72px;" class="case-overview">
-<div>
+{# ── Vue d'ensemble ── #}
+<div class="prose-block" style="margin-bottom:0;">
 {% if overview.statement %}<h2 style="margin-top:0;">{{ overview.statement }}</h2>{% endif %}
 {% if overview.qui %}<p style="line-height:1.7;color:var(--grey);margin-bottom:18px;">{{ overview.qui }}</p>{% endif %}
 {% if overview.depart %}<p style="line-height:1.7;color:var(--grey);">{{ overview.depart }}</p>{% endif %}
 </div>
+
+{# ── Méta (plate, sans encadré) ── #}
+<div class="meta-row">
 <div>
-<div class="card" style="position:sticky;top:100px;">
-<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);margin-bottom:6px;">Type</p>
-<p style="margin-bottom:18px;font-weight:500;color:var(--ink);">{% if type == "ecommerce" %}E-commerce{% else %}Site vitrine{% endif %} · {{ year }}</p>
-<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);margin-bottom:6px;">Secteur</p>
-<p style="margin-bottom:18px;font-weight:500;color:var(--ink);">{{ tags | join(" · ") }}</p>
+<p>Type</p>
+<p>{% if type == "ecommerce" %}E-commerce{% else %}Site vitrine{% endif %} · {{ year }}</p>
+</div>
+<div>
+<p>Secteur</p>
+<p>{{ tags | join(" · ") }}</p>
+</div>
 {% if services %}
-<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);margin-bottom:6px;">Services</p>
-{% for sv in services %}<p style="font-weight:500;color:var(--ink);margin-bottom:4px;">{{ sv }}</p>{% endfor %}
+<div>
+<p>Services</p>
+{% for sv in services %}<p>{{ sv }}</p>{% endfor %}
+</div>
 {% endif %}
-</div>
-</div>
 </div>
 
 {# ── Phases numérotées ── #}
@@ -115,5 +119,3 @@ layout: layouts/base.njk
  ]
 }
 </script>
-
-<style>@media (max-width:800px){ .case-overview{grid-template-columns:1fr !important;} }</style>

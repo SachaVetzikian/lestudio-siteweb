@@ -9,15 +9,28 @@ layout: layouts/base.njk
 
 <h2>Les enjeux du secteur</h2>
 {% for e in enjeux %}
-<div class="card"><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
+<div class="prose-block">
+<div class="prose-highlight"><p>{{ e.titre }}</p></div>
+<p>{{ e.texte }}</p>
+</div>
 {% endfor %}
 
 <h2>Notre méthode</h2>
-<div class="case-grid">
-<div class="card"><h3>1. Audit UX/CRO</h3><p>On identifie ce qui bloque la conversion : audit du site actuel, benchmark concurrentiel, priorisation des quick wins.</p></div>
-<div class="card"><h3>2. Architecture et wireframes</h3><p>On pose la structure et les parcours avant de dessiner le moindre pixel.</p></div>
-<div class="card"><h3>3. UI design</h3><p>Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire.</p></div>
-<div class="card"><h3>4. Handoff design</h3><p>Maquettes Figma prêtes à intégrer, avec toutes les specs et variations nécessaires.</p></div>
+<div class="prose-block">
+<div class="prose-highlight"><p>1. Audit UX/CRO</p></div>
+<p>On commence par comprendre ce qui bloque vraiment la conversion : analyse du site actuel, benchmark des concurrents directs, et croisement avec la donnée existante quand elle est disponible. L'objectif n'est pas de tout refaire, mais d'identifier les points de friction qui coûtent le plus cher.</p>
+</div>
+<div class="prose-block">
+<div class="prose-highlight"><p>2. Architecture et wireframes</p></div>
+<p>Avant de dessiner le moindre pixel, on pose la structure : parcours utilisateur, hiérarchie de l'information, arborescence des pages. Cette étape évite de devoir tout reprendre une fois le design engagé.</p>
+</div>
+<div class="prose-block">
+<div class="prose-highlight"><p>3. UI design</p></div>
+<p>Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire. Chaque choix visuel, typographie, couleur, composant, sert un objectif de conversion précis, pas seulement l'esthétique.</p>
+</div>
+<div class="prose-block">
+<div class="prose-highlight"><p>4. Handoff design</p></div>
+<p>Les maquettes sont livrées prêtes à intégrer, avec toutes les specs, variations et états nécessaires. Votre équipe ou votre prestataire technique peut développer sans allers-retours superflus.</p>
 </div>
 
 {% set casSecteur = collections.realisations | inSecteur(page.fileSlug) %}

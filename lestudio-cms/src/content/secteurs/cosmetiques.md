@@ -6,8 +6,8 @@ h1: Design UX/UI pour marques de cosmétiques
 intro: Dans la beauté, la page produit fait le travail d'une conseillère en boutique. Texture, promesse, réassurance ingrédients, preuve sociale, tout doit converger vers l'ajout au panier.
 enjeux:
   - titre: La réassurance ingrédients
-    texte: Composition, certifications, provenance. L'acheteuse de cosmétiques lit avant d'acheter. L'interface doit rendre cette lecture fluide, pas la cacher dans un onglet.
+    texte: "Composition, certifications, provenance. L'acheteuse de cosmétiques lit avant d'acheter. L'interface doit rendre cette lecture fluide, pas la cacher dans un onglet : la transparence sur les ingrédients devient elle-même un argument de vente."
   - titre: Le réachat et l'abonnement
-    texte: La rentabilité se joue sur la deuxième commande. Le parcours doit préparer la fidélisation dès le premier achat.
+    texte: "La rentabilité se joue sur la deuxième commande. Le parcours doit préparer la fidélisation dès le premier achat, avec un post-achat qui donne déjà envie de revenir plutôt que de simplement confirmer la commande."
 published: true
 ---

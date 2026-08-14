@@ -6,8 +6,8 @@ h1: Design UX/UI pour le BTP
 intro: "Un professionnel du BTP n'a pas de temps à perdre : il doit trouver, comparer et commander vite, souvent depuis un chantier. Le site doit aller à l'essentiel."
 enjeux:
   - titre: La clarté entre location et achat
-    texte: Deux offres mélangées sur les mêmes pages obligent le visiteur à trier lui-même. Il faut séparer les parcours et rendre les tarifs lisibles d'un coup d'œil.
+    texte: "Deux offres mélangées sur les mêmes pages obligent le visiteur à trier lui-même. Il faut séparer les parcours et rendre les tarifs lisibles d'un coup d'œil. Un professionnel qui doit deviner s'il loue ou achète part comparer ailleurs."
   - titre: La rapidité du parcours de commande
-    texte: Un professionnel pressé abandonne au premier obstacle. Le panier et le passage commande doivent aller droit au but, sans étape superflue.
+    texte: "Un professionnel pressé abandonne au premier obstacle. Le panier et le passage commande doivent aller droit au but, sans étape superflue. Sur un chantier, personne ne relit trois fois un formulaire de commande."
 published: true
 ---
