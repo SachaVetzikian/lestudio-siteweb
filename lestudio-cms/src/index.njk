@@ -922,7 +922,7 @@ padding: 16px<br>radius: 8px
           caseVisual(c) +
           (c.video ? '<video muted loop playsinline preload="none" onerror="this.style.display=\'none\'"><source src="' + c.video + '" type="video/mp4"></video>' : '') +
         '</div>' +
-        '<div class="case-tags"><span class="case-tag">' + c.tag1 + '</span><span class="case-tag">' + c.tag2 + '</span></div>' +
+        '<div class="case-tags"><span class="case-tag">' + c.tag1 + '</span><span class="case-tag">' + c.tag2 + '</span><span class="case-tag">' + (c.type === 'ecommerce' ? 'Refonte E-commerce' : 'Refonte Site vitrine') + '</span></div>' +
         '<h3>' + c.name + '</h3>' +
         '<p>' + c.desc + '</p>' +
         '<span class="case-link"><span class="case-link-icon">→</span> Voir le projet</span>' +

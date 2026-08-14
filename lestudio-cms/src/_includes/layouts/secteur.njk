@@ -29,7 +29,7 @@ layout: layouts/base.njk
 {% if r.data.cover and (r.data.cover | assetExists) %}
 <div class="case-preview"><img src="{{ r.data.cover }}" alt="{{ r.data.client }}" loading="lazy"/></div>
 {% endif %}
-<div class="case-tags">{% for tag in r.data.tags %}<span class="case-tag">{{ tag }}</span>{% endfor %}<span class="case-tag">{{ r.data.year }}</span></div>
+<div class="case-tags">{% for tag in r.data.tags %}<span class="case-tag">{{ tag }}</span>{% endfor %}<span class="case-tag">{% if r.data.type == "ecommerce" %}Refonte E-commerce{% else %}Refonte Site vitrine{% endif %}</span><span class="case-tag">{{ r.data.year }}</span></div>
 <h3>{{ r.data.client }}</h3>
 <p>{{ r.data.description }}</p>
 <span class="case-link"><span class="case-link-icon">→</span> Voir le projet</span>
