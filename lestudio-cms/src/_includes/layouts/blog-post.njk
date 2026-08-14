@@ -236,9 +236,14 @@ layout: layouts/base.njk
 <style>
 .article-body h2{font-size:clamp(22px,3vw,28px);margin:48px 0 16px;scroll-margin-top:100px;}
 .article-body h3{font-size:19px;margin:32px 0 12px;scroll-margin-top:100px;}
+.article-body h4{font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;margin:28px 0 10px;scroll-margin-top:100px;}
 .article-body p{line-height:1.7;color:var(--grey);margin-bottom:16px;max-width:680px;}
 .article-body img{width:100%;border-radius:14px;margin:24px 0;}
 .article-body ul,.article-body ol{margin:0 0 16px 20px;color:var(--grey);line-height:1.7;}
 .article-body hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
-@media (max-width:640px){ .offre-qualif{grid-template-columns:1fr !important;} }
+.article-body table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-size:14.5px;max-width:680px;}
+.article-body th,.article-body td{padding:10px 14px;border:1px solid var(--line);text-align:left;}
+.article-body th{background:#fff;font-weight:600;color:var(--ink);}
+.article-body td{color:var(--grey);}
+@media (max-width:640px){ .offre-qualif{grid-template-columns:1fr !important;} .article-body table{display:block;overflow-x:auto;} }
 </style>
