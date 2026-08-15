@@ -1,7 +1,7 @@
 ---
 title: SaaS
 seo_title: Agence UX/UI & CRO pour sites marketing SaaS · LeStudio
-seo_description: "Refonte UX/UI du site marketing et vitrine des éditeurs SaaS : landing, pricing, blog. Conçu pour convertir l'essai gratuit ou la démo, pas le produit lui-même."
+seo_description: "Refonte UX/UI du site marketing des éditeurs SaaS : landing, pricing, blog. Conçu pour convertir l'essai gratuit ou la démo."
 h1: Design UX/UI pour le site marketing des éditeurs SaaS
 intro: "Le site public d'un SaaS (landing, pricing, blog) est un canal d'acquisition à part entière, distinct du produit. Nous concevons ce site vitrine et son tunnel de conversion vers l'essai gratuit ou la demande de démo. Le produit et l'interface applicative restent votre terrain, ce n'est pas le nôtre."
 enjeux:

@@ -2,8 +2,8 @@
   "layout": "layouts/blog-post.njk",
   "permalink": "/blog/{{ page.fileSlug }}/",
   "eleventyComputed": {
-    "seo_title": "{{ title }} · LeStudio",
-    "seo_description": "{{ description }}",
+    "seo_title": "{{ (seo_title or (title + ' · LeStudio')) | safe }}",
+    "seo_description": "{{ (seo_description or description) | safe }}",
     "og_type": "article",
     "seo_image": "{{ cover }}"
   }

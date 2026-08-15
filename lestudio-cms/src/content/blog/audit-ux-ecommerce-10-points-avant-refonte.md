@@ -1,7 +1,9 @@
 ---
 title: "Audit UX e-commerce : les 10 points à vérifier avant de refondre votre site"
+seo_title: "Audit UX e-commerce : 10 points à vérifier · LeStudio"
 date: 2026-08-14
 description: "Avant de signer un devis de refonte, il y a une étape que beaucoup de marchands sautent : l'audit UX. Une checklist de 10 points pour identifier ce qui bloque vraiment vos ventes."
+seo_description: "Une checklist de 10 points pour un audit UX e-commerce avant de signer un devis de refonte, et identifier ce qui bloque vraiment vos ventes."
 category: CRO
 reponse_courte: "Un audit UX e-commerce analyse l'expérience réelle de vos visiteurs, pas juste le design : page d'accueil, navigation, fiches produit, tunnel de commande, vitesse, mobile, confiance, recherche, après-achat et données comportementales. Avec un taux d'abandon de panier moyen de 70,19 % (Baymard Institute), corriger les points identifiés permet souvent d'éviter une refonte complète, ou au moins d'en réduire le périmètre. Il se fait avant une refonte, pas après."
 key_takeaways:

@@ -1,6 +1,6 @@
 ---
 title: Crypto
-seo_title: Agence UX/UI & CRO pour créateurs et plateformes crypto · LeStudio
+seo_title: Agence UX/UI pour créateurs et plateformes crypto · LeStudio
 seo_description: "Refonte UX/UI pour créateurs de contenu et plateformes crypto : crédibilité, conversion vers l'abonnement ou la communauté. Cas client Julien Roman."
 h1: Design UX/UI pour l'univers crypto
 intro: "Dans un secteur saturé de promesses et de méfiance, un site crypto doit établir la crédibilité avant de convertir le visiteur en abonné ou en membre de la communauté."

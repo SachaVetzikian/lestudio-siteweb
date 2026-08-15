@@ -1,5 +1,6 @@
 ---
 title: "Notre méthode en 4 étapes, de l'audit UX au handoff design"
+seo_title: "Notre méthode : de l'audit UX au handoff · LeStudio"
 date: 2026-07-29
 description: "Comment se déroule concrètement un projet de refonte chez LeStudio : audit, architecture, UI design et handoff, avec un livrable à chaque étape."
 category: Méthode

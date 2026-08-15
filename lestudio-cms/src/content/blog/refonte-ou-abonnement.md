@@ -1,7 +1,9 @@
 ---
 title: "Refonte ou abonnement : comment faire vivre son site après le lancement"
+seo_title: "Refonte ou abonnement : comment choisir · LeStudio"
 date: 2026-07-29
 description: "Une refonte a un début et une fin. Un site, lui, continue à vivre après : nouvelles pages, campagnes, itérations. Comment choisir entre un projet cadré et un abonnement continu."
+seo_description: "Une refonte a un début et une fin, un site continue à vivre après. Comment choisir entre un projet cadré et un abonnement design continu."
 category: Offres
 reponse_courte: "Un besoin ponctuel et cadré relève du pack au projet. Un besoin continu, qui reviendrait sans cesse en petits devis, relève du design par abonnement."
 pour_qui:

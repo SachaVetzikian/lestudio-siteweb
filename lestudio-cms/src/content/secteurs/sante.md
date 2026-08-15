@@ -1,6 +1,6 @@
 ---
 title: Santé
-seo_title: Agence UX/UI & CRO pour le secteur de la santé · LeStudio
+seo_title: Agence UX/UI pour le secteur de la santé · LeStudio
 seo_description: "Refonte UX/UI pour les acteurs de la santé : cliniques, praticiens, agences spécialisées santé. Cas client Triumvirat."
 h1: Design UX/UI pour le secteur de la santé
 intro: "Dans la santé, la confiance se construit avant même le premier contact. Le site doit prouver le sérieux et l'expertise, tout en restant compréhensible pour un public non expert."

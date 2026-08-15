@@ -1,6 +1,6 @@
 ---
 title: Immobilier
-seo_title: Agence UX/UI & CRO pour agences et promoteurs immobiliers · LeStudio
+seo_title: Agence UX/UI pour agences immobilières · LeStudio
 seo_description: "Refonte UX/UI pour sites immobiliers : recherche de biens, prise de rendez-vous, réassurance sur des engagements financiers importants."
 h1: Design UX/UI pour l'immobilier
 intro: "Un achat ou une location engage une décision lourde, souvent sur un site consulté une seule fois. Le design doit rendre la recherche efficace et donner confiance immédiatement, sans deuxième chance."

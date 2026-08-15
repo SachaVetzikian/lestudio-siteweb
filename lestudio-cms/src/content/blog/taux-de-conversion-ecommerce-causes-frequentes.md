@@ -1,7 +1,9 @@
 ---
 title: "Pourquoi votre taux de conversion e-commerce stagne : 7 causes fréquentes"
+seo_title: "Taux de conversion e-commerce : 7 causes · LeStudio"
 date: 2026-08-13
 description: "Du trafic qui n'achète pas n'est presque jamais un problème de chance. Sept causes qui reviennent le plus souvent quand on audite un site e-commerce, et comment les repérer sur le vôtre."
+seo_description: "Du trafic qui n'achète pas n'est presque jamais un problème de chance. Sept causes fréquentes d'un taux de conversion e-commerce qui stagne."
 category: CRO
 reponse_courte: "Un taux de conversion qui stagne vient rarement d'une seule cause : proposition de valeur pas claire, fiches produit qui ne lèvent pas les objections, tunnel de commande trop long, frais cachés à la dernière étape, mauvaise expérience mobile, absence de réassurance au bon moment, ou personne qui ne regarde jamais les données. Un audit sert justement à identifier lesquelles s'appliquent chez vous."
 bon_a_savoir: "Un site peut cumuler plusieurs de ces causes en même temps. C'est justement pour ça qu'un audit priorisé par impact vaut mieux qu'une correction isolée : corriger la moins importante en premier ne change rien au taux de conversion global."

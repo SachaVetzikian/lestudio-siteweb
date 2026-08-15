@@ -1,6 +1,6 @@
 ---
 title: Artisans
-seo_title: Agence UX/UI & CRO pour artisans et installateurs · LeStudio
+seo_title: Agence UX/UI pour artisans et installateurs · LeStudio
 seo_description: "Refonte UX/UI pour artisans et installateurs (panneaux photovoltaïques, rénovation) : rassurer sur le savoir-faire, simplifier la demande de devis."
 h1: Design UX/UI pour artisans et installateurs
 intro: "Pour un artisan ou un installateur (panneaux photovoltaïques, rénovation, travaux), le site doit prouver le savoir-faire avant même le premier échange, et rendre la demande de devis la plus simple possible."

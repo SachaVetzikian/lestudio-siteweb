@@ -1,5 +1,6 @@
 ---
 title: "Audit ou refonte : comment choisir sans se tromper"
+seo_title: "Audit ou refonte : comment choisir · LeStudio"
 date: 2026-07-29
 description: "Deux façons d'améliorer un site qui ne convertit pas assez. Comment savoir laquelle correspond à votre situation, et pourquoi l'ordre compte."
 category: Méthode

@@ -1,5 +1,5 @@
 {
   "layout": "layouts/secteur.njk",
   "permalink": "/secteur/{{ page.fileSlug }}/",
-  "eleventyComputed": { "seo_title": "{{ seo_title }}", "seo_description": "{{ seo_description }}" }
+  "eleventyComputed": { "seo_title": "{{ seo_title | safe }}", "seo_description": "{{ seo_description | safe }}" }
 }

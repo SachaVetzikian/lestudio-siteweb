@@ -1,7 +1,9 @@
 ---
 title: "Pourquoi un seul interlocuteur change tout sur un projet de refonte"
+seo_title: "Un seul interlocuteur : ce que ça change · LeStudio"
 date: 2026-07-29
 description: "Commercial, chef de projet, designer junior puis senior : dans une agence classique, un brief traverse plusieurs personnes avant d'aboutir. Ce que ça change de n'en avoir qu'une."
+seo_description: "Dans une agence classique, un brief traverse plusieurs interlocuteurs avant d'aboutir. Ce que change un interlocuteur unique sur un projet de refonte."
 category: Stratégie
 key_takeaways:
   - Chaque relais entre commercial, chef de projet et designer est une occasion de perdre de la nuance sur le besoin réel.

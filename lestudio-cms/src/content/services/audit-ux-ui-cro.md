@@ -17,7 +17,7 @@ tab_sub: "Diagnostic"
 delai: "2 semaines"
 tab_id: "tab-audit"
 seo_title: "Audit UX Design & Audit CRO - Le Studio | Paris"
-seo_description: "Audit UX design et audit CRO d'un site e-commerce ou vitrine : analyse UX complète, diagnostic chiffré, rapport priorisé par impact business, quick wins sous 48h. À partir de 1 500 €."
+seo_description: "Audit UX/UI et CRO d'un site e-commerce ou vitrine : diagnostic chiffré, rapport priorisé par impact business, quick wins sous 48h. À partir de 1 500 €."
 h1: "Audit UX Design & CRO : sachez exactement où votre site perd des ventes"
 accroche: "Votre trafic ne convertit pas assez, et personne ne sait dire précisément pourquoi. Notre analyse UX combine données réelles et audit heuristique pour livrer, en deux semaines, un diagnostic chiffré et priorisé de ce qui freine vos ventes."
 pour_qui:

@@ -2,7 +2,7 @@
   "layout": "layouts/ville.njk",
   "permalink": "/designer-ux-ui/{{ page.fileSlug }}/",
   "eleventyComputed": {
-    "seo_title": "{{ seo_title }}",
-    "seo_description": "{{ seo_description }}"
+    "seo_title": "{{ seo_title | safe }}",
+    "seo_description": "{{ seo_description | safe }}"
   }
 }

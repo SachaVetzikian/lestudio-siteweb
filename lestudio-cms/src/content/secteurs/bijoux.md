@@ -1,7 +1,7 @@
 ---
 title: Bijoux
 seo_title: Agence UX/UI & CRO e-commerce bijoux · LeStudio
-seo_description: "Refonte UX/UI et optimisation de la conversion pour les marques de bijoux et accessoires de luxe. Parcours d'achat, pages produit, collections. Cas client Riviera Club."
+seo_description: "Refonte UX/UI et CRO pour les marques de bijoux et accessoires de luxe. Parcours d'achat, pages produit, collections. Cas client Riviera Club."
 h1: Design UX/UI pour marques de bijoux
 intro: "Un bijou s'achète en ligne sans jamais être touché. La photo, la mise en scène et la réassurance doivent compenser ce que le visiteur ne peut pas vérifier avec les mains."
 enjeux:

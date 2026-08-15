@@ -1,7 +1,7 @@
 ---
 title: Formation
-seo_title: Agence UX/UI & CRO pour organismes de formation · LeStudio
-seo_description: "Refonte UX/UI pour organismes de formation et écoles : clarifier l'offre, sécuriser le tunnel de candidature, convertir les demandes d'information. Cas client Cargo School."
+seo_title: Agence UX/UI pour organismes de formation · LeStudio
+seo_description: "Refonte UX/UI pour organismes de formation : clarifier l'offre, sécuriser le tunnel de candidature, convertir les demandes. Cas client Cargo School."
 h1: Design UX/UI pour organismes de formation
 intro: "Dans la formation, le site doit à la fois rassurer sur le sérieux du programme et simplifier une décision engageante : temps, argent, orientation professionnelle. Chaque friction dans le tunnel de candidature coûte un dossier."
 enjeux:
