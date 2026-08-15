@@ -51,9 +51,6 @@ permalink: /index.html
     background:rgba(244,244,245,0.94);
     box-shadow:0 6px 24px -12px rgba(20,18,31,0.2);
   }
-  header.nav.menu-open{background:var(--ink) !important; border-bottom-color:transparent; box-shadow:none;}
-  header.nav.menu-open .logo{color:#fff;}
-  header.nav.menu-open .burger span{background:#fff;}
   header.nav.menu-open .nav-cta{display:none;}
   .nav-inner{width:100%; box-sizing:border-box; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;}
   @media (max-width:480px){ .nav-inner{padding:16px 16px;} }
@@ -375,22 +372,35 @@ permalink: /index.html
   .burger.open span:first-child{transform:translateY(3.75px) rotate(45deg);}
   .burger.open span:last-child{transform:translateY(-3.75px) rotate(-45deg);}
   @media (max-width:860px){ .burger{display:flex;} }
-  .mobile-menu{display:none; position:fixed; top:0; right:0; bottom:0; width:75%; z-index:90; background:rgba(9,9,11,0.82); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); flex-direction:column; justify-content:center; padding:96px 28px 40px; overflow-y:auto;}
-  .mobile-menu.open{display:flex;}
-  .mobile-menu-inner{display:flex; flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:center; gap:6px 18px; margin:auto 0;}
-  .mobile-menu-item{width:auto;}
+  .mobile-menu{
+    display:none; position:fixed; inset:0; z-index:91;
+    align-items:flex-end; justify-content:center;
+    background:rgba(9,9,11,0.35); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    opacity:0; transition:opacity .35s ease;
+  }
+  .mobile-menu.open{display:flex; opacity:1;}
+  .mobile-menu-sheet{
+    width:100%; height:70%; background:var(--ink); border-radius:24px 24px 0 0;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:40px 28px calc(40px + env(safe-area-inset-bottom)); overflow-y:auto;
+    transform:translateY(100%); transition:transform .35s cubic-bezier(.16,1,.3,1);
+  }
+  .mobile-menu.open .mobile-menu-sheet{transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .mobile-menu, .mobile-menu-sheet{transition:none;} }
+  .mobile-menu-inner{display:flex; flex-direction:column; align-items:stretch; gap:2px; margin:auto 0;}
+  .mobile-menu-item{width:100%;}
   .mobile-menu-link, .mobile-menu-toggle{
-    font-family:'DM Sans',sans-serif; font-size:17px; font-weight:500; color:var(--paper);
-    padding:8px 2px; background:none; border:none; width:auto; text-align:center;
-    display:flex; align-items:center; justify-content:center; gap:6px; cursor:pointer; white-space:nowrap;
+    font-family:'DM Sans',sans-serif; font-size:26px; font-weight:500; color:var(--paper);
+    padding:16px 0; background:none; border:none; width:100%; text-align:center;
+    display:flex; align-items:center; justify-content:center; gap:10px; cursor:pointer;
   }
   .mobile-menu-toggle svg{transition:transform .25s ease; flex-shrink:0;}
   .mobile-menu-item.open .mobile-menu-toggle svg{transform:rotate(180deg);}
-  .mobile-submenu{display:none; flex-direction:column; gap:0; padding-bottom:10px; width:100%;}
+  .mobile-submenu{display:none; flex-direction:column; gap:0; padding-bottom:10px;}
   .mobile-menu-item.open .mobile-submenu{display:flex;}
-  .mobile-submenu a{display:block; font-size:15px; font-weight:400; color:rgba(244,244,245,0.6); padding:8px 0; text-align:center;}
+  .mobile-submenu a{display:block; font-size:16px; font-weight:400; color:rgba(244,244,245,0.6); padding:10px 0; text-align:center;}
   .mobile-submenu a:hover{color:var(--orange);}
-  .mobile-menu-footer{display:flex; justify-content:center; padding-top:28px; width:100%;}
+  .mobile-menu-footer{display:flex; justify-content:center; padding-top:36px;}
   .mobile-menu-cta{
     display:inline-flex; align-items:center; gap:12px; background:var(--orange); color:#fff;
     border-radius:100px; padding:8px 26px 8px 8px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:16px;
@@ -399,6 +409,7 @@ permalink: /index.html
     width:34px; height:34px; border-radius:9px; background:var(--ink); color:#fff;
     display:flex; align-items:center; justify-content:center; flex-shrink:0;
   }
+  @media (max-width:380px){ .mobile-menu-link, .mobile-menu-toggle{font-size:22px;} }
   .btn-outline{background:transparent !important; border-color:var(--line) !important; color:var(--ink) !important;}
   .btn-outline::before, .btn-outline::after{display:none !important;}
   .btn-outline{animation:none !important;}
@@ -494,6 +505,7 @@ permalink: /index.html
 </div>
 </header>
 <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+<div class="mobile-menu-sheet">
 <div class="mobile-menu-inner">
 <div class="mobile-menu-item">
 <button class="mobile-menu-toggle" type="button" aria-expanded="false">Services
@@ -522,6 +534,7 @@ permalink: /index.html
 <span class="mobile-menu-cta-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
 Diagnostic offert
 </a>
+</div>
 </div>
 </nav>
 <section class="hero">
