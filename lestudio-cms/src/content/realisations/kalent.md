@@ -7,6 +7,13 @@ year: 2025
 tags: [SaaS RH · Vitrine, Recrutement IA]
 description: Refonte Webflow pour Kalent, plateforme de sourcing de talents par l'IA, pensée pour convaincre des DRH exigeants.
 video: /assets/cas-clients/kalent.mp4
+cover: /assets/uploads/cover-kalent.png
+gallery:
+  - /assets/uploads/gallery-kalent-02.png
+  - /assets/uploads/gallery-kalent-03.png
+  - /assets/uploads/gallery-kalent-04.png
+  - /assets/uploads/gallery-kalent-05.png
+  - /assets/uploads/gallery-kalent-06.png
 probleme: Une plateforme de recrutement par IA qui devait démontrer sa fiabilité et convaincre des DRH sceptiques face aux promesses d'automatisation.
 overview:
   statement: Un site qui traduit une technologie complexe en bénéfices concrets pour les recruteurs.

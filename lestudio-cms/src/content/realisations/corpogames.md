@@ -7,6 +7,14 @@ year: 2024
 tags: [Team building · Vitrine, Événementiel]
 description: Refonte Webflow pour Corpogames, leader français du team building digital, pensée pour convertir les décideurs RH et événementiel.
 video: /assets/cas-clients/corpogames.mp4
+cover: /assets/uploads/cover-corpogames.png
+gallery:
+  - /assets/uploads/gallery-corpogames-02.png
+  - /assets/uploads/gallery-corpogames-03.png
+  - /assets/uploads/gallery-corpogames-04.png
+  - /assets/uploads/gallery-corpogames-05.png
+  - /assets/uploads/gallery-corpogames-06.png
+  - /assets/uploads/gallery-corpogames-07.png
 probleme: Un site qui devait séduire les décideurs RH et événementiel dès la première visite, et vendre activement les solutions de team building digital plutôt que se contenter d'informer.
 overview:
   statement: Un site pensé pour transformer les visiteurs curieux en demandes de devis.

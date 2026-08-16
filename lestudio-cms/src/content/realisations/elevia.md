@@ -7,6 +7,13 @@ year: 2026
 tags: [SaaS Agences · Vitrine, Landing page]
 description: Landing page haute conversion pour Elevia, plateforme SaaS qui centralise prospection, vente et livraison pour les agences digitales.
 video: /assets/cas-clients/elevia.mp4
+cover: /assets/uploads/cover-elevia.png
+gallery:
+  - /assets/uploads/gallery-elevia-02.png
+  - /assets/uploads/gallery-elevia-03.png
+  - /assets/uploads/gallery-elevia-04.png
+  - /assets/uploads/gallery-elevia-05.png
+  - /assets/uploads/gallery-elevia-06.png
 probleme: Une plateforme SaaS puissante mais complexe à expliquer, sans landing page pour capter et convertir les décideurs en agence.
 overview:
   statement: Une landing page qui explique une proposition de valeur complexe en une seule visite.

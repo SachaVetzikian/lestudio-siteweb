@@ -7,6 +7,13 @@ year: 2024
 tags: [Prêt viager hypothécaire · Vitrine, Seniors]
 description: Refonte UX/UI, simulateur en deux étapes et stratégie de contenu pour Arrago, spécialiste du prêt hypothécaire senior. Le trafic organique a été multiplié par 5 en deux ans.
 video: /assets/cas-clients/arrago.mp4
+cover: /assets/uploads/cover-arrago.png
+gallery:
+  - /assets/uploads/gallery-arrago-02.png
+  - /assets/uploads/gallery-arrago-03.png
+  - /assets/uploads/gallery-arrago-04.png
+  - /assets/uploads/gallery-arrago-05.png
+  - /assets/uploads/gallery-arrago-06.png
 resultats:
   - chiffre: "×5"
     label: trafic organique en 2 ans

@@ -53,6 +53,15 @@ layout: layouts/base.njk
 {% endif %}
 </div>
 
+{# ── Galerie visuelle ── #}
+{% if gallery %}
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:72px;">
+{% for im in gallery %}
+<img src="{{ im }}" alt="{{ client }}" width="1200" height="800" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px;border:1px solid var(--line);"/>
+{% endfor %}
+</div>
+{% endif %}
+
 {# ── Phases numérotées ── #}
 {% for ph in phases %}
 <section style="border-top:1px solid var(--line);padding:56px 0;">

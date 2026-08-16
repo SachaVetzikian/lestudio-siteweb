@@ -7,6 +7,13 @@ year: 2025
 tags: [SaaS Vidéo · Vitrine, YouTube]
 description: Refonte Webflow du site vitrine pour BoostStats, SaaS d'optimisation SEO automatique des vidéos YouTube.
 video: /assets/cas-clients/booststats.mp4
+cover: /assets/uploads/cover-booststats.png
+gallery:
+  - /assets/uploads/gallery-booststats-02.png
+  - /assets/uploads/gallery-booststats-03.png
+  - /assets/uploads/gallery-booststats-04.png
+  - /assets/uploads/gallery-booststats-05.png
+  - /assets/uploads/gallery-booststats-06.png
 probleme: Un SaaS qui automatise le SEO des vidéos YouTube, mais un site qui devait rendre ce bénéfice technique compréhensible et désirable en quelques secondes.
 overview:
   statement: Un site Webflow pensé pour transformer la curiosité des créateurs en abonnement.
