@@ -15,15 +15,18 @@ overview:
 services:
   - Audit UX/CRO
   - UI design
-  - Copywriting conversion
+  - Copywriting et optimisation CRO
+  - Architecture SEO
   - Développement Webflow
 phases:
   - titre: Audit & diagnostic
     intro: "Analyse du parcours d'un créateur YouTube découvrant BoostStats pour la première fois, et de ce qu'il doit comprendre avant de s'abonner."
   - titre: UI design
     intro: "Interface pensée pour parler directement aux YouTubeurs : captures du dashboard en action, exemples de descriptions avant/après optimisation, mise en avant de créateurs satisfaits."
-  - titre: Copywriting conversion
-    intro: "Discours orienté bénéfices concrets pour rendre un sujet technique, le SEO vidéo, immédiatement compréhensible et désirable."
+  - titre: Copywriting et optimisation CRO
+    intro: "Discours orienté bénéfices concrets pour rendre le SEO vidéo immédiatement compréhensible, page de tarification avec comparaison claire des plans, essai gratuit mis en avant et friction réduite à l'inscription."
+  - titre: Architecture SEO
+    intro: "Pages organisées autour des requêtes stratégiques de l'écosystème créateur, avec un maillage interne pensé pour guider vers l'essai gratuit."
   - titre: Développement Webflow
     intro: "Site développé directement sur Webflow, avec animations interactives démontrant le fonctionnement du produit et CMS structuré pour les témoignages."
 published: true
