@@ -4,7 +4,7 @@ client: BoostStats
 secteur: saas
 type: vitrine
 year: 2025
-tags: [SaaS Vidéo · Vitrine, YouTube]
+tags: [SaaS Vidéo, YouTube]
 description: Refonte Webflow du site vitrine pour BoostStats, SaaS d'optimisation SEO automatique des vidéos YouTube.
 video: /assets/cas-clients/booststats.mp4
 cover: /assets/uploads/cover-booststats.png

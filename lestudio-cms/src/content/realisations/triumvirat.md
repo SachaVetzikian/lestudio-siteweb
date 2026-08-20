@@ -4,7 +4,7 @@ client: Triumvirat
 secteur: sante
 type: vitrine
 year: 2024
-tags: [Conseil · Vitrine, B2B]
+tags: [Conseil, B2B]
 description: Refonte du site vitrine pour clarifier le positionnement et générer plus de prises de contact.
 video: /assets/cas-clients/triumvirat.mp4
 published: true

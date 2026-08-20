@@ -4,7 +4,7 @@ client: Corpogames
 secteur: evenementiel
 type: vitrine
 year: 2024
-tags: [Team building · Vitrine, Événementiel]
+tags: [Team building, Événementiel]
 description: Refonte Webflow pour Corpogames, leader français du team building digital, pensée pour convertir les décideurs RH et événementiel.
 video: /assets/cas-clients/corpogames.mp4
 cover: /assets/uploads/cover-corpogames.png

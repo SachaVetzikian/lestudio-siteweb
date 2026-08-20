@@ -3,7 +3,7 @@ title: Refonte WordPress pour MediaPronos, la référence des pronostics sportif
 client: MediaPronos
 type: vitrine
 year: 2024
-tags: [Pronostics sportifs · Vitrine, Abonnement]
+tags: [Pronostics sportifs, Abonnement]
 description: Refonte WordPress et stratégie CRO pour MediaPronos, communauté de référence des pronostics sportifs, pour convertir les inscriptions gratuites en abonnements Gold.
 cover: /assets/uploads/cover-mediapronos.png
 gallery:

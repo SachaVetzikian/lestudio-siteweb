@@ -4,7 +4,7 @@ client: Elevia
 secteur: saas
 type: vitrine
 year: 2026
-tags: [SaaS Agences · Vitrine, Landing page]
+tags: [SaaS Agences, Landing page]
 description: Landing page haute conversion pour Elevia, plateforme SaaS qui centralise prospection, vente et livraison pour les agences digitales.
 video: /assets/cas-clients/elevia.mp4
 cover: /assets/uploads/cover-elevia.png

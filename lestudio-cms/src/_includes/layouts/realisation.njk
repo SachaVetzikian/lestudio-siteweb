@@ -8,9 +8,9 @@ layout: layouts/base.njk
 {% if mission %}<p class="lede">{{ mission }}</p>{% elif not probleme %}<p class="lede">{{ description }}</p>{% endif %}
 
 {% if video and video | assetExists %}
-<video controls playsinline preload="metadata" width="1600" height="1000" style="width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;border:1px solid var(--line);margin:24px 0 56px;"><source src="{{ video }}" type="video/mp4"></video>
+<video controls playsinline preload="metadata" width="1600" height="1000" style="width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:14px;border:1px solid var(--line);margin:24px 0 56px;"><source src="{{ video }}" type="video/mp4"></video>
 {% elif cover %}
-<img src="{{ cover }}" alt="{{ title }}" width="1600" height="1000" fetchpriority="high" style="width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;border:1px solid var(--line);margin:24px 0 56px;"/>
+<img src="{{ cover }}" alt="{{ title }}" width="1600" height="1000" fetchpriority="high" style="width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:14px;border:1px solid var(--line);margin:24px 0 56px;"/>
 {% else %}
 <div style="width:100%;aspect-ratio:16/10;border-radius:14px;border:1px solid var(--line);margin:24px 0 56px;background:linear-gradient(135deg,rgba(255,90,0,0.16),rgba(9,9,11,0.04));display:flex;align-items:center;justify-content:center;">
 <span style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.04em;color:var(--grey);">{{ client }} · {{ tags | join(" · ") }}</span>
@@ -55,9 +55,9 @@ layout: layouts/base.njk
 
 {# ── Galerie visuelle ── #}
 {% if gallery %}
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:72px;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-bottom:72px;">
 {% for im in gallery %}
-<img src="{{ im }}" alt="{{ client }}" width="1200" height="800" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px;border:1px solid var(--line);"/>
+<img src="{{ im }}" alt="{{ client }}" width="1200" height="675" loading="lazy" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:14px;border:1px solid var(--line);"/>
 {% endfor %}
 </div>
 {% endif %}
@@ -75,9 +75,9 @@ layout: layouts/base.njk
 </div>
 {% endif %}
 {% if ph.images %}
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;">
 {% for im in ph.images %}
-<img src="{{ im }}" alt="{{ client }} · {{ ph.titre }}" width="1200" height="800" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px;border:1px solid var(--line);"/>
+<img src="{{ im }}" alt="{{ client }} · {{ ph.titre }}" width="1200" height="675" loading="lazy" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:14px;border:1px solid var(--line);"/>
 {% endfor %}
 </div>
 {% endif %}

@@ -4,7 +4,7 @@ client: Arrago
 secteur: immobilier
 type: vitrine
 year: 2024
-tags: [Prêt viager hypothécaire · Vitrine, Seniors]
+tags: [Prêt viager hypothécaire, Seniors]
 description: Refonte UX/UI, simulateur en deux étapes et stratégie de contenu pour Arrago, spécialiste du prêt hypothécaire senior. Le trafic organique a été multiplié par 5 en deux ans.
 video: /assets/cas-clients/arrago.mp4
 cover: /assets/uploads/cover-arrago.png

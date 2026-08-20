@@ -4,7 +4,7 @@ client: Jaberson
 secteur: juridique
 type: vitrine
 year: 2025
-tags: [Avocats & Conseil · Vitrine, B2B]
+tags: [Avocats & Conseil, B2B]
 description: Migration WordPress vers Webflow et gabarisation du site pour Jaberson, cabinet d'avocats classé Top 3 France des entreprises où il fait bon travailler.
 video: /assets/cas-clients/jaberson.mp4
 cover: /assets/uploads/cover-jaberson.png

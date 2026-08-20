@@ -4,7 +4,7 @@ client: Néo Viager
 secteur: immobilier
 type: vitrine
 year: 2026
-tags: [Immobilier · Vitrine, Viager]
+tags: [Immobilier, Viager]
 description: Refonte UX/UI, gabarisation complète et nouveau simulateur pour Néo Viager, en partenariat avec l'agence SEO Spark.
 video: /assets/cas-clients/neo-viager.mp4
 probleme: Un site Webflow qui ne reflétait pas l'identité visuelle de la marque, un parcours de conversion limité, et aucun simulateur pour engager le visiteur.

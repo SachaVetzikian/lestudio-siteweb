@@ -4,7 +4,7 @@ client: Kalent
 secteur: saas
 type: vitrine
 year: 2025
-tags: [SaaS RH · Vitrine, Recrutement IA]
+tags: [SaaS RH, Recrutement IA]
 description: Refonte Webflow pour Kalent, plateforme de sourcing de talents par l'IA, pensée pour convaincre des DRH exigeants.
 video: /assets/cas-clients/kalent.mp4
 cover: /assets/uploads/cover-kalent.png
