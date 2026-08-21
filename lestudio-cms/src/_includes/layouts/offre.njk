@@ -6,36 +6,7 @@ layout: layouts/base.njk
 <h1 style="margin-top:16px;">{{ h1 or title }}</h1>
 <p class="lede">{{ accroche or description }}</p>
 <p style="font-size:13px;color:var(--grey);margin-bottom:28px;">{{ cible }}</p>
-<a class="btn-primary" style="margin:0 0 48px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="/sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha</span></a>
-
-<div class="asset-mock-wrap">
-<div class="asset-mock-card">
-<div class="am-chrome">
-<div class="am-dots"><span></span><span></span><span></span></div>
-{% if tab_id == "tab-audit" %}<div class="am-label"><svg width="10" height="10" viewBox="0 0 24 24"><path fill="currentColor" d="M3 3h8v8H3zm10 0h8v5h-8zm0 7h8v11h-8zM3 13h8v8H3z"/></svg>Dashboard</div>
-{% elif tab_id == "tab-site" %}<div style="display:flex; gap:4px;"><span class="am-swatch" style="background:var(--orange);"></span><span class="am-swatch" style="background:var(--ink);"></span><span class="am-swatch" style="background:var(--orange-light);"></span></div>
-{% else %}<div class="am-label"><svg width="10" height="10" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Suivi</div>
-{% endif %}
-</div>
-<div class="am-body">
-{% if tab_id == "tab-audit" %}
-<div class="am-big-num">2<span style="font-size:18px;"> semaines</span></div>
-<div class="am-big-label">Diagnostic chiffré et priorisé</div>
-<svg width="100%" height="52" viewBox="0 0 240 46" preserveAspectRatio="none" style="margin-top:16px;">
-<polyline points="0,36 40,30 80,34 120,18 160,22 200,8 240,12" fill="none" stroke="var(--orange)" stroke-width="2.5"/>
-</svg>
-{% elif tab_id == "tab-site" %}
-<div style="height:9px; width:32%; background:var(--line); border-radius:3px; margin-bottom:8px;"></div>
-<div style="height:14px; width:70%; background:var(--ink); border-radius:3px; margin-bottom:16px;"></div>
-<div style="height:64px; background:linear-gradient(135deg, var(--orange-light), var(--orange)); border-radius:10px;"></div>
-{% else %}
-<div class="am-req"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Landing page nouvelle offre</span></div>
-<div class="am-req"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Itération page pricing</span></div>
-<div class="am-req pending"><span class="am-req-dot"></span><span>Déclinaison email — en cours</span></div>
-{% endif %}
-</div>
-</div>
-</div>
+<a class="btn-primary" style="margin:0 0 64px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="/sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha</span></a>
 
 {% include "partials/trust-marquee.njk" %}
 
@@ -67,6 +38,7 @@ layout: layouts/base.njk
 {# ── Features principales ── #}
 {% if highlights %}
 <h2>Les fonctionnalités principales de l'offre</h2>
+<div class="feature-section">
 <div class="feature-grid">
 {% for h in highlights %}
 <div class="feature-item">
@@ -77,6 +49,35 @@ layout: layouts/base.njk
 </div>
 </div>
 {% endfor %}
+</div>
+<div class="asset-mock-wrap feature-asset">
+<div class="asset-mock-card">
+<div class="am-chrome">
+<div class="am-dots"><span></span><span></span><span></span></div>
+{% if tab_id == "tab-audit" %}<div class="am-label"><svg width="10" height="10" viewBox="0 0 24 24"><path fill="currentColor" d="M3 3h8v8H3zm10 0h8v5h-8zm0 7h8v11h-8zM3 13h8v8H3z"/></svg>Dashboard</div>
+{% elif tab_id == "tab-site" %}<div style="display:flex; gap:4px;"><span class="am-swatch" style="background:var(--orange);"></span><span class="am-swatch" style="background:var(--ink);"></span><span class="am-swatch" style="background:var(--orange-light);"></span></div>
+{% else %}<div class="am-label"><svg width="10" height="10" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Suivi</div>
+{% endif %}
+</div>
+<div class="am-body">
+{% if tab_id == "tab-audit" %}
+<div class="am-big-num">2<span style="font-size:18px;"> semaines</span></div>
+<div class="am-big-label">Diagnostic chiffré et priorisé</div>
+<svg width="100%" height="52" viewBox="0 0 240 46" preserveAspectRatio="none" style="margin-top:16px;">
+<polyline points="0,36 40,30 80,34 120,18 160,22 200,8 240,12" fill="none" stroke="var(--orange)" stroke-width="2.5"/>
+</svg>
+{% elif tab_id == "tab-site" %}
+<div style="height:9px; width:32%; background:var(--line); border-radius:3px; margin-bottom:8px;"></div>
+<div style="height:14px; width:70%; background:var(--ink); border-radius:3px; margin-bottom:16px;"></div>
+<div style="height:64px; background:linear-gradient(135deg, var(--orange-light), var(--orange)); border-radius:10px;"></div>
+{% else %}
+<div class="am-req"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Landing page nouvelle offre</span></div>
+<div class="am-req"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Itération page pricing</span></div>
+<div class="am-req pending"><span class="am-req-dot"></span><span>Déclinaison email — en cours</span></div>
+{% endif %}
+</div>
+</div>
+</div>
 </div>
 {% endif %}
 
@@ -198,8 +199,11 @@ layout: layouts/base.njk
 .benefits-card p{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--ink);}
 .benefits-card p:first-child{border-top:none;padding-top:0;}
 .benefits-card p svg{flex-shrink:0;margin-top:2px;}
-.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:64px;}
-@media (max-width:640px){.feature-grid{grid-template-columns:1fr;}}
+.feature-section{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start;margin-bottom:64px;}
+@media (max-width:900px){.feature-section{grid-template-columns:1fr;}}
+.feature-section .feature-asset{margin-bottom:0;justify-self:center;position:sticky;top:100px;}
+@media (max-width:900px){.feature-section .feature-asset{position:static;justify-self:stretch;}.feature-section .feature-asset .asset-mock-card{max-width:100%;}}
+.feature-grid{display:grid;grid-template-columns:1fr;gap:14px;}
 .feature-item{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff;}
 .feature-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:var(--orange-light);color:var(--orange);flex-shrink:0;}
 .feature-label{font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--ink);margin-bottom:4px;}
