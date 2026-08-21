@@ -81,7 +81,7 @@ export function Comparison() {
         </CardContent>
       </Card>
 
-      <Card className="bg-muted/30">
+      <Card className="border-border ring-1 ring-border/60 bg-muted/30">
         <CardHeader>
           <CardTitle className="text-base font-semibold text-muted-foreground">
             Freelance, agences, salariés
