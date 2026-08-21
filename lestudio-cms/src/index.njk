@@ -156,8 +156,13 @@ permalink: /index.html
 
   section{padding:80px 0;}
   .section-head{margin-bottom:48px;}
-  .section-head h2{font-family:'DM Sans',sans-serif; font-weight:600; font-size:clamp(26px,3.4vw,40px); letter-spacing:-0.01em; margin-top:12px; max-width:640px;}
+  .section-head h2{font-family:'DM Sans',sans-serif; font-weight:600; font-size:clamp(26px,3.4vw,40px); letter-spacing:0.005em; margin-top:12px; max-width:640px; text-transform:uppercase;}
   .section-head p.section-intro{color:var(--grey); font-size:16px; max-width:520px; margin-top:14px; line-height:1.6;}
+  @media (max-width:640px){
+    section{padding:44px 0;}
+    .section-break{height:32px;}
+    .section-head{margin-bottom:28px;}
+  }
 
   .btn-secondary{
     background:transparent; color:var(--ink); border:1px solid var(--line);
@@ -302,7 +307,7 @@ permalink: /index.html
     transition:opacity .3s ease, transform .3s ease;
   }
   .ask-box.visible{opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0);}
-  .ask-chips{display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x proximity; padding:10px 14px 0; max-width:100%; scrollbar-width:none;}
+  .ask-chips{display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x proximity; padding:10px 36px 0 14px; max-width:100%; scrollbar-width:none;}
   .ask-chips::-webkit-scrollbar{display:none;}
   .ask-chip{font-size:11.5px; padding:7px 12px; border-radius:100px; border:1px solid var(--line); background:var(--paper); color:var(--ink); cursor:pointer; font-family:'DM Sans',sans-serif; transition:border-color .2s ease, color .2s ease; white-space:nowrap; flex-shrink:0; scroll-snap-align:start;}
   .ask-chip:hover{border-color:var(--orange); color:var(--orange);}
@@ -317,14 +322,17 @@ permalink: /index.html
   .ask-submit:hover{background:var(--orange);}
   .ask-submit:disabled{opacity:0.5; cursor:not-allowed;}
   .ask-disclaimer{font-size:10.5px; color:var(--grey); text-align:center; padding:0 14px 10px;}
+  .ask-close{position:absolute; top:10px; right:10px; width:22px; height:22px; border-radius:50%; border:none; background:transparent; color:var(--grey); display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0; z-index:3; transition:background .2s ease, color .2s ease;}
+  .ask-close:hover{background:var(--paper); color:var(--ink);}
   @media (max-width:480px){ .ask-chips{display:none;} }
 
   /* Final CTA */
   .final-cta{background:var(--slate); color:var(--paper); text-align:center; padding:96px 0;}
-  .final-cta h2{color:var(--paper); margin:0 auto 16px;}
+  .final-cta h2{color:var(--paper); margin:0 auto 16px; text-transform:uppercase;}
   .final-cta p{color:rgba(244,244,245,0.7); max-width:440px; margin:0 auto 36px;}
   .final-cta .shiny{--shiny-fill:var(--orange);}
   .final-cta .btn-primary{color:#fff; background:var(--orange);}
+  @media (max-width:640px){ .final-cta{padding:56px 0;} }
 
   /* Footer — cinématique : fond encre, grille, halo, wordmark géant, marquee */
   footer{position:relative; overflow:hidden; background:var(--ink); color:var(--paper); padding:72px 0 32px; margin-top:40px;}
@@ -833,6 +841,9 @@ padding: 16px<br>radius: 8px
 </div>
 </section>
 <div class="ask-box" id="askBox">
+<button type="button" class="ask-close" id="askClose" aria-label="Fermer">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+</button>
 <div class="ask-chips" id="askChips">
 <button type="button" class="ask-chip">Vous faites quoi exactement ?</button>
 <button type="button" class="ask-chip">Combien coûte un audit UX/UI ?</button>
@@ -1091,11 +1102,20 @@ padding: 16px<br>radius: 8px
 
   var askBox = document.getElementById('askBox');
   if(askBox){
+    var askDismissed = false;
     var toggleAskBox = function(){
+      if(askDismissed) return;
       askBox.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
     };
     window.addEventListener('scroll', toggleAskBox, { passive: true });
     toggleAskBox();
+    var askClose = document.getElementById('askClose');
+    if(askClose){
+      askClose.addEventListener('click', function(){
+        askDismissed = true;
+        askBox.classList.remove('visible');
+      });
+    }
   }
 })();
 </script>
