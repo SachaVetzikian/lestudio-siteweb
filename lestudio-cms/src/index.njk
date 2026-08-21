@@ -232,34 +232,26 @@ permalink: /index.html
   .pack .price{font-size:13px; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:18px;}
   .pack .btn-secondary{align-self:flex-start;}
 
-  .offer-tabs{display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-bottom:40px;}
-  @media (max-width:760px){ .offer-tabs{grid-template-columns:1fr;} }
-  .offer-tab-card{background:var(--paper); border:none; border-right:1px solid var(--line); padding:28px 20px; text-align:center; cursor:pointer; font-family:'DM Sans',sans-serif;}
-  .offer-tab-card:last-child{border-right:none;}
-  .offer-tab-card.active{background:#fff; position:relative; box-shadow:0 10px 28px -14px rgba(9,9,11,0.2);}
-  .offer-icon{display:flex; align-items:center; justify-content:center; margin:0 auto 14px; color:var(--grey);}
-  .offer-tab-card.active .offer-icon{color:var(--orange);}
-  .offer-tab-card h4{font-family:'DM Sans',sans-serif; font-weight:600; font-size:16px; color:var(--grey); margin-bottom:4px;}
-  .offer-tab-card.active h4{color:var(--ink);}
-  .offer-tab-card p{font-size:12.5px; color:var(--grey); margin-bottom:12px;}
-  .offer-mini-stats{font-size:12px; color:var(--grey);}
-  .offer-tab-card.active .offer-mini-stats{color:var(--orange); font-weight:500;}
-  .offer-panel{display:none; grid-template-columns:1fr 1.1fr 0.8fr; gap:32px; padding-bottom:24px;}
-  .offer-panel.active{display:grid;}
-  @media (max-width:960px){ .offer-panel.active{grid-template-columns:1fr;} }
-  .offer-col h3{font-family:'DM Sans',sans-serif; font-weight:600; font-size:24px; margin:10px 0 22px; color:var(--ink);}
-  .offer-block{margin-bottom:18px;}
-  .offer-block h4{font-size:11.5px; text-transform:uppercase; letter-spacing:0.03em; color:var(--grey); margin-bottom:6px;}
-  .offer-block p{font-size:14.5px; line-height:1.6; color:var(--ink); margin:0;}
+  .offer-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch;}
+  @media (max-width:960px){ .offer-cards{grid-template-columns:1fr; gap:20px;} }
+  .offer-card{position:relative; display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:16px; padding:32px 28px;}
+  .offer-card.featured{border-color:var(--orange);}
+  .offer-card-badge{position:absolute; top:-13px; left:28px; background:var(--orange); color:#fff; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; padding:5px 14px; border-radius:999px;}
+  .offer-icon{display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; background:var(--paper); color:var(--orange); margin-bottom:18px;}
+  .offer-card h3{font-family:'DM Sans',sans-serif; font-weight:600; font-size:21px; margin:0 0 10px; text-transform:none;}
+  .offer-card-desc{font-size:14.5px; line-height:1.6; color:var(--grey); margin-bottom:18px;}
+  .offer-card .offer-tags{margin-bottom:24px;}
   .offer-tags{display:flex; gap:8px; flex-wrap:wrap;}
   .offer-tags span{display:inline-flex; align-items:center; gap:6px; font-size:12px; border:1px solid var(--line); border-radius:12px; padding:5px 12px; color:var(--ink);}
-  .offer-included-title{font-family:'DM Sans',sans-serif; font-weight:600; font-size:15px; margin-bottom:14px;}
-  .offer-check{display:flex; align-items:center; gap:10px; background:rgba(34,150,80,0.08); border-radius:8px; padding:11px 14px; margin-bottom:8px; font-size:13.5px; color:var(--ink);}
-  .offer-check svg{color:#229650; flex-shrink:0;}
-  .offer-stats{background:var(--slate); color:#fff; border-radius:14px; padding:26px; display:flex; flex-direction:column; gap:18px;}
-  .offer-stat-num{font-family:'DM Sans',sans-serif; font-weight:600; font-size:26px;}
-  .offer-stat-label{font-size:11.5px; color:var(--orange); margin-top:2px;}
-  .offer-stats .btn-secondary{margin-top:6px; text-align:center; justify-content:center;}
+  .offer-card-divider{border-top:1px solid var(--line); margin-bottom:24px;}
+  .offer-included-title{font-family:'DM Sans',sans-serif; font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:0.03em; color:var(--grey); margin-bottom:14px;}
+  .offer-list{display:flex; flex-direction:column; gap:11px; margin-bottom:26px; flex:1;}
+  .offer-list li{display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--ink); line-height:1.45; list-style:none;}
+  .offer-list li svg{color:var(--orange); flex-shrink:0; margin-top:2px;}
+  .offer-card-footer{margin-top:auto; padding-top:20px; border-top:1px solid var(--line);}
+  .offer-card-price{font-family:'DM Sans',sans-serif; font-weight:600; font-size:19px; margin-bottom:4px;}
+  .offer-card-delai{font-size:12.5px; color:var(--grey); margin-bottom:18px;}
+  .offer-card-footer .btn-primary{width:100%; padding:14px 24px; justify-content:center; gap:8px;}
 
   /* Cas clients */
   .case-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:48px 40px; margin-bottom:48px;}
@@ -755,44 +747,38 @@ padding: 16px<br>radius: 8px
 </div>
 <div class="wrap">
 
-<div class="offer-tabs">
+<div class="offer-cards">
 {% for svc in collections.services %}
-<button class="offer-tab-card{% if loop.first %} active{% endif %}" data-target="{{ svc.data.tab_id }}">
+<div class="offer-card{% if svc.data.populaire %} featured{% endif %}">
+{% if svc.data.populaire %}<span class="offer-card-badge">Le plus demandé</span>{% endif %}
 <div class="offer-icon">
-{% if svc.data.tab_id == "tab-audit" %}<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-{% elif svc.data.tab_id == "tab-site" %}<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="9" x2="9" y2="20"></line></svg>
-{% else %}<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+{% if svc.data.tab_id == "tab-audit" %}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+{% elif svc.data.tab_id == "tab-site" %}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="9" x2="9" y2="20"></line></svg>
+{% else %}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
 {% endif %}
 </div>
-<h4>{{ svc.data.tab_title }}</h4>
-<p>{{ svc.data.tab_sub }}</p>
-<div class="offer-mini-stats">{{ svc.data.delai }}</div>
-</button>
-{% endfor %}
-</div>
-
-{% for svc in collections.services %}
-<div class="offer-panel{% if loop.first %} active{% endif %}" id="{{ svc.data.tab_id }}">
-<div class="offer-col">
 <span class="eyebrow" style="color:var(--orange);">{{ svc.data.cible }}</span>
-<h3>Pack <span style="color:var(--orange);">{{ svc.data.title }}</span></h3>
-<div class="offer-block"><h4>Le besoin</h4><p>{{ svc.data.description }}</p>{% if svc.data.highlights %}<div class="offer-tags" style="margin-top:12px;">{% for h in svc.data.highlights %}<span>{{ h }}</span>{% endfor %}</div>{% endif %}</div>
-<div class="offer-block"><h4>Outils utilisés</h4><div class="offer-tags">{% for o in svc.data.outils %}<span>{% if o == "Figma" %}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>{% elif o == "Google Analytics" %}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>{% elif o == "Hotjar" %}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>{% elif o == "Webflow" %}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line></svg>{% elif o == "Shopify" %}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>{% elif o == "Notion" %}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>{% elif o == "Slack" %}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>{% endif %} {{ o }}</span>{% endfor %}</div></div>
-</div>
-<div class="offer-col">
+<h3>{{ svc.data.title }}</h3>
+<p class="offer-card-desc">{{ svc.data.description }}</p>
+{% if svc.data.highlights %}<div class="offer-tags">{% for h in svc.data.highlights %}<span>{{ h }}</span>{% endfor %}</div>{% endif %}
+
+<div class="offer-card-divider"></div>
+
 <h4 class="offer-included-title">Ce qui est inclus</h4>
+<ul class="offer-list">
 {% for item in svc.data.inclus %}
-<div class="offer-check"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{{ item }}</span></div>
+<li><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{{ item }}</span></li>
+{% endfor %}
+</ul>
+
+<div class="offer-card-footer">
+<div class="offer-card-price">{{ svc.data.price }}</div>
+<div class="offer-card-delai">{% if svc.data.tab_id == "tab-abo" %}{{ svc.data.delai }}{% else %}{{ svc.data.delai }} · délai de livraison{% endif %}</div>
+<a class="btn-primary" href="/offres/{{ svc.fileSlug }}/"><span>Découvrir l'offre</span></a>
+</div>
+</div>
 {% endfor %}
 </div>
-<div class="offer-stats">
-<div><div class="offer-stat-num">+100</div><div class="offer-stat-label">Projets de refonte livrés</div></div>
-<div><div class="offer-stat-num">{{ svc.data.delai }}</div><div class="offer-stat-label">{% if svc.data.tab_id == "tab-abo" %}Engagement{% else %}Temps de livraison{% endif %}</div></div>
-<div class="price" style="color:rgba(244,244,245,0.85); margin:4px 0 0;">{{ svc.data.price }}</div>
-<a class="btn-secondary" href="/offres/{{ svc.fileSlug }}/" style="color:#fff;"><span>Découvrir l'offre</span></a>
-</div>
-</div>
-{% endfor %}
 
 </div>
 </section>
@@ -993,7 +979,7 @@ padding: 16px<br>radius: 8px
       });
     });
 
-    gsap.utils.toArray('.card-grid, .pack-grid, .case-grid').forEach(function(grid){
+    gsap.utils.toArray('.card-grid, .pack-grid, .case-grid, .offer-cards').forEach(function(grid){
       gsap.from(grid.children, {
         opacity:0, y:20, duration:0.6, stagger:0.12, ease:'power2.out',
         scrollTrigger:{ trigger: grid, start:'top 85%' }
@@ -1148,17 +1134,6 @@ padding: 16px<br>radius: 8px
     window.addEventListener('resize', update);
     update();
   })();
-</script>
-
-<script>
-  document.querySelectorAll('.offer-tab-card').forEach(function(tab){
-    tab.addEventListener('click', function(){
-      document.querySelectorAll('.offer-tab-card').forEach(function(t){ t.classList.remove('active'); });
-      document.querySelectorAll('.offer-panel').forEach(function(p){ p.classList.remove('active'); });
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.target).classList.add('active');
-    });
-  });
 </script>
 
 <script>

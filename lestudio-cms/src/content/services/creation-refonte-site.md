@@ -16,6 +16,7 @@ tab_title: "Pack Création / Refonte"
 tab_sub: "Site web"
 delai: "3-4 semaines"
 tab_id: "tab-site"
+populaire: true
 seo_title: "Création & Refonte Site E-commerce - Le Studio"
 seo_description: "Refonte ou création complète de votre site e-commerce ou vitrine : stratégie, wireframes, UI design, maquettes prêtes à coder. À partir de 1 000 €."
 h1: "Création ou refonte de site : un design pensé pour convertir"
