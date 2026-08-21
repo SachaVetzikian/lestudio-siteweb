@@ -1,4 +1,4 @@
-import { Check, X, ShieldCheck } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import {
@@ -59,10 +59,7 @@ export function Comparison() {
             <CardTitle className="text-base font-semibold">
               LeStudio
             </CardTitle>
-            <Badge variant="default">
-              <ShieldCheck className="size-3.5" aria-hidden />
-              Recommandé
-            </Badge>
+            <Badge variant="default">Recommandé</Badge>
           </div>
           <CardDescription>
             Une équipe complète, sans les inconvénients d'un freelance, d'une
@@ -81,7 +78,7 @@ export function Comparison() {
         </CardContent>
       </Card>
 
-      <Card className="border-border ring-1 ring-border/60 bg-muted/30">
+      <Card className="border-border ring-1 ring-border/60">
         <CardHeader>
           <CardTitle className="text-base font-semibold text-muted-foreground">
             Freelance, agences, salariés
