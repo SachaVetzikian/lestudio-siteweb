@@ -8,8 +8,8 @@ layout: layouts/base.njk
 <p style="font-size:13px;color:var(--grey);margin-bottom:28px;">{{ cible }}</p>
 <a class="btn-primary" style="margin:0 0 48px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="/sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha</span></a>
 
-<div class="offre-asset-wrap">
-<div class="offre-asset">
+<div class="asset-mock-wrap">
+<div class="asset-mock-card">
 <div class="am-chrome">
 <div class="am-dots"><span></span><span></span><span></span></div>
 {% if tab_id == "tab-audit" %}<div class="am-label"><svg width="10" height="10" viewBox="0 0 24 24"><path fill="currentColor" d="M3 3h8v8H3zm10 0h8v5h-8zm0 7h8v11h-8zM3 13h8v8H3z"/></svg>Dashboard</div>
@@ -216,29 +216,4 @@ layout: layouts/base.njk
 .testi-author{font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;color:var(--ink);}
 .testi-author span{display:block;font-family:'DM Sans',sans-serif;font-weight:400;font-size:13px;color:var(--grey);margin-top:2px;}
 @media (max-width:800px){ .offre-qualif, .offre-inclus, .testi-grid{grid-template-columns:1fr !important;} .offre-step{grid-template-columns:1fr !important;gap:6px !important;} }
-
-.offre-asset-wrap{margin-bottom:64px;}
-.offre-asset{
-  background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; max-width:320px;
-  box-shadow:0 20px 50px -20px rgba(9,9,11,0.22), 0 0 40px -14px rgba(255,90,0,.28);
-  opacity:0; transform:scale(.94) translateY(10px);
-  animation:offre-asset-in .6s ease .15s forwards;
-  transition:transform .35s ease, box-shadow .35s ease;
-}
-.offre-asset:hover{transform:scale(1.02);box-shadow:0 24px 56px -20px rgba(9,9,11,0.26), 0 0 54px -12px rgba(255,90,0,.4);}
-@keyframes offre-asset-in{to{opacity:1;transform:scale(1) translateY(0);}}
-@media (prefers-reduced-motion: reduce){.offre-asset{animation:none;opacity:1;transform:none;}}
-.offre-asset .am-chrome{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-bottom:1px solid var(--line);}
-.offre-asset .am-dots{display:flex;gap:5px;}
-.offre-asset .am-dots span{width:6px;height:6px;border-radius:50%;background:var(--line);}
-.offre-asset .am-label{font-size:10px;color:var(--grey);border:1px solid var(--line);border-radius:6px;padding:3px 9px;display:flex;align-items:center;gap:4px;}
-.offre-asset .am-swatch{width:14px;height:14px;border-radius:4px;display:inline-block;}
-.offre-asset .am-body{padding:20px;min-height:130px;}
-.offre-asset .am-big-num{font-family:'DM Sans',sans-serif;font-weight:600;font-size:34px;color:var(--ink);line-height:1;}
-.offre-asset .am-big-label{font-size:12.5px;color:var(--grey);margin-top:6px;}
-.am-req{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink);}
-.am-req:first-child{border-top:none;padding-top:0;}
-.am-req svg{flex-shrink:0;}
-.am-req.pending{color:var(--grey);}
-.am-req-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--orange);flex-shrink:0;}
 </style>
