@@ -198,28 +198,21 @@ permalink: /index.html
   .scroll-block p{color:var(--grey); font-size:15.5px; line-height:1.5; max-width:480px; margin-bottom:14px;}
   .deliverable{margin-top:4px; font-size:12.5px; color:var(--ink); font-weight:500;}
 
-  /* Asset mockups riches - étapes méthode */
-  .asset-mock{background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; max-width:300px; margin-top:22px; box-shadow:0 10px 28px -14px rgba(9,9,11,0.18);}
+  /* Asset mockups - étapes méthode : un visual fort par étape, animé à l'activation */
+  .asset-mock{background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; max-width:300px; margin-top:22px; box-shadow:0 10px 28px -14px rgba(9,9,11,0.18); opacity:.45; transform:scale(.94) translateY(8px); transition:opacity .5s ease, transform .5s ease;}
+  .scroll-block.active .asset-mock{opacity:1; transform:scale(1) translateY(0);}
   .asset-mock .am-chrome{display:flex; align-items:center; justify-content:space-between; padding:9px 12px; border-bottom:1px solid var(--line);}
   .asset-mock .am-dots{display:flex; gap:5px;}
   .asset-mock .am-dots span{width:6px;height:6px;border-radius:50%;background:var(--line);}
   .asset-mock .am-label{font-size:10px; color:var(--grey); border:1px solid var(--line); border-radius:6px; padding:3px 9px; display:flex; align-items:center; gap:4px;}
-  .asset-mock .am-body{padding:16px; position:relative; min-height:130px;}
-  .asset-mock .am-toolbar{display:flex; gap:12px; padding:8px 14px; border-top:1px solid var(--line); color:var(--grey);}
-  .asset-mock .am-cursor{position:absolute; background:var(--ink); color:#fff; font-size:9px; font-weight:500; padding:4px 9px; border-radius:8px 8px 8px 2px; white-space:nowrap;}
+  .asset-mock .am-body{padding:20px; position:relative; min-height:130px;}
   .asset-mock .am-swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
-  .am-wrap{position:relative; max-width:300px; margin-top:22px;}
-  .am-wrap .asset-mock{margin-top:0;}
-  .am-sticker{position:absolute; z-index:3; background:var(--orange); color:#fff; font-family:'DM Sans',sans-serif; font-weight:700; font-size:11px; padding:7px 14px; border-radius:8px; transform:rotate(-6deg); box-shadow:0 10px 24px -8px rgba(255,90,0,0.55); white-space:nowrap;}
-  .am-chatbubble{display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:16px; padding:9px 16px 9px 9px; font-size:12px; font-weight:600; color:var(--ink); box-shadow:0 10px 24px -12px rgba(9,9,11,0.2);}
-  .am-chatbubble img{width:24px; height:24px; border-radius:50%; object-fit:cover; flex-shrink:0;}
-  .am-timeline{position:relative; height:56px; margin:8px 0 16px;}
-  .am-timeline .am-ruler{position:absolute; top:8px; left:0; right:0; height:1px; background:var(--line);}
-  .am-timeline .am-marker{position:absolute; top:8px; width:1.5px; height:24px; background:var(--orange);}
-  .am-timeline .am-marker::before{content:''; position:absolute; top:-4px; left:50%; transform:translateX(-50%); width:7px; height:7px; border-radius:50%; background:var(--orange); box-shadow:0 0 0 3px var(--orange-light);}
-  .am-timeline .am-tick{position:absolute; top:40px; font-size:8.5px; color:var(--grey); font-family:monospace; letter-spacing:.02em; transform:translateX(-50%);}
-  .am-timeline .am-tick:first-child{transform:none;}
-  .am-timeline .am-tick:last-child{transform:translateX(-100%);}
+  .am-big-num{font-family:'DM Sans',sans-serif; font-weight:600; font-size:34px; color:var(--ink); line-height:1;}
+  .am-big-label{font-size:12.5px; color:var(--grey); margin-top:6px;}
+  .am-chart path{stroke-dasharray:260; stroke-dashoffset:260; transition:stroke-dashoffset 1s ease .2s;}
+  .scroll-block.active .am-chart path{stroke-dashoffset:0;}
+  .am-spec{border:1.5px solid var(--orange); border-radius:8px; padding:14px; position:relative;}
+  .am-spec-tag{position:absolute; top:-9px; right:-9px; background:var(--orange); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:5px;}
   .am-filetag{display:inline-flex; align-items:center; gap:6px; border:1px dashed var(--line); border-radius:8px; padding:6px 10px; font-size:10px; color:var(--grey); font-family:monospace; background:#fff;}
 
   /* Offers */
@@ -270,8 +263,7 @@ permalink: /index.html
   .case-preview video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .3s ease, transform .5s cubic-bezier(.16,1,.3,1);}
   .case-preview.hovering video{opacity:1;}
   .case-card:hover .case-preview img, .case-card:hover .case-preview video{transform:scale(1.04);}
-  .case-badge{display:inline-flex; align-items:center; gap:8px; background:var(--orange-light); color:var(--ink); font-size:13px; font-weight:600; padding:6px 14px 6px 6px; border-radius:999px; margin-bottom:18px;}
-  .case-badge-icon{display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#fff; color:var(--orange); flex-shrink:0;}
+  .case-badge{display:inline-flex; align-items:center; gap:8px; background:var(--orange-light); color:var(--ink); font-size:13px; font-weight:600; padding:6px 14px; border-radius:999px; margin-bottom:18px;}
   .case-card h3{font-family:'DM Sans',sans-serif; font-weight:600; font-size:21px; margin-bottom:10px;}
   @media (max-width:640px){ .case-card h3{font-size:24px;} }
   .case-card p{color:var(--grey); font-size:15.5px; line-height:1.6; margin-bottom:0;}
@@ -617,24 +609,18 @@ Diagnostic offert
 <h3>Audit UX/CRO</h3>
 <p>On identifie ce qui bloque vraiment la conversion, en croisant data et audit terrain, avec un benchmark de vos concurrents directs.</p>
 <div class="deliverable">Ce que l'on vous livre : rapport d'audit avec quick wins</div>
-<div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
 <div class="am-dots"><span></span><span></span><span></span></div>
 <div class="am-label"><svg width="10" height="10" viewBox="0 0 24 24"><path fill="currentColor" d="M3 3h8v8H3zm10 0h8v5h-8zm0 7h8v11h-8zM3 13h8v8H3z"/></svg>Dashboard</div>
 </div>
 <div class="am-body">
-<div style="display:flex; gap:8px; margin-bottom:14px;">
-<div style="flex:1; border:1px solid var(--line); border-radius:8px; padding:8px;"><div style="font-family:'DM Sans',sans-serif; font-weight:600; font-size:15px;">2.4%</div><div style="font-size:8.5px; color:var(--grey); margin-top:2px;">Conversion</div></div>
-<div style="flex:1; border:1px solid var(--line); border-radius:8px; padding:8px;"><div style="font-family:'DM Sans',sans-serif; font-weight:600; font-size:15px; color:var(--orange);">64%</div><div style="font-size:8.5px; color:var(--grey); margin-top:2px;">Rebond</div></div>
-</div>
-<svg width="100%" height="46" viewBox="0 0 240 46" preserveAspectRatio="none">
-<polyline points="0,36 40,30 80,34 120,18 160,22 200,8 240,12" fill="none" stroke="var(--orange)" stroke-width="2"/>
+<div class="am-big-num">64<span style="font-size:18px;">%</span></div>
+<div class="am-big-label">Taux de rebond actuel</div>
+<svg class="am-chart" width="100%" height="52" viewBox="0 0 240 46" preserveAspectRatio="none" style="margin-top:16px;">
+<polyline points="0,36 40,30 80,34 120,18 160,22 200,8 240,12" fill="none" stroke="var(--orange)" stroke-width="2.5"/>
 </svg>
-<div class="am-cursor" style="top:8px; right:10px;">Benchmark ↗</div>
 </div>
-</div>
-<div class="am-sticker" style="bottom:-14px; left:-16px;">3 points bloquants ⚡</div>
 </div>
 </div>
 </div>
@@ -645,29 +631,18 @@ Diagnostic offert
 <h3>Architecture et wireframes</h3>
 <p>On pose la structure et les parcours avant de dessiner le moindre pixel.</p>
 <div class="deliverable">Ce que l'on vous livre : wireframes validés</div>
-<div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
 <div class="am-dots"><span></span><span></span><span></span></div>
 <div class="am-label"><svg width="10" height="10" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 3h18v18H3z"/></svg>Wireframe</div>
 </div>
 <div class="am-body">
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
-<div style="height:30px; border:1.5px dashed var(--grey); border-radius:4px;"></div>
-<div style="height:30px; border:1.5px dashed var(--grey); border-radius:4px;"></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
+<div style="height:54px; border:1.5px dashed var(--grey); border-radius:6px;"></div>
+<div style="height:54px; border:1.5px dashed var(--grey); border-radius:6px;"></div>
 </div>
-<div style="height:16px; border:1.5px dashed var(--grey); border-radius:4px; margin-bottom:14px;"></div>
-<div class="am-timeline">
-<span class="am-tick" style="left:0;">V1</span>
-<span class="am-tick" style="left:44%;">V2</span>
-<span class="am-tick" style="left:88%;">Final</span>
-<div class="am-ruler"></div>
-<div class="am-marker" style="left:44%;"></div>
+<div style="height:20px; border:1.5px dashed var(--grey); border-radius:6px;"></div>
 </div>
-<div class="am-cursor" style="bottom:6px; right:8px;">Structure ↗</div>
-</div>
-</div>
-<div class="am-sticker" style="top:-14px; right:-12px;">Valider ✓</div>
 </div>
 </div>
 </div>
@@ -678,27 +653,16 @@ Diagnostic offert
 <h3>UI design</h3>
 <p>Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire.</p>
 <div class="deliverable">Ce que l'on vous livre : maquettes Figma haute fidélité</div>
-<div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
 <div class="am-dots"><span></span><span></span><span></span></div>
 <div style="display:flex; gap:4px;"><span class="am-swatch" style="background:var(--orange);"></span><span class="am-swatch" style="background:var(--ink);"></span><span class="am-swatch" style="background:var(--orange-light);"></span></div>
-<div class="am-label">DM Sans ⌄</div>
 </div>
 <div class="am-body">
-<div style="height:7px; width:32%; background:var(--line); border-radius:3px; margin-bottom:6px;"></div>
-<div style="height:12px; width:70%; background:var(--ink); border-radius:3px; margin-bottom:12px;"></div>
-<div style="height:44px; background:linear-gradient(135deg, var(--orange-light), var(--orange)); border-radius:8px; margin-bottom:10px;"></div>
-<div class="am-cursor" style="bottom:34px; left:10px;">LeStudio</div>
+<div style="height:9px; width:32%; background:var(--line); border-radius:3px; margin-bottom:8px;"></div>
+<div style="height:14px; width:70%; background:var(--ink); border-radius:3px; margin-bottom:16px;"></div>
+<div style="height:64px; background:linear-gradient(135deg, var(--orange-light), var(--orange)); border-radius:10px;"></div>
 </div>
-<div class="am-toolbar">
-<svg width="13" height="13" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 9h18M9 3v18M3 3h18v18H3z"/></svg>
-<svg width="13" height="13" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 4h16v16H4z"/></svg>
-<svg width="13" height="13" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 21l4-1 12-12-3-3L4 17z"/></svg>
-<svg width="13" height="13" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 5h14M12 5v14"/></svg>
-</div>
-</div>
-<div class="am-sticker" style="bottom:-14px; right:-10px;">Design system ✓</div>
 </div>
 </div>
 </div>
@@ -709,28 +673,19 @@ Diagnostic offert
 <h3>Handoff design</h3>
 <p>Specs et composants documentés, prêts pour votre développeur ou votre agence.</p>
 <div class="deliverable">Ce que l'on vous livre : dossier de handoff complet</div>
-<div class="am-wrap">
 <div class="asset-mock">
 <div class="am-chrome">
 <div class="am-dots"><span></span><span></span><span></span></div>
 <div class="am-label"><svg width="10" height="10" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="m8 6l-6 6l6 6M16 6l6 6l-6 6"/></svg>Inspect</div>
 </div>
 <div class="am-body">
-<div style="border:1.5px solid var(--orange); border-radius:6px; padding:10px; margin-bottom:10px; position:relative;">
-<div style="height:8px; width:60%; background:var(--line); border-radius:3px; margin-bottom:6px;"></div>
-<div style="height:8px; width:40%; background:var(--line); border-radius:3px;"></div>
-<div style="position:absolute; top:-8px; right:-8px; background:var(--orange); color:#fff; font-size:8px; padding:2px 6px; border-radius:4px;">16px</div>
+<div class="am-spec">
+<div style="height:9px; width:60%; background:var(--line); border-radius:3px; margin-bottom:8px;"></div>
+<div style="height:9px; width:40%; background:var(--line); border-radius:3px;"></div>
+<span class="am-spec-tag">16px</span>
 </div>
-<div style="background:var(--ink); border-radius:6px; padding:8px 10px; font-family:monospace; font-size:9px; color:var(--orange-light); line-height:1.6; margin-bottom:12px;">
-padding: 16px<br>radius: 8px
+<div style="margin-top:14px;"><span class="am-filetag"><svg width="11" height="11" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M14 2v6h6"/></svg>LeStudio.fig</span></div>
 </div>
-<div style="display:flex; gap:8px; flex-wrap:wrap;">
-<span class="am-filetag"><svg width="11" height="11" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M14 2v6h6"/></svg>Handoff.pdf</span>
-<span class="am-filetag"><svg width="11" height="11" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M14 2v6h6"/></svg>LeStudio.fig</span>
-</div>
-</div>
-</div>
-<div class="am-sticker" style="bottom:-14px; left:-12px;">Livré ✓</div>
 </div>
 </div>
 </div>
@@ -944,11 +899,11 @@ padding: 16px<br>radius: 8px
             (c.video ? '<video muted loop playsinline preload="none" onerror="this.style.display=\'none\'"><source src="' + c.video + '" type="video/mp4"></video>' : '') +
           '</div>' +
         '</div>' +
-        '<span class="case-badge"><span class="case-badge-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span>' + (c.type === 'ecommerce' ? 'E-commerce' : 'Vitrine') + ' · ' + c.tag1 + '</span>' +
+        '<span class="case-badge">' + (c.type === 'ecommerce' ? 'E-commerce' : 'Vitrine') + ' · ' + c.tag1 + '</span>' +
         '<h3>' + c.name + '</h3>' +
         '<p>' + c.desc + '</p>' +
         '<div class="case-divider"></div>' +
-        '<span class="case-link">→ Voir le projet</span>' +
+        '<span class="case-link">Voir le projet →</span>' +
       '</a>';
     }).join('');
 
