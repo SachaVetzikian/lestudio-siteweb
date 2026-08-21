@@ -9,17 +9,40 @@ layout: layouts/base.njk
 <p style="font-size:13px;color:var(--grey);margin-bottom:28px;">{{ cible }}</p>
 <a class="btn-primary" style="margin:0 0 64px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="/sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha</span></a>
 
+{% include "partials/trust-marquee.njk" %}
+
 {# ── Qualification ── #}
 {% if pour_qui %}
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:72px;" class="offre-qualif">
-<div class="card" style="margin-bottom:0;">
-<h3 style="margin-bottom:16px;">Cette offre est pour vous si...</h3>
-{% for p in pour_qui %}<p style="padding:8px 0;border-top:1px solid var(--line);">✓&nbsp; {{ p }}</p>{% endfor %}
+<div class="qualif-card yes">
+<h3>Cette offre est pour vous si...</h3>
+{% for p in pour_qui %}<p><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{{ p }}</span></p>{% endfor %}
 </div>
-<div class="card" style="margin-bottom:0;background:var(--slate);color:var(--paper);border:none;">
-<h3 style="margin-bottom:16px;color:var(--paper);">Elle n'est pas pour vous si...</h3>
-{% for p in pas_pour_qui %}<p style="padding:8px 0;border-top:1px solid rgba(244,244,245,0.15);color:rgba(244,244,245,0.85);">✕&nbsp; {{ p }}</p>{% endfor %}
+<div class="qualif-card no">
+<h3>Elle n'est pas pour vous si...</h3>
+{% for p in pas_pour_qui %}<p><svg width="16" height="16" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="var(--grey)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{{ p }}</span></p>{% endfor %}
 </div>
+</div>
+{% endif %}
+
+{# ── Pourquoi faire appel à un studio de design UX/UI ── #}
+<h2>Pourquoi faire appel à un studio de design UX/UI</h2>
+<p style="font-size:16px;line-height:1.7;color:var(--grey);max-width:680px;margin-bottom:24px;">Un site qui a l'air fini n'est pas forcément un site qui convertit. La différence entre les deux, c'est un travail spécifique : comprendre pourquoi un visiteur hésite, part ou achète, puis traduire ça en interface. C'est le métier d'un studio de design UX/UI — pas un service annexe d'une agence généraliste, ni une compétence qu'un développeur ou un freelance polyvalent maîtrise en plus du reste.</p>
+<div class="benefits-card">
+<p><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Un design pensé pour convertir, pas seulement pour plaire</span></p>
+<p><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Une équipe complète (UX, UI, parfois copywriting), sans le coût ni les délais d'un recrutement</span></p>
+<p><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Un regard extérieur, sans les biais internes sur "ce qui marche déjà"</span></p>
+<p><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Un périmètre, un délai et un prix fixés avant de démarrer</span></p>
+<p><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Un partenaire disponible dans la durée, pas un prestataire ponctuel</span></p>
+</div>
+
+{# ── Features principales ── #}
+{% if highlights %}
+<h2>Les fonctionnalités principales de l'offre</h2>
+<div class="feature-grid">
+{% for h in highlights %}
+<div class="feature-item"><span class="feature-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span>{{ h }}</span></div>
+{% endfor %}
 </div>
 {% endif %}
 
@@ -30,7 +53,7 @@ layout: layouts/base.njk
 <div style="display:grid;grid-template-columns:140px 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--line);" class="offre-step">
 <p style="font-family:'DM Sans',sans-serif;font-weight:600;color:var(--orange);">{{ step.periode }}</p>
 <div>
-<h3 style="font-family:'DM Sans',sans-serif;font-size:18px;margin-bottom:8px;">{{ step.titre }}</h3>
+<h3 style="font-family:'DM Sans',sans-serif;font-size:18px;margin-bottom:8px;text-transform:none;">{{ step.titre }}</h3>
 {% for pt in step.points %}<p style="font-size:15px;line-height:1.7;color:var(--grey);">— {{ pt }}</p>{% endfor %}
 </div>
 </div>
@@ -39,15 +62,15 @@ layout: layouts/base.njk
 
 {# ── Inclus + prix ── #}
 <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin:64px 0;" class="offre-inclus">
-<div class="card" style="margin-bottom:0;">
-<h3 style="margin-bottom:16px;">Ce qui est inclus</h3>
-{% for item in inclus %}<p style="padding:8px 0;border-top:1px solid var(--line);">✓&nbsp; {{ item }}</p>{% endfor %}
+<div class="qualif-card">
+<h3>Ce qui est inclus</h3>
+{% for item in inclus %}<p><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="var(--orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{{ item }}</span></p>{% endfor %}
 </div>
-<div class="card" style="margin-bottom:0;background:var(--slate);border:none;display:flex;flex-direction:column;justify-content:center;">
-<p style="font-size:13px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange);margin-bottom:8px;">Tarif</p>
-<p style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:600;color:#fff;margin-bottom:6px;">{{ price }}</p>
-<p style="font-size:14px;color:rgba(255,255,255,0.75);margin-bottom:20px;">Le montant exact dépend de votre périmètre, fixé ensemble après le premier appel.</p>
-<p style="font-size:13px;color:rgba(255,255,255,0.7);">Outils : {{ outils | join(" · ") }}</p>
+<div class="tarif-card">
+<p class="tarif-label">Tarif</p>
+<p class="tarif-price">{{ price }}</p>
+<p class="tarif-note">Le montant exact dépend de votre périmètre, fixé ensemble après le premier appel.</p>
+<p class="tarif-tools">Outils : {{ outils | join(" · ") }}</p>
 </div>
 </div>
 
@@ -74,14 +97,41 @@ layout: layouts/base.njk
 {% for r in collections.realisations %}
 {% if r.data.featured and shown < 3 %}
 {% set shown = shown + 1 %}
-<a class="card" href="/realisations/{{ r.fileSlug }}/">
-<h3>{{ r.data.client }}</h3><p>{{ r.data.description }}</p>
-<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">Voir le projet →</p>
+<a class="case-card" href="/realisations/{{ r.fileSlug }}/">
+{% if r.data.cover and (r.data.cover | assetExists) %}
+<div class="case-preview">
+<div class="case-browser-bar"><span class="case-browser-dot red"></span><span class="case-browser-dot yellow"></span><span class="case-browser-dot green"></span><span class="case-browser-url"></span></div>
+<div class="case-shot"><img src="{{ r.data.cover }}" alt="{{ r.data.client }}" loading="lazy"/></div>
+</div>
+{% endif %}
+<span class="case-badge">{% if r.data.type == "ecommerce" %}E-commerce{% else %}Vitrine{% endif %} · {{ r.data.tags[0] }}</span>
+<h3>{{ r.data.client }}</h3>
+<p>{{ r.data.description }}</p>
+<div class="case-divider"></div>
+<span class="case-link">Voir le projet →</span>
 </a>
 {% endif %}
 {% endfor %}
 </div>
 
+{# ── Témoignages ── #}
+{% if collections.temoignages.length %}
+<h2>Ils en parlent mieux que nous</h2>
+<div class="testi-grid">
+{% set tShown = 0 %}
+{% for t in collections.temoignages %}
+{% if tShown < 2 %}
+{% set tShown = tShown + 1 %}
+<div class="testi-card">
+<p class="testi-quote">{{ t.data.quote | mdInline | safe }}</p>
+<p class="testi-author">{{ t.data.name }}<span>{{ t.data.role }}</span></p>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+{% endif %}
+
+<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="/sacha-avatar.webp" width="36"/><span>Prendre rendez-vous avec Sacha</span></a>
 
 {% if faq %}
 <script type="application/ld+json">
@@ -103,4 +153,32 @@ layout: layouts/base.njk
 </script>
 {% include "partials/form-contact.njk" %}
 
-<style>@media (max-width:800px){ .offre-qualif, .offre-inclus{grid-template-columns:1fr !important;} .offre-step{grid-template-columns:1fr !important;gap:6px !important;} }</style>
+<style>
+.qualif-card{border:1px solid var(--line);border-radius:20px;padding:28px;background:#fff;}
+.qualif-card.yes{border-color:var(--orange);}
+.qualif-card h3{margin-bottom:16px;text-transform:none;}
+.qualif-card p{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--ink);}
+.qualif-card p:first-of-type{border-top:none;padding-top:0;}
+.qualif-card p svg{flex-shrink:0;margin-top:2px;}
+.benefits-card{border:1px solid var(--line);border-radius:20px;padding:28px;background:#fff;max-width:680px;margin-bottom:64px;}
+.benefits-card p{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--ink);}
+.benefits-card p:first-child{border-top:none;padding-top:0;}
+.benefits-card p svg{flex-shrink:0;margin-top:2px;}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:64px;}
+@media (max-width:760px){.feature-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:480px){.feature-grid{grid-template-columns:1fr;}}
+.feature-item{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:14.5px;font-weight:500;color:var(--ink);background:#fff;}
+.feature-icon{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--orange-light);color:var(--orange);flex-shrink:0;}
+.tarif-card{border:1px solid var(--orange);border-radius:20px;padding:28px;background:#fff;display:flex;flex-direction:column;justify-content:center;}
+.tarif-label{font-size:13px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange);margin-bottom:8px;font-weight:600;}
+.tarif-price{font-family:'DM Sans',sans-serif;font-size:30px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.tarif-note{font-size:14px;color:var(--grey);margin-bottom:20px;}
+.tarif-tools{font-size:13px;color:var(--grey);}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:64px;}
+@media (max-width:760px){.testi-grid{grid-template-columns:1fr;}}
+.testi-card{border:1px solid var(--line);border-radius:20px;padding:26px;background:#fff;}
+.testi-quote{font-size:15px;line-height:1.65;color:var(--ink);margin-bottom:16px;}
+.testi-author{font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;color:var(--ink);}
+.testi-author span{display:block;font-family:'DM Sans',sans-serif;font-weight:400;font-size:13px;color:var(--grey);margin-top:2px;}
+@media (max-width:800px){ .offre-qualif, .offre-inclus, .testi-grid{grid-template-columns:1fr !important;} .offre-step{grid-template-columns:1fr !important;gap:6px !important;} }
+</style>
