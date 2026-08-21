@@ -267,8 +267,7 @@ permalink: /index.html
   .offer-list li{display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--ink); line-height:1.45; list-style:none;}
   .offer-list li svg{color:var(--orange); flex-shrink:0; margin-top:2px;}
   .offer-card-footer{margin-top:auto; padding-top:20px; border-top:1px solid var(--line);}
-  .offer-card-price{font-family:'DM Sans',sans-serif; font-weight:600; font-size:19px; margin-bottom:4px;}
-  .offer-card-delai{font-size:12.5px; color:var(--grey); margin-bottom:18px;}
+  .offer-card-delai{font-size:13px; color:var(--ink); font-weight:500; margin-bottom:18px;}
   .offer-card-footer .btn-primary{width:100%; padding:14px 24px; justify-content:center; gap:8px;}
 
   /* Cas clients */
@@ -723,7 +722,7 @@ Diagnostic offert
 <section id="offres">
 <div class="wrap section-head">
 <h2>Un format adapté à votre besoin.</h2>
-<p class="section-intro">Tarifs de départ. Le montant exact dépend de votre périmètre précis.</p>
+<p class="section-intro">Trois formats selon votre besoin. Le périmètre exact est cadré ensemble après le premier appel.</p>
 </div>
 <div class="wrap">
 
@@ -740,7 +739,7 @@ Diagnostic offert
 <span class="eyebrow" style="color:var(--orange);">{{ svc.data.cible }}</span>
 <h3>{{ svc.data.title }}</h3>
 <p class="offer-card-desc">{{ svc.data.description }}</p>
-{% if svc.data.highlights %}<div class="offer-tags">{% for h in svc.data.highlights %}<span>{{ h }}</span>{% endfor %}</div>{% endif %}
+{% if svc.data.highlights %}<div class="offer-tags">{% for h in svc.data.highlights %}<span>{{ h.label }}</span>{% endfor %}</div>{% endif %}
 
 <div class="offer-card-divider"></div>
 
@@ -752,7 +751,6 @@ Diagnostic offert
 </ul>
 
 <div class="offer-card-footer">
-<div class="offer-card-price">{{ svc.data.price }}</div>
 <div class="offer-card-delai">{% if svc.data.tab_id == "tab-abo" %}{{ svc.data.delai }}{% else %}{{ svc.data.delai }} · délai de livraison{% endif %}</div>
 <a class="btn-primary" href="/offres/{{ svc.fileSlug }}/"><span>Découvrir l'offre</span></a>
 </div>

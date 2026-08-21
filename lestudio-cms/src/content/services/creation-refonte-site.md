@@ -3,7 +3,17 @@ title: Création ou refonte de site web
 price: À partir de 1 000 €
 cible: E-commerce, vitrine, landing
 description: Refonte complète ou partielle de votre boutique. Maquettes Figma optimisées, design system, hand-off dev. Livré en 2 à 4 semaines.
-highlights: [Audit UX/UI, Maquettes Figma, Design system, Recommandations implémentation, CRO]
+highlights:
+  - label: Audit UX/UI
+    desc: Un diagnostic de l'existant avant de dessiner quoi que ce soit.
+  - label: Maquettes Figma
+    desc: Des écrans haute fidélité, prêts à être testés puis développés.
+  - label: Design system
+    desc: Des composants réutilisables pour une identité cohérente sur tout le site.
+  - label: Recommandations implémentation
+    desc: Un dossier de handoff clair pour votre développeur ou votre agence.
+  - label: CRO
+    desc: Chaque écran pensé pour lever les frictions du parcours d'achat.
 outils: [Figma, Webflow, Shopify]
 inclus:
   - Stratégie de contenu et copywriting inclus
@@ -58,8 +68,6 @@ faq:
     r: Une landing page, environ deux semaines. Un site vitrine complet, quatre à six semaines. Un e-commerce, selon le nombre de gabarits, défini précisément au premier appel.
   - q: Et si je n'ai pas encore mes contenus ?
     r: La stratégie de contenu et le copywriting sont inclus. On peut démarrer avec des contenus provisoires et les affiner ensemble.
-  - q: Que couvre le "à partir de 1 000 €" ?
-    r: C'est le point d'entrée pour une landing page. Un site vitrine ou un e-commerce complet dépend du nombre de gabarits et du périmètre, chiffré précisément après le premier appel.
   - q: Refonte au projet ou design par abonnement ?
     r: La refonte est un projet cadré avec un début et une fin, idéal pour transformer le site en profondeur. L'abonnement prend le relais ensuite, pour faire vivre le site chaque mois. Beaucoup de nos clients enchaînent les deux.
 order: 2

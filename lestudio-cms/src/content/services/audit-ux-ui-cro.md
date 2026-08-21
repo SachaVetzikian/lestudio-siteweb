@@ -3,7 +3,17 @@ title: Audit UX/UI & CRO
 price: À partir de 1 500 €
 cible: E-commerce et vitrine
 description: On analyse votre site e-commerce page par page. Vous repartez avec un diagnostic clair et un plan d'action priorisé.
-highlights: [Benchmark, Design UX/UI, Analyse parcours, Recommandations, CRO]
+highlights:
+  - label: Benchmark
+    desc: Analyse de 3 concurrents directs pour situer votre site face au marché.
+  - label: Design UX/UI
+    desc: Évaluation de la navigation, la clarté et la cohérence de votre interface.
+  - label: Analyse parcours
+    desc: Étude de vos parcours réels via Analytics et Hotjar, du clic à la conversion.
+  - label: Recommandations
+    desc: Un plan d'action priorisé par impact business, pas une liste théorique.
+  - label: CRO
+    desc: Des hypothèses testables pour augmenter votre taux de conversion.
 outils: [Google Analytics, Hotjar, Figma]
 inclus:
   - Audit complet du parcours d'achat
@@ -58,8 +68,6 @@ faq:
     r: Les outils listent des symptômes techniques. Nous analysons vos parcours réels avec vos données, votre marché et vos concurrents. La valeur est dans la priorisation, savoir quoi corriger en premier pour un impact maximal.
   - q: Et si je veux que vous fassiez la refonte ensuite ?
     r: C'est le cas le plus fréquent. Le montant de l'audit est alors déduit du pack création ou refonte, rien n'est perdu.
-  - q: Pourquoi "à partir de 1 500 €" ?
-    r: Le prix dépend du périmètre, un tunnel e-commerce multi-marchés ne s'audite pas comme un site vitrine de 5 pages. Le montant exact est fixé après le premier appel, avant tout engagement.
   - q: Audit ou refonte directe, comment choisir ?
     r: Si votre site a du trafic et des données, commencez par l'audit, il évite de refaire au feeling ce qui devrait être corrigé aux données, et son montant est déduit si vous enchaînez sur la refonte. Si votre site est à créer ou visuellement obsolète, la refonte intègre déjà sa phase d'audit.
 order: 1

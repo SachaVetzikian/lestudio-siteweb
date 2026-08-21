@@ -3,7 +3,17 @@ title: Design par abonnement
 price: À partir de 900 € / mois
 cible: Besoins UX/UI réguliers
 description: Des besoins UX/UI réguliers (pages, itérations, tests), sans la charge ni le coût d'un recrutement.
-highlights: [Designer dédié, Demandes illimitées, Points réguliers, Accès direct, Sans engagement]
+highlights:
+  - label: Designer dédié
+    desc: Le même designer sur la durée, qui connaît déjà votre marque.
+  - label: Demandes illimitées
+    desc: Autant de demandes que nécessaire, traitées par ordre de priorité.
+  - label: Points réguliers
+    desc: Des points d'avancement fréquents pour garder la visibilité sur le travail.
+  - label: Accès direct
+    desc: Vous échangez avec Sacha, sans chef de projet intermédiaire.
+  - label: Sans engagement
+    desc: Vous suspendez ou arrêtez l'abonnement quand vous le souhaitez.
 outils: [Figma, Notion, Slack]
 inclus:
   - Un designer dédié chaque mois
