@@ -29,7 +29,6 @@
 
 <!-- S1 accroche -->
 <section class="scene night" id="s1">
-  <div class="abs label" id="s1l" style="left:80px;top:600px">Site vitrine · Épisode 01</div>
   <div class="abs display" id="s1t" style="left:76px;top:680px;font-size:132px">
     <span class="ln"><span>Votre site a</span></span>
     <span class="ln"><span>5 secondes pour</span></span>
@@ -39,7 +38,6 @@
 
 <!-- S2 avant -->
 <section class="scene" id="s2">
-  <div class="abs label" id="s2l" style="left:80px;top:250px">Le test des 5 secondes</div>
   <div class="timer figure" id="s2tm"><span class="odo"><span id="odo2"><b>5</b><b>4</b><b>3</b><b>2</b><b>1</b><b>0</b></span></span><span class="suf">s</span></div>
   <div class="frame" id="f2">
     <div class="nav"><div class="logo"><i></i>Nexora</div><span>Produit</span><span>Tarifs</span><span>Ressources</span><span class="pill">Démo</span></div>
@@ -54,25 +52,20 @@
   </div>
   <div class="q h3" id="q2"><span class="ln"><span>Que vend cette entreprise&nbsp;?</span></span></div>
   <div class="ch choices" id="c2"><span class="choice">Un CRM</span><span class="choice">De la compta</span><span class="choice">Du recrutement</span></div>
-  <div class="m msg" id="m2">Impossible de répondre.</div>
   <div class="ripple" id="r2"></div><div class="finger" id="fg2"></div>
 </section>
 
 <!-- S3 conséquence -->
 <section class="scene night" id="s3">
-  <div class="abs label" id="s3l" style="left:80px;top:580px">Ce que ça coûte</div>
-  <div class="abs display" id="s3t" style="left:76px;top:660px;font-size:104px">
-    <span class="ln"><span>Un visiteur</span></span>
-    <span class="ln"><span>qui ne comprend pas</span></span>
-    <span class="ln"><span>ne demande pas</span></span>
-    <span class="ln"><span>de démo.</span></span>
+  <div class="abs display" id="s3t" style="left:76px;top:760px;font-size:132px">
+    <span class="ln"><span>Pas compris,</span></span>
+    <span class="ln"><span>pas de démo.</span></span>
   </div>
-  <div class="abs rule" id="s3r" style="left:80px;top:1130px;width:920px"></div>
+  <div class="abs rule" id="s3r" style="left:80px;top:1060px;width:920px"></div>
 </section>
 
 <!-- S4 après -->
 <section class="scene" id="s4">
-  <div class="abs label" id="s4l" style="left:80px;top:250px">Après réécriture</div>
   <div class="timer figure" id="s4tm"><span class="odo"><span id="odo4"><b>5</b><b>4</b><b>3</b><b>2</b><b>1</b><b>0</b></span></span><span class="suf">s</span></div>
   <div class="frame" id="f4">
     <div class="nav"><div class="logo"><i></i>Nexora</div><span>Produit</span><span>Tarifs</span><span>Ressources</span><span class="pill">Démo</span></div>
@@ -92,33 +85,27 @@
     <div class="cta"><span class="pill pill--accent" id="cta4new">Voir la démo de 2 min</span></div>
     <div class="shot"></div>
   </div>
-  <div class="q h3" id="q4"><span class="ln"><span>Que vend cette entreprise&nbsp;?</span></span></div>
   <div class="ch choices" id="c4"><span class="choice">Un CRM</span><span class="choice">De la relance de factures</span><span class="choice">De la paie</span></div>
-  <div class="m msg" id="m4">Compris avant la fin du chrono.</div>
   <div class="ripple" id="r4"></div><div class="finger" id="fg4"></div>
 </section>
 
 <!-- S5 règle -->
 <section class="scene night" id="s5">
-  <div class="abs label" id="s5l" style="left:80px;top:540px">La règle</div>
-  <div class="abs display" id="s5t" style="left:76px;top:620px;font-size:104px">
-    <span class="ln"><span>Votre titre dit</span></span>
-    <span class="ln"><span>ce que vous vendez,</span></span>
-    <span class="ln"><span>à qui, et ce que</span></span>
-    <span class="ln"><span>ça change.</span></span>
+  <div class="abs display" id="s5t" style="left:76px;top:720px;font-size:132px">
+    <span class="ln"><span>Dites ce que</span></span>
+    <span class="ln"><span>vous vendez.</span></span>
   </div>
-  <div class="abs rule" id="s5r" style="left:80px;top:1130px;width:920px"></div>
-  <div class="abs" id="s5f" style="left:80px;top:1180px">
+  <div class="abs rule" id="s5r" style="left:80px;top:1020px;width:920px"></div>
+  <div class="abs" id="s5f" style="left:80px;top:1070px">
     <div class="brand" style="font-size:64px">Le Studio<i></i></div>
-    <div class="meta" style="margin-top:26px">Prochain épisode · le GEO</div>
   </div>
 </section>
 
 <script src="lib/motion.js"></script>
 <script>
 const { P, E, $, show, lines, linesOut, rise, stroke, finger, odometer, spring, lerp } = M;
-const DUR = 22.0;
-const T = { s2: 2.8, s3: 9.6, s4: 13.0, s5: 18.4 };
+const DUR = 17.0;
+const T = { s2: 2.4, s3: 8.6, s4: 10.6, s5: 14.6 };
 
 // centre d'un élément dans le repère de la scène (mesuré, donc déterministe)
 const center = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
@@ -132,14 +119,13 @@ function renderAt(t) {
   show('s1', S1); show('s2', S2); show('s3', S3); show('s4', S4); show('s5', S5);
 
   if (S1) {
-    rise($('s1l'), t, .05, 24, .5);
     lines($('s1t'), t, .2, .1, .7);
     $('s1t').style.transformOrigin = '0 0'; $('s1t').style.transform = `scale(${1 + .02 * P(t, .9, T.s2)})`;
   }
 
   if (S2) {
     const u = t - T.s2;
-    rise($('s2l'), u, 0, 24, .5); rise($('s2tm'), u, .1, 40, .6); frameIn($('f2'), u);
+rise($('s2tm'), u, .1, 40, .6); frameIn($('f2'), u);
     lines($('t2'), u, .15, .06, .6);
     odometer($('odo2'), u, .8, 5);
     lines($('q2'), u, 1.0, 0, .6);
@@ -151,20 +137,18 @@ function renderAt(t) {
     finger($('fg2'), $('r2'), u, k, 2.6, 6.3, []);
     const fail = E.house(P(u, 5.8, 6.1));
     [...$('c2').children].forEach(c => { c.classList.toggle('bad', u >= 5.8); if (u >= 5.8) c.style.opacity = lerp(1, .45, fail); });
-    rise($('m2'), u, 5.9, 24, .5);
   }
 
   if (S3) {
     const u = t - T.s3;
-    rise($('s3l'), u, .0, 24, .5);
     lines($('s3t'), u, .1, .09, .7);
-    stroke($('s3r'), u, 1.0, .8);
-    $('s3t').style.transformOrigin = '0 0'; $('s3t').style.transform = `scale(${1 + .02 * P(u, .8, 3.4)})`;
+    stroke($('s3r'), u, .5, .7);
+    $('s3t').style.transformOrigin = '0 0'; $('s3t').style.transform = `scale(${1 + .02 * P(u, .6, 2.0)})`;
   }
 
   if (S4) {
     const u = t - T.s4;
-    rise($('s4l'), u, 0, 24, .5); rise($('s4tm'), u, .1, 40, .6);
+rise($('s4tm'), u, .1, 40, .6);
     const kf = E.house(P(u, 0, .4)); $('f4').style.opacity = kf; $('f4').style.transform = `translateY(${(1 - kf) * 30}px)`;
     // l'ancien titre sort par le haut, le nouveau monte ligne par ligne
     linesOut($('t4old'), u, .35, .05, .35);
@@ -175,25 +159,22 @@ function renderAt(t) {
     const kc = E.house(P(u, 1.0, 1.35));
     $('cta4old').style.opacity = 1 - kc; $('cta4new').style.opacity = kc;
     $('cta4new').style.transform = `scale(${lerp(.9, 1, spring(u - 1.0, .6, 3))})`;
-    const tap = 2.75;
-    odometer($('odo4'), u, 1.3, 5, tap);
-    lines($('q4'), u, 1.35, 0, .6);
-    choicesIn($('c4'), u, 1.55);
+    const tap = 2.3;
+    odometer($('odo4'), u, 1.0, 5, tap);
+    choicesIn($('c4'), u, 1.0);
     const cs = [...$('c4').children].map(center);
     const tgt = [cs[1][0] + 40, cs[1][1] + 26];
-    finger($('fg4'), $('r4'), u, [[1.95, 980, 1700], [2.65, ...tgt], [3.2, ...tgt], [3.7, 1000, 1760]], 1.95, 3.7, [tap]);
+    finger($('fg4'), $('r4'), u, [[1.5, 980, 1700], [2.2, ...tgt], [2.8, ...tgt], [3.3, 1000, 1760]], 1.5, 3.3, [tap]);
     const ch = $('c4').children[1];
     ch.classList.toggle('on', u >= tap + .08);
     ch.style.transform = `scale(${u >= tap ? lerp(.94, 1, spring(u - tap, .5, 3.5)) : 1})`;
-    rise($('m4'), u, 3.0, 24, .5);
   }
 
   if (S5) {
     const u = t - T.s5;
-    rise($('s5l'), u, 0, 24, .5);
     lines($('s5t'), u, .1, .09, .7);
-    stroke($('s5r'), u, 1.1, .8);
-    rise($('s5f'), u, 1.5, 30, .6);
+    stroke($('s5r'), u, .7, .7);
+    rise($('s5f'), u, 1.0, 30, .6);
   }
 }
 window.renderAt = renderAt; window.DUR = DUR;
