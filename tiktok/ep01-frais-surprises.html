@@ -144,7 +144,7 @@ body{font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:v
 <div class="counter" id="counter"></div>
 
 <script>
-const DUR = 24;
+const DUR = 21.6;
 const $ = id => document.getElementById(id);
 const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const P = (t, a, b) => cl((t - a) / (b - a));
@@ -198,23 +198,23 @@ const BTN = [PX + 344, PY + 1188 - 64 - 62]; // button center
 
 function renderAt(t) {
   t = ((t % DUR) + DUR) % DUR;
-  const S1 = t < 3.2, S2 = t >= 3.2 && t < 10, S3 = t >= 10 && t < 13.6, S4 = t >= 13.6 && t < 20.4, S5 = t >= 20.4;
+  const S1 = t < 3.0, S2 = t >= 3.0 && t < 8.8, S3 = t >= 8.8 && t < 12.4, S4 = t >= 12.4 && t < 18.0, S5 = t >= 18.0;
   show('s1', S1); show('s2', S2); show('s3', S3); show('s4', S4); show('s5', S5);
 
   if (S1) {
     const k = outExpo(P(t, .05, .55));
     $('s1tag').style.opacity = k; $('s1tag').style.transform = `translateX(${(1 - k) * -40}px)`;
     words($('s1title'), t, .2, .14, 110);
-    const ks = outExpo(P(t, 1.45, 2.05));
+    const ks = outExpo(P(t, 1.05, 1.6));
     $('s1sub').style.opacity = ks; $('s1sub').style.transform = `translateY(${(1 - ks) * 40}px)`;
     // slow 2% push during the hold
-    $('s1title').style.transform = `scale(${1 + .02 * P(t, .8, 3.2)})`; $('s1title').style.transformOrigin = '0 0';
+    $('s1title').style.transform = `scale(${1 + .02 * P(t, .8, 3.0)})`; $('s1title').style.transformOrigin = '0 0';
   }
 
   if (S2) {
-    const u = t - 3.2;
+    const u = t - 3.0;
     const kin = outExpo(P(u, 0, .6));
-    $('s2phone').style.opacity = kin; tr($('s2phone'), 0, (1 - kin) * 140, 1 + .015 * P(u, .6, 6.8));
+    $('s2phone').style.opacity = kin; tr($('s2phone'), 0, (1 - kin) * 140, 1 + .015 * P(u, .6, 5.8));
     const kp = spring(u - .1, .55, 2.6);
     $('s2pill').style.transform = `translateX(-50%) scale(${kp})`;
     // screen swap A -> B
@@ -240,20 +240,20 @@ function renderAt(t) {
       [[.6, 860, 1640], [1.3, BTN[0], BTN[1]], [2.0, BTN[0], BTN[1]], [2.4, BTN[0] + 220, BTN[1] + 30], [3.7, BTN[0] + 220, BTN[1] + 30], [4.2, BTN[0] + 260, 1980]],
       .6, 4.2, [1.35]);
     // phone flinches at the reveal
-    if (u > 2.3 && u < 3.6) tr($('s2phone'), shake(u, 2.3, 6) + shake(u, 2.95, 6), 0, 1 + .015 * P(u, .6, 6.8));
+    if (u > 2.3 && u < 3.6) tr($('s2phone'), shake(u, 2.3, 6) + shake(u, 2.95, 6), 0, 1 + .015 * P(u, .6, 5.8));
   }
 
   if (S3) {
-    const u = t - 10;
+    const u = t - 8.8;
     words($('s3t'), u, .05, .16, 80);
     const k = outExpo(P(u, .9, 1.4)); $('s3src').style.opacity = k * .9;
     $('s3t').style.transformOrigin = '0 0'; $('s3t').style.transform = `scale(${1 + .02 * P(u, .5, 3.6)})`;
   }
 
   if (S4) {
-    const u = t - 13.6;
+    const u = t - 12.4;
     const kin = outExpo(P(u, 0, .6));
-    $('s4phone').style.opacity = kin; tr($('s4phone'), 0, (1 - kin) * 140, 1 + .015 * P(u, .6, 6.8));
+    $('s4phone').style.opacity = kin; tr($('s4phone'), 0, (1 - kin) * 140, 1 + .015 * P(u, .6, 5.8));
     $('s4pill').style.transform = `translateX(-50%) scale(${spring(u - .1, .55, 2.6)})`;
     // chip pop + ring pulse
     const kc = spring(u - .6, .55, 2.6);
@@ -283,7 +283,7 @@ function renderAt(t) {
   }
 
   if (S5) {
-    const u = t - 20.4;
+    const u = t - 18.0;
     const k = outExpo(P(u, .05, .5)); $('s5tag').style.opacity = k; $('s5tag').style.transform = `translateX(${(1 - k) * -40}px)`;
     words($('s5t'), u, .15, .09, 100);
     const kf = outExpo(P(u, 1.6, 2.2)); $('s5foot').style.opacity = kf; $('s5foot').style.transform = `translateY(${(1 - kf) * 40}px)`;
