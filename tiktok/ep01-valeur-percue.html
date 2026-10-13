@@ -5,176 +5,192 @@
 <title>Site vitrine 01 · Valeur perçue</title>
 <link rel="stylesheet" href="lib/series.css">
 <style>
-.frame{position:absolute;left:80px;top:440px;width:920px;height:760px;background:var(--white);border-radius:var(--r-frame);border:1.5px solid var(--line);overflow:hidden}
+.c{position:absolute;left:0;right:0;text-align:center}
+.c .ln{text-align:center}
+.frame{position:absolute;left:80px;width:920px;height:760px;background:var(--white);border-radius:var(--r-frame);border:1.5px solid var(--line);overflow:hidden}
 .nav{position:absolute;left:0;right:0;top:0;height:92px;display:flex;align-items:center;gap:34px;padding:0 48px;border-bottom:1.5px solid var(--line);font-size:22px;color:var(--ink-2)}
 .nav .logo{display:flex;align-items:center;gap:12px;font-weight:500;font-size:28px;letter-spacing:-.03em;color:var(--ink);margin-right:auto}
 .nav .logo i{width:26px;height:26px;border-radius:50%;background:var(--ink);display:block}
 .nav .pill{height:48px;padding:0 22px;font-size:20px;color:var(--ink)}
-.hero{position:absolute;left:56px;top:140px;width:820px}
-.htitle{font-size:76px}
+.hero{position:absolute;left:56px;top:140px;width:820px;font-size:76px}
 .sub{position:absolute;left:56px;top:430px;font-size:28px;line-height:1.38;color:var(--ink-2);letter-spacing:-.015em}
 .cta{position:absolute;left:56px;top:530px}
 .shot{position:absolute;left:56px;right:56px;top:630px;height:200px;border-radius:var(--r-md);background:var(--grey)}
 .v{position:relative;display:inline-block}
 .v > i{position:absolute;left:0;right:0;bottom:.04em;height:5px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%}
 .sub .v > i{height:3px;bottom:0}
-.stack{position:absolute;left:0;top:0}
-.timer{position:absolute;right:80px;top:150px;font-size:250px;color:var(--ink)}
-.q{position:absolute;left:80px;top:1240px}
-.ch{position:absolute;left:80px;top:1316px}
-.m{position:absolute;left:80px;top:1428px}
+.tsmall{position:absolute;left:0;right:0;top:200px;display:flex;justify-content:center;font-size:150px}
+.tbig{position:absolute;left:0;right:0;top:640px;display:flex;justify-content:center;font-size:440px}
+.vch{position:absolute;left:0;right:0;top:820px;display:flex;flex-direction:column;align-items:center;gap:24px}
+.vch .choice{height:116px;padding:0 52px;font-size:46px;border-width:2.5px}
 </style>
 </head>
 <body>
 
-<!-- S1 accroche -->
-<section class="scene night" id="s1">
-  <div class="abs display" id="s1t" style="left:76px;top:680px;font-size:132px">
+<!-- A accroche -->
+<section class="scene night" id="sA">
+  <div class="c display" id="tA" style="top:700px;font-size:150px">
     <span class="ln"><span>Votre site a</span></span>
-    <span class="ln"><span>5 secondes pour</span></span>
-    <span class="ln"><span>s’expliquer.</span></span>
+    <span class="ln"><span>5 secondes.</span></span>
   </div>
 </section>
 
-<!-- S2 avant -->
-<section class="scene" id="s2">
-  <div class="timer figure" id="s2tm"><span class="odo"><span id="odo2"><b>5</b><b>4</b><b>3</b><b>2</b><b>1</b><b>0</b></span></span><span class="suf">s</span></div>
-  <div class="frame" id="f2">
-    <div class="nav"><div class="logo"><i></i>Nexora</div><span>Produit</span><span>Tarifs</span><span>Ressources</span><span class="pill">Démo</span></div>
-    <div class="hero display htitle" id="t2">
-      <span class="ln"><span>La plateforme qui</span></span>
-      <span class="ln"><span><span class="v">révolutionne<i id="u1"></i></span> votre</span></span>
-      <span class="ln"><span><span class="v">performance.<i id="u2"></i></span></span></span>
-    </div>
-    <div class="sub">Une solution <span class="v">innovante, agile et intelligente<i id="u3"></i></span><br>pour aller plus loin.</div>
-    <div class="cta"><span class="pill">En savoir plus</span></div>
-    <div class="shot"></div>
-  </div>
-  <div class="q h3" id="q2"><span class="ln"><span>Que vend cette entreprise&nbsp;?</span></span></div>
-  <div class="ch choices" id="c2"><span class="choice">Un CRM</span><span class="choice">De la compta</span><span class="choice">Du recrutement</span></div>
-  <div class="ripple" id="r2"></div><div class="finger" id="fg2"></div>
+<!-- B le site, le chrono tourne -->
+<section class="scene" id="sB">
+  <div class="tsmall figure" id="tmB"><span class="odo"><span id="odoB"><b>5</b><b>4</b><b>3</b><b>2</b><b>1</b><b>0</b></span></span><span class="suf">s</span></div>
+  <div class="frame" id="fB" style="top:560px"></div>
 </section>
 
-<!-- S3 conséquence -->
-<section class="scene night" id="s3">
-  <div class="abs display" id="s3t" style="left:76px;top:760px;font-size:132px">
+<!-- C la question -->
+<section class="scene" id="sC">
+  <div class="tsmall figure" id="tmC"><span class="odo"><span id="odoC"><b>5</b><b>4</b><b>3</b><b>2</b><b>1</b><b>0</b></span></span><span class="suf">s</span></div>
+  <div class="c h3" id="qC" style="top:640px;font-size:64px"><span class="ln"><span>Que vend cette entreprise&nbsp;?</span></span></div>
+  <div class="vch" id="chC"><span class="choice">Un CRM</span><span class="choice">De la compta</span><span class="choice">Du recrutement</span></div>
+  <div class="ripple" id="rC"></div><div class="finger" id="fgC"></div>
+</section>
+
+<!-- D zéro -->
+<section class="scene" id="sD">
+  <div class="tbig figure" id="tmD"><span>0</span><span class="suf">s</span></div>
+</section>
+
+<!-- E conséquence -->
+<section class="scene night" id="sE">
+  <div class="c display" id="tE" style="top:740px;font-size:140px">
     <span class="ln"><span>Pas compris,</span></span>
     <span class="ln"><span>pas de démo.</span></span>
   </div>
-  <div class="abs rule" id="s3r" style="left:80px;top:1060px;width:920px"></div>
 </section>
 
-<!-- S4 après -->
-<section class="scene" id="s4">
-  <div class="timer figure" id="s4tm"><span class="odo"><span id="odo4"><b>5</b><b>4</b><b>3</b><b>2</b><b>1</b><b>0</b></span></span><span class="suf">s</span></div>
-  <div class="frame" id="f4">
-    <div class="nav"><div class="logo"><i></i>Nexora</div><span>Produit</span><span>Tarifs</span><span>Ressources</span><span class="pill">Démo</span></div>
-    <div class="hero display htitle" id="t4old">
-      <span class="ln"><span>La plateforme qui</span></span>
-      <span class="ln"><span>révolutionne votre</span></span>
-      <span class="ln"><span>performance.</span></span>
-    </div>
-    <div class="hero display htitle" id="t4new">
-      <span class="ln"><span>Vos factures</span></span>
-      <span class="ln"><span>relancées</span></span>
-      <span class="ln"><span>automatiquement.</span></span>
-    </div>
-    <div class="sub" id="sub4old">Une solution innovante, agile et intelligente<br>pour aller plus loin.</div>
-    <div class="sub" id="sub4new">Pour les PME qui attendent d’être payées.<br>Branché à votre logiciel de compta.</div>
-    <div class="cta"><span class="pill" id="cta4old">En savoir plus</span></div>
-    <div class="cta"><span class="pill pill--accent" id="cta4new">Voir la démo de 2 min</span></div>
-    <div class="shot"></div>
-  </div>
-  <div class="ch choices" id="c4"><span class="choice">Un CRM</span><span class="choice">De la relance de factures</span><span class="choice">De la paie</span></div>
-  <div class="ripple" id="r4"></div><div class="finger" id="fg4"></div>
+<!-- F réécriture -->
+<section class="scene" id="sF">
+  <div class="frame" id="fF" style="top:560px"></div>
 </section>
 
-<!-- S5 règle -->
-<section class="scene night" id="s5">
-  <div class="abs display" id="s5t" style="left:76px;top:720px;font-size:132px">
+<!-- G la question, encore -->
+<section class="scene" id="sG">
+  <div class="tsmall figure" id="tmG"><span class="odo"><span id="odoG"><b>5</b><b>4</b><b>3</b><b>2</b><b>1</b><b>0</b></span></span><span class="suf">s</span></div>
+  <div class="c h3" id="qG" style="top:640px;font-size:64px"><span class="ln"><span>Que vend cette entreprise&nbsp;?</span></span></div>
+  <div class="vch" id="chG"><span class="choice">Un CRM</span><span class="choice">De la relance de factures</span><span class="choice">De la paie</span></div>
+  <div class="ripple" id="rG"></div><div class="finger" id="fgG"></div>
+</section>
+
+<!-- H règle -->
+<section class="scene night" id="sH">
+  <div class="c display" id="tH" style="top:740px;font-size:140px">
     <span class="ln"><span>Dites ce que</span></span>
     <span class="ln"><span>vous vendez.</span></span>
   </div>
-  <div class="abs rule" id="s5r" style="left:80px;top:1020px;width:920px"></div>
-  <div class="abs" id="s5f" style="left:80px;top:1070px">
-    <div class="brand" style="font-size:64px">Le Studio<i></i></div>
-  </div>
+</section>
+
+<!-- I signature -->
+<section class="scene night" id="sI">
+  <div class="c" id="bI" style="top:860px;display:flex;justify-content:center"><div class="brand" style="font-size:120px">Le Studio<i></i></div></div>
 </section>
 
 <script src="lib/motion.js"></script>
 <script>
 const { P, E, $, show, lines, linesOut, rise, stroke, finger, odometer, spring, lerp } = M;
-const DUR = 17.0;
-const T = { s2: 2.4, s3: 8.6, s4: 10.6, s5: 14.6 };
 
-// centre d'un élément dans le repère de la scène (mesuré, donc déterministe)
+// la maquette du site, en version floue ou réécrite
+const NAV = '<div class="nav"><div class="logo"><i></i>Nexora</div><span>Produit</span><span>Tarifs</span><span>Ressources</span><span class="pill">Démo</span></div><div class="shot"></div>';
+$('fB').innerHTML = NAV + `
+  <div class="hero display" id="tB">
+    <span class="ln"><span>La plateforme qui</span></span>
+    <span class="ln"><span><span class="v">révolutionne<i id="u1"></i></span> votre</span></span>
+    <span class="ln"><span><span class="v">performance.<i id="u2"></i></span></span></span>
+  </div>
+  <div class="sub">Une solution <span class="v">innovante, agile et intelligente<i id="u3"></i></span><br>pour aller plus loin.</div>
+  <div class="cta"><span class="pill">En savoir plus</span></div>`;
+$('fF').innerHTML = NAV + `
+  <div class="hero display" id="tFold">
+    <span class="ln"><span>La plateforme qui</span></span>
+    <span class="ln"><span>révolutionne votre</span></span>
+    <span class="ln"><span>performance.</span></span>
+  </div>
+  <div class="hero display" id="tFnew">
+    <span class="ln"><span>Vos factures</span></span>
+    <span class="ln"><span>relancées</span></span>
+    <span class="ln"><span>automatiquement.</span></span>
+  </div>
+  <div class="sub" id="subOld">Une solution innovante, agile et intelligente<br>pour aller plus loin.</div>
+  <div class="sub" id="subNew">Pour les PME qui attendent d’être payées.<br>Branché à votre logiciel de compta.</div>
+  <div class="cta"><span class="pill" id="ctaOld">En savoir plus</span></div>
+  <div class="cta"><span class="pill pill--accent" id="ctaNew">Voir la démo de 2 min</span></div>`;
+
+const T = { A: 0, B: 2.4, C: 5.4, D: 8.4, E: 9.4, F: 11.6, G: 14.6, H: 17.4, I: 19.8 };
+const DUR = 21.6;
+const ORDER = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+const TIMER0 = 3.0; // le chrono du site flou démarre ici et tombe à 0 à 8,0 s
+
 const center = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
-
-function frameIn(el, u) { const k = E.house(P(u, 0, .6)); el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * 60}px)`; }
-function choicesIn(root, u, t0) { [...root.children].forEach((c, i) => rise(c, u, t0 + i * .1, 30, .5)); }
+const push = (el, u, d) => { el.style.transformOrigin = '50% 50%'; el.style.transform = `scale(${1 + .025 * P(u, .3, d)})`; };
 
 function renderAt(t) {
   t = ((t % DUR) + DUR) % DUR;
-  const S1 = t < T.s2, S2 = t >= T.s2 && t < T.s3, S3 = t >= T.s3 && t < T.s4, S4 = t >= T.s4 && t < T.s5, S5 = t >= T.s5;
-  show('s1', S1); show('s2', S2); show('s3', S3); show('s4', S4); show('s5', S5);
+  let cur = 'A';
+  ORDER.forEach(k => { if (t >= T[k]) cur = k; });
+  ORDER.forEach(k => show('s' + k, k === cur));
+  const end = k => (ORDER[ORDER.indexOf(k) + 1] ? T[ORDER[ORDER.indexOf(k) + 1]] : DUR) - T[k];
+  const u = t - T[cur];
 
-  if (S1) {
-    lines($('s1t'), t, .2, .1, .7);
-    $('s1t').style.transformOrigin = '0 0'; $('s1t').style.transform = `scale(${1 + .02 * P(t, .9, T.s2)})`;
+  if (cur === 'A') { lines($('tA'), u, .15, .12, .7); push($('tA'), u, end('A')); }
+
+  if (cur === 'B') {
+    rise($('tmB'), u, 0, 30, .5);
+    const k = E.house(P(u, 0, .6)); $('fB').style.opacity = k; $('fB').style.transform = `translateY(${(1 - k) * 80}px)`;
+    lines($('tB'), u, .15, .06, .6);
+    odometer($('odoB'), t, TIMER0, 5);
+    stroke($('u1'), u, 1.2); stroke($('u2'), u, 1.5); stroke($('u3'), u, 1.8, .6);
   }
 
-  if (S2) {
-    const u = t - T.s2;
-rise($('s2tm'), u, .1, 40, .6); frameIn($('f2'), u);
-    lines($('t2'), u, .15, .06, .6);
-    odometer($('odo2'), u, .8, 5);
-    lines($('q2'), u, 1.0, 0, .6);
-    choicesIn($('c2'), u, 1.25);
-    stroke($('u1'), u, 2.0); stroke($('u2'), u, 2.3); stroke($('u3'), u, 2.6, .6);
-    const cs = [...$('c2').children].map(center);
-    const off = (c, dx = 30, dy = 26) => [c[0] + dx, c[1] + dy];
-    const k = [[2.6, 980, 1700], [3.2, ...off(cs[0])], [3.6, ...off(cs[0])], [3.95, ...off(cs[1])], [4.35, ...off(cs[1])], [4.7, ...off(cs[2])], [5.1, ...off(cs[2])], [5.45, ...off(cs[0])], [5.8, ...off(cs[0])], [6.3, 1000, 1760]];
-    finger($('fg2'), $('r2'), u, k, 2.6, 6.3, []);
-    const fail = E.house(P(u, 5.8, 6.1));
-    [...$('c2').children].forEach(c => { c.classList.toggle('bad', u >= 5.8); if (u >= 5.8) c.style.opacity = lerp(1, .45, fail); });
+  if (cur === 'C') {
+    odometer($('odoC'), t, TIMER0, 5);
+    lines($('qC'), u, .05, 0, .6);
+    const ch = [...$('chC').children];
+    ch.forEach((c, i) => rise(c, u, .3 + i * .1, 40, .5));
+    const cs = ch.map(center), o = c => [c[0] + 60, c[1] + 30];
+    finger($('fgC'), $('rC'), u, [[.9, 940, 1640], [1.35, ...o(cs[0])], [1.65, ...o(cs[0])], [1.95, ...o(cs[1])], [2.2, ...o(cs[1])], [2.5, ...o(cs[2])], [2.75, ...o(cs[2])], [3.0, 980, 1700]], .9, 3.0);
+    const fail = E.house(P(t, TIMER0 + 5, TIMER0 + 5.3));
+    ch.forEach(c => { c.classList.toggle('bad', t >= TIMER0 + 5); c.style.opacity = Math.min(+c.style.opacity || 1, lerp(1, .45, fail)); });
   }
 
-  if (S3) {
-    const u = t - T.s3;
-    lines($('s3t'), u, .1, .09, .7);
-    stroke($('s3r'), u, .5, .7);
-    $('s3t').style.transformOrigin = '0 0'; $('s3t').style.transform = `scale(${1 + .02 * P(u, .6, 2.0)})`;
+  if (cur === 'D') {
+    const k = spring(u, .55, 2.4);
+    $('tmD').style.transform = `scale(${lerp(.6, 1, k)})`; $('tmD').style.opacity = Math.min(1, u / .12);
   }
 
-  if (S4) {
-    const u = t - T.s4;
-rise($('s4tm'), u, .1, 40, .6);
-    const kf = E.house(P(u, 0, .4)); $('f4').style.opacity = kf; $('f4').style.transform = `translateY(${(1 - kf) * 30}px)`;
-    // l'ancien titre sort par le haut, le nouveau monte ligne par ligne
-    linesOut($('t4old'), u, .35, .05, .35);
-    lines($('t4new'), u, .7, .08, .6);
-    const ks = E.house(P(u, .8, 1.2));
-    $('sub4old').style.opacity = 1 - ks; $('sub4new').style.opacity = ks;
-    $('sub4new').style.transform = `translateY(${(1 - ks) * 16}px)`;
-    const kc = E.house(P(u, 1.0, 1.35));
-    $('cta4old').style.opacity = 1 - kc; $('cta4new').style.opacity = kc;
-    $('cta4new').style.transform = `scale(${lerp(.9, 1, spring(u - 1.0, .6, 3))})`;
-    const tap = 2.3;
-    odometer($('odo4'), u, 1.0, 5, tap);
-    choicesIn($('c4'), u, 1.0);
-    const cs = [...$('c4').children].map(center);
-    const tgt = [cs[1][0] + 40, cs[1][1] + 26];
-    finger($('fg4'), $('r4'), u, [[1.5, 980, 1700], [2.2, ...tgt], [2.8, ...tgt], [3.3, 1000, 1760]], 1.5, 3.3, [tap]);
-    const ch = $('c4').children[1];
-    ch.classList.toggle('on', u >= tap + .08);
-    ch.style.transform = `scale(${u >= tap ? lerp(.94, 1, spring(u - tap, .5, 3.5)) : 1})`;
+  if (cur === 'E') { lines($('tE'), u, .1, .12, .7); push($('tE'), u, end('E')); }
+
+  if (cur === 'F') {
+    const k = E.house(P(u, 0, .5)); $('fF').style.opacity = k; $('fF').style.transform = `translateY(${(1 - k) * 60}px)`;
+    linesOut($('tFold'), u, .7, .05, .35);
+    lines($('tFnew'), u, 1.05, .09, .65);
+    const ks = E.house(P(u, 1.2, 1.6));
+    $('subOld').style.opacity = 1 - ks; $('subNew').style.opacity = ks; $('subNew').style.transform = `translateY(${(1 - ks) * 16}px)`;
+    const kc = E.house(P(u, 1.5, 1.85));
+    $('ctaOld').style.opacity = 1 - kc; $('ctaNew').style.opacity = kc;
+    $('ctaNew').style.transform = `scale(${lerp(.9, 1, spring(u - 1.5, .6, 3))})`;
   }
 
-  if (S5) {
-    const u = t - T.s5;
-    lines($('s5t'), u, .1, .09, .7);
-    stroke($('s5r'), u, .7, .7);
-    rise($('s5f'), u, 1.0, 30, .6);
+  if (cur === 'G') {
+    const tap = 1.55;
+    rise($('tmG'), u, 0, 30, .4);
+    odometer($('odoG'), u, .3, 5, tap);
+    lines($('qG'), u, .05, 0, .6);
+    const ch = [...$('chG').children];
+    ch.forEach((c, i) => rise(c, u, .25 + i * .08, 40, .5));
+    const tgt = center(ch[1]); tgt[0] += 90; tgt[1] += 30;
+    finger($('fgG'), $('rG'), u, [[.8, 940, 1640], [1.45, ...tgt], [2.0, ...tgt], [2.5, 980, 1700]], .8, 2.5, [tap]);
+    ch[1].classList.toggle('on', u >= tap + .08);
+    ch[1].style.transform = `scale(${u >= tap ? lerp(.94, 1, spring(u - tap, .5, 3.5)) : 1})`;
+  }
+
+  if (cur === 'H') { lines($('tH'), u, .1, .12, .7); push($('tH'), u, end('H')); }
+
+  if (cur === 'I') {
+    const k = E.house(P(u, .05, .7));
+    $('bI').style.opacity = k; $('bI').style.transform = `translateY(${(1 - k) * 40}px)`;
   }
 }
 window.renderAt = renderAt; window.DUR = DUR;
