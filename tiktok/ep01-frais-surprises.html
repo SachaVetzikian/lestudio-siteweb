@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Friction 01 · Frais surprises</title>
+<style>
+@font-face{font-family:'DM Sans';src:url(fonts/dmsans.woff2) format('woff2');font-weight:100 1000;font-display:block}
+@font-face{font-family:'DM Sans';src:url(fonts/dmsans-b.woff2) format('woff2');font-weight:100 1000;font-display:block}
+:root{--ink:#09090b;--paper:#f4f4f5;--orange:#ff5a00;--orange-l:#ffe4d6;--grey:#71717a;--line:#e4e4e7;--red:#e5484d;--red-l:#fde7e8}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+body{font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ink)}
+.scene{position:absolute;inset:0;display:none;overflow:hidden}
+.ink{background:var(--ink);color:#fff}
+.paper{background:var(--paper)}
+.abs{position:absolute}
+.tag{font-weight:700;font-size:34px;letter-spacing:.14em;color:var(--orange)}
+.w{display:inline-block;will-change:transform}
+.big{font-weight:800;letter-spacing:-.045em;line-height:.98}
+.pill{position:absolute;left:50%;top:214px;height:68px;padding:0 34px;border-radius:34px;font-weight:800;font-size:32px;letter-spacing:.14em;display:flex;align-items:center;transform-origin:50% 50%}
+/* phone */
+.phone{position:absolute;left:180px;top:300px;width:720px;height:1220px;border-radius:72px;background:var(--ink);padding:16px;box-shadow:0 40px 90px rgba(9,9,11,.18)}
+.screen{position:relative;width:688px;height:1188px;border-radius:58px;background:#fff;overflow:hidden}
+.view{position:absolute;inset:0;padding:0 48px}
+.status{position:absolute;top:30px;left:56px;font-weight:700;font-size:26px}
+.notch{position:absolute;top:22px;left:50%;width:180px;height:44px;margin-left:-90px;border-radius:22px;background:var(--ink)}
+.h{position:absolute;top:120px;left:48px;font-weight:800;font-size:54px;letter-spacing:-.03em}
+.row{position:absolute;left:48px;right:48px;display:flex;justify-content:space-between;align-items:center;font-size:34px}
+.row b{font-weight:700}
+.thumb{width:150px;height:150px;border-radius:28px;background:linear-gradient(160deg,#ffe4d6,#ffc4a3);position:relative;flex:none}
+.bottle{position:absolute;left:50%;bottom:22px;width:52px;height:84px;margin-left:-26px;border-radius:14px;background:#fff}
+.bottle:before{content:'';position:absolute;left:14px;top:-22px;width:24px;height:24px;border-radius:6px 6px 0 0;background:var(--ink)}
+.btn{position:absolute;left:48px;right:48px;bottom:64px;height:124px;border-radius:62px;background:var(--ink);color:#fff;font-weight:700;font-size:38px;display:flex;align-items:center;justify-content:center;gap:16px}
+.field{position:absolute;left:48px;right:48px;height:104px;border-radius:24px;border:3px solid var(--line);display:flex;align-items:center;padding:0 32px;font-size:32px;color:var(--grey)}
+.hr{position:absolute;left:48px;right:48px;height:3px;background:var(--line)}
+.chip{position:absolute;left:48px;padding:18px 26px;border-radius:20px;background:var(--orange-l);color:#c2410c;font-weight:700;font-size:30px;transform-origin:0 50%}
+.ring{position:absolute;border:5px solid var(--orange);border-radius:28px;pointer-events:none}
+.stamp{position:absolute;left:50%;top:50%;width:620px;margin-left:-310px;margin-top:-330px;height:180px;border:10px solid var(--red);border-radius:28px;color:var(--red);background:rgba(255,255,255,.94);font-weight:800;font-size:68px;letter-spacing:-.02em;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1}
+.dim{position:absolute;inset:0;background:var(--ink)}
+.finger{position:absolute;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:rgba(9,9,11,.32);border:5px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.ripple{position:absolute;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;border:5px solid var(--ink)}
+.counter{position:absolute;right:24px;bottom:24px;font:700 28px monospace;color:#f0f;display:none}
+</style>
+</head>
+<body>
+
+<!-- S1 HOOK -->
+<section class="scene ink" id="s1">
+  <div class="abs tag" id="s1tag" style="left:96px;top:560px">FRICTION N°01</div>
+  <div class="abs big" id="s1title" style="left:90px;top:640px;font-size:168px;color:#fff">
+    <span class="w">Il</span> <span class="w">allait</span><br><span class="w" style="color:var(--orange)">payer.</span>
+  </div>
+  <div class="abs" id="s1sub" style="left:96px;top:1030px;font-size:60px;font-weight:500;color:#a1a1aa;letter-spacing:-.02em">Puis il a vu le total.</div>
+</section>
+
+<!-- S2 AVANT -->
+<section class="scene paper" id="s2">
+  <div class="pill" id="s2pill" style="background:var(--red);color:#fff">AVANT</div>
+  <div class="phone" id="s2phone"><div class="screen">
+    <div class="notch"></div><div class="status">9:41</div>
+    <div class="view" id="vA">
+      <div class="h">Ton panier</div>
+      <div class="row" style="top:250px">
+        <div style="display:flex;gap:30px;align-items:center"><div class="thumb"><div class="bottle"></div></div>
+          <div><b>Sérum éclat</b><div style="color:var(--grey);font-size:28px;margin-top:6px">30 ml · x1</div></div></div>
+        <b>39,00 €</b>
+      </div>
+      <div class="hr" style="top:470px"></div>
+      <div class="row" style="top:510px"><span style="color:var(--grey)">Sous-total</span><b>39,00 €</b></div>
+      <div class="btn" id="btnA">Commander</div>
+    </div>
+    <div class="view" id="vB">
+      <div class="h">Paiement</div>
+      <div class="field" style="top:250px">Carte  •••• 4242</div>
+      <div class="field" style="top:380px">Adresse de livraison</div>
+      <div class="hr" style="top:540px"></div>
+      <div class="row" style="top:580px"><span style="color:var(--grey)">Sous-total</span><b>39,00 €</b></div>
+      <div class="row" id="lShip" style="top:660px;color:var(--red)"><span>Livraison</span><b>+ 6,90 €</b></div>
+      <div class="row" id="lFee" style="top:740px;color:var(--red)"><span>Frais de service</span><b>+ 1,50 €</b></div>
+      <div class="hr" style="top:830px"></div>
+      <div class="row" style="top:870px;font-size:44px"><b>Total</b><b id="totB">39,00 €</b></div>
+      <div class="btn" id="btnB">Payer <span id="payB">39,00 €</span></div>
+    </div>
+    <div class="dim" id="dim2"></div>
+    <div class="stamp" id="stamp">PANIER<br>ABANDONNÉ</div>
+  </div></div>
+  <div class="ripple" id="rip2"></div>
+  <div class="finger" id="f2"></div>
+</section>
+
+<!-- S3 INSIGHT -->
+<section class="scene ink" id="s3">
+  <div class="abs big" id="s3t" style="left:90px;top:640px;font-size:98px;line-height:1.06;white-space:nowrap">
+    <div class="w" style="color:var(--orange)">Les frais surprises</div><br>
+    <div class="w">sont la 1re cause</div><br>
+    <div class="w">d'abandon de panier.</div>
+  </div>
+  <div class="abs" id="s3src" style="left:96px;top:1040px;font-size:34px;color:#71717a;font-weight:500">Étude Baymard Institute sur l'abandon de panier</div>
+</section>
+
+<!-- S4 APRES -->
+<section class="scene paper" id="s4">
+  <div class="pill" id="s4pill" style="background:var(--orange);color:#fff">APRÈS</div>
+  <div class="phone" id="s4phone"><div class="screen">
+    <div class="notch"></div><div class="status">9:41</div>
+    <div class="view" id="vC" style="padding:0">
+      <div style="position:absolute;left:0;right:0;top:0;height:560px;background:linear-gradient(160deg,#ffe4d6,#ffc4a3)">
+        <div class="bottle" style="width:150px;height:250px;margin-left:-75px;bottom:90px;border-radius:36px"></div>
+      </div>
+      <div class="abs" style="left:48px;top:600px;font-weight:800;font-size:56px;letter-spacing:-.03em">Sérum éclat</div>
+      <div class="abs" style="left:48px;top:680px;font-weight:700;font-size:46px">39,00 €</div>
+      <div class="chip" id="chip" style="top:770px">Livraison 6,90 €, offerte dès 50 €</div>
+      <div class="ring" id="ring"></div>
+      <div class="btn" id="btnC">Ajouter au panier</div>
+    </div>
+    <div class="view" id="vD">
+      <div class="h">Paiement</div>
+      <div class="field" style="top:250px">Carte  •••• 4242</div>
+      <div class="field" style="top:380px">Adresse de livraison</div>
+      <div class="hr" style="top:540px"></div>
+      <div class="row d-l" style="top:580px"><span style="color:var(--grey)">Sous-total</span><b>39,00 €</b></div>
+      <div class="row d-l" style="top:660px"><span style="color:var(--grey)">Livraison <span style="font-size:26px;color:#c2410c;font-weight:700;background:var(--orange-l);padding:4px 12px;border-radius:10px;margin-left:8px">annoncée</span></span><b>6,90 €</b></div>
+      <div class="hr d-l" style="top:750px"></div>
+      <div class="row d-l" style="top:790px;font-size:44px"><b>Total</b><b>45,90 €</b></div>
+      <div class="btn" id="btnD"><svg id="chk" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path id="chkp" d="M4 12.5l5 5L20 6.5" stroke-dasharray="24" stroke-dashoffset="24"/></svg><span id="payD">Payer 45,90 €</span></div>
+    </div>
+  </div></div>
+  <div class="ripple" id="rip4"></div>
+  <div class="finger" id="f4"></div>
+</section>
+
+<!-- S5 RULE + OUTRO -->
+<section class="scene ink" id="s5">
+  <div class="abs tag" id="s5tag" style="left:96px;top:540px">LA RÈGLE</div>
+  <div class="abs big" id="s5t" style="left:90px;top:620px;font-size:116px;line-height:1.02;width:900px">
+    <span class="w">Affiche</span> <span class="w">tous</span> <span class="w">les</span> <span class="w" style="color:var(--orange)">frais</span><br><span class="w">avant</span> <span class="w">le</span> <span class="w">panier.</span>
+  </div>
+  <div class="abs" id="s5foot" style="left:96px;top:1160px">
+    <img src="logo.svg" style="width:300px;height:auto;filter:invert(1);display:block">
+    <div style="margin-top:28px;font-size:40px;font-weight:500;color:#a1a1aa">Friction n°02 bientôt. Abonne-toi.</div>
+  </div>
+</section>
+
+<div class="counter" id="counter"></div>
+
+<script>
+const DUR = 24;
+const $ = id => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const P = (t, a, b) => cl((t - a) / (b - a));
+const lerp = (a, b, k) => a + (b - a) * k;
+const outExpo = x => x >= 1 ? 1 : 1 - Math.pow(2, -10 * x);
+const inOutCubic = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const inOutQuart = x => x < .5 ? 8 * x ** 4 : 1 - Math.pow(-2 * x + 2, 4) / 2;
+const inCubic = x => x * x * x;
+function spring(t, z = .7, f = 2) {
+  if (t <= 0) return 0;
+  const w = 2 * Math.PI * f, wd = w * Math.sqrt(1 - z * z);
+  return 1 - Math.exp(-z * w * t) * (Math.cos(wd * t) + (z * w / wd) * Math.sin(wd * t));
+}
+const shake = (t, t0, amp = 14) => { const u = t - t0; return u < 0 || u > .45 ? 0 : amp * Math.exp(-u * 9) * Math.sin(u * 2 * Math.PI * 9); };
+const eur = v => v.toFixed(2).replace('.', ',') + ' €';
+const tr = (el, x, y, s = 1, r = 0) => { el.style.transform = `translate(${x}px,${y}px) scale(${s}) rotate(${r}deg)`; };
+
+// words reveal: each word rises 90px on outExpo, 0.6 s, staggered
+function words(container, t, t0, step, dist = 90) {
+  container.querySelectorAll('.w').forEach((w, i) => {
+    const k = outExpo(P(t, t0 + i * step, t0 + i * step + .6));
+    w.style.opacity = k; w.style.transform = `translateY(${(1 - k) * dist}px)`;
+  });
+}
+function show(id, on) { $(id).style.display = on ? 'block' : 'none'; }
+
+// finger: keyframed path [t, x, y], eased between keys
+function path(t, keys) {
+  if (t <= keys[0][0]) return keys[0].slice(1);
+  for (let i = 0; i < keys.length - 1; i++) {
+    const [a, x0, y0] = keys[i], [b, x1, y1] = keys[i + 1];
+    if (t <= b) { const k = inOutCubic(P(t, a, b)); return [lerp(x0, x1, k), lerp(y0, y1, k)]; }
+  }
+  return keys[keys.length - 1].slice(1);
+}
+function finger(f, rip, t, keys, tIn, tOut, taps) {
+  const [x, y] = path(t, keys);
+  const vis = P(t, tIn, tIn + .2) * (1 - P(t, tOut - .2, tOut));
+  let s = 1;
+  taps.forEach(tp => { const u = t - tp; if (u > 0 && u < .3) s = Math.min(s, 1 - .22 * Math.sin(Math.PI * u / .3)); });
+  f.style.left = x + 'px'; f.style.top = y + 'px'; f.style.opacity = vis; f.style.transform = `scale(${s})`;
+  let rk = -1; taps.forEach(tp => { if (t >= tp + .1 && t < tp + .6) rk = P(t, tp + .1, tp + .6); });
+  rip.style.left = x + 'px'; rip.style.top = y + 'px';
+  rip.style.opacity = rk < 0 ? 0 : .5 * (1 - rk); rip.style.transform = `scale(${1 + rk * 1.6})`;
+}
+const press = (t, tp) => { const u = t - tp; return u < 0 ? 1 : 1 - .05 * (1 - spring(u, .5, 4)) * (u < .12 ? u / .12 : 1); };
+
+// phone geometry in scene coordinates
+const PX = 180 + 16, PY = 300 + 16;      // screen origin
+const BTN = [PX + 344, PY + 1188 - 64 - 62]; // button center
+
+function renderAt(t) {
+  t = ((t % DUR) + DUR) % DUR;
+  const S1 = t < 3.2, S2 = t >= 3.2 && t < 10, S3 = t >= 10 && t < 13.6, S4 = t >= 13.6 && t < 20.4, S5 = t >= 20.4;
+  show('s1', S1); show('s2', S2); show('s3', S3); show('s4', S4); show('s5', S5);
+
+  if (S1) {
+    const k = outExpo(P(t, .05, .55));
+    $('s1tag').style.opacity = k; $('s1tag').style.transform = `translateX(${(1 - k) * -40}px)`;
+    words($('s1title'), t, .2, .14, 110);
+    const ks = outExpo(P(t, 1.45, 2.05));
+    $('s1sub').style.opacity = ks; $('s1sub').style.transform = `translateY(${(1 - ks) * 40}px)`;
+    // slow 2% push during the hold
+    $('s1title').style.transform = `scale(${1 + .02 * P(t, .8, 3.2)})`; $('s1title').style.transformOrigin = '0 0';
+  }
+
+  if (S2) {
+    const u = t - 3.2;
+    const kin = outExpo(P(u, 0, .6));
+    $('s2phone').style.opacity = kin; tr($('s2phone'), 0, (1 - kin) * 140, 1 + .015 * P(u, .6, 6.8));
+    const kp = spring(u - .1, .55, 2.6);
+    $('s2pill').style.transform = `translateX(-50%) scale(${kp})`;
+    // screen swap A -> B
+    const ks = inOutQuart(P(u, 1.65, 2.05));
+    $('vA').style.transform = `translateX(${-688 * ks}px)`; $('vB').style.transform = `translateX(${688 * (1 - ks)}px)`;
+    $('btnA').style.transform = `scale(${press(u, 1.35)})`;
+    // surprise lines
+    const ls = outExpo(P(u, 2.3, 2.7)), lf = outExpo(P(u, 2.95, 3.35));
+    $('lShip').style.opacity = ls; $('lShip').style.transform = `translateX(${(1 - ls) * 120 + shake(u, 2.3)}px)`;
+    $('lFee').style.opacity = lf; $('lFee').style.transform = `translateX(${(1 - lf) * 120 + shake(u, 2.95)}px)`;
+    const tot = 39 + 6.9 * outExpo(P(u, 2.3, 2.75)) + 1.5 * outExpo(P(u, 2.95, 3.4));
+    const totR = Math.round(tot * 10) / 10;
+    $('totB').textContent = eur(totR); $('payB').textContent = eur(totR);
+    const hot = (u > 2.3 && u < 2.75) || (u > 2.95 && u < 3.4);
+    $('totB').style.color = hot || u > 2.3 ? 'var(--red)' : 'var(--ink)';
+    $('btnB').style.background = u > 2.3 ? 'var(--red)' : 'var(--ink)';
+    // abandon
+    $('dim2').style.opacity = .5 * inOutCubic(P(u, 4.2, 4.6));
+    const kst = spring(u - 4.35, .5, 2.4);
+    const st = $('stamp'); st.style.opacity = u > 4.35 ? 1 : 0;
+    st.style.transform = `scale(${lerp(1.7, 1, kst)}) rotate(-7deg)`;
+    finger($('f2'), $('rip2'), u,
+      [[.6, 860, 1640], [1.3, BTN[0], BTN[1]], [2.0, BTN[0], BTN[1]], [2.4, BTN[0] + 220, BTN[1] + 30], [3.7, BTN[0] + 220, BTN[1] + 30], [4.2, BTN[0] + 260, 1980]],
+      .6, 4.2, [1.35]);
+    // phone flinches at the reveal
+    if (u > 2.3 && u < 3.6) tr($('s2phone'), shake(u, 2.3, 6) + shake(u, 2.95, 6), 0, 1 + .015 * P(u, .6, 6.8));
+  }
+
+  if (S3) {
+    const u = t - 10;
+    words($('s3t'), u, .05, .16, 80);
+    const k = outExpo(P(u, .9, 1.4)); $('s3src').style.opacity = k * .9;
+    $('s3t').style.transformOrigin = '0 0'; $('s3t').style.transform = `scale(${1 + .02 * P(u, .5, 3.6)})`;
+  }
+
+  if (S4) {
+    const u = t - 13.6;
+    const kin = outExpo(P(u, 0, .6));
+    $('s4phone').style.opacity = kin; tr($('s4phone'), 0, (1 - kin) * 140, 1 + .015 * P(u, .6, 6.8));
+    $('s4pill').style.transform = `translateX(-50%) scale(${spring(u - .1, .55, 2.6)})`;
+    // chip pop + ring pulse
+    const kc = spring(u - .6, .55, 2.6);
+    $('chip').style.opacity = cl(kc * 3); $('chip').style.transform = `scale(${kc})`;
+    const ring = $('ring'), kr = P(u, 1.0, 1.7);
+    ring.style.left = (48 - 12) + 'px'; ring.style.top = (770 - 12) + 'px';
+    ring.style.width = ($('chip').offsetWidth + 24) + 'px'; ring.style.height = ($('chip').offsetHeight + 24) + 'px';
+    ring.style.opacity = kr > 0 && kr < 1 ? 1 - kr : 0; ring.style.transform = `scale(${1 + .08 * kr})`;
+    $('btnC').style.transform = `scale(${press(u, 2.15)})`;
+    // swap C -> D
+    const ks = inOutQuart(P(u, 2.4, 2.8));
+    $('vC').style.transform = `translateX(${-688 * ks}px)`; $('vD').style.transform = `translateX(${688 * (1 - ks)}px)`;
+    document.querySelectorAll('.d-l').forEach((el, i) => {
+      const k = outExpo(P(u, 2.75 + i * .08, 3.25 + i * .08)); el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * 24}px)`;
+    });
+    // pay -> confirmed
+    const done = u >= 4.1;
+    const kd = spring(u - 4.1, .55, 3);
+    $('btnD').style.background = done ? 'var(--orange)' : 'var(--ink)';
+    $('btnD').style.transform = `scale(${done ? lerp(.94, 1, kd) : press(u, 3.95)})`;
+    $('payD').textContent = done ? 'Commande validée' : 'Payer 45,90 €';
+    $('chk').style.display = done ? 'block' : 'none';
+    $('chkp').setAttribute('stroke-dashoffset', 24 * (1 - outExpo(P(u, 4.15, 4.55))));
+    finger($('f4'), $('rip4'), u,
+      [[1.4, 860, 1640], [2.05, BTN[0], BTN[1]], [3.0, BTN[0], BTN[1]], [3.4, BTN[0] + 50, BTN[1] - 40], [3.85, BTN[0], BTN[1]], [4.3, BTN[0], BTN[1]], [4.9, BTN[0] + 260, 1980]],
+      1.4, 4.9, [2.15, 3.95]);
+  }
+
+  if (S5) {
+    const u = t - 20.4;
+    const k = outExpo(P(u, .05, .5)); $('s5tag').style.opacity = k; $('s5tag').style.transform = `translateX(${(1 - k) * -40}px)`;
+    words($('s5t'), u, .15, .09, 100);
+    const kf = outExpo(P(u, 1.6, 2.2)); $('s5foot').style.opacity = kf; $('s5foot').style.transform = `translateY(${(1 - kf) * 40}px)`;
+    $('s5t').style.transformOrigin = '0 0'; $('s5t').style.transform = `scale(${1 + .02 * P(u, .8, 3.6)})`;
+  }
+
+  const c = $('counter'); c.textContent = 'f' + Math.round(t * 30);
+}
+window.renderAt = renderAt;
+window.DUR = DUR;
+
+const q = new URLSearchParams(location.search);
+if (q.has('debug')) $('counter').style.display = 'block';
+document.fonts.ready.then(() => {
+  window.__ready = true;
+  if (q.has('t')) { renderAt(parseFloat(q.get('t')) || 0); return; }
+  const t0 = performance.now();
+  (function loop(now) { renderAt((now - t0) / 1000); requestAnimationFrame(loop); })(t0);
+});
+renderAt(q.has('t') ? parseFloat(q.get('t')) || 0 : 0);
+</script>
+</body>
+</html>
