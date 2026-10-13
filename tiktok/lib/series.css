@@ -1,0 +1,60 @@
+/* Série TikTok Le Studio : tokens du design system LeStudio, agrandis pour un canevas 1080x1920 */
+@font-face{font-family:'Geist';src:url(../fonts/geist.woff2) format('woff2');font-weight:300 600;font-display:block}
+@font-face{font-family:'Fragment Mono';src:url(../fonts/fragment-mono.woff2) format('woff2');font-weight:400;font-display:block}
+:root{
+  --bg:#efefec; --white:#fafaf8; --grey:#dededa; --ink:#0d0d0d; --ink-2:#5b5b57; --line:rgba(13,13,13,.14);
+  --night:#0d0d0d; --night-2:#191918; --on-night:#f2f2ef; --on-night-2:#9c9c97; --line-night:rgba(242,242,239,.16);
+  --accent:#ff4d00; --accent-text:#f74b00; --on-accent:#0d0d0d;
+  --r-frame:30px; --r-md:18px; --r-pill:999px;
+  --font-sans:"Geist",system-ui,sans-serif; --font-mono:"Fragment Mono",ui-monospace,monospace;
+  --g:80px; /* gouttière vidéo */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--night)}
+body{font-family:var(--font-sans);-webkit-font-smoothing:antialiased;color:var(--ink);font-feature-settings:"tnum" 0}
+.scene{position:absolute;inset:0;display:none;overflow:hidden;background:var(--bg);color:var(--ink)}
+.scene.night{background:var(--night);color:var(--on-night)}
+.abs{position:absolute}
+
+/* Label : Fragment Mono capitales, carré accent devant */
+.label{display:inline-flex;align-items:center;gap:18px;font-family:var(--font-mono);font-size:30px;line-height:1.2;letter-spacing:.02em;text-transform:uppercase}
+.label::before{content:"";width:18px;height:18px;background:var(--accent);flex:none}
+.meta{font-family:var(--font-mono);font-size:28px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-2)}
+.night .meta{color:var(--on-night-2)}
+
+/* Titres : Geist 450, très serrés */
+.display{font-weight:450;letter-spacing:-.055em;line-height:.98}
+.ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em;white-space:nowrap}
+.ln > span{display:inline-block;will-change:transform}
+.h3{font-weight:450;font-size:46px;letter-spacing:-.035em;line-height:1.08}
+
+/* Chiffre : style figure, suffixe à .36em en accent-text */
+.figure{font-weight:450;letter-spacing:-.07em;line-height:1;display:flex;align-items:flex-start}
+.figure .suf{font-size:.36em;color:var(--accent-text);letter-spacing:-.02em;margin-left:.06em;margin-top:.12em}
+.odo{display:inline-block;height:1em;overflow:hidden;line-height:1em;font-variant-numeric:tabular-nums}
+.odo > span{display:block;will-change:transform}
+.odo > span > b{display:block;font-weight:inherit;height:1em}
+
+/* Pilules et choix */
+.pill{display:inline-flex;align-items:center;height:64px;padding:0 32px;border-radius:var(--r-pill);border:1.5px solid currentColor;font-weight:450;font-size:24px;letter-spacing:-.01em;white-space:nowrap}
+.pill--accent{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.choices{display:flex;gap:14px;flex-wrap:nowrap}
+.choice{display:inline-flex;align-items:center;height:78px;padding:0 30px;border-radius:var(--r-pill);border:2px solid rgba(13,13,13,.28);font-size:31px;letter-spacing:-.01em;white-space:nowrap;background:transparent}
+.choice.on{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.choice.bad{border-color:var(--accent)}
+
+/* Message d'erreur ou de validation : carré accent + texte ink */
+.msg{display:inline-flex;align-items:center;gap:18px;font-size:36px;letter-spacing:-.02em;font-weight:450}
+.msg::before{content:"";width:16px;height:16px;background:var(--accent);flex:none}
+
+/* Filet */
+.rule{height:2px;background:var(--line);transform-origin:0 50%}
+.night .rule{background:var(--line-night)}
+
+/* Marque : nom en Geist 500 + carré accent */
+.brand{display:inline-flex;align-items:center;gap:.2em;font-weight:500;letter-spacing:-.04em;line-height:1}
+.brand i{width:.45em;height:.45em;background:var(--accent);display:block}
+
+/* Doigt */
+.finger{position:absolute;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:rgba(13,13,13,.28);border:5px solid var(--white);box-shadow:0 8px 24px rgba(0,0,0,.22);opacity:0}
+.ripple{position:absolute;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;border:4px solid var(--ink);opacity:0}
