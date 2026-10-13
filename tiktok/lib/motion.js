@@ -82,7 +82,8 @@
   function odometer(col, t, t0, from = 5, stopAt = Infinity) {
     const tt = Math.min(t, stopAt) - t0;
     let pos = 0;
-    if (tt > 0) { const n = Math.floor(tt); pos = Math.min(from, n + E.house(P(tt - n, 0, .35))); }
+    // le chiffre reste affiché une seconde pleine, puis roule vers le suivant
+    if (tt >= 1) { const n = Math.floor(tt); pos = Math.min(from, n - 1 + E.house(P(tt - n, 0, .35))); }
     col.style.transform = `translateY(${-pos}em)`;
     return pos;
   }

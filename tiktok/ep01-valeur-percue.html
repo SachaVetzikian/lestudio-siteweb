@@ -7,7 +7,7 @@
 <style>
 .c{position:absolute;left:0;right:0;text-align:center}
 .c .ln{text-align:center}
-.frame{position:absolute;left:80px;width:920px;height:760px;background:var(--white);border-radius:var(--r-frame);border:1.5px solid var(--line);overflow:hidden}
+.frame{position:absolute;left:80px;top:560px;width:920px;height:760px;background:var(--white);border-radius:var(--r-frame);border:1.5px solid var(--line);overflow:hidden}
 .nav{position:absolute;left:0;right:0;top:0;height:92px;display:flex;align-items:center;gap:34px;padding:0 48px;border-bottom:1.5px solid var(--line);font-size:22px;color:var(--ink-2)}
 .nav .logo{display:flex;align-items:center;gap:12px;font-weight:500;font-size:28px;letter-spacing:-.03em;color:var(--ink);margin-right:auto}
 .nav .logo i{width:26px;height:26px;border-radius:50%;background:var(--ink);display:block}
@@ -16,115 +16,107 @@
 .sub{position:absolute;left:56px;top:430px;font-size:28px;line-height:1.38;color:var(--ink-2);letter-spacing:-.015em}
 .cta{position:absolute;left:56px;top:530px}
 .shot{position:absolute;left:56px;right:56px;top:630px;height:200px;border-radius:var(--r-md);background:var(--grey)}
+.slots{position:absolute;left:56px;right:56px;top:640px;display:flex;gap:14px;opacity:0}
+.slots .choice{height:72px;font-size:28px;padding:0 30px}
 .v{position:relative;display:inline-block}
 .v > i{position:absolute;left:0;right:0;bottom:.04em;height:5px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%}
 .sub .v > i{height:3px;bottom:0}
-.tsmall{position:absolute;left:0;right:0;top:200px;display:flex;justify-content:center;font-size:150px}
-.tbig{position:absolute;left:0;right:0;top:640px;display:flex;justify-content:center;font-size:440px}
-.vch{position:absolute;left:0;right:0;top:820px;display:flex;flex-direction:column;align-items:center;gap:24px}
-.vch .choice{height:116px;padding:0 52px;font-size:46px;border-width:2.5px}
+.tsmall{position:absolute;left:0;right:0;top:170px;display:flex;justify-content:center;font-size:150px}
+.say{top:400px;font-size:64px}
+.finger.light{background:rgba(242,242,239,.28);border-color:var(--on-night)}
 </style>
 </head>
 <body>
 
-<!-- A accroche -->
+<!-- 1 accroche -->
 <section class="scene night" id="sA">
-  <div class="c display" id="tA" style="top:700px;font-size:150px">
-    <span class="ln"><span>Votre site a</span></span>
-    <span class="ln"><span>5 secondes.</span></span>
+  <div class="c display" id="tA" style="top:600px;font-size:130px">
+    <span class="ln"><span>Ce prospect</span></span>
+    <span class="ln"><span>allait vous</span></span>
+    <span class="ln"><span>contacter.</span></span>
   </div>
+  <div class="finger light" id="fgA"></div>
 </section>
 
-<!-- B le site, le chrono tourne -->
+<!-- 2 à 4 : il lit, il hésite, il part -->
 <section class="scene" id="sB">
   <div class="tsmall figure" id="tmB"><span class="odo"><span id="odoB"><b>5</b><b>4</b><b>3</b><b>2</b><b>1</b><b>0</b></span></span><span class="suf">s</span></div>
-  <div class="frame" id="fB" style="top:560px"></div>
+  <div class="c h3 say" id="qB"><span class="ln"><span>Vous vendez quoi, au juste&nbsp;?</span></span></div>
+  <div class="frame" id="fB">
+    <div class="nav"><div class="logo"><i></i>Nexora</div><span>Produit</span><span>Tarifs</span><span>Ressources</span><span class="pill">Démo</span></div>
+    <div class="hero display" id="tB">
+      <span class="ln"><span id="l0">La plateforme qui</span></span>
+      <span class="ln"><span id="l1"><span class="v" id="w1">révolutionne<i id="u1"></i></span> votre</span></span>
+      <span class="ln"><span id="l2"><span class="v" id="w2">performance.<i id="u2"></i></span></span></span>
+    </div>
+    <div class="sub">Une solution <span class="v" id="w3">innovante, agile et intelligente<i id="u3"></i></span><br>pour aller plus loin.</div>
+    <div class="cta"><span class="pill">En savoir plus</span></div>
+    <div class="shot"></div>
+  </div>
+  <div class="c display" id="tGone" style="top:840px;font-size:140px"><span class="ln"><span>Il est parti.</span></span></div>
+  <div class="finger" id="fgB"></div>
 </section>
 
-<!-- C la question -->
-<section class="scene" id="sC">
-  <div class="tsmall figure" id="tmC"><span class="odo"><span id="odoC"><b>5</b><b>4</b><b>3</b><b>2</b><b>1</b><b>0</b></span></span><span class="suf">s</span></div>
-  <div class="c h3" id="qC" style="top:640px;font-size:64px"><span class="ln"><span>Que vend cette entreprise&nbsp;?</span></span></div>
-  <div class="vch" id="chC"><span class="choice">Un CRM</span><span class="choice">De la compta</span><span class="choice">Du recrutement</span></div>
-  <div class="ripple" id="rC"></div><div class="finger" id="fgC"></div>
-</section>
-
-<!-- D zéro -->
-<section class="scene" id="sD">
-  <div class="tbig figure" id="tmD"><span>0</span><span class="suf">s</span></div>
-</section>
-
-<!-- E conséquence -->
+<!-- 5 -->
 <section class="scene night" id="sE">
   <div class="c display" id="tE" style="top:740px;font-size:140px">
-    <span class="ln"><span>Pas compris,</span></span>
-    <span class="ln"><span>pas de démo.</span></span>
+    <span class="ln"><span>Même site.</span></span>
+    <span class="ln"><span>Autre titre.</span></span>
   </div>
 </section>
 
-<!-- F réécriture -->
+<!-- 6 et 7 : le titre se réécrit, il prend rendez-vous -->
 <section class="scene" id="sF">
-  <div class="frame" id="fF" style="top:560px"></div>
+  <div class="c h3 say" id="sayF"><span class="ln"><span>Il prend rendez-vous.</span></span></div>
+  <div class="frame" id="fF">
+    <div class="nav"><div class="logo"><i></i>Nexora</div><span>Produit</span><span>Tarifs</span><span>Ressources</span><span class="pill">Démo</span></div>
+    <div class="hero display" id="tFold">
+      <span class="ln"><span>La plateforme qui</span></span>
+      <span class="ln"><span>révolutionne votre</span></span>
+      <span class="ln"><span>performance.</span></span>
+    </div>
+    <div class="hero display" id="tFnew">
+      <span class="ln"><span>Vos factures</span></span>
+      <span class="ln"><span>relancées</span></span>
+      <span class="ln"><span>automatiquement.</span></span>
+    </div>
+    <div class="sub" id="subOld">Une solution innovante, agile et intelligente<br>pour aller plus loin.</div>
+    <div class="sub" id="subNew">Pour les PME qui attendent d’être payées.<br>Branché à votre logiciel de compta.</div>
+    <div class="cta"><span class="pill" id="ctaOld">En savoir plus</span></div>
+    <div class="cta"><span class="pill pill--accent" id="ctaNew">Prendre rendez-vous</span></div>
+    <div class="shot" id="shotF"></div>
+    <div class="slots" id="slots"><span class="choice">Mar. 10 h</span><span class="choice">Mar. 14 h</span><span class="choice">Mer. 9 h</span></div>
+  </div>
+  <div class="ripple" id="rF"></div><div class="finger" id="fgF"></div>
 </section>
 
-<!-- G la question, encore -->
-<section class="scene" id="sG">
-  <div class="tsmall figure" id="tmG"><span class="odo"><span id="odoG"><b>5</b><b>4</b><b>3</b><b>2</b><b>1</b><b>0</b></span></span><span class="suf">s</span></div>
-  <div class="c h3" id="qG" style="top:640px;font-size:64px"><span class="ln"><span>Que vend cette entreprise&nbsp;?</span></span></div>
-  <div class="vch" id="chG"><span class="choice">Un CRM</span><span class="choice">De la relance de factures</span><span class="choice">De la paie</span></div>
-  <div class="ripple" id="rG"></div><div class="finger" id="fgG"></div>
-</section>
-
-<!-- H règle -->
+<!-- 8 -->
 <section class="scene night" id="sH">
-  <div class="c display" id="tH" style="top:740px;font-size:140px">
-    <span class="ln"><span>Dites ce que</span></span>
-    <span class="ln"><span>vous vendez.</span></span>
+  <div class="c display" id="tH" style="top:660px;font-size:122px">
+    <span class="ln"><span>Votre titre est</span></span>
+    <span class="ln"><span>votre premier</span></span>
+    <span class="ln"><span>commercial.</span></span>
   </div>
 </section>
 
-<!-- I signature -->
+<!-- 9 -->
 <section class="scene night" id="sI">
   <div class="c" id="bI" style="top:860px;display:flex;justify-content:center"><div class="brand" style="font-size:120px">Le Studio<i></i></div></div>
 </section>
 
 <script src="lib/motion.js"></script>
 <script>
-const { P, E, $, show, lines, linesOut, rise, stroke, finger, odometer, spring, lerp } = M;
+const { P, E, $, show, lines, linesOut, rise, stroke, finger, path, odometer, spring, lerp } = M;
 
-// la maquette du site, en version floue ou réécrite
-const NAV = '<div class="nav"><div class="logo"><i></i>Nexora</div><span>Produit</span><span>Tarifs</span><span>Ressources</span><span class="pill">Démo</span></div><div class="shot"></div>';
-$('fB').innerHTML = NAV + `
-  <div class="hero display" id="tB">
-    <span class="ln"><span>La plateforme qui</span></span>
-    <span class="ln"><span><span class="v">révolutionne<i id="u1"></i></span> votre</span></span>
-    <span class="ln"><span><span class="v">performance.<i id="u2"></i></span></span></span>
-  </div>
-  <div class="sub">Une solution <span class="v">innovante, agile et intelligente<i id="u3"></i></span><br>pour aller plus loin.</div>
-  <div class="cta"><span class="pill">En savoir plus</span></div>`;
-$('fF').innerHTML = NAV + `
-  <div class="hero display" id="tFold">
-    <span class="ln"><span>La plateforme qui</span></span>
-    <span class="ln"><span>révolutionne votre</span></span>
-    <span class="ln"><span>performance.</span></span>
-  </div>
-  <div class="hero display" id="tFnew">
-    <span class="ln"><span>Vos factures</span></span>
-    <span class="ln"><span>relancées</span></span>
-    <span class="ln"><span>automatiquement.</span></span>
-  </div>
-  <div class="sub" id="subOld">Une solution innovante, agile et intelligente<br>pour aller plus loin.</div>
-  <div class="sub" id="subNew">Pour les PME qui attendent d’être payées.<br>Branché à votre logiciel de compta.</div>
-  <div class="cta"><span class="pill" id="ctaOld">En savoir plus</span></div>
-  <div class="cta"><span class="pill pill--accent" id="ctaNew">Voir la démo de 2 min</span></div>`;
+const T = { A: 0, B: 2.6, E: 10.1, F: 12.1, H: 17.9, I: 20.5 };
+const ORDER = ['A', 'B', 'E', 'F', 'H', 'I'];
+const DUR = 22.3;
+const TIMER0 = 0; // dans la scène B : 5 au départ, 0 atteint à 5,35 s
 
-const T = { A: 0, B: 2.4, C: 5.4, D: 8.4, E: 9.4, F: 11.6, G: 14.6, H: 17.4, I: 19.8 };
-const DUR = 21.6;
-const ORDER = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-const TIMER0 = 3.0; // le chrono du site flou démarre ici et tombe à 0 à 8,0 s
-
-const center = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+const rect = el => el.getBoundingClientRect();
+const center = el => { const r = rect(el); return [r.left + r.width / 2, r.top + r.height / 2]; };
 const push = (el, u, d) => { el.style.transformOrigin = '50% 50%'; el.style.transform = `scale(${1 + .025 * P(u, .3, d)})`; };
+const dummy = document.createElement('div');
 
 function renderAt(t) {
   t = ((t % DUR) + DUR) % DUR;
@@ -134,56 +126,62 @@ function renderAt(t) {
   const end = k => (ORDER[ORDER.indexOf(k) + 1] ? T[ORDER[ORDER.indexOf(k) + 1]] : DUR) - T[k];
   const u = t - T[cur];
 
-  if (cur === 'A') { lines($('tA'), u, .15, .12, .7); push($('tA'), u, end('A')); }
+  if (cur === 'A') {
+    lines($('tA'), u, .1, .1, .7); push($('tA'), u, end('A'));
+    // le prospect entre dans le cadre
+    finger($('fgA'), dummy, u, [[.9, 540, 2000], [1.6, 540, 1340], [2.6, 560, 1320]], .9, 9);
+  }
 
   if (cur === 'B') {
-    rise($('tmB'), u, 0, 30, .5);
-    const k = E.house(P(u, 0, .6)); $('fB').style.opacity = k; $('fB').style.transform = `translateY(${(1 - k) * 80}px)`;
+    // entrée du site et du chrono
+    const kin = E.house(P(u, 0, .6));
+    const kout = E.in(P(u, 5.5, 6.0));
+    $('fB').style.opacity = kin * (1 - kout);
+    $('fB').style.transform = `translateY(${(1 - kin) * 80 + kout * 160}px)`;
+    const tk = rise($('tmB'), u, 0, 30, .5);
+    $('tmB').style.opacity = tk * (1 - E.house(P(u, 5.5, 5.8)));
     lines($('tB'), u, .15, .06, .6);
-    odometer($('odoB'), t, TIMER0, 5);
-    stroke($('u1'), u, 1.2); stroke($('u2'), u, 1.5); stroke($('u3'), u, 1.8, .6);
+    odometer($('odoB'), u, TIMER0, 5);
+    // il lit le titre, mot à mot
+    const L = ['l0', 'l1', 'l2'].map(id => rect($(id)));
+    const ln = (i, a) => [lerp(L[i].left + 20, L[i].right - 10, a), L[i].top + L[i].height * .78];
+    const w = id => { const c = center($(id)); return [c[0], c[1] + 24]; };
+    const keys = [[.6, 980, 1760], [1.0, ...ln(0, 0)], [1.6, ...ln(0, 1)], [1.8, ...ln(1, 0)], [2.4, ...ln(1, 1)], [2.6, ...ln(2, 0)], [3.0, ...ln(2, 1)], [3.4, ...w('w3')],
+      // il hésite
+      [3.8, ...w('w1')], [4.2, ...w('w2')], [4.6, ...w('w1')], [5.0, ...w('w2')], [5.3, ...w('w2')],
+      // il part
+      [5.7, 1180, 2040]];
+    finger($('fgB'), dummy, u, keys, .6, 5.75);
+    stroke($('u1'), u, 1.8, .5); stroke($('u2'), u, 2.6, .4); stroke($('u3'), u, 3.1, .5);
+    const kq = E.house(P(u, 5.5, 5.8));
+    lines($('qB'), u, 3.0, 0, .6); $('qB').style.opacity = 1 - kq;
+    lines($('tGone'), u, 6.1, 0, .7);
   }
 
-  if (cur === 'C') {
-    odometer($('odoC'), t, TIMER0, 5);
-    lines($('qC'), u, .05, 0, .6);
-    const ch = [...$('chC').children];
-    ch.forEach((c, i) => rise(c, u, .3 + i * .1, 40, .5));
-    const cs = ch.map(center), o = c => [c[0] + 60, c[1] + 30];
-    finger($('fgC'), $('rC'), u, [[.9, 940, 1640], [1.35, ...o(cs[0])], [1.65, ...o(cs[0])], [1.95, ...o(cs[1])], [2.2, ...o(cs[1])], [2.5, ...o(cs[2])], [2.75, ...o(cs[2])], [3.0, 980, 1700]], .9, 3.0);
-    const fail = E.house(P(t, TIMER0 + 5, TIMER0 + 5.3));
-    ch.forEach(c => { c.classList.toggle('bad', t >= TIMER0 + 5); c.style.opacity = Math.min(+c.style.opacity || 1, lerp(1, .45, fail)); });
-  }
-
-  if (cur === 'D') {
-    const k = spring(u, .55, 2.4);
-    $('tmD').style.transform = `scale(${lerp(.6, 1, k)})`; $('tmD').style.opacity = Math.min(1, u / .12);
-  }
-
-  if (cur === 'E') { lines($('tE'), u, .1, .12, .7); push($('tE'), u, end('E')); }
+  if (cur === 'E') { lines($('tE'), u, .1, .14, .7); push($('tE'), u, end('E')); }
 
   if (cur === 'F') {
-    const k = E.house(P(u, 0, .5)); $('fF').style.opacity = k; $('fF').style.transform = `translateY(${(1 - k) * 60}px)`;
-    linesOut($('tFold'), u, .7, .05, .35);
-    lines($('tFnew'), u, 1.05, .09, .65);
-    const ks = E.house(P(u, 1.2, 1.6));
+    const k = E.house(P(u, 0, .4)); $('fF').style.opacity = k; $('fF').style.transform = `translateY(${(1 - k) * 50}px)`;
+    linesOut($('tFold'), u, .6, .05, .35);
+    lines($('tFnew'), u, .95, .09, .65);
+    const ks = E.house(P(u, 1.1, 1.5));
     $('subOld').style.opacity = 1 - ks; $('subNew').style.opacity = ks; $('subNew').style.transform = `translateY(${(1 - ks) * 16}px)`;
-    const kc = E.house(P(u, 1.5, 1.85));
+    const kc = E.house(P(u, 1.4, 1.75));
     $('ctaOld').style.opacity = 1 - kc; $('ctaNew').style.opacity = kc;
-    $('ctaNew').style.transform = `scale(${lerp(.9, 1, spring(u - 1.5, .6, 3))})`;
-  }
-
-  if (cur === 'G') {
-    const tap = 1.55;
-    rise($('tmG'), u, 0, 30, .4);
-    odometer($('odoG'), u, .3, 5, tap);
-    lines($('qG'), u, .05, 0, .6);
-    const ch = [...$('chG').children];
-    ch.forEach((c, i) => rise(c, u, .25 + i * .08, 40, .5));
-    const tgt = center(ch[1]); tgt[0] += 90; tgt[1] += 30;
-    finger($('fgG'), $('rG'), u, [[.8, 940, 1640], [1.45, ...tgt], [2.0, ...tgt], [2.5, 980, 1700]], .8, 2.5, [tap]);
-    ch[1].classList.toggle('on', u >= tap + .08);
-    ch[1].style.transform = `scale(${u >= tap ? lerp(.94, 1, spring(u - tap, .5, 3.5)) : 1})`;
+    const tap1 = 3.1, tap2 = 4.0;
+    let s = lerp(.9, 1, spring(u - 1.4, .6, 3));
+    if (u >= tap1) s = lerp(.95, 1, spring(u - tap1, .5, 3.5));
+    $('ctaNew').style.transform = `scale(${s})`;
+    // les créneaux remplacent le visuel
+    const kl = E.house(P(u, 3.25, 3.6));
+    $('shotF').style.opacity = 1 - kl; $('slots').style.opacity = kl;
+    [...$('slots').children].forEach((c, i) => rise(c, u, 3.25 + i * .08, 30, .45));
+    const slot = $('slots').children[1];
+    slot.classList.toggle('on', u >= tap2 + .08);
+    if (u >= tap2) slot.style.transform = `scale(${lerp(.94, 1, spring(u - tap2, .5, 3.5))})`;
+    const cta = center($('ctaNew')), sl = center(slot);
+    finger($('fgF'), $('rF'), u, [[2.4, 980, 1760], [3.0, cta[0] + 40, cta[1] + 20], [3.3, cta[0] + 40, cta[1] + 20], [3.9, sl[0] + 30, sl[1] + 22], [4.4, sl[0] + 30, sl[1] + 22], [4.9, 1100, 1900]], 2.4, 4.9, [tap1, tap2]);
+    lines($('sayF'), u, 4.2, 0, .6);
   }
 
   if (cur === 'H') { lines($('tH'), u, .1, .12, .7); push($('tH'), u, end('H')); }
