@@ -114,9 +114,14 @@ for f in sorted(glob.glob(sys.argv[5] + '/f*.jpg')):
     out.resize((1080, 1350), Image.LANCZOS).save(f.replace('/f', '/c'), quality=92)
 `, path.join(tmp, 'base.png'), String(rect.x * 2), String(rect.y * 2), String(rect.w * 2), tmp]);
   // tient la dernière image 1,5 s pour que la boucle respire
+  // GIF seul (demandé pour LinkedIn) : la vidéo n'est qu'une étape. On vise moins de 5 Mo.
+  const video = path.join(tmp, 'anim.mp4');
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', path.join(tmp, 'c%04d.jpg'),
-    '-vf', 'tpad=stop_mode=clone:stop_duration=1.5', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-movflags', '+faststart', `${sortieBase}.mp4`]);
-  execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', `${sortieBase}.mp4`, '-vf',
-    'fps=15,scale=720:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=192[p];[b][p]paletteuse=dither=sierra2_4a', '-loop', '0', `${sortieBase}.gif`]);
+    '-vf', 'tpad=stop_mode=clone:stop_duration=1.5', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '14', video]);
+  for (const l of [1080, 900, 720]) {
+    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', video, '-vf',
+      `fps=15,scale=${l}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=256:stats_mode=diff[p];[b][p]paletteuse=dither=sierra2_4a:diff_mode=rectangle`, '-loop', '0', `${sortieBase}.gif`]);
+    if (fs.statSync(`${sortieBase}.gif`).size < 5e6) break;
+  }
   fs.rmSync(tmp, { recursive: true, force: true });
 }

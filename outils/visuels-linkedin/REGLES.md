@@ -23,13 +23,13 @@
 - Mêmes marges et même centrage d'un visuel à l'autre.
 
 ## 0. Structure fixe d'une série (vérifiée par le script)
-1. **Vitrine** : fenêtre de navigateur sur fond photo, hero + 2e section. Coupée net en haut, la page continue au-delà du bas de l'image (seul débordement autorisé).
-2. **Laptop 3D** : ordinateur en perspective sur fond, une autre page que le hero.
-3. **Pile** : deux sections de même largeur, l'une au-dessus de l'autre (ou côte à côte).
+1. **Vitrine** : fenêtre de navigateur sur fond photo, hero + 2e section d'une page intérieure (pas l'accueil, qui est dans le GIF). Coupée net en haut, la page continue au-delà du bas de l'image (seul débordement autorisé).
+2. **MacBook photo** (`macbook-grille`) : une autre page ou section que le visuel 1, jamais le menu.
+3. **Pile** : deux sections de même largeur, l'une au-dessus de l'autre. Proposer 2 ou 3 variantes (`"variante": true`) et choisir.
 4. **Mockup photo avec une main** (iPhone tenu en main) ou l'iPad sur canapé.
 5. **Libre** : brand kit (couleurs, polices, composants du site) ou une section forte.
-6. **Facultatif** : animation du hero au chargement (MP4 pour LinkedIn + GIF), dans la vitrine. C'est une variante du visuel 1, pas un visuel de plus.
-- Interdit : le laptop de face qui flotte (gabarit 'macbook').
+6. **Facultatif** : GIF du hero de l'accueil au chargement (fondus, bandeau de logos), dans la vitrine. GIF uniquement, moins de 5 Mo.
+- Interdit : le laptop de face qui flotte (gabarit 'macbook') et le laptop 3D dessiné.
 
 ## 5. Composition d'une série
 - 2 mises en situation photo au maximum, jamais deux mains qui tiennent un téléphone.

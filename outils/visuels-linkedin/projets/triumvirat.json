@@ -36,16 +36,6 @@
         "faq"
       ]
     },
-    "accueil-long": {
-      "page": "/",
-      "appareil": "desktop",
-      "hauteur": 1900,
-      "montre": [
-        "hero-accueil",
-        "logos-clients",
-        "methode-intro"
-      ]
-    },
     "simulateur-ecran": {
       "page": "/simulateur-budget-media",
       "appareil": "desktop",
@@ -55,13 +45,60 @@
     },
     "cas-clients": {
       "page": "/",
-      "element": "section",
-      "n": 6,
+      "element": "section:has-text(\"dépassent leurs objectifs\")",
       "masquer": [
         "header"
       ],
       "montre": [
         "cas-clients"
+      ]
+    },
+    "seo-long": {
+      "page": "/leviers/seo",
+      "appareil": "desktop",
+      "hauteur": 1900,
+      "montre": [
+        "hero-seo",
+        "seo-pourquoi",
+        "logos-clients",
+        "seo-dispositif"
+      ]
+    },
+    "methode": {
+      "page": "/",
+      "element": "img[src*='methode-triumvirat']",
+      "montre": [
+        "methode-4-temps"
+      ]
+    },
+    "secteurs": {
+      "page": "/",
+      "element": "section:has-text(\"4 univers maîtrisés\")",
+      "masquer": [
+        "header"
+      ],
+      "montre": [
+        "secteurs"
+      ]
+    },
+    "temoignages": {
+      "page": "/",
+      "element": "section:has-text(\"Ce que nos clients disent\")",
+      "masquer": [
+        "header"
+      ],
+      "montre": [
+        "temoignages"
+      ]
+    },
+    "couts-canaux": {
+      "page": "/simulateur-budget-media",
+      "element": "section.bg-nuit",
+      "masquer": [
+        "header"
+      ],
+      "montre": [
+        "couts-canaux"
       ]
     }
   },
@@ -69,22 +106,22 @@
     {
       "nom": "1-vitrine",
       "gabarit": "vitrine",
-      "ecran": "accueil-long",
+      "ecran": "seo-long",
       "fond": "fond-chiffres",
-      "adresse": "triumvirat.io"
+      "adresse": "triumvirat.io/leviers/seo"
     },
     {
-      "nom": "2-laptop",
-      "gabarit": "laptop3d",
-      "ecran": "simulateur-ecran",
-      "fond": "studio"
+      "nom": "2-macbook",
+      "gabarit": "photo",
+      "mockup": "macbook-grille",
+      "ecran": "simulateur-ecran"
     },
     {
       "nom": "3-pile",
       "gabarit": "pile",
       "ecrans": [
-        "funnel",
-        "cas-clients"
+        "methode",
+        "funnel"
       ],
       "fond": "clair"
     },
@@ -103,6 +140,26 @@
       "gabarit": "animation",
       "fond": "fond-chiffres",
       "adresse": "triumvirat.io"
+    },
+    {
+      "nom": "3-pile-b",
+      "gabarit": "pile",
+      "ecrans": [
+        "cas-clients",
+        "temoignages"
+      ],
+      "fond": "clair",
+      "variante": true
+    },
+    {
+      "nom": "3-pile-c",
+      "gabarit": "pile",
+      "ecrans": [
+        "secteurs",
+        "couts-canaux"
+      ],
+      "fond": "clair",
+      "variante": true
     }
   ]
 }

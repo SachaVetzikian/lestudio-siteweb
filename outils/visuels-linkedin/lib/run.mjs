@@ -18,7 +18,10 @@ fs.mkdirSync(CAP, { recursive: true }); fs.mkdirSync(VIS, { recursive: true });
 const erreurs = [];
 const ecransDe = v => v.ecrans || (v.ecran ? [v.ecran] : []);
 const vus = {}, fondsVus = {}, montres = {};
-for (const v of site.visuels) {
+// les variantes (propositions alternatives) sont contrôlées contre la série, pas entre elles
+const principaux = site.visuels.filter(v => !v.variante), variantes = site.visuels.filter(v => v.variante);
+for (const v of [...principaux, ...variantes]) {
+  const prov = v.variante ? { ...vus } : null, provM = v.variante ? { ...montres } : null;
   for (const e of ecransDe(v)) {
     if (!site.captures[e]) erreurs.push(`${v.nom} : capture "${e}" non définie`);
     if (vus[e]) erreurs.push(`Doublon : la capture "${e}" sert dans ${vus[e]} et ${v.nom}`);
@@ -32,21 +35,24 @@ for (const v of site.visuels) {
     if (fondsVus[v.fond]) erreurs.push(`Doublon : la photo de fond "${v.fond}" sert dans ${fondsVus[v.fond]} et ${v.nom}`);
     fondsVus[v.fond] = v.nom;
   }
+  if (v.variante) { Object.keys(vus).forEach(k => { if (!(k in prov)) delete vus[k]; }); Object.keys(montres).forEach(k => { if (!(k in provM)) delete montres[k]; }); }
   if (v.gabarit === 'photo') {
     const m = catalogue[v.mockup];
     if (!m) erreurs.push(`${v.nom} : mockup "${v.mockup}" absent de photos/catalogue.json`);
     else if ((site.captures[v.ecran]?.appareil || 'desktop') !== m.capture) erreurs.push(`${v.nom} : le mockup ${v.mockup} attend une capture "${m.capture}"`);
   }
 }
-const photos = site.visuels.filter(v => v.gabarit === 'photo');
+const photos = principaux.filter(v => v.gabarit === 'photo');
 if (photos.length > 2) erreurs.push(`${photos.length} mises en situation photo : 2 maximum`);
 if (new Set(photos.map(v => v.mockup)).size < photos.length) erreurs.push('Le même mockup photo est utilisé deux fois');
 // Structure de série imposée (REGLES.md) : 5 visuels + animation facultative
-const ordre = site.visuels.filter(v => v.gabarit !== 'animation').map(v => v.gabarit);
-const attendu = ['vitrine', 'laptop3d', 'pile', 'photo'];
+const serie = principaux.filter(v => v.gabarit !== 'animation'), ordre = serie.map(v => v.gabarit);
+const attendu = ['vitrine', 'photo', 'pile', 'photo'];
+if (serie[1] && catalogue[serie[1].mockup]?.capture !== 'desktop') erreurs.push('Visuel 2 : mockup photo d\'ordinateur attendu');
+if (serie[3] && catalogue[serie[3].mockup]?.capture === 'desktop') erreurs.push('Visuel 4 : mockup iPhone en main ou iPad attendu');
 if (ordre.length !== 5) erreurs.push(`${ordre.length} visuels : il en faut 5 (+ animation facultative)`);
 attendu.forEach((g, i) => { if (ordre[i] !== g) erreurs.push(`Visuel ${i + 1} : gabarit "${g}" attendu, "${ordre[i]}" trouvé`); });
-if (ordre.includes('macbook')) erreurs.push('Gabarit "macbook" (laptop de face qui flotte) interdit');
+if (ordre.includes('macbook') || ordre.includes('laptop3d')) erreurs.push('Gabarits "macbook" et "laptop3d" écartés : le visuel 2 est le MacBook photo');
 if (erreurs.length) { console.error('Série refusée :\n- ' + erreurs.join('\n- ')); process.exit(1); }
 
 // ---------- 2. Captures ----------
@@ -78,7 +84,7 @@ for (const v of site.visuels) {
       const r = await p.evaluate(() => { const b = document.querySelector('#w img').getBoundingClientRect(); return { x: b.left, y: b.top, w: b.width }; });
       fs.unlinkSync(tmp); fs.unlinkSync(`${CAP}/_anim.png`); await p.close(); return r;
     });
-    console.log('visuel', v.nom, '(animation mp4 + gif)'); continue;
+    console.log('visuel', v.nom, '(animation gif)'); continue;
   }
   if (v.gabarit === 'photo') {
     const m = catalogue[v.mockup];

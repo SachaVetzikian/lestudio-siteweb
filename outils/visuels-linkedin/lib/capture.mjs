@@ -13,6 +13,7 @@ async function preparer(p, url, masquer) {
   const vh = p.viewportSize().height;
   await p.mouse.move(5, vh - 5); // la souris ne doit pas survoler le menu
   if (masquer.length) await p.addStyleTag({ content: masquer.map(s => `${s}{display:none!important}`).join('') });
+  await p.evaluate(() => document.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; }));
   // fait défiler toute la page pour déclencher le lazy-loading et les animations d'apparition
   const H = await p.evaluate(() => document.body.scrollHeight);
   for (let y = 0; y < H; y += 400) { await p.evaluate(v => scrollTo(0, v), y); await p.waitForTimeout(60); }
@@ -29,6 +30,9 @@ export async function capturer(navigateur, site, c, sortie) {
   if (c.element) {
     const el = p.locator(c.element).nth(c.n || 0);
     await el.scrollIntoViewIfNeeded(); await p.waitForTimeout(1000);
+    await el.evaluate(e => Promise.all([...(e.tagName === 'IMG' ? [e] : e.querySelectorAll('img'))].map(i => i.complete && i.naturalWidth ? 1
+      : new Promise(r => { i.addEventListener('load', r); i.addEventListener('error', r); setTimeout(r, 6000); }))));
+    await p.waitForTimeout(300);
     const box = await el.boundingBox(), sy = await p.evaluate(() => scrollY);
     await p.screenshot({ path: sortie, fullPage: true, clip: { x: box.x, y: box.y + sy + haut, width: box.width, height: box.height - haut - bas } });
   } else {
