@@ -43,6 +43,34 @@ export const GABARITS = {
       <div style="position:relative;left:-20px;width:980px;height:30px;margin-top:4px;border-radius:50%;background:rgba(0,0,0,.45);filter:blur(14px)"></div></div>`,
     `centrer(['m'])`],
 
+  // 1er visuel : fenêtre de navigateur coupée net en haut, la page continue au-delà du bas de l'image.
+  vitrine: (v, site, C) => [1080, 1350, `${fond(v, site, C)}
+    <div class="win" id="w" style="left:70px;top:${v.haut ?? 150}px;width:940px;border-radius:18px 18px 0 0"><div class="bar"><i></i><i></i><i></i><span>${v.adresse || ''}</span></div>
+      <img src="${C}${v.ecran}.png"></div>`,
+    `const w=document.getElementById('w'); if (w.offsetTop+w.offsetHeight < innerHeight+40) console.warn('vitrine : la page ne déborde pas, capture trop courte')`],
+
+  // Laptop en 3D (CSS), vue de trois quarts, sur fond
+  laptop3d: (v, site, C) => [1080, 1350, `${fond(v, site, C)}
+    <div style="position:absolute;inset:0;perspective:4200px;perspective-origin:50% 20%">
+      <div style="position:absolute;z-index:1;left:53%;top:45%;width:740px;transform-style:preserve-3d;transform:translate(-50%,-50%) rotateX(${v.inclinaison ?? -18}deg) rotateY(${v.rotation ?? -17}deg)">
+        <div style="position:relative;transform-style:preserve-3d;transform-origin:50% 100%;transform:rotateX(8deg)">
+          <div style="padding:14px 14px 20px;background:#0c0c0f;border-radius:26px 26px 4px 4px;box-shadow:0 0 0 2px #45454c inset">
+            <div style="position:relative;border-radius:8px 8px 2px 2px;overflow:hidden;background:#fff">
+              <img src="${C}${v.ecran}.png" style="display:block;width:100%;height:auto">
+              <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 40%)"></div></div>
+            <div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:110px;height:18px;background:#0c0c0f;border-radius:0 0 10px 10px"></div></div>
+          <div style="position:absolute;left:-36px;right:-36px;top:100%;height:540px;transform-origin:50% 0;transform:rotateX(90deg);border-radius:4px 4px 30px 30px;
+            background:linear-gradient(160deg,#d6d7dc,#aeafb6 70%,#9c9da4);box-shadow:0 0 0 2px #9a9ba2 inset,0 -6px 0 #7d7e85 inset">
+            <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:150px;height:10px;border-radius:0 0 10px 10px;background:#8e8f96"></div>
+            <div style="position:absolute;left:64px;right:64px;top:36px;height:265px;border-radius:8px;background-color:#2a2a30;
+              background-image:repeating-linear-gradient(90deg,#16161a 0 5px,transparent 5px 50px),repeating-linear-gradient(0deg,#16161a 0 5px,transparent 5px 50px)"></div>
+            <div style="position:absolute;left:50%;top:325px;transform:translateX(-50%);width:360px;height:180px;border-radius:14px;background:#babbc2;box-shadow:0 0 0 1px #a4a5ac inset"></div>
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute;left:12%;right:12%;bottom:13%;height:120px;border-radius:50%;background:rgba(0,0,0,.45);filter:blur(40px)"></div>
+    </div>`, ``],
+
   // Fenêtre de navigateur. La capture doit finir sur une fin de section (finirApres) : jamais de page tronquée.
   // Si elle est trop haute, la fenêtre rétrécit au lieu de sortir du cadre.
   desk: (v, site, C) => [1080, v.carre ? 1080 : 1350, `${fond(v, site, C)}

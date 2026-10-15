@@ -54,7 +54,11 @@ Copier `projets/doxa.json` et l'adapter.
 
 | Gabarit | Usage | Champs |
 |---|---|---|
-| `macbook` | MacBook de face dessiné, fond studio | `ecran`, `fond` |
+| `vitrine` | Visuel 1 : navigateur coupé en haut, page qui déborde en bas (capture desktop haute, ~1900 px) | `ecran`, `fond`, `adresse` |
+| `laptop3d` | Visuel 2 : laptop en perspective | `ecran`, `fond`, `rotation`, `inclinaison` |
+| `brandkit` | Couleurs, polices, logo et boutons extraits du site, rendus avec ses vraies polices | `page`, `phrase` |
+| `animation` | Chargement du hero en MP4 + GIF, dans la vitrine | `fond`, `adresse`, `hauteur`, `duree` |
+| `macbook` | (interdit dans une série) MacBook de face | `ecran`, `fond` |
 | `desk` | Fenêtre de navigateur, toujours entière (capturer avec `finirApres`) | `ecran`, `fond`, `adresse`, `carre` |
 | `pile` | Deux sections de même largeur, empilées ou côte à côte | `ecrans` (2), `fond`, `sens` (`vertical`/`horizontal`), `ecart` |
 | `section` | Une section seule, toujours entière (capturée en tablette de préférence) | `ecran`, `fond`, `largeur` |

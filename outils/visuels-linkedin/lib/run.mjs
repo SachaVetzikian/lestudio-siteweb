@@ -3,6 +3,7 @@
 import fs from 'fs'; import path from 'path'; import { execFileSync } from 'child_process';
 import { chromium, capturer, telecharger } from './capture.mjs';
 import { GABARITS, page } from './compose.mjs';
+import { brandkit, animation } from './extras.mjs';
 
 const RACINE = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const args = process.argv.slice(2);
@@ -15,7 +16,7 @@ fs.mkdirSync(CAP, { recursive: true }); fs.mkdirSync(VIS, { recursive: true });
 
 // ---------- 1. Contrôles avant rendu (REGLES.md) ----------
 const erreurs = [];
-const ecransDe = v => v.ecrans || [v.ecran];
+const ecransDe = v => v.ecrans || (v.ecran ? [v.ecran] : []);
 const vus = {}, fondsVus = {}, montres = {};
 for (const v of site.visuels) {
   for (const e of ecransDe(v)) {
@@ -27,7 +28,7 @@ for (const v of site.visuels) {
       montres[m] = v.nom;
     }
   }
-  if (v.fond && !['studio', 'clair'].includes(v.fond)) {
+  if (v.fond && v.gabarit !== 'animation' && !['studio', 'clair'].includes(v.fond)) {
     if (fondsVus[v.fond]) erreurs.push(`Doublon : la photo de fond "${v.fond}" sert dans ${fondsVus[v.fond]} et ${v.nom}`);
     fondsVus[v.fond] = v.nom;
   }
@@ -40,6 +41,12 @@ for (const v of site.visuels) {
 const photos = site.visuels.filter(v => v.gabarit === 'photo');
 if (photos.length > 2) erreurs.push(`${photos.length} mises en situation photo : 2 maximum`);
 if (new Set(photos.map(v => v.mockup)).size < photos.length) erreurs.push('Le même mockup photo est utilisé deux fois');
+// Structure de série imposée (REGLES.md) : 5 visuels + animation facultative
+const ordre = site.visuels.filter(v => v.gabarit !== 'animation').map(v => v.gabarit);
+const attendu = ['vitrine', 'laptop3d', 'pile', 'photo'];
+if (ordre.length !== 5) erreurs.push(`${ordre.length} visuels : il en faut 5 (+ animation facultative)`);
+attendu.forEach((g, i) => { if (ordre[i] !== g) erreurs.push(`Visuel ${i + 1} : gabarit "${g}" attendu, "${ordre[i]}" trouvé`); });
+if (ordre.includes('macbook')) erreurs.push('Gabarit "macbook" (laptop de face qui flotte) interdit');
 if (erreurs.length) { console.error('Série refusée :\n- ' + erreurs.join('\n- ')); process.exit(1); }
 
 // ---------- 2. Captures ----------
@@ -57,6 +64,22 @@ const rendus = [];
 for (const v of site.visuels) {
   if (seulement && !seulement.includes(v.nom)) continue;
   const sortie = `${VIS}/${site.nom}-${v.nom}`;
+  if (v.gabarit === 'brandkit') {
+    await brandkit(nav, site, v, `${sortie}.png`); rendus.push(`${sortie}.png`); console.log('visuel', v.nom, '(brand kit)'); continue;
+  }
+  if (v.gabarit === 'animation') {
+    await animation(nav, site, v, dossier, sortie, async (img, base) => {
+      fs.copyFileSync(img, `${CAP}/_anim.png`);
+      const [w, h, html, placement] = GABARITS.vitrine({ ...v, ecran: '_anim' }, site, `file://${CAP}/`);
+      const p = await nav.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 2 });
+      const tmp = `${dossier}/_anim.html`; fs.writeFileSync(tmp, page(w, h, html, placement));
+      await p.goto('file://' + tmp); await p.waitForSelector('body[data-pret]'); await p.waitForTimeout(300);
+      await p.screenshot({ path: base });
+      const r = await p.evaluate(() => { const b = document.querySelector('#w img').getBoundingClientRect(); return { x: b.left, y: b.top, w: b.width }; });
+      fs.unlinkSync(tmp); fs.unlinkSync(`${CAP}/_anim.png`); await p.close(); return r;
+    });
+    console.log('visuel', v.nom, '(animation mp4 + gif)'); continue;
+  }
   if (v.gabarit === 'photo') {
     const m = catalogue[v.mockup];
     const conf = { ...m, photo: `${RACINE}/photos/${m.fichier}`, capture: `${CAP}/${v.ecran}.png`, out: `${sortie}.jpg` };

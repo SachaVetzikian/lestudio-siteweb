@@ -22,7 +22,16 @@
 - Un seul style de cadre sur toute la série : bordure blanche épaisse, mêmes arrondis, même ombre.
 - Mêmes marges et même centrage d'un visuel à l'autre.
 
-## 5. Composition d'une série (6 visuels par projet)
+## 0. Structure fixe d'une série (vérifiée par le script)
+1. **Vitrine** : fenêtre de navigateur sur fond photo, hero + 2e section. Coupée net en haut, la page continue au-delà du bas de l'image (seul débordement autorisé).
+2. **Laptop 3D** : ordinateur en perspective sur fond, une autre page que le hero.
+3. **Pile** : deux sections de même largeur, l'une au-dessus de l'autre (ou côte à côte).
+4. **Mockup photo avec une main** (iPhone tenu en main) ou l'iPad sur canapé.
+5. **Libre** : brand kit (couleurs, polices, composants du site) ou une section forte.
+6. **Facultatif** : animation du hero au chargement (MP4 pour LinkedIn + GIF), dans la vitrine. C'est une variante du visuel 1, pas un visuel de plus.
+- Interdit : le laptop de face qui flotte (gabarit 'macbook').
+
+## 5. Composition d'une série
 - 2 mises en situation photo au maximum, jamais deux mains qui tiennent un téléphone.
 - Un visuel = une section, une page ou un état différent. Rien n'est montré deux fois.
 - Le hero n'apparaît qu'une seule fois. La même personne ou photo n'apparaît qu'une seule fois.
