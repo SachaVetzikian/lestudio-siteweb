@@ -53,6 +53,32 @@ quad = np.array(cfg['quad'], np.float32) if 'quad' in cfg else screen_quad(im, c
 if cfg.get('grow'):  # agrandit légèrement l'écran pour couvrir les liserés
     c0 = quad.mean(0)
     quad = (c0 + (quad - c0) * (1 + cfg['grow'] / np.linalg.norm(quad - c0, axis=1).mean())).astype(np.float32)
+x, y, w, h = [float(v) for v in cfg.get('crop', [0, 0, W0, H0])]
+# cadre plus grand que la photo : on prolonge seulement le décor (bandes sans appareil), en miroir répété
+def prolonger(img, haut, bas, bande_h, bande_b):
+    # décor étiré + flouté (murs, fonds unis) : pas de raccord visible, contrairement à un miroir
+    def etire(b, n):
+        e = cv2.resize(b, (b.shape[1], n), interpolation=cv2.INTER_CUBIC)
+        return cv2.GaussianBlur(e, (0, 0), 6)
+    parts = []
+    if haut > 0:
+        ext = etire(img[:bande_h], haut + bande_h)
+        t = np.linspace(0, 1, bande_h)[:, None, None]  # fondu sur la bande d'origine
+        parts += [ext[:haut], (ext[haut:] * (1 - t) + img[:bande_h] * t).astype(img.dtype)]
+        img = img[bande_h:]
+    parts.append(img)
+    if bas > 0: parts.append(etire(img[-bande_b:], bas))
+    return np.vstack(parts)
+ext_h = max(0, int(np.ceil(-y))); ext_b = max(0, int(np.ceil(y + h - H0)))
+# photo haute définition (agrandie une fois par super-résolution, voir lib/upscale.py) : mêmes coordonnées x k
+k = 1.0
+if cfg.get('photo_hd'):
+    hd = cv2.imread(cfg['photo_hd']); k = hd.shape[1] / W0
+    im, quad, x, y, w, h = hd, quad * k, x * k, y * k, w * k, h * k
+if ext_h or ext_b:
+    bh, bb = [int(cfg.get(n, 120) * k) for n in ('bande_haut', 'bande_bas')]
+    im = prolonger(im, int(ext_h * k), int(ext_b * k), bh, bb)
+    quad = quad + np.float32([0, int(ext_h * k)]); y += int(ext_h * k)
 
 cap = cv2.imread(cfg['capture'])
 if cfg.get('pad_top'):  # place pour la barre de statut / l'encoche : on prolonge la couleur du haut du site
@@ -62,14 +88,18 @@ ar = cap.shape[1] / cap.shape[0]
 if abs(ar - cfg['ratio']) / cfg['ratio'] > .03:  # règle : jamais de recadrage ni de déformation
     sys.exit(f"REFUS {cfg['capture']} : ratio {ar:.3f} != écran {cfg['ratio']:.3f}. Recapture au bon viewport.")
 
-cw = 1600; ch = int(cw / cfg['ratio'])
+# taille de sortie : format LinkedIn x échelle (2 par défaut, soit 2160x2700 pour du 1080x1350)
+OW, OH = [int(v * cfg.get('echelle', 2)) for v in cfg.get('size', [w, h])]
+sc = OW / w  # pixels de sortie par pixel de photo
+S = 2        # suréchantillonnage pour des bords nets
+cw = max(1600, min(cap.shape[1], 3200)); ch = int(round(cw / cfg['ratio']))
 cap = cv2.resize(cap, (cw, ch), interpolation=cv2.INTER_AREA)
 mask = np.zeros((ch, cw), np.uint8)
 rad = int(cfg.get('radius', 0) * cw)
 cv2.rectangle(mask, (rad, 0), (cw - rad, ch), 255, -1)
 cv2.rectangle(mask, (0, rad), (cw, ch - rad), 255, -1)
-for x, y in [(rad, rad), (cw - rad, rad), (rad, ch - rad), (cw - rad, ch - rad)]:
-    cv2.circle(mask, (x, y), rad, 255, -1, cv2.LINE_AA)
+for cx, cy in [(rad, rad), (cw - rad, rad), (rad, ch - rad), (cw - rad, ch - rad)]:
+    cv2.circle(mask, (cx, cy), rad, 255, -1, cv2.LINE_AA)
 if 'notch' in cfg:  # [largeur, hauteur] en fraction de l'écran
     nw, nh = int(cfg['notch'][0] * cw), int(cfg['notch'][1] * ch)
     x0 = (cw - nw) // 2; nr = nh // 2
@@ -79,18 +109,14 @@ if 'notch' in cfg:  # [largeur, hauteur] en fraction de l'écran
     cv2.circle(mask, (x0 + nw - nr, nh - nr), nr, 0, -1, cv2.LINE_AA)
 gy, gx = np.mgrid[0:ch, 0:cw]  # léger reflet diagonal
 gloss = np.clip(1 - (gx / cw + gy / ch) * .9, 0, 1)[..., None] * cfg.get('gloss', .06) * 255
-cap = np.clip(cap.astype(float) + gloss, 0, 255).astype(np.uint8)
+cap = np.clip(cap.astype(np.float32) + gloss, 0, 255).astype(np.uint8)
 
-S = 3  # suréchantillonnage pour des bords nets
-M = cv2.getPerspectiveTransform(np.float32([[0, 0], [cw, 0], [cw, ch], [0, ch]]), quad * S)
-big = cv2.resize(im, (W0 * S, H0 * S), interpolation=cv2.INTER_CUBIC)
-wc = cv2.warpPerspective(cap, M, (W0 * S, H0 * S), flags=cv2.INTER_AREA)
-wm = cv2.warpPerspective(mask, M, (W0 * S, H0 * S), flags=cv2.INTER_LINEAR).astype(float)[..., None] / 255
-out = (big * (1 - wm) + wc * wm).astype(np.uint8)
-out = cv2.resize(out, (W0, H0), interpolation=cv2.INTER_AREA)
-x, y, w, h = cfg.get('crop', [0, 0, W0, H0])
-out = out[y:y + h, x:x + w]
-if 'size' in cfg:
-    up = out.shape[1] < cfg['size'][0]
-    out = cv2.resize(out, tuple(cfg['size']), interpolation=cv2.INTER_CUBIC if up else cv2.INTER_AREA)
+# tout se fait directement dans l'espace de sortie (recadrage + mise à l'échelle), en x2 puis réduit
+A = np.array([[sc * S, 0, -x * sc * S], [0, sc * S, -y * sc * S], [0, 0, 1]], np.float64)
+M = A @ cv2.getPerspectiveTransform(np.float32([[0, 0], [cw, 0], [cw, ch], [0, ch]]), quad)
+fond = cv2.warpAffine(im, A[:2], (OW * S, OH * S), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REPLICATE).astype(np.float32)
+wc = cv2.warpPerspective(cap, M, (OW * S, OH * S), flags=cv2.INTER_CUBIC).astype(np.float32)
+wm = cv2.warpPerspective(mask, M, (OW * S, OH * S), flags=cv2.INTER_LINEAR).astype(np.float32)[..., None] / 255
+out = np.clip(fond * (1 - wm) + wc * wm, 0, 255).astype(np.uint8)
+out = cv2.resize(out, (OW, OH), interpolation=cv2.INTER_AREA)
 cv2.imwrite(cfg['out'], out, [cv2.IMWRITE_JPEG_QUALITY, 95])

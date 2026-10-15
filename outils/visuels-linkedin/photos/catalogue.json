@@ -3,24 +3,90 @@
   "ipad-canape": {
     "fichier": "ipad-canape.jpg",
     "capture": "tablet",
-    "seed": [500, 760], "thr": 120,
-    "ratio": 0.7, "radius": 0.025,
-    "crop": [0, 125, 1000, 1250], "size": [1080, 1350],
+    "seed": [
+      500,
+      760
+    ],
+    "thr": 120,
+    "ratio": 0.7,
+    "radius": 0.025,
+    "crop": [
+      0,
+      125,
+      1000,
+      1250
+    ],
+    "size": [
+      1080,
+      1350
+    ],
     "note": "Photo en 1000 px : légèrement floue une fois agrandie."
   },
   "iphone-main": {
     "fichier": "iphone-main.jpg",
     "capture": "mobile",
-    "quad": [[482, 701], [841, 702], [836, 1484], [481, 1488]], "grow": 1,
-    "ratio": 0.4613, "radius": 0.11, "notch": [0.56, 0.037], "pad_top": 0.0677,
-    "crop": [0, 331, 1334, 1667], "size": [1080, 1350]
+    "quad": [
+      [
+        482,
+        701
+      ],
+      [
+        841,
+        702
+      ],
+      [
+        836,
+        1484
+      ],
+      [
+        481,
+        1488
+      ]
+    ],
+    "grow": 1,
+    "ratio": 0.4613,
+    "radius": 0.11,
+    "notch": [
+      0.56,
+      0.037
+    ],
+    "pad_top": 0.0677,
+    "crop": [
+      0,
+      331,
+      1334,
+      1667
+    ],
+    "size": [
+      1080,
+      1350
+    ]
   },
   "macbook-grille": {
     "fichier": "macbook-grille.jpg",
     "capture": "desktop",
-    "seed": [1100, 500], "thr": 60, "grow": 3,
-    "ratio": 1.54, "radius": 0.012, "notch": [0.12, 0.045],
-    "crop": [260, 0, 1390, 1390], "size": [1080, 1080],
-    "note": "Fond gris et noir et blanc : à réserver aux marques froides."
+    "seed": [
+      1100,
+      500
+    ],
+    "thr": 60,
+    "grow": 5,
+    "ratio": 1.54,
+    "radius": 0.012,
+    "notch": [
+      0.112,
+      0.036
+    ],
+    "crop": [
+      230,
+      -485,
+      1500,
+      1875
+    ],
+    "size": [
+      1080,
+      1350
+    ],
+    "bande_haut": 110
   }
 }

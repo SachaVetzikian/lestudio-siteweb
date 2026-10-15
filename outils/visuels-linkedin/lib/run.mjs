@@ -93,7 +93,8 @@ for (const v of site.visuels) {
   }
   if (v.gabarit === 'photo') {
     const m = catalogue[v.mockup];
-    const conf = { ...m, photo: `${RACINE}/photos/${m.fichier}`, capture: `${CAP}/${v.ecran}.png`, out: `${sortie}.jpg` };
+    const hd = `${RACINE}/photos/hd/${m.fichier}`;
+    const conf = { ...m, photo: `${RACINE}/photos/${m.fichier}`, ...(fs.existsSync(hd) ? { photo_hd: hd } : {}), capture: `${CAP}/${v.ecran}.png`, out: `${sortie}.jpg` };
     execFileSync(process.env.PYTHON || 'python3', [`${RACINE}/lib/photo.py`, JSON.stringify(conf)], { stdio: 'inherit' });
     rendus.push(`${sortie}.jpg`); console.log('visuel', v.nom, '(photo', v.mockup + ')');
     continue;
