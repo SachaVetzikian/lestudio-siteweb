@@ -84,15 +84,24 @@ export async function brandkit(nav, site, v, sortie) {
 export async function animation(nav, site, v, dossier, sortieBase, rendreVitrine) {
   const tmp = path.join(dossier, '_anim'); fs.rmSync(tmp, { recursive: true, force: true }); fs.mkdirSync(tmp);
   const H = v.hauteur || 1900, duree = v.duree || 5, fps = 25;
-  const ctx = await nav.newContext(APPAREILS.desktop(H)); const p = await ctx.newPage();
-  const cdp = await ctx.newCDPSession(p); const images = [];
-  cdp.on('Page.screencastFrame', async f => { images.push({ t: f.metadata.timestamp, data: f.data }); await cdp.send('Page.screencastFrameAck', { sessionId: f.sessionId }).catch(() => {}); });
-  await p.mouse.move(5, H - 5);
-  await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 92, maxWidth: 2880, maxHeight: H * 2, everyNthFrame: 1 });
-  const t0 = Date.now() / 1000;
-  p.goto(new URL(v.page || '/', site.url).href, { timeout: 60000 }).catch(() => {});
-  await p.waitForTimeout((duree + 1.5) * 1000);
-  await cdp.send('Page.stopScreencast'); await ctx.close();
+  // enregistrement, relancé si la page n'a pas chargé correctement (erreur réseau, page vide)
+  let images = [];
+  for (let essai = 1; essai <= 3; essai++) {
+    const ctx = await nav.newContext(APPAREILS.desktop(H)); const p = await ctx.newPage();
+    const cdp = await ctx.newCDPSession(p); images = [];
+    cdp.on('Page.screencastFrame', async f => { images.push({ t: f.metadata.timestamp, data: f.data }); await cdp.send('Page.screencastFrameAck', { sessionId: f.sessionId }).catch(() => {}); });
+    await p.mouse.move(5, H - 5);
+    await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 92, maxWidth: 2880, maxHeight: H * 2, everyNthFrame: 1 });
+    let statut = 0;
+    p.goto(new URL(v.page || '/', site.url).href, { timeout: 60000 }).then(r => { statut = r ? r.status() : 0; }).catch(() => {});
+    await p.waitForTimeout((duree + 1.5) * 1000);
+    await cdp.send('Page.stopScreencast');
+    const texte = await p.evaluate(() => document.body ? document.body.innerText.length : 0).catch(() => 0);
+    await ctx.close();
+    if (statut >= 200 && statut < 400 && texte > 500 && images.length > 10) break;
+    console.warn(`animation : chargement raté (statut ${statut}, ${texte} caractères), essai ${essai}/3`);
+    if (essai === 3) throw new Error('animation : impossible de charger la page');
+  }
   // on démarre à la première image où le site est réellement peint (pas la page blanche)
   const peint = images.findIndex((f, i) => i > 0 && f.data.length > images[0].data.length * 1.6);
   const debut = images[Math.max(0, peint)].t, fin = debut + duree;
