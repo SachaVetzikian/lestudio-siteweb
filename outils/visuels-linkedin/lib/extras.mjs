@@ -141,3 +141,49 @@ for f in sorted(glob.glob(sys.argv[5] + '/f*.jpg')):
   }
   fs.rmSync(tmp, { recursive: true, force: true });
 }
+
+// ---------- Scroll animé dans un mockup photo ----------
+// La page défile par paliers (pause, défilement adouci, pause...), image par image, puis chaque image
+// est incrustée en perspective dans l'écran de la photo. Sortie : GIF (< 5 Mo).
+export async function scrollPhoto(nav, site, v, mockup, racine, dossier, sortieBase) {
+  const tmp = path.join(dossier, '_scroll'); fs.rmSync(tmp, { recursive: true, force: true }); fs.mkdirSync(tmp);
+  const fps = v.fps || 15, paliers = v.paliers || [0, 900, 1800], pause = v.pause ?? 0.9, trajet = v.trajet ?? 1.6;
+  const ctx = await nav.newContext(APPAREILS[mockup.capture](v.hauteur));
+  const p = await ctx.newPage();
+  for (let essai = 1; ; essai++) {
+    await p.goto(new URL(v.page || '/', site.url).href, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+    if (await p.evaluate(() => document.body && document.body.innerText.length > 500).catch(() => false)) break;
+    if (essai === 3) throw new Error('scroll : impossible de charger la page');
+  }
+  const vh = p.viewportSize().height;
+  await p.mouse.move(5, vh - 5);
+  if (site.masquer?.length) await p.addStyleTag({ content: site.masquer.map(s => `${s}{display:none!important}`).join('') });
+  await p.addStyleTag({ content: 'html{scroll-behavior:auto!important}' });
+  await p.evaluate(() => document.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; }));
+  // pré-chargement : un passage complet pour déclencher le lazy-loading, puis retour en haut
+  const max = await p.evaluate(() => document.body.scrollHeight - innerHeight);
+  for (let y = 0; y < Math.min(max, paliers.at(-1) + vh); y += 400) { await p.evaluate(s => scrollTo(0, s), y); await p.waitForTimeout(80); }
+  await p.evaluate(() => scrollTo(0, 0)); await p.waitForTimeout(1500);
+  // timeline : pause, trajet adouci, pause...
+  const pos = [], ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const cible = paliers.map(y => Math.min(y, max));
+  for (let i = 0; i < cible.length; i++) {
+    for (let k = 0; k < Math.round(pause * fps); k++) pos.push(cible[i]);
+    if (i < cible.length - 1) for (let k = 1; k <= Math.round(trajet * fps); k++) pos.push(cible[i] + (cible[i + 1] - cible[i]) * ease(k / Math.round(trajet * fps)));
+  }
+  for (let k = 0; k < Math.round(trajet * fps * .8); k++) pos.push(cible.at(-1) * (1 - ease(k / Math.round(trajet * fps * .8)))); // retour en haut pour boucler
+  for (const [i, y] of pos.entries()) {
+    await p.evaluate(s => scrollTo(0, s), Math.round(y)); await p.waitForTimeout(30);
+    await p.screenshot({ path: path.join(tmp, `f${String(i).padStart(4, '0')}.jpg`), type: 'jpeg', quality: 92 });
+  }
+  await ctx.close();
+  const conf = { ...mockup, photo: path.join(racine, 'photos', mockup.fichier), frames: tmp };
+  execFileSync(process.env.PYTHON || 'python3', [path.join(racine, 'lib', 'photo_seq.py'), JSON.stringify(conf)], { stdio: 'inherit' });
+  const [w] = mockup.size || [1080];
+  for (const l of [w, Math.round(w * .83), Math.round(w * .74), Math.round(w * .67)]) {
+    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', path.join(tmp, 'c%04d.jpg'), '-vf',
+      `scale=${l}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=160:stats_mode=diff[p];[b][p]paletteuse=dither=sierra2_4a:diff_mode=rectangle`, '-loop', '0', `${sortieBase}.gif`]);
+    if (fs.statSync(`${sortieBase}.gif`).size < 5e6) break;
+  }
+  fs.rmSync(tmp, { recursive: true, force: true });
+}

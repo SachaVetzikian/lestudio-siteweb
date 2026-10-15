@@ -3,7 +3,7 @@
 import fs from 'fs'; import path from 'path'; import { execFileSync } from 'child_process';
 import { chromium, capturer, telecharger } from './capture.mjs';
 import { GABARITS, page } from './compose.mjs';
-import { brandkit, animation } from './extras.mjs';
+import { brandkit, animation, scrollPhoto } from './extras.mjs';
 
 const RACINE = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const args = process.argv.slice(2);
@@ -31,7 +31,7 @@ for (const v of [...principaux, ...variantes]) {
       montres[m] = v.nom;
     }
   }
-  if (v.fond && !v.variante && v.gabarit !== 'animation' && !['studio', 'clair'].includes(v.fond)) {
+  if (v.fond && !v.variante && !['animation', 'scroll'].includes(v.gabarit) && !['studio', 'clair'].includes(v.fond)) {
     if (fondsVus[v.fond]) erreurs.push(`Doublon : la photo de fond "${v.fond}" sert dans ${fondsVus[v.fond]} et ${v.nom}`);
     fondsVus[v.fond] = v.nom;
   }
@@ -43,10 +43,11 @@ for (const v of [...principaux, ...variantes]) {
   }
 }
 const photos = principaux.filter(v => v.gabarit === 'photo');
+for (const v of principaux.filter(v => v.gabarit === 'scroll')) if (!catalogue[v.mockup]) erreurs.push(`${v.nom} : mockup "${v.mockup}" absent de photos/catalogue.json`);
 if (photos.length > 2) erreurs.push(`${photos.length} mises en situation photo : 2 maximum`);
 if (new Set(photos.map(v => v.mockup)).size < photos.length) erreurs.push('Le même mockup photo est utilisé deux fois');
 // Structure de série imposée (REGLES.md) : 5 visuels + animation facultative
-const serie = principaux.filter(v => v.gabarit !== 'animation'), ordre = serie.map(v => v.gabarit);
+const serie = principaux.filter(v => !['animation', 'scroll'].includes(v.gabarit)), ordre = serie.map(v => v.gabarit);
 const attendu = ['vitrine', 'photo', 'pile', 'photo'];
 if (serie[1] && catalogue[serie[1].mockup]?.capture !== 'desktop') erreurs.push('Visuel 2 : mockup photo d\'ordinateur attendu');
 if (serie[3] && catalogue[serie[3].mockup]?.capture === 'desktop') erreurs.push('Visuel 4 : mockup iPhone en main ou iPad attendu');
@@ -72,6 +73,10 @@ for (const v of site.visuels) {
   const sortie = `${VIS}/${site.nom}-${v.nom}`;
   if (v.gabarit === 'brandkit') {
     await brandkit(nav, site, v, `${sortie}.png`); rendus.push(`${sortie}.png`); console.log('visuel', v.nom, '(brand kit)'); continue;
+  }
+  if (v.gabarit === 'scroll') {
+    await scrollPhoto(nav, site, v, catalogue[v.mockup], RACINE, dossier, sortie);
+    console.log('visuel', v.nom, `(scroll gif, ${(fs.statSync(sortie + '.gif').size / 1e6).toFixed(1)} Mo)`); continue;
   }
   if (v.gabarit === 'animation') {
     await animation(nav, site, v, dossier, sortie, async (img, base) => {

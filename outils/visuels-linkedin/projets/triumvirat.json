@@ -101,6 +101,18 @@
       "gabarit": "animation",
       "fond": "fond-chiffres",
       "adresse": "triumvirat.io"
+    },
+    {
+      "nom": "7-scroll-macbook",
+      "gabarit": "scroll",
+      "mockup": "macbook-grille",
+      "page": "/",
+      "paliers": [
+        0,
+        850,
+        1700,
+        2600
+      ]
     }
   ]
 }

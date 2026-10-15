@@ -39,6 +39,13 @@ def screen_quad(im, seed, thr):
     return np.array(out, np.float32)
 
 
+def preparer_capture(cap, cfg):
+    if cfg.get('pad_top'):
+        ph = int(round(cfg['pad_top'] * cap.shape[0]))
+        cap = np.vstack([np.tile(cap[:1], (ph, 1, 1)), cap])
+    return cap
+
+
 cfg = json.loads(sys.argv[1])
 im = cv2.imread(cfg['photo'])
 H0, W0 = im.shape[:2]
