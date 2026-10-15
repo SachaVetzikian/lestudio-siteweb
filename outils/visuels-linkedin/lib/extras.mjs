@@ -2,6 +2,9 @@
 import fs from 'fs'; import path from 'path'; import { execFileSync } from 'child_process';
 import { APPAREILS } from './capture.mjs';
 
+// Poids maximal d'un GIF avant réduction de la largeur (Mo). 10 Mo par défaut : qualité d'abord.
+const MAX_GIF = (Number(process.env.GIF_MAX_MO) || 10) * 1e6;
+
 // ---------- Brand kit ----------
 // On ouvre le site, on lit ses couleurs, polices, logo et boutons, puis on remplace la page par la planche :
 // les polices du site sont déjà chargées, le rendu est donc fidèle.
@@ -137,7 +140,7 @@ for f in sorted(glob.glob(sys.argv[5] + '/f*.jpg')):
   for (const l of [1080, 900, 720]) {
     execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', video, '-vf',
       `fps=15,scale=${l}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=256:stats_mode=diff[p];[b][p]paletteuse=dither=sierra2_4a:diff_mode=rectangle`, '-loop', '0', `${sortieBase}.gif`]);
-    if (fs.statSync(`${sortieBase}.gif`).size < 5e6) break;
+    if (fs.statSync(`${sortieBase}.gif`).size < MAX_GIF) break;
   }
   fs.rmSync(tmp, { recursive: true, force: true });
 }
@@ -177,13 +180,15 @@ export async function scrollPhoto(nav, site, v, mockup, racine, dossier, sortieB
     await p.screenshot({ path: path.join(tmp, `f${String(i).padStart(4, '0')}.jpg`), type: 'jpeg', quality: 92 });
   }
   await ctx.close();
-  const conf = { ...mockup, photo: path.join(racine, 'photos', mockup.fichier), frames: tmp };
+  const hd = path.join(racine, 'photos', 'hd', mockup.fichier);
+  const conf = { ...mockup, photo: path.join(racine, 'photos', mockup.fichier), ...(fs.existsSync(hd) ? { photo_hd: hd } : {}), frames: tmp, echelle: 1,
+    taille_gif: mockup.size || [1080, 1350] };
   execFileSync(process.env.PYTHON || 'python3', [path.join(racine, 'lib', 'photo_seq.py'), JSON.stringify(conf)], { stdio: 'inherit' });
   const [w] = mockup.size || [1080];
-  for (const l of [w, Math.round(w * .83), Math.round(w * .74), Math.round(w * .67)]) {
+  for (const l of [w, Math.round(w * .83), Math.round(w * .67)]) {
     execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', path.join(tmp, 'c%04d.jpg'), '-vf',
-      `scale=${l}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=160:stats_mode=diff[p];[b][p]paletteuse=dither=sierra2_4a:diff_mode=rectangle`, '-loop', '0', `${sortieBase}.gif`]);
-    if (fs.statSync(`${sortieBase}.gif`).size < 5e6) break;
+      `scale=${l}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=256:stats_mode=diff[p];[b][p]paletteuse=dither=sierra2_4a:diff_mode=rectangle`, '-loop', '0', `${sortieBase}.gif`]);
+    if (fs.statSync(`${sortieBase}.gif`).size < MAX_GIF) break;
   }
   fs.rmSync(tmp, { recursive: true, force: true });
 }
