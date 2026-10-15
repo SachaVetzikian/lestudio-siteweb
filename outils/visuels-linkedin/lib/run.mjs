@@ -21,7 +21,7 @@ const vus = {}, fondsVus = {}, montres = {};
 // les variantes (propositions alternatives) sont contrôlées contre la série, pas entre elles
 const principaux = site.visuels.filter(v => !v.variante), variantes = site.visuels.filter(v => v.variante);
 for (const v of [...principaux, ...variantes]) {
-  const prov = v.variante ? { ...vus } : null, provM = v.variante ? { ...montres } : null;
+  const prov = v.variante ? { ...vus } : null, provM = v.variante ? { ...montres } : null, provF = v.variante ? { ...fondsVus } : null;
   for (const e of ecransDe(v)) {
     if (!site.captures[e]) erreurs.push(`${v.nom} : capture "${e}" non définie`);
     if (vus[e]) erreurs.push(`Doublon : la capture "${e}" sert dans ${vus[e]} et ${v.nom}`);
@@ -31,11 +31,11 @@ for (const v of [...principaux, ...variantes]) {
       montres[m] = v.nom;
     }
   }
-  if (v.fond && v.gabarit !== 'animation' && !['studio', 'clair'].includes(v.fond)) {
+  if (v.fond && !v.variante && v.gabarit !== 'animation' && !['studio', 'clair'].includes(v.fond)) {
     if (fondsVus[v.fond]) erreurs.push(`Doublon : la photo de fond "${v.fond}" sert dans ${fondsVus[v.fond]} et ${v.nom}`);
     fondsVus[v.fond] = v.nom;
   }
-  if (v.variante) { Object.keys(vus).forEach(k => { if (!(k in prov)) delete vus[k]; }); Object.keys(montres).forEach(k => { if (!(k in provM)) delete montres[k]; }); }
+  if (v.variante) { Object.keys(vus).forEach(k => { if (!(k in prov)) delete vus[k]; }); Object.keys(montres).forEach(k => { if (!(k in provM)) delete montres[k]; }); Object.keys(fondsVus).forEach(k => { if (!(k in provF)) delete fondsVus[k]; }); }
   if (v.gabarit === 'photo') {
     const m = catalogue[v.mockup];
     if (!m) erreurs.push(`${v.nom} : mockup "${v.mockup}" absent de photos/catalogue.json`);

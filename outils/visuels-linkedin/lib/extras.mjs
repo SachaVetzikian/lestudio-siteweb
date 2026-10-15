@@ -40,8 +40,10 @@ export async function brandkit(nav, site, v, sortie) {
     const nomPolice = f => f.split(',')[0].replace(/["']/g, '').replace(/variable ?font|wght|_|-?\b(regular|var)\b/gi, ' ').replace(/\s+/g, ' ').trim();
     const fTitre = getComputedStyle(h1).fontFamily.replace(/"/g, "'"), fCorps = getComputedStyle(corps || document.body).fontFamily.replace(/"/g, "'");
     const sTitre = getComputedStyle(h1);
-    const logo = document.querySelector('header a img, header a svg, nav a img, nav a svg, header img, header svg');
-    const logoHTML = logo ? (logo.closest('a') || logo).outerHTML : '';
+    const accueil = [...document.querySelectorAll('a')].filter(a => { try { const u = new URL(a.href); return u.origin === location.origin && (u.pathname === '/' || u.pathname === ''); } catch { return false; } })
+      .find(a => a.querySelector('img, svg') && a.getBoundingClientRect().top < 200);
+    const logo = accueil ? accueil.querySelector('img, svg') : document.querySelector('header a img, header a svg, nav a img, nav a svg');
+    const logoHTML = logo ? logo.outerHTML : '';
     const boutons = visibles.filter(e => /^(A|BUTTON)$/.test(e.tagName) && e.offsetWidth > 80 && e.offsetWidth < 320 && e.offsetHeight > 30 && e.offsetHeight < 80 && e.innerText.trim().length > 2 && (rgb(getComputedStyle(e).backgroundColor) || parseFloat(getComputedStyle(e).borderTopWidth) > 0))
       .filter((e, i, t) => t.findIndex(o => o.className === e.className) === i).slice(0, 3).map(e => e.outerHTML);
     const phrase = (titre || h1.innerText).replace(/\s+/g, ' ').trim().slice(0, 48);

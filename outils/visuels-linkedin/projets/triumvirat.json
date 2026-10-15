@@ -15,7 +15,8 @@
   },
   "masquer": [],
   "fonds": {
-    "fond-chiffres": "https://triumvirat.io/_next/image?url=%2Fimages%2Fchiffres-bg.jpg&w=1920&q=75"
+    "fond-chiffres": "https://triumvirat.io/_next/image?url=%2Fimages%2Fchiffres-bg.jpg&w=1920&q=75",
+    "fond-hero": "https://triumvirat.io/_next/image?url=%2Fimages%2Fhero-bg.jpg&w=1920&q=75"
   },
   "captures": {
     "funnel": {
@@ -43,16 +44,6 @@
         "simulateur"
       ]
     },
-    "cas-clients": {
-      "page": "/",
-      "element": "section:has-text(\"dépassent leurs objectifs\")",
-      "masquer": [
-        "header"
-      ],
-      "montre": [
-        "cas-clients"
-      ]
-    },
     "seo-long": {
       "page": "/leviers/seo",
       "appareil": "desktop",
@@ -69,36 +60,6 @@
       "element": "img[src*='methode-triumvirat']",
       "montre": [
         "methode-4-temps"
-      ]
-    },
-    "secteurs": {
-      "page": "/",
-      "element": "section:has-text(\"4 univers maîtrisés\")",
-      "masquer": [
-        "header"
-      ],
-      "montre": [
-        "secteurs"
-      ]
-    },
-    "temoignages": {
-      "page": "/",
-      "element": "section:has-text(\"Ce que nos clients disent\")",
-      "masquer": [
-        "header"
-      ],
-      "montre": [
-        "temoignages"
-      ]
-    },
-    "couts-canaux": {
-      "page": "/simulateur-budget-media",
-      "element": "section.bg-nuit",
-      "masquer": [
-        "header"
-      ],
-      "montre": [
-        "couts-canaux"
       ]
     }
   },
@@ -123,7 +84,7 @@
         "methode",
         "funnel"
       ],
-      "fond": "clair"
+      "fond": "fond-hero"
     },
     {
       "nom": "4-ipad",
@@ -140,26 +101,6 @@
       "gabarit": "animation",
       "fond": "fond-chiffres",
       "adresse": "triumvirat.io"
-    },
-    {
-      "nom": "3-pile-b",
-      "gabarit": "pile",
-      "ecrans": [
-        "cas-clients",
-        "temoignages"
-      ],
-      "fond": "clair",
-      "variante": true
-    },
-    {
-      "nom": "3-pile-c",
-      "gabarit": "pile",
-      "ecrans": [
-        "secteurs",
-        "couts-canaux"
-      ],
-      "fond": "clair",
-      "variante": true
     }
   ]
 }
