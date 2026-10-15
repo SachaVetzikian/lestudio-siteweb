@@ -1,0 +1,31 @@
+{
+  "nom": "triumvirat",
+  "url": "https://www.triumvirat.io",
+  "couleurs": {
+    "studio": ["#1b3a8f", "#001F5B", "#000c2a"],
+    "voile": "rgba(0,20,60,.5)",
+    "barreStatut": { "fond": "#F5FFFA", "texte": "#001F5B" }
+  },
+  "masquer": [],
+  "fonds": {
+    "fond-chiffres": "https://triumvirat.io/_next/image?url=%2Fimages%2Fchiffres-bg.jpg&w=1920&q=75"
+  },
+  "captures": {
+    "accueil": { "page": "/", "appareil": "desktop", "hauteur": 852, "montre": ["hero-accueil"] },
+    "simulateur": { "page": "/simulateur-budget-media", "appareil": "desktop", "hauteur": 1700, "finirApres": "main section:nth-of-type(1), section", "marge": 0, "montre": ["simulateur"] },
+    "methode": { "page": "/", "element": "img[src*='methode-triumvirat']", "montre": ["methode-4-temps"] },
+    "funnel": { "page": "/", "element": "img[src*='funnel-acquisition']", "montre": ["funnel"] },
+    "t-temoignages": { "page": "/", "appareil": "tablet", "element": "section", "n": 7, "masquer": ["header"], "montre": ["temoignages"] },
+    "m-seo": { "page": "/leviers/seo", "appareil": "mobile", "montre": ["levier-seo"] },
+    "m-secteurs": { "page": "/", "appareil": "mobile", "defiler": "section", "n": 5, "decalage": 70, "montre": ["secteurs"] },
+    "t-insights": { "page": "/", "appareil": "tablet", "defiler": "section", "n": 8, "decalage": 70, "montre": ["insights", "faq"] }
+  },
+  "visuels": [
+    { "nom": "macbook", "gabarit": "macbook", "ecran": "accueil", "fond": "clair" },
+    { "nom": "desk", "gabarit": "desk", "ecran": "simulateur", "fond": "fond-chiffres", "carre": true, "adresse": "triumvirat.io/simulateur-budget-media" },
+    { "nom": "pile", "gabarit": "pile", "ecrans": ["methode", "funnel"], "fond": "clair" },
+    { "nom": "section", "gabarit": "section", "ecran": "t-temoignages", "fond": "studio" },
+    { "nom": "duo", "gabarit": "duo", "ecrans": ["m-seo", "m-secteurs"], "fond": "studio" },
+    { "nom": "ipad", "gabarit": "photo", "mockup": "ipad-canape", "ecran": "t-insights" }
+  ]
+}
