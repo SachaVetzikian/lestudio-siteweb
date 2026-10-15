@@ -28,6 +28,16 @@ PYTHON=.venv/bin/python node lib/run.mjs projets/doxa.json
 La série est **refusée** avant tout rendu si une règle est violée : même capture utilisée deux fois,
 même contenu visible deux fois (champ `montre`), même photo de fond, plus de 2 mockups photo, ou mockup photo réutilisé.
 
+## Maquettes pleine page (1440 px et 2K)
+
+```bash
+node lib/maquettes.mjs projets/triumvirat.json            # toutes les pages desktop de la série
+node lib/maquettes.mjs projets/triumvirat.json /leviers/seo  # pages au choix
+```
+
+Chaque page sort en entier dans `sortie/<projet>/maquettes/` : `-1440.png` (1440 px de large) et `-2k.png` (1440 px rendus en 2x, soit 2880 px).
+Les visuels de la série sont déjà capturés en 2x (desktop) et 3x (mobile).
+
 ## Nouveau projet
 
 Copier `projets/doxa.json` et l'adapter.
