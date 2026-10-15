@@ -104,7 +104,10 @@ export async function animation(nav, site, v, dossier, sortieBase, rendreVitrine
     await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 92, maxWidth: 2880, maxHeight: H * 2, everyNthFrame: 1 });
     let statut = 0;
     p.goto(new URL(v.page || '/', site.url).href, { timeout: 60000 }).then(r => { statut = r ? r.status() : 0; }).catch(() => {});
-    await p.waitForTimeout((duree + 1.5) * 1000);
+    // certains sites (Webflow) n'animent le hero qu'au premier défilement : micro-scroll invisible
+    await p.waitForTimeout(1200);
+    await p.evaluate(() => { scrollTo(0, 2); setTimeout(() => scrollTo(0, 0), 60); }).catch(() => {});
+    await p.waitForTimeout((duree + 0.3) * 1000);
     await cdp.send('Page.stopScreencast');
     const texte = await p.evaluate(() => document.body ? document.body.innerText.length : 0).catch(() => 0);
     await ctx.close();
