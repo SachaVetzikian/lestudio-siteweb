@@ -43,22 +43,23 @@ export const GABARITS = {
       <div style="position:relative;left:-20px;width:980px;height:30px;margin-top:4px;border-radius:50%;background:rgba(0,0,0,.45);filter:blur(14px)"></div></div>`,
     `centrer(['m'])`],
 
-  // Fenêtre de navigateur. Si la page est plus haute que le visuel, elle sort par le bas (jamais par les côtés).
+  // Fenêtre de navigateur. La capture doit finir sur une fin de section (finirApres) : jamais de page tronquée.
+  // Si elle est trop haute, la fenêtre rétrécit au lieu de sortir du cadre.
   desk: (v, site, C) => [1080, v.carre ? 1080 : 1350, `${fond(v, site, C)}
-    <div class="win" id="w" style="left:70px;width:940px"><div class="bar"><i></i><i></i><i></i><span>${v.adresse || ''}</span></div>
+    <div class="win" id="w" style="width:940px"><div class="bar"><i></i><i></i><i></i><span>${v.adresse || ''}</span></div>
       <img src="${C}${v.ecran}.png"></div>`,
-    `const w=document.getElementById('w'); if (w.offsetHeight > innerHeight - 220) { w.style.top='110px'; w.style.borderRadius='18px 18px 0 0' } else centrer(['w'])`],
+    `ajuster('w', 940)`],
 
-  // Deux sections en quinconce, centrées verticalement
-  quinconce: (v, site, C) => [1080, 1350, `${fond(v, site, C)}
-    <div class="f" id="a" style="left:40px;width:900px"><img src="${C}${v.ecrans[0]}.png"></div>
-    <div class="f" id="b" style="left:140px;width:900px"><img src="${C}${v.ecrans[1]}.png"></div>`,
-    `quinconce(${v.chevauchement ?? 12})`],
+  // Deux sections de même largeur, l'une au-dessus de l'autre (sens 'vertical') ou côte à côte ('horizontal')
+  pile: (v, site, C) => [1080, v.carre ? 1080 : 1350, `${fond(v, site, C)}
+    <div class="f" id="a"><img src="${C}${v.ecrans[0]}.png"></div>
+    <div class="f" id="b"><img src="${C}${v.ecrans[1]}.png"></div>`,
+    `pile('${v.sens || 'vertical'}', ${v.ecart ?? 32})`],
 
-  // Une section seule (idéalement capturée en largeur tablette). Sort par le bas si trop haute.
+  // Une section seule (idéalement capturée en largeur tablette), toujours entière : rétrécit si elle est trop haute.
   section: (v, site, C) => [1080, 1350, `${fond(v, site, C)}
-    <div class="f" id="s" style="left:${(1080 - (v.largeur || 940)) / 2}px;width:${v.largeur || 940}px;background:#fff"><img src="${C}${v.ecran}.png"></div>`,
-    `const s=document.getElementById('s'); if (s.offsetHeight > innerHeight - 160) { s.style.top='120px'; s.style.borderRadius='26px 26px 0 0' } else centrer(['s'])`],
+    <div class="f" id="s" style="background:#fff"><img src="${C}${v.ecran}.png"></div>`,
+    `ajuster('s', ${v.largeur || 940})`],
 
   // Deux mobiles côte à côte, décalés en hauteur
   duo: (v, site, C) => {
@@ -73,8 +74,18 @@ export const GABARITS = {
 // Fonctions de placement exécutées dans la page de rendu
 export const SCRIPT = `
 function centrer(ids){ const els=ids.map(i=>document.getElementById(i)); const h=els[0].offsetHeight; els[0].style.top=Math.max(60,(innerHeight-h)/2)+'px' }
-function quinconce(ch){ const a=document.getElementById('a'), b=document.getElementById('b');
-  const tot=a.offsetHeight+b.offsetHeight-ch, top=Math.max(50,(innerHeight-tot)/2); a.style.top=top+'px'; b.style.top=(top+a.offsetHeight-ch)+'px' }
+function ajuster(id, w){ const e=document.getElementById(id); e.style.width=w+'px';
+  if (e.offsetHeight > innerHeight-120) { w=Math.floor(w*(innerHeight-120)/e.offsetHeight); e.style.width=w+'px' }
+  e.style.left=(innerWidth-w)/2+'px'; e.style.top=(innerHeight-e.offsetHeight)/2+'px' }
+function pile(sens, ecart){ const a=document.getElementById('a'), b=document.getElementById('b');
+  if (sens==='vertical') { let w=940; a.style.width=b.style.width=w+'px';
+    const tot=a.offsetHeight+b.offsetHeight+ecart; if (tot>innerHeight-120) { w=Math.floor(w*(innerHeight-120-ecart)/(tot-ecart)); a.style.width=b.style.width=w+'px' }
+    const top=(innerHeight-(a.offsetHeight+b.offsetHeight+ecart))/2; a.style.left=b.style.left=(innerWidth-w)/2+'px';
+    a.style.top=top+'px'; b.style.top=(top+a.offsetHeight+ecart)+'px' }
+  else { let w=(innerWidth-120-ecart)/2; a.style.width=b.style.width=w+'px';
+    const h=Math.max(a.offsetHeight,b.offsetHeight); if (h>innerHeight-120) { w=Math.floor(w*(innerHeight-120)/h); a.style.width=b.style.width=w+'px' }
+    const left=(innerWidth-2*w-ecart)/2, top=(innerHeight-Math.max(a.offsetHeight,b.offsetHeight))/2;
+    a.style.left=left+'px'; b.style.left=(left+w+ecart)+'px'; a.style.top=b.style.top=top+'px' } }
 function duo(){ const p=document.querySelector('#p1 .ph'), h=p.offsetHeight, top=Math.max(60,(innerHeight-h-80)/2);
   document.getElementById('p1').style.top=top+'px'; document.getElementById('p2').style.top=(top+80)+'px' }`;
 

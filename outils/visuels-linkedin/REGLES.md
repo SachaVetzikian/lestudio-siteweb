@@ -4,7 +4,7 @@
 - Jamais de déformation : une capture garde son ratio natif. Le script refuse tout écart > 3 %.
 - On capture au viewport exact de l'écran cible (MacBook 1440x935, iPad 834x1194, iPhone 393x852).
 - On coupe une page à la fin d'une section, jamais au milieu d'un titre ou d'un texte.
-  Seule exception : une page longue peut sortir par le bas du visuel, jamais par les côtés.
+  Aucune page ni section tronquée dans un cadre : si c'est trop haut, le cadre rétrécit (seuls les écrans d'appareils montrent un scroll).
 - Photo mockup : écran entièrement visible, appareil incliné de 10° maximum. Sinon on écarte la photo.
 
 ## 2. Lisibilité
@@ -32,8 +32,9 @@
 - Section large en 4:5 : la capturer en largeur tablette (834 px) pour que les colonnes passent en grand.
 - Contraste fond / section : section sombre sur fond clair, ou section claire sur fond sombre. Jamais sombre sur sombre.
 - Au moins 2 pages différentes, dont une page de fond (cas client, service, simulateur).
-- Au moins un état interactif (menu ouvert, formulaire, accordéon).
+- Un état interactif (menu ouvert, formulaire) seulement s'il est soigné. Un menu basique n'apporte rien : on ne le montre pas.
 - UI éclatée : 2 éléments au maximum.
+- Pas de quinconce gauche-droite : deux sections ont la même largeur, empilées ou côte à côte (gabarit 'pile').
 
 ## 5 bis. Alternance entre projets
 - Deux projets publiés à la suite n'utilisent pas les mêmes mockups photo.

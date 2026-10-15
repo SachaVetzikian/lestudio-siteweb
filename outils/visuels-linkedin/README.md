@@ -55,9 +55,9 @@ Copier `projets/doxa.json` et l'adapter.
 | Gabarit | Usage | Champs |
 |---|---|---|
 | `macbook` | MacBook de face dessiné, fond studio | `ecran`, `fond` |
-| `desk` | Fenêtre de navigateur, la page sort par le bas si elle est longue | `ecran`, `fond`, `adresse`, `carre` |
-| `quinconce` | Deux sections décalées | `ecrans` (2), `fond`, `chevauchement` |
-| `section` | Une section seule (capturée en tablette de préférence) | `ecran`, `fond`, `largeur` |
+| `desk` | Fenêtre de navigateur, toujours entière (capturer avec `finirApres`) | `ecran`, `fond`, `adresse`, `carre` |
+| `pile` | Deux sections de même largeur, empilées ou côte à côte | `ecrans` (2), `fond`, `sens` (`vertical`/`horizontal`), `ecart` |
+| `section` | Une section seule, toujours entière (capturée en tablette de préférence) | `ecran`, `fond`, `largeur` |
 | `duo` | Deux mobiles côte à côte | `ecrans` (2), `fond` |
 | `photo` | Incrustation dans une photo de mockup | `mockup`, `ecran` |
 
