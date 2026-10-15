@@ -1,0 +1,33 @@
+{
+  "nom": "neo-viager",
+  "url": "https://neo-viager.fr",
+  "couleurs": {
+    "studio": ["#4a3a9c", "#2a1a6e", "#100037"],
+    "voile": "rgba(16,0,55,.45)",
+    "barreStatut": { "fond": "#F4F1EC", "texte": "#100037" }
+  },
+  "masquer": [".puce-pop-up"],
+  "fonds": {
+    "fond-couple": "https://cdn.prod.website-files.com/695bc0d2f057e8759c7aa6be/69aeb26be529affa67997a21_step0-bg.avif",
+    "fond-immeuble": "https://cdn.prod.website-files.com/695bc0d2f057e8759c7aa6be/695cd82fb505cd9a60d11f66_immeuble-paris-cta.avif",
+    "fond-portrait": "https://cdn.prod.website-files.com/695bc0d2f057e8759c7aa6be/696758c10133ab99118e169a_7110d97ea3ca7b1090f893326fd71244_viager-occupe%CC%81-cta.avif"
+  },
+  "captures": {
+    "menu": { "page": "/", "appareil": "desktop", "hauteur": 852, "survol": "Vendre en viager", "montre": ["menu"] },
+    "page-occupe": { "page": "/vendre-en-viager-occupe", "appareil": "desktop", "hauteur": 1950, "montre": ["hero-occupe", "avantages"] },
+    "bento": { "page": "/", "element": ".section_accompagnement-bento", "masquer": [".navbar_component"], "rogner": [0, 42], "montre": ["accompagnement"] },
+    "about": { "page": "/", "element": ".section_about", "masquer": [".navbar_component"], "montre": ["qui-sommes-nous"] },
+    "etapes": { "page": "/vendre-en-viager-occupe", "appareil": "tablet", "element": ".section_accompagnement", "masquer": [".navbar_component", ".w-nav"], "rogner": [120, 0], "montre": ["etapes"] },
+    "m-simulateur": { "page": "/simulateur", "appareil": "mobile", "montre": ["simulateur"] },
+    "m-faq": { "page": "/", "appareil": "mobile", "defiler": ".section_faq", "decalage": -15, "montre": ["faq"] },
+    "t-temoignages": { "page": "/", "appareil": "tablet", "defiler": ".section_temoignages", "aligner": "bas", "montre": ["temoignages"] }
+  },
+  "visuels": [
+    { "nom": "macbook", "gabarit": "macbook", "ecran": "menu", "fond": "studio" },
+    { "nom": "desk", "gabarit": "desk", "ecran": "page-occupe", "fond": "fond-couple", "adresse": "neo-viager.fr/vendre-en-viager-occupe" },
+    { "nom": "quinconce", "gabarit": "quinconce", "ecrans": ["bento", "about"], "fond": "fond-immeuble", "chevauchement": 30 },
+    { "nom": "section", "gabarit": "section", "ecran": "etapes", "fond": "clair" },
+    { "nom": "duo", "gabarit": "duo", "ecrans": ["m-simulateur", "m-faq"], "fond": "fond-portrait" },
+    { "nom": "ipad", "gabarit": "photo", "mockup": "ipad-canape", "ecran": "t-temoignages" }
+  ]
+}

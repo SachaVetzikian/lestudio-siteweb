@@ -1,0 +1,33 @@
+{
+  "nom": "doxa",
+  "url": "https://doxaformation.com",
+  "couleurs": {
+    "studio": ["#2b3f9e", "#15225F", "#0a1238"],
+    "voile": "rgba(10,18,56,.45)",
+    "barreStatut": { "fond": "#ffffff", "texte": "#15225F" }
+  },
+  "masquer": [],
+  "fonds": {
+    "fond-apropos": "https://cdn.prod.website-files.com/695fa908b8f6a2c931be9b3c/69df637a74c1331059b5e247_Apropos%20header.webp",
+    "fond-blog": "https://cdn.prod.website-files.com/6960d57a06ea0a20ff347d82/6ac4c73895344200acff1f19_6ac4c6c8f54e3e329ac8095c_posture-professionnelle-codes-entreprise.jpeg",
+    "fond-expertise": "https://cdn.prod.website-files.com/695fa908b8f6a2c931be9b3c/69c4f964e7167eb5f60121a8_Expertise%202.webp"
+  },
+  "captures": {
+    "menu": { "page": "/", "appareil": "desktop", "survol": "Nos formations", "montre": ["hero-accueil", "menu", "logos-clients"] },
+    "fiche-ia": { "page": "/formation/le-manager-augmente-par-l-ia", "appareil": "desktop", "hauteur": 1300, "finirApres": ".formation-info-tab-inner", "marge": 12, "masquerSous": ".information-cotnent-block", "montre": ["formation-manager-ia"] },
+    "categories": { "page": "/", "element": ".section-category", "n": 0, "montre": ["categories"] },
+    "temoignages": { "page": "/", "element": ".section_testimonial", "montre": ["temoignages", "fondateurs"] },
+    "deroulement": { "page": "/formations", "appareil": "tablet", "element": ".section_courses", "montre": ["deroulement"] },
+    "m-catalogue": { "page": "/formations", "appareil": "mobile", "montre": ["catalogue"] },
+    "m-fiche": { "page": "/formation/les-fondamentaux-de-la-gestion-de-projet", "appareil": "mobile", "montre": ["formation-gestion-projet"] },
+    "m-valeurs": { "page": "/a-propos", "appareil": "mobile", "defiler": ".section_nos-valeurs", "montre": ["valeurs"] }
+  },
+  "visuels": [
+    { "nom": "macbook", "gabarit": "photo", "mockup": "macbook-grille", "ecran": "menu" },
+    { "nom": "desk", "gabarit": "desk", "ecran": "fiche-ia", "fond": "fond-apropos", "carre": true, "adresse": "doxaformation.com/formation/le-manager-augmente-par-l-ia" },
+    { "nom": "quinconce", "gabarit": "quinconce", "ecrans": ["categories", "temoignages"], "fond": "fond-blog" },
+    { "nom": "section", "gabarit": "section", "ecran": "deroulement", "fond": "clair", "largeur": 740 },
+    { "nom": "duo", "gabarit": "duo", "ecrans": ["m-catalogue", "m-fiche"], "fond": "fond-expertise" },
+    { "nom": "main", "gabarit": "photo", "mockup": "iphone-main", "ecran": "m-valeurs" }
+  ]
+}
