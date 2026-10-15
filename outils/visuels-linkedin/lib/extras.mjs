@@ -8,7 +8,12 @@ import { APPAREILS } from './capture.mjs';
 export async function brandkit(nav, site, v, sortie) {
   const ctx = await nav.newContext({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: 2 });
   const p = await ctx.newPage();
-  await p.goto(new URL(v.page || '/', site.url).href, { waitUntil: 'networkidle', timeout: 60000 });
+  for (let essai = 1; ; essai++) { // relance si la page n'a pas chargé (erreur réseau)
+    await p.goto(new URL(v.page || '/', site.url).href, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+    if (await p.evaluate(() => !!document.querySelector('h1')).catch(() => false)) break;
+    if (essai === 3) throw new Error('brand kit : impossible de charger la page');
+    console.warn(`brand kit : chargement raté, essai ${essai}/3`); await p.waitForTimeout(2000);
+  }
   await p.setViewportSize({ width: 1440, height: 900 }); await p.waitForTimeout(1200);
   await p.evaluate(({ titre, roles }) => {
     const cv = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
