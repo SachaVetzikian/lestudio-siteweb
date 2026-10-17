@@ -1,3 +1,5 @@
 node_modules/
 sortie/
 .venv/
+__pycache__/
+*.pyc
