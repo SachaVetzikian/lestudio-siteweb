@@ -1,0 +1,153 @@
+{
+  "nom": "neo-viager",
+  "url": "https://neo-viager.fr",
+  "couleurs": {
+    "studio": [
+      "#4a3a9c",
+      "#2a1a6e",
+      "#100037"
+    ],
+    "voile": "rgba(16,0,55,.45)",
+    "barreStatut": {
+      "fond": "#F4F1EC",
+      "texte": "#100037"
+    }
+  },
+  "masquer": [
+    ".puce-pop-up"
+  ],
+  "fonds": {
+    "fond-immeuble": "https://cdn.prod.website-files.com/695bc0d2f057e8759c7aa6be/695cd82fb505cd9a60d11f66_immeuble-paris-cta.avif",
+    "fond-portrait": "https://cdn.prod.website-files.com/695bc0d2f057e8759c7aa6be/696758c10133ab99118e169a_7110d97ea3ca7b1090f893326fd71244_viager-occupe%CC%81-cta.avif"
+  },
+  "captures": {
+    "occupe-long": {
+      "page": "/vendre-en-viager-occupe",
+      "appareil": "desktop",
+      "hauteur": 1900,
+      "montre": [
+        "hero-occupe",
+        "avantages"
+      ]
+    },
+    "simulateur": {
+      "page": "/simulateur",
+      "appareil": "desktop",
+      "montre": [
+        "simulateur",
+        "photo-couple"
+      ]
+    },
+    "etapes": {
+      "page": "/vendre-en-viager-occupe",
+      "element": ".section_accompagnement",
+      "masquer": [
+        ".navbar_component"
+      ],
+      "rogner": [
+        125,
+        0
+      ],
+      "montre": [
+        "etapes"
+      ]
+    },
+    "bento": {
+      "page": "/",
+      "element": ".section_accompagnement-bento",
+      "masquer": [
+        ".navbar_component"
+      ],
+      "rogner": [
+        0,
+        80
+      ],
+      "montre": [
+        "accompagnement"
+      ]
+    },
+    "solutions": {
+      "page": "/",
+      "element": ".section_solutions",
+      "masquer": [
+        ".navbar_component"
+      ],
+      "rogner": [
+        110,
+        0
+      ],
+      "montre": [
+        "solutions"
+      ]
+    },
+    "temoignages": {
+      "page": "/",
+      "element": ".section_temoignages",
+      "masquer": [
+        ".navbar_component"
+      ],
+      "montre": [
+        "temoignages"
+      ]
+    },
+    "m-faq": {
+      "page": "/",
+      "appareil": "mobile",
+      "defiler": ".section_faq",
+      "decalage": -15,
+      "montre": [
+        "faq"
+      ]
+    }
+  },
+  "visuels": [
+    {
+      "nom": "1-vitrine",
+      "gabarit": "vitrine",
+      "ecran": "occupe-long",
+      "fond": "fond-immeuble",
+      "adresse": "neo-viager.fr/vendre-en-viager-occupe"
+    },
+    {
+      "nom": "2-macbook",
+      "gabarit": "photo",
+      "mockup": "macbook-grille",
+      "ecran": "simulateur"
+    },
+    {
+      "nom": "3-pile",
+      "gabarit": "pile",
+      "ecrans": [
+        "etapes",
+        "bento"
+      ],
+      "fond": "fond-portrait"
+    },
+    {
+      "nom": "4-main",
+      "gabarit": "photo",
+      "mockup": "iphone-main",
+      "ecran": "m-faq"
+    },
+    {
+      "nom": "5-brandkit",
+      "gabarit": "brandkit"
+    },
+    {
+      "nom": "6-animation",
+      "gabarit": "animation",
+      "fond": "fond-immeuble",
+      "adresse": "neo-viager.fr"
+    },
+    {
+      "nom": "3-pile-b",
+      "gabarit": "pile",
+      "ecrans": [
+        "solutions",
+        "temoignages"
+      ],
+      "fond": "fond-portrait",
+      "variante": true
+    }
+  ]
+}

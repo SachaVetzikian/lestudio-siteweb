@@ -1,0 +1,130 @@
+{
+  "nom": "doxa",
+  "url": "https://doxaformation.com",
+  "couleurs": {
+    "studio": [
+      "#2b3f9e",
+      "#15225F",
+      "#0a1238"
+    ],
+    "voile": "rgba(10,18,56,.45)",
+    "barreStatut": {
+      "fond": "#ffffff",
+      "texte": "#15225F"
+    }
+  },
+  "masquer": [],
+  "fonds": {
+    "fond-apropos": "https://cdn.prod.website-files.com/695fa908b8f6a2c931be9b3c/69df637a74c1331059b5e247_Apropos%20header.webp",
+    "fond-blog": "https://cdn.prod.website-files.com/6960d57a06ea0a20ff347d82/6ac4c73895344200acff1f19_6ac4c6c8f54e3e329ac8095c_posture-professionnelle-codes-entreprise.jpeg"
+  },
+  "captures": {
+    "expertises-long": {
+      "page": "/expertises",
+      "appareil": "desktop",
+      "hauteur": 1900,
+      "montre": [
+        "hero-expertises",
+        "intro-expertises",
+        "adjustment"
+      ]
+    },
+    "fiche-ia": {
+      "page": "/formation/le-manager-augmente-par-l-ia",
+      "appareil": "desktop",
+      "montre": [
+        "formation-manager-ia"
+      ]
+    },
+    "une": {
+      "page": "/",
+      "element": ".section-category",
+      "n": 1,
+      "montre": [
+        "formations-une"
+      ]
+    },
+    "chiffres": {
+      "page": "/",
+      "element": ".section_statistics",
+      "montre": [
+        "chiffres"
+      ]
+    },
+    "categories": {
+      "page": "/",
+      "element": ".section-category",
+      "n": 0,
+      "montre": [
+        "categories"
+      ]
+    },
+    "temoignages": {
+      "page": "/",
+      "element": ".section_testimonial",
+      "montre": [
+        "temoignages",
+        "fondateurs"
+      ]
+    },
+    "t-valeurs": {
+      "page": "/a-propos",
+      "appareil": "tablet",
+      "defiler": ".section_nos-valeurs",
+      "decalage": 179,
+      "montre": [
+        "valeurs"
+      ]
+    }
+  },
+  "visuels": [
+    {
+      "nom": "1-vitrine",
+      "gabarit": "vitrine",
+      "ecran": "expertises-long",
+      "fond": "fond-apropos",
+      "adresse": "doxaformation.com/expertises"
+    },
+    {
+      "nom": "2-macbook",
+      "gabarit": "photo",
+      "mockup": "macbook-grille",
+      "ecran": "fiche-ia"
+    },
+    {
+      "nom": "3-pile",
+      "gabarit": "pile",
+      "ecrans": [
+        "une",
+        "chiffres"
+      ],
+      "fond": "fond-blog"
+    },
+    {
+      "nom": "4-ipad",
+      "gabarit": "photo",
+      "mockup": "ipad-canape",
+      "ecran": "t-valeurs"
+    },
+    {
+      "nom": "5-brandkit",
+      "gabarit": "brandkit"
+    },
+    {
+      "nom": "6-animation",
+      "gabarit": "animation",
+      "fond": "fond-apropos",
+      "adresse": "doxaformation.com"
+    },
+    {
+      "nom": "3-pile-b",
+      "gabarit": "pile",
+      "ecrans": [
+        "categories",
+        "temoignages"
+      ],
+      "fond": "fond-blog",
+      "variante": true
+    }
+  ]
+}

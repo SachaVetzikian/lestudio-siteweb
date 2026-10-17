@@ -1,0 +1,118 @@
+{
+  "nom": "triumvirat",
+  "url": "https://www.triumvirat.io",
+  "couleurs": {
+    "studio": [
+      "#1b3a8f",
+      "#001F5B",
+      "#000c2a"
+    ],
+    "voile": "rgba(0,20,60,.5)",
+    "barreStatut": {
+      "fond": "#F5FFFA",
+      "texte": "#001F5B"
+    }
+  },
+  "masquer": [],
+  "fonds": {
+    "fond-chiffres": "https://triumvirat.io/_next/image?url=%2Fimages%2Fchiffres-bg.jpg&w=1920&q=75",
+    "fond-hero": "https://triumvirat.io/_next/image?url=%2Fimages%2Fhero-bg.jpg&w=1920&q=75"
+  },
+  "captures": {
+    "funnel": {
+      "page": "/",
+      "element": "img[src*='funnel-acquisition']",
+      "montre": [
+        "funnel"
+      ]
+    },
+    "t-insights": {
+      "page": "/",
+      "appareil": "tablet",
+      "defiler": "section",
+      "n": 8,
+      "decalage": 70,
+      "montre": [
+        "insights",
+        "faq"
+      ]
+    },
+    "simulateur-ecran": {
+      "page": "/simulateur-budget-media",
+      "appareil": "desktop",
+      "montre": [
+        "simulateur"
+      ]
+    },
+    "seo-long": {
+      "page": "/leviers/seo",
+      "appareil": "desktop",
+      "hauteur": 1900,
+      "montre": [
+        "hero-seo",
+        "seo-pourquoi",
+        "logos-clients",
+        "seo-dispositif"
+      ]
+    },
+    "methode": {
+      "page": "/",
+      "element": "img[src*='methode-triumvirat']",
+      "montre": [
+        "methode-4-temps"
+      ]
+    }
+  },
+  "visuels": [
+    {
+      "nom": "1-vitrine",
+      "gabarit": "vitrine",
+      "ecran": "seo-long",
+      "fond": "fond-chiffres",
+      "adresse": "triumvirat.io/leviers/seo"
+    },
+    {
+      "nom": "2-macbook",
+      "gabarit": "photo",
+      "mockup": "macbook-grille",
+      "ecran": "simulateur-ecran"
+    },
+    {
+      "nom": "3-pile",
+      "gabarit": "pile",
+      "ecrans": [
+        "methode",
+        "funnel"
+      ],
+      "fond": "fond-hero"
+    },
+    {
+      "nom": "4-ipad",
+      "gabarit": "photo",
+      "mockup": "ipad-canape",
+      "ecran": "t-insights"
+    },
+    {
+      "nom": "5-brandkit",
+      "gabarit": "brandkit"
+    },
+    {
+      "nom": "6-animation",
+      "gabarit": "animation",
+      "fond": "fond-chiffres",
+      "adresse": "triumvirat.io"
+    },
+    {
+      "nom": "7-scroll-macbook",
+      "gabarit": "scroll",
+      "mockup": "macbook-grille",
+      "page": "/",
+      "paliers": [
+        0,
+        850,
+        1700,
+        2600
+      ]
+    }
+  ]
+}
