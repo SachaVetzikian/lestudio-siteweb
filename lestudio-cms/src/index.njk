@@ -24,7 +24,7 @@ permalink: /index.html
 <meta content="Audit UX/UI, refonte e-commerce et vitrine, design par abonnement." name="twitter:description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
 <link href="/static/css/home.css" rel="stylesheet"/>
 <script type="application/ld+json">
 {
@@ -186,7 +186,7 @@ Diagnostic offert
 </section>
 <div class="section-break"><span class="mark left"></span><span class="mark right"></span></div>
 <div class="wrap" style="text-align:center; padding:0 24px 40px;">
-<p style="font-family:'DM Sans',sans-serif; font-weight:500; font-size:20px; text-align:center; max-width:640px; margin:0 auto;">Vous vous reconnaissez ? <em style="font-style:normal; font-weight:600; color:var(--orange);">Alors la suite est pour vous.</em></p>
+<p style="font-family:var(--body); font-weight:500; font-size:20px; text-align:center; max-width:640px; margin:0 auto;">Vous vous reconnaissez ? <em style="font-style:normal; font-weight:600; color:var(--orange);">Alors la suite est pour vous.</em></p>
 </div>
 <div class="section-break"><span class="mark left"></span><span class="mark right"></span></div>
 <section id="methode">
@@ -216,8 +216,8 @@ Diagnostic offert
 </div>
 <div class="am-body">
 <div style="display:flex; gap:8px; margin-bottom:14px;">
-<div style="flex:1; border:1px solid var(--line); border-radius:8px; padding:8px;"><div style="font-family:'DM Sans',sans-serif; font-weight:600; font-size:15px;">2.4%</div><div style="font-size:8.5px; color:var(--grey); margin-top:2px;">Conversion</div></div>
-<div style="flex:1; border:1px solid var(--line); border-radius:8px; padding:8px;"><div style="font-family:'DM Sans',sans-serif; font-weight:600; font-size:15px; color:var(--orange);">64%</div><div style="font-size:8.5px; color:var(--grey); margin-top:2px;">Rebond</div></div>
+<div style="flex:1; border:1px solid var(--line); border-radius:2px; padding:8px;"><div style="font-family:var(--body); font-weight:600; font-size:15px;">2.4%</div><div style="font-size:8.5px; color:var(--grey); margin-top:2px;">Conversion</div></div>
+<div style="flex:1; border:1px solid var(--line); border-radius:2px; padding:8px;"><div style="font-family:var(--body); font-weight:600; font-size:15px; color:var(--orange);">64%</div><div style="font-size:8.5px; color:var(--grey); margin-top:2px;">Rebond</div></div>
 </div>
 <svg width="100%" height="46" viewBox="0 0 240 46" preserveAspectRatio="none">
 <polyline points="0,36 40,30 80,34 120,18 160,22 200,8 240,12" fill="none" stroke="var(--orange)" stroke-width="2"/>
@@ -274,7 +274,7 @@ Diagnostic offert
 <div class="am-chrome">
 <div class="am-dots"><span></span><span></span><span></span></div>
 <div style="display:flex; gap:4px;"><span class="am-swatch" style="background:var(--orange);"></span><span class="am-swatch" style="background:var(--ink);"></span><span class="am-swatch" style="background:var(--orange-light);"></span></div>
-<div class="am-label">DM Sans ⌄</div>
+<div class="am-label">Inter ⌄</div>
 </div>
 <div class="am-body">
 <div style="height:7px; width:32%; background:var(--line); border-radius:3px; margin-bottom:6px;"></div>
@@ -499,7 +499,7 @@ padding: 16px<br>radius: 8px
 <h4>Légal</h4>
 <a href="/mentions-legales/">Mentions légales</a>
 <a href="/confidentialite/">Politique de confidentialité</a>
-<button id="reopenCookies" style="background:none; border:none; padding:0; font-size:14px; margin-bottom:10px; color:rgba(244,244,245,.85); text-align:left; cursor:pointer; font-family:'DM Sans',sans-serif; display:block;">Gérer mes cookies</button>
+<button id="reopenCookies" style="background:none; border:none; padding:0; font-size:14px; margin-bottom:10px; color:rgba(244,244,245,.85); text-align:left; cursor:pointer; font-family:var(--body); display:block;">Gérer mes cookies</button>
 </div>
 </div>
 </div>
@@ -521,7 +521,7 @@ padding: 16px<br>radius: 8px
   function caseFallback(name){
     var initials = (name || '').split(' ').map(function(w){ return w[0]; }).join('').slice(0, 2).toUpperCase();
     return '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(255,107,53,0.18),rgba(244,244,245,0.06));">' +
-      '<span style="font-family:\'DM Sans\',sans-serif;font-weight:600;font-size:30px;letter-spacing:0.02em;color:rgba(244,244,245,0.75);">' + initials + '</span>' +
+      '<span style="font-family:var(--body);font-weight:600;font-size:30px;letter-spacing:0.02em;color:rgba(244,244,245,0.75);">' + initials + '</span>' +
       '</div>';
   }
 
