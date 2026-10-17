@@ -16,7 +16,7 @@ layout: layouts/base.njk
 <div style="position:relative;width:100%;aspect-ratio:16/10;border-radius:6px;margin:24px 0 56px;overflow:hidden;background:radial-gradient(120% 100% at 20% 0%,rgba(255,90,0,.18),var(--ink) 65%);display:flex;align-items:center;justify-content:center;">
 <span class="crosshair" style="top:14%;left:10%;"></span>
 <span class="crosshair" style="bottom:16%;right:12%;"></span>
-<span style="font-family:var(--sans);font-weight:800;letter-spacing:-0.01em;font-size:clamp(22px,3.4vw,40px);color:#fff;">{{ client }}</span>
+<span style="font-family:var(--sans);font-weight:900;letter-spacing:-0.01em;font-size:clamp(22px,3.4vw,40px);color:#fff;">{{ client }}</span>
 </div>
 {% endif %}
 
@@ -24,7 +24,7 @@ layout: layouts/base.njk
 <div style="display:flex;flex-wrap:wrap;gap:48px;margin:-24px 0 64px;padding-bottom:40px;border-bottom:1px solid var(--line);">
 {% for res in resultats %}
 <div>
-<p style="font-family:var(--sans);font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-0.02em;color:var(--ink);line-height:1;">{{ res.chiffre }}</p>
+<p style="font-family:var(--sans);font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-0.02em;color:var(--ink);line-height:1;">{{ res.chiffre }}</p>
 <p style="font-size:13.5px;color:var(--grey-400);margin-top:6px;">{{ res.label }}</p>
 </div>
 {% endfor %}
@@ -59,7 +59,7 @@ layout: layouts/base.njk
 {# ── Phases numérotées ── #}
 {% for ph in phases %}
 <section style="border-top:1px solid var(--line);padding:56px 0;display:grid;grid-template-columns:120px 1fr;gap:32px;">
-<div style="font-family:var(--sans);font-weight:800;font-size:clamp(52px,7vw,96px);line-height:1;color:var(--line);">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</div>
+<div style="font-family:var(--sans);font-weight:900;font-size:clamp(52px,7vw,96px);line-height:1;color:var(--line);">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</div>
 <div>
 <h2 style="margin-top:0;font-size:clamp(26px,3.4vw,38px);">{{ ph.titre }}</h2>
 {% if ph.intro %}<p style="line-height:1.7;color:var(--grey-600);max-width:640px;margin-bottom:28px;">{{ ph.intro }}</p>{% endif %}

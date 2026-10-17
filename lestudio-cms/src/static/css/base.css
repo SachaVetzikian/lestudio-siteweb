@@ -1,3 +1,7 @@
+@font-face{font-family:'BDO Grotesk';src:url('/static/fonts/BDOGrotesk-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'BDO Grotesk';src:url('/static/fonts/BDOGrotesk-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'BDO Grotesk';src:url('/static/fonts/BDOGrotesk-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'BDO Grotesk';src:url('/static/fonts/BDOGrotesk-Black.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap;}
 :root{
   --ink:#0a0a0a;
   --paper:#ffffff;
@@ -9,7 +13,7 @@
   --orange:#ff5a00;
   --orange-deep:#c2410c;
   --orange-light:#ffe4d6;
-  --sans:'Inter',sans-serif;
+  --sans:'BDO Grotesk','Inter',sans-serif;
   --serif:'Instrument Serif',serif;
   --glow-shadow:0 30px 70px -24px rgba(10,10,10,.35);
   /* alias legacy tokens pendant la migration page par page */
@@ -25,9 +29,9 @@ a{color:inherit;text-decoration:none;}
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
 
 /* ── Typographie ── */
-h1{font-family:var(--sans);font-weight:800;line-height:.98;letter-spacing:-0.03em;font-size:clamp(36px,5.6vw,64px);margin:72px 0 24px;}
+h1{font-family:var(--sans);font-weight:900;line-height:.98;letter-spacing:-0.03em;font-size:clamp(36px,5.6vw,64px);margin:72px 0 24px;}
 h1 em{font-style:italic;font-weight:400;font-family:var(--serif);color:var(--orange);}
-h2{font-family:var(--sans);font-weight:800;letter-spacing:-0.02em;line-height:1.02;font-size:clamp(26px,3.4vw,40px);margin:64px 0 20px;}
+h2{font-family:var(--sans);font-weight:900;letter-spacing:-0.02em;line-height:1.02;font-size:clamp(26px,3.4vw,40px);margin:64px 0 20px;}
 .lede{font-size:18px;line-height:1.6;color:var(--grey-600);max-width:640px;margin-bottom:40px;}
 .eyebrow{display:block;font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--grey-400);margin-bottom:10px;}
 .eyebrow.on-dark{color:rgba(255,255,255,.45);}
@@ -153,7 +157,7 @@ header.nav.menu-open .nav-cta{display:none;}
 .case-row:hover{padding-left:12px;}
 .case-row .case-row-year{font-size:14px;font-weight:600;color:var(--grey-400);width:56px;flex-shrink:0;}
 .case-row .case-row-title{flex:1;min-width:0;}
-.case-row h3{font-family:var(--sans);font-weight:800;letter-spacing:-0.02em;font-size:clamp(26px,3.6vw,46px);line-height:1;color:var(--ink);margin-bottom:6px;transition:color .25s ease;}
+.case-row h3{font-family:var(--sans);font-weight:900;letter-spacing:-0.02em;font-size:clamp(26px,3.6vw,46px);line-height:1;color:var(--ink);margin-bottom:6px;transition:color .25s ease;}
 .case-row:hover h3{color:var(--orange);}
 .case-row .case-row-meta{display:flex;gap:10px;flex-wrap:wrap;}
 .case-row .case-row-meta span{font-size:12.5px;color:var(--grey-400);}
@@ -184,7 +188,7 @@ footer a:hover{color:var(--orange);}
 .footer-content{position:relative;z-index:1;}
 .footer-intro{margin-bottom:56px;}
 .footer-intro .eyebrow-big{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(28px,4vw,44px);color:rgba(255,255,255,.4);line-height:1;margin-bottom:6px;}
-.footer-intro .footer-email{font-family:var(--sans);font-weight:800;letter-spacing:-0.02em;font-size:clamp(28px,5vw,52px);color:#fff;word-break:break-word;}
+.footer-intro .footer-email{font-family:var(--sans);font-weight:900;letter-spacing:-0.02em;font-size:clamp(28px,5vw,52px);color:#fff;word-break:break-word;}
 .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid var(--line-dark);}
 .footer-desc{max-width:320px;color:rgba(255,255,255,.55);font-size:14px;line-height:1.6;margin-top:16px;}
 .footer-links{display:flex;gap:56px;flex-wrap:wrap;}
@@ -194,7 +198,7 @@ footer a:hover{color:var(--orange);}
 .footer-villes{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:40px;}
 .footer-villes a{color:rgba(255,255,255,.7);}
 .cine-giant{position:relative;z-index:1;display:block;width:100%;text-align:center;pointer-events:none;user-select:none;
-  font-family:var(--sans);font-weight:800;font-size:12vw;line-height:.82;letter-spacing:-0.03em;color:#fff;margin:24px 0 8px;}
+  font-family:var(--sans);font-weight:900;font-size:12vw;line-height:.82;letter-spacing:-0.03em;color:#fff;margin:24px 0 8px;}
 .cine-marquee{display:none;}
 .footer-bottom{position:relative;z-index:1;border-top:1px solid var(--line-dark);padding:20px 0 0;margin-top:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12.5px;color:rgba(255,255,255,.5);}
 .cine-credit{display:none;}
