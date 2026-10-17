@@ -10,7 +10,7 @@ title: "Agence e-commerce Paris"
 <h1 style="margin-top:16px;">Agence e-commerce à <em>Paris</em> : un design qui convertit, pas juste qui plaît</h1>
 <p class="lede">Le Studio accompagne des marques e-commerce à Paris et partout en France sur tout ce qui touche à l'expérience d'achat : diagnostic, refonte, création, et suivi continu. Un seul interlocuteur, du premier appel à la livraison.</p>
 
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min" style="margin-bottom:64px;"><span>Prendre rendez-vous avec Sacha</span></a>
+<a class="link-cta" style="margin-bottom:64px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Prendre rendez-vous avec Sacha<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 <h2>Ce que fait une agence e-commerce, concrètement</h2>
 <p style="font-size:16px;line-height:1.7;color:var(--grey);max-width:680px;margin-bottom:24px;">Une agence e-commerce généraliste mélange souvent développement, marketing et design dans une seule offre, avec plusieurs interlocuteurs entre le brief et la livraison. Le Studio se concentre sur une seule chose : la conception UX/UI et la conversion, pas le développement ni les campagnes publicitaires. C'est un choix délibéré, pour rester agnostique de votre stack technique (Shopify, WooCommerce, Prestashop) et de votre prestataire média.</p>
@@ -28,37 +28,39 @@ title: "Agence e-commerce Paris"
 <p style="font-size:16px;line-height:1.7;color:var(--grey);max-width:680px;margin-bottom:64px;">Sacha Vetzikian, fondateur, a passé 5 ans en startup e-commerce (lancements de boutiques, migrations Prestashop, refontes complètes) puis 3 ans en cabinet de conseil aux côtés de marques comme Yves Rocher. Il mène personnellement chaque projet.</p>
 
 <h2>Nos réalisations e-commerce</h2>
-<div class="case-grid">
+<div class="case-list" style="margin-top:8px;">
 {% set shown = 0 %}
 {% for r in collections.realisations %}
 {% if r.data.featured and r.data.type == "ecommerce" and shown < 3 %}
 {% set shown = shown + 1 %}
-<a class="card" href="/realisations/{{ r.fileSlug }}/">
-<h3>{{ r.data.client }}</h3><p>{{ r.data.description }}</p>
-<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Voir le projet</p>
+<a class="case-row" href="/realisations/{{ r.fileSlug }}/">
+<span class="case-row-year">{{ r.data.year }}</span>
+<div class="case-row-title"><h3>{{ r.data.client }}</h3><div class="case-row-meta"><span>{{ r.data.description }}</span></div></div>
+{% if r.data.cover and (r.data.cover | assetExists) %}<div class="case-row-thumb"><img src="{{ r.data.cover }}" alt="{{ r.data.client }}" loading="lazy"/></div>{% endif %}
+<span class="case-row-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span>
 </a>
 {% endif %}
 {% endfor %}
 </div>
-<p style="margin:24px 0 64px;"><a href="/cas-clients/" style="color:var(--orange);font-weight:500;">→ Voir tous les cas clients</a></p>
+<a class="link-cta" style="margin:24px 0 64px;" href="/cas-clients/">Voir tous les cas clients<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 <h2 id="faq">Vos questions avant de vous décider</h2>
 <div style="margin-bottom:64px;">
 <details style="border-top:1px solid var(--line);padding:18px 0;">
-<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">L'agence est-elle uniquement pour des marques basées à Paris ?</summary>
+<summary style="font-family:var(--sans);font-weight:600;font-size:17px;cursor:pointer;">L'agence est-elle uniquement pour des marques basées à Paris ?</summary>
 <p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">Non. Nous accompagnons des marques e-commerce à Paris et partout en France, entièrement en visio du premier appel à la livraison.</p>
 </details>
 <details style="border-top:1px solid var(--line);padding:18px 0;">
-<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">Faites-vous aussi le développement du site ?</summary>
+<summary style="font-family:var(--sans);font-weight:600;font-size:17px;cursor:pointer;">Faites-vous aussi le développement du site ?</summary>
 <p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">Non, et c'est volontaire. Nous livrons des maquettes prêtes à coder et un dossier de handoff complet, pour que vous gardiez la main sur votre développeur ou votre agence d'intégration.</p>
 </details>
 <details style="border-top:1px solid var(--line);padding:18px 0;">
-<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">Par quelle offre commencer si je ne sais pas encore ce dont j'ai besoin ?</summary>
+<summary style="font-family:var(--sans);font-weight:600;font-size:17px;cursor:pointer;">Par quelle offre commencer si je ne sais pas encore ce dont j'ai besoin ?</summary>
 <p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">Si votre site a déjà du trafic, commencez par l'audit UX design : il évite de refaire au feeling ce que les données peuvent déjà expliquer. Si votre site est à créer, la refonte intègre directement sa propre phase d'analyse.</p>
 </details>
 </div>
 
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span>Prendre rendez-vous avec Sacha</span></a>
+<a class="link-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Prendre rendez-vous avec Sacha<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 <script type="application/ld+json">
 {

@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://www.lestudiodesign.fr{{ seo_image or cover or '/static/og-image.jpg' }}"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet"/>
 <link href="/static/css/base.css" rel="stylesheet"/>
 
 <script type="application/ld+json">
@@ -112,15 +112,15 @@ Diagnostic offert
 {{ content | safe }}
 </main>
 <footer>
-<div class="cine-grid" aria-hidden="true"></div>
 <div class="cine-aurora" aria-hidden="true"></div>
-<div class="cine-giant" aria-hidden="true">LESTUDIO</div>
-<div class="cine-marquee">
-<div class="cine-marquee-track">
-<span>Design UX/UI</span><span class="dot">✦</span><span>CRO &amp; conversion</span><span class="dot">✦</span><span>E-commerce</span><span class="dot">✦</span><span>Sites vitrines</span><span class="dot">✦</span><span>Design UX/UI</span><span class="dot">✦</span><span>CRO &amp; conversion</span><span class="dot">✦</span><span>E-commerce</span><span class="dot">✦</span><span>Sites vitrines</span><span class="dot">✦</span>
-</div>
-</div>
 <div class="wrap footer-content cine-reveal" id="footerReveal">
+<div class="footer-intro">
+<span class="eyebrow-big">Travaillons ensemble</span>
+<a class="footer-email" href="mailto:{{ settings.email }}">{{ settings.email }}</a>
+<div style="margin-top:24px;"><a class="link-cta on-dark" href="mailto:{{ settings.email }}">Contactez-nous<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a></div>
+</div>
+<span class="crosshair" style="top:0;right:12%;"></span>
+<span class="crosshair" style="bottom:40%;left:4%;"></span>
 <div class="footer-top">
 <div>
 <a href="/" aria-label="LeStudio" style="display:flex; align-items:center; color:inherit;">{% include "partials/logo.njk" %}</a>
@@ -157,9 +157,9 @@ Diagnostic offert
 </div>
 </div>
 {% if collections.villes.length %}<p class="footer-villes">Villes : {% for v in collections.villes %}<a href="/designer-ux-ui/{{ v.fileSlug }}/">{{ v.data.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+<div class="cine-giant" aria-hidden="true">LESTUDIO</div>
 <div class="footer-bottom">
-<span>© 2026 LeStudio · <a href="mailto:{{ settings.email }}" style="color:inherit;">{{ settings.email }}</a></span>
-<span class="cine-credit"><span class="cine-heart">❤</span> Conçu avec passion par LeStudio</span>
+<span>© 2026 LeStudio</span>
 <button class="cine-top" id="footerToTop" aria-label="Retour en haut" type="button">
 <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
 </button>

@@ -9,19 +9,15 @@ title: Blog
 <p class="lede">Design UX/UI, CRO et stratégie produit pour sites e-commerce et vitrines.</p>
 
 {% if collections.blog.length %}
-<div class="case-grid">
+<div class="case-list" style="margin-top:8px;">
 {% for post in collections.blog %}
-<a class="card" href="{{ post.url }}">
-<p style="display:flex;gap:8px;align-items:center;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--grey);margin-bottom:10px;">
-<span style="display:inline-block;background:var(--orange);color:#fff;font-weight:500;padding:3px 10px;border-radius:8px;">{{ post.data.category or "Stratégie" }}</span>
-<span>·</span>
-<span>{{ post.data.date | readableDate }}</span>
-<span>·</span>
-<span>{{ post.templateContent | readingTime }} min</span>
-</p>
-<h3>{{ post.data.title }}</h3>
-<p>{{ post.data.description }}</p>
-<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Lire l'article</p>
+<a class="case-row" href="{{ post.url }}">
+<span class="case-row-year">{{ post.data.date | readableDate }}</span>
+<div class="case-row-title">
+<h3 style="font-size:clamp(22px,2.8vw,34px);">{{ post.data.title }}</h3>
+<div class="case-row-meta"><span>{{ post.data.category or "Stratégie" }}</span><span>· {{ post.templateContent | readingTime }} min</span></div>
+</div>
+<span class="case-row-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span>
 </a>
 {% endfor %}
 </div>

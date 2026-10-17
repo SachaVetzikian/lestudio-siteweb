@@ -4,21 +4,21 @@ layout: layouts/base.njk
 {% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Offres", url:"/#offres"}, {name: title} ] %}
 {% include "partials/breadcrumb.njk" %}
 <h1 style="margin-top:16px;">{{ h1 or title }}</h1>
-<p class="lede">{{ accroche or description }}</p>
-<p style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;margin-bottom:8px;">{{ price }}</p>
-<p style="font-size:13px;color:var(--grey);margin-bottom:28px;">{{ cible }}</p>
-<a class="btn-primary" style="margin:0 0 64px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span>Prendre rendez-vous avec Sacha</span></a>
+<p class="lede" style="margin-bottom:8px;">{{ accroche or description }}</p>
+<p style="font-family:var(--sans);font-size:22px;font-weight:800;letter-spacing:-0.01em;margin-bottom:8px;">{{ price }}</p>
+<p style="font-size:13px;color:var(--grey-400);margin-bottom:32px;">{{ cible }}</p>
+<a class="link-cta" style="margin:0 0 64px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Prendre rendez-vous avec Sacha<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 {# ── Qualification ── #}
 {% if pour_qui %}
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:72px;" class="offre-qualif">
-<div class="card" style="margin-bottom:0;">
-<h3 style="margin-bottom:16px;">Cette offre est pour vous si...</h3>
-{% for p in pour_qui %}<p style="padding:8px 0;border-top:1px solid var(--line);">✓&nbsp; {{ p }}</p>{% endfor %}
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-bottom:72px;background:var(--line);border:1px solid var(--line);" class="offre-qualif">
+<div style="background:#fff;padding:36px;">
+<h3 style="margin-bottom:18px;">Cette offre est pour vous si…</h3>
+{% for p in pour_qui %}<p style="padding:12px 0;border-top:1px solid var(--line);display:flex;gap:10px;"><span style="color:var(--orange);font-weight:700;">+</span>{{ p }}</p>{% endfor %}
 </div>
-<div class="card" style="margin-bottom:0;background:var(--slate);color:var(--paper);border:none;">
-<h3 style="margin-bottom:16px;color:var(--paper);">Elle n'est pas pour vous si...</h3>
-{% for p in pas_pour_qui %}<p style="padding:8px 0;border-top:1px solid rgba(244,244,245,0.15);color:rgba(244,244,245,0.85);">✕&nbsp; {{ p }}</p>{% endfor %}
+<div style="background:var(--ink);color:#fff;padding:36px;">
+<h3 style="margin-bottom:18px;color:#fff;">Elle n'est pas pour vous si…</h3>
+{% for p in pas_pour_qui %}<p style="padding:12px 0;border-top:1px solid var(--line-dark);display:flex;gap:10px;color:rgba(255,255,255,.8);"><span style="color:rgba(255,255,255,.4);font-weight:700;">–</span>{{ p }}</p>{% endfor %}
 </div>
 </div>
 {% endif %}
@@ -28,26 +28,26 @@ layout: layouts/base.njk
 <h2>Le déroulé, sans surprise</h2>
 {% for step in roadmap %}
 <div style="display:grid;grid-template-columns:140px 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--line);" class="offre-step">
-<p style="font-family:'DM Sans',sans-serif;font-weight:600;color:var(--orange);">{{ step.periode }}</p>
+<p style="font-family:var(--sans);font-weight:700;color:var(--orange);">{{ step.periode }}</p>
 <div>
-<h3 style="font-family:'DM Sans',sans-serif;font-size:18px;margin-bottom:8px;">{{ step.titre }}</h3>
-{% for pt in step.points %}<p style="font-size:15px;line-height:1.7;color:var(--grey);">— {{ pt }}</p>{% endfor %}
+<h3 style="font-size:18px;margin-bottom:8px;">{{ step.titre }}</h3>
+{% for pt in step.points %}<p style="font-size:15px;line-height:1.7;color:var(--grey-600);">— {{ pt }}</p>{% endfor %}
 </div>
 </div>
 {% endfor %}
 {% endif %}
 
 {# ── Inclus + prix ── #}
-<div style="display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin:64px 0;" class="offre-inclus">
-<div class="card" style="margin-bottom:0;">
-<h3 style="margin-bottom:16px;">Ce qui est inclus</h3>
-{% for item in inclus %}<p style="padding:8px 0;border-top:1px solid var(--line);">✓&nbsp; {{ item }}</p>{% endfor %}
+<div style="display:grid;grid-template-columns:1.4fr 1fr;gap:1px;margin:64px 0;background:var(--line);border:1px solid var(--line);" class="offre-inclus">
+<div style="background:#fff;padding:36px;">
+<h3 style="margin-bottom:18px;">Ce qui est inclus</h3>
+{% for item in inclus %}<p style="padding:12px 0;border-top:1px solid var(--line);display:flex;gap:10px;"><span style="color:var(--orange);font-weight:700;">+</span>{{ item }}</p>{% endfor %}
 </div>
-<div class="card" style="margin-bottom:0;background:var(--slate);border:none;display:flex;flex-direction:column;justify-content:center;">
-<p style="font-size:13px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange);margin-bottom:8px;">Tarif</p>
-<p style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:600;color:#fff;margin-bottom:6px;">{{ price }}</p>
-<p style="font-size:14px;color:rgba(255,255,255,0.75);margin-bottom:20px;">Le montant exact dépend de votre périmètre, fixé ensemble après le premier appel.</p>
-<p style="font-size:13px;color:rgba(255,255,255,0.7);">Outils : {{ outils | join(" · ") }}</p>
+<div style="background:var(--ink);padding:36px;display:flex;flex-direction:column;justify-content:center;">
+<p style="font-size:12.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--orange);margin-bottom:10px;">Tarif</p>
+<p style="font-family:var(--sans);font-size:32px;font-weight:800;letter-spacing:-0.01em;color:#fff;margin-bottom:10px;">{{ price }}</p>
+<p style="font-size:14px;line-height:1.6;color:rgba(255,255,255,0.65);margin-bottom:24px;">Le montant exact dépend de votre périmètre, fixé ensemble après le premier appel.</p>
+<p style="font-size:13px;color:rgba(255,255,255,0.5);">Outils : {{ outils | join(" · ") }}</p>
 </div>
 </div>
 
@@ -57,11 +57,11 @@ layout: layouts/base.njk
 {# ── FAQ dédiée ── #}
 {% if faq %}
 <h2>Vos questions avant de vous décider</h2>
-<div style="margin-bottom:64px;">
+<div style="margin-bottom:64px;border-top:1px solid var(--line);">
 {% for f in faq %}
-<details style="border-top:1px solid var(--line);padding:18px 0;">
-<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">{{ f.q }}</summary>
-<p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">{{ f.r }}</p>
+<details style="border-bottom:1px solid var(--line);padding:20px 0;">
+<summary style="font-family:var(--sans);font-weight:700;font-size:17px;cursor:pointer;">{{ f.q }}</summary>
+<p style="margin-top:14px;line-height:1.7;color:var(--grey-600);max-width:680px;">{{ f.r }}</p>
 </details>
 {% endfor %}
 </div>
@@ -69,14 +69,21 @@ layout: layouts/base.njk
 
 {# ── Cas clients ── #}
 <h2>Ils sont passés par là</h2>
-<div class="case-grid">
+<div class="case-list" style="margin-top:8px;">
 {% set shown = 0 %}
 {% for r in collections.realisations %}
 {% if r.data.featured and shown < 3 %}
 {% set shown = shown + 1 %}
-<a class="card" href="/realisations/{{ r.fileSlug }}/">
-<h3>{{ r.data.client }}</h3><p>{{ r.data.description }}</p>
-<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Voir le projet</p>
+<a class="case-row" href="/realisations/{{ r.fileSlug }}/">
+<span class="case-row-year">{{ r.data.year }}</span>
+<div class="case-row-title">
+<h3>{{ r.data.client }}</h3>
+<div class="case-row-meta"><span>{{ r.data.description }}</span></div>
+</div>
+{% if r.data.cover and (r.data.cover | assetExists) %}
+<div class="case-row-thumb"><img src="{{ r.data.cover }}" alt="{{ r.data.client }}" loading="lazy"/></div>
+{% endif %}
+<span class="case-row-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span>
 </a>
 {% endif %}
 {% endfor %}

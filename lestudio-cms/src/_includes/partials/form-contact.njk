@@ -18,7 +18,7 @@
 <label>Prénom *<input type="text" name="prenom" required/></label>
 <label>Nom *<input type="text" name="nom" required/></label>
 <label>E-mail *<input type="email" name="email" required/></label>
-<div class="ls-form-nav"><button type="button" class="ls-next btn-form"><span>Suivant →</span></button></div>
+<div class="ls-form-nav"><button type="button" class="ls-next btn-form">Suivant<span class="arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></button></div>
 </fieldset>
 
 <fieldset class="ls-step" data-step="2">
@@ -31,30 +31,30 @@
 <option>Site vitrine</option>
 <option>Landing page</option>
 </select></label>
-<div class="ls-form-nav"><button type="button" class="ls-prev btn-form ghost">← Retour</button><button type="button" class="ls-next btn-form"><span>Suivant →</span></button></div>
+<div class="ls-form-nav"><button type="button" class="ls-prev btn-form ghost">Retour</button><button type="button" class="ls-next btn-form">Suivant<span class="arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></button></div>
 </fieldset>
 
 <fieldset class="ls-step" data-step="3">
 <label>Votre besoin en quelques mots *<textarea name="message" rows="4" required placeholder="Ce qui vous amène, vos objectifs, votre échéance…"></textarea></label>
-<div class="ls-form-nav"><button type="button" class="ls-prev btn-form ghost">← Retour</button><button type="submit" class="btn-form submit"><span>Envoyer ma demande</span></button></div>
+<div class="ls-form-nav"><button type="button" class="ls-prev btn-form ghost">Retour</button><button type="submit" class="btn-form submit">Envoyer ma demande<span class="arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></button></div>
 </fieldset>
 </form>
 </section>
 
 <style>
-.ls-form-progress{display:flex;align-items:center;gap:8px;margin-bottom:28px;}
-.ls-dot{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;color:var(--grey);background:#fff;transition:all .2s;}
-.ls-dot.active{background:var(--orange);border-color:var(--orange);color:#fff;}
-.ls-dot.done{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+.ls-form-progress{display:flex;align-items:center;gap:8px;margin-bottom:32px;}
+.ls-dot{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:13px;color:var(--grey-400);background:#fff;transition:all .2s;}
+.ls-dot.active{background:var(--ink);border-color:var(--ink);color:#fff;}
+.ls-dot.done{background:var(--orange);border-color:var(--orange);color:#fff;}
 .ls-bar{flex:1;height:1px;background:var(--line);}
 .ls-step{display:none;border:none;padding:0;margin:0;}
 .ls-step.active{display:block;}
-.ls-form label{display:block;font-size:13px;font-weight:500;color:var(--grey);margin-bottom:16px;}
-.ls-form input,.ls-form select,.ls-form textarea{display:block;width:100%;margin-top:6px;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);box-sizing:border-box;}
+.ls-form label{display:block;font-size:13px;font-weight:600;color:var(--grey-400);text-transform:uppercase;letter-spacing:.04em;margin-bottom:22px;}
+.ls-form input,.ls-form select,.ls-form textarea{display:block;width:100%;margin-top:8px;padding:10px 0;border:none;border-bottom:1px solid var(--line);border-radius:0;background:transparent;font-family:var(--sans);font-size:16px;color:var(--ink);box-sizing:border-box;}
 .ls-form input:focus,.ls-form select:focus,.ls-form textarea:focus{outline:none;border-color:var(--orange);}
-.ls-form-nav{display:flex;gap:12px;margin-top:8px;}
-.btn-form{font-family:'DM Sans',sans-serif;font-weight:400;font-size:15px;padding:12px 24px;border-radius:14px;border:none;cursor:pointer;background:var(--ink);color:#fff;}
-.btn-form.ghost{background:transparent;border:1px solid var(--line);color:var(--grey);}
+.ls-form-nav{display:flex;gap:28px;align-items:center;margin-top:8px;}
+.btn-form{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:15px;padding:0 0 6px;border:none;border-bottom:1px solid var(--ink);cursor:pointer;background:none;color:var(--ink);}
+.btn-form.ghost{border-color:var(--line);color:var(--grey-400);}
 </style>
 
 <script>

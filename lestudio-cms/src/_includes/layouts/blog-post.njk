@@ -8,8 +8,8 @@ layout: layouts/base.njk
 {% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Blog", url:"/blog/"}, {name: title} ] %}
 {% include "partials/breadcrumb.njk" %}
 
-<p style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--grey);margin-top:16px;">
-<span style="display:inline-block;background:var(--orange);color:#fff;font-weight:500;padding:4px 12px;border-radius:8px;">{{ category or "Stratégie" }}</span>
+<p style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--grey-400);margin-top:16px;text-transform:uppercase;letter-spacing:.04em;">
+<span style="color:var(--orange);font-weight:700;">{{ category or "Stratégie" }}</span>
 <span>·</span>
 <span>{{ date | readableDate }}</span>
 <span>·</span>
@@ -19,7 +19,7 @@ layout: layouts/base.njk
 <h1 style="margin-top:12px;">{{ title }}</h1>
 <p class="lede">{{ description }}</p>
 
-{% set shareBtn = "display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink);background:#fff;" %}
+{% set shareBtn = "display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:4px;padding:12px 16px;font-size:14px;font-weight:600;color:var(--ink);background:#fff;transition:border-color .2s ease;" %}
 <div class="card">
 <h3 style="margin-bottom:16px;">Résumer cet article avec :</h3>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
@@ -42,16 +42,16 @@ layout: layouts/base.njk
 <div class="quiz-question" style="{% if not loop.first %}display:none;{% endif %}">
 <p style="font-weight:500;margin-bottom:14px;">{{ q.q }}</p>
 {% for opt in q.options %}
-<button type="button" class="quiz-option" data-value="{{ opt.value }}" style="display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px;background:#fff;cursor:pointer;font-size:14.5px;color:var(--ink);">{{ opt.label }}</button>
+<button type="button" class="quiz-option" data-value="{{ opt.value }}" style="display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:4px;padding:14px 16px;margin-bottom:10px;background:#fff;cursor:pointer;font-size:14.5px;color:var(--ink);transition:border-color .2s ease;">{{ opt.label }}</button>
 {% endfor %}
 </div>
 {% endfor %}
 <div id="quiz-results" style="display:none;">
 {% for r in quiz.results %}
 <div class="quiz-result" data-value="{{ r.value }}" style="display:none;">
-<p style="font-weight:600;font-size:18px;margin-bottom:8px;color:var(--ink);">{{ r.title }}</p>
-<p style="color:var(--grey);margin-bottom:16px;">{{ r.text }}</p>
-{% if r.cta_url %}<a class="btn-primary" style="margin:0;" href="{{ r.cta_url }}"><span>{{ r.cta_label or "En savoir plus" }}</span></a>{% endif %}
+<p style="font-weight:700;font-size:18px;margin-bottom:8px;color:var(--ink);">{{ r.title }}</p>
+<p style="color:var(--grey-600);margin-bottom:16px;">{{ r.text }}</p>
+{% if r.cta_url %}<a class="link-cta" style="margin:0;" href="{{ r.cta_url }}">{{ r.cta_label or "En savoir plus" }}<span class="arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>{% endif %}
 </div>
 {% endfor %}
 </div>
@@ -98,42 +98,42 @@ layout: layouts/base.njk
 {% endif %}
 
 {% if cover %}
-<img src="{{ cover }}" alt="{{ title }}" width="1600" height="1000" fetchpriority="high" style="width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;border:1px solid var(--line);margin:0 0 40px;"/>
+<img src="{{ cover }}" alt="{{ title }}" width="1600" height="1000" fetchpriority="high" style="width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;margin:0 0 40px;box-shadow:var(--glow-shadow);"/>
 {% endif %}
 
 {% if reponse_courte %}
-<div class="card" style="background:#FFF7E6;border:1px solid #F5DFA6;">
-<h3 style="margin-bottom:12px;">💡 La réponse courte</h3>
-<p style="color:var(--ink);">{{ reponse_courte }}</p>
+<div style="border-left:2px solid var(--orange);padding:4px 0 4px 24px;margin-bottom:40px;">
+<span class="eyebrow" style="margin-bottom:8px;">La réponse courte</span>
+<p style="color:var(--ink);font-size:17px;line-height:1.6;">{{ reponse_courte }}</p>
 </div>
 {% endif %}
 
 {% if key_takeaways %}
-<div class="card" style="background:var(--orange-light);border:none;">
-<h3 style="margin-bottom:12px;">✓ L'essentiel</h3>
-{% for k in key_takeaways %}<p style="padding:6px 0;">✓&nbsp; {{ k }}</p>{% endfor %}
+<div style="background:var(--ink);border-radius:6px;padding:32px 36px;margin-bottom:40px;">
+<span class="eyebrow on-dark" style="margin-bottom:14px;">L'essentiel</span>
+{% for k in key_takeaways %}<p style="padding:10px 0;border-top:1px solid var(--line-dark);color:rgba(255,255,255,.85);display:flex;gap:10px;"><span style="color:var(--orange);font-weight:700;">+</span>{{ k }}</p>{% endfor %}
 </div>
 {% endif %}
 
 {% if pour_qui or pas_pour_qui %}
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;" class="offre-qualif">
-<div class="card" style="margin-bottom:0;">
-<h3 style="margin-bottom:16px;">🏆 Fait pour vous si...</h3>
-{% for p in pour_qui %}<p style="padding:8px 0;border-top:1px solid var(--line);">✓&nbsp; {{ p }}</p>{% endfor %}
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-bottom:40px;background:var(--line);border:1px solid var(--line);" class="offre-qualif">
+<div style="background:#fff;padding:28px;">
+<h3 style="margin-bottom:16px;">Fait pour vous si…</h3>
+{% for p in pour_qui %}<p style="padding:10px 0;border-top:1px solid var(--line);display:flex;gap:10px;"><span style="color:var(--orange);font-weight:700;">+</span>{{ p }}</p>{% endfor %}
 </div>
-<div class="card" style="margin-bottom:0;background:var(--slate);color:var(--paper);border:none;">
-<h3 style="margin-bottom:16px;color:var(--paper);">Pas pour vous si...</h3>
-{% for p in pas_pour_qui %}<p style="padding:8px 0;border-top:1px solid rgba(244,244,245,0.15);color:rgba(244,244,245,0.85);">✕&nbsp; {{ p }}</p>{% endfor %}
+<div style="background:var(--ink);color:#fff;padding:28px;">
+<h3 style="margin-bottom:16px;color:#fff;">Pas pour vous si…</h3>
+{% for p in pas_pour_qui %}<p style="padding:10px 0;border-top:1px solid var(--line-dark);color:rgba(255,255,255,.8);display:flex;gap:10px;"><span style="color:rgba(255,255,255,.4);font-weight:700;">–</span>{{ p }}</p>{% endfor %}
 </div>
 </div>
 {% endif %}
 
 {% if toc.length > 1 %}
-<nav aria-label="Sommaire" class="card" style="padding:24px 28px;">
-<h3 style="margin-bottom:12px;">Sommaire</h3>
+<nav aria-label="Sommaire" style="border:1px solid var(--line);border-radius:6px;padding:24px 28px;margin-bottom:40px;">
+<span class="eyebrow" style="margin-bottom:10px;">Sommaire</span>
 <ol style="list-style:none;">
 {% for item in toc %}
-<li style="{% if item.level == 3 %}margin-left:18px;{% endif %}padding:5px 0;"><a href="#{{ item.id }}" style="color:var(--grey);font-size:14.5px;">{{ item.text }}</a></li>
+<li style="{% if item.level == 3 %}margin-left:18px;{% endif %}padding:5px 0;"><a href="#{{ item.id }}" style="color:var(--grey-600);font-size:14.5px;">{{ item.text }}</a></li>
 {% endfor %}
 </ol>
 </nav>
@@ -144,36 +144,36 @@ layout: layouts/base.njk
 </div>
 
 {% if bon_a_savoir %}
-<div class="card" style="background:#fff;border:1px solid var(--line);">
-<h3 style="margin-bottom:12px;">ℹ️ Bon à savoir</h3>
-<p style="color:var(--grey);">{{ bon_a_savoir }}</p>
+<div style="border-left:2px solid var(--line);padding:4px 0 4px 24px;margin-bottom:40px;">
+<span class="eyebrow" style="margin-bottom:8px;">Bon à savoir</span>
+<p style="color:var(--grey-600);line-height:1.7;">{{ bon_a_savoir }}</p>
 </div>
 {% endif %}
 
 {% if faq %}
 <h2>Questions fréquentes</h2>
-<div style="margin-bottom:48px;">
+<div style="margin-bottom:48px;border-top:1px solid var(--line);">
 {% for f in faq %}
-<details style="border-top:1px solid var(--line);padding:18px 0;">
-<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">{{ f.q }}</summary>
-<p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">{{ f.r }}</p>
+<details style="border-bottom:1px solid var(--line);padding:18px 0;">
+<summary style="font-family:var(--sans);font-weight:700;font-size:17px;cursor:pointer;">{{ f.q }}</summary>
+<p style="margin-top:12px;line-height:1.7;color:var(--grey-600);max-width:680px;">{{ f.r }}</p>
 </details>
 {% endfor %}
 </div>
 {% endif %}
 
 {% if sources %}
-<div class="card" style="background:#EAF2FF;border:1px solid #CFE0FF;">
-<h3 style="margin-bottom:12px;">📚 Sources</h3>
-{% for s in sources %}<p style="padding:4px 0;">• <a href="{{ s.url }}" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:underline;">{{ s.label }}</a></p>{% endfor %}
+<div style="border:1px solid var(--line);border-radius:6px;padding:28px;margin-bottom:40px;">
+<span class="eyebrow" style="margin-bottom:10px;">Sources</span>
+{% for s in sources %}<p style="padding:5px 0;"><a href="{{ s.url }}" target="_blank" rel="noopener" style="color:var(--ink);border-bottom:1px solid var(--line);">{{ s.label }}</a></p>{% endfor %}
 </div>
 {% endif %}
 
-<div class="card" style="display:flex;gap:16px;align-items:center;margin:48px 0;">
+<div style="display:flex;gap:16px;align-items:center;margin:48px 0;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
 <img src="/sacha-avatar.webp" alt="Sacha Vetzikian" width="56" height="56" loading="lazy" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;"/>
 <div>
-<p style="font-weight:500;color:var(--ink);">Sacha Vetzikian</p>
-<p style="font-size:13px;color:var(--grey);">Fondateur de LeStudio, designer UX/UI &amp; CRO depuis 2015 · <a href="https://www.linkedin.com/in/sacha-vetzikian/" target="_blank" rel="noopener" style="color:var(--orange);">LinkedIn</a></p>
+<p style="font-weight:700;color:var(--ink);">Sacha Vetzikian</p>
+<p style="font-size:13px;color:var(--grey-400);">Fondateur de LeStudio, designer UX/UI &amp; CRO depuis 2015 · <a href="https://www.linkedin.com/in/sacha-vetzikian/" target="_blank" rel="noopener" style="color:var(--orange);">LinkedIn</a></p>
 </div>
 </div>
 
@@ -187,20 +187,21 @@ layout: layouts/base.njk
 {% if collections.blog.length > 1 %}
 {% set shown = 0 %}
 <h2>À lire aussi</h2>
-<div class="case-grid">
+<div class="case-list" style="margin-top:8px;">
 {% for p in collections.blog %}
 {% if p.url != page.url and shown < 3 %}
 {% set shown = shown + 1 %}
-<a class="card" href="{{ p.url }}">
-<h3>{{ p.data.title }}</h3><p>{{ p.data.description }}</p>
-<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Lire l'article</p>
+<a class="case-row" href="{{ p.url }}">
+<span class="case-row-year">{{ p.data.date | readableDate }}</span>
+<div class="case-row-title"><h3 style="font-size:clamp(20px,2.4vw,28px);">{{ p.data.title }}</h3><div class="case-row-meta"><span>{{ p.data.description }}</span></div></div>
+<span class="case-row-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span>
 </a>
 {% endif %}
 {% endfor %}
 </div>
 {% endif %}
 
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span>Discuter d'un projet</span></a>
+<a class="link-cta" style="margin:0 0 80px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Discuter d'un projet<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 <script type="application/ld+json">
 {
@@ -234,16 +235,16 @@ layout: layouts/base.njk
 </script>
 
 <style>
-.article-body h2{font-size:clamp(22px,3vw,28px);margin:48px 0 16px;scroll-margin-top:100px;}
-.article-body h3{font-size:19px;margin:32px 0 12px;scroll-margin-top:100px;}
-.article-body h4{font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;margin:28px 0 10px;scroll-margin-top:100px;}
-.article-body p{line-height:1.7;color:var(--grey);margin-bottom:16px;max-width:680px;}
-.article-body img{width:100%;border-radius:14px;margin:24px 0;}
-.article-body ul,.article-body ol{margin:0 0 16px 20px;color:var(--grey);line-height:1.7;}
+.article-body h2{font-family:var(--sans);font-weight:800;letter-spacing:-0.01em;font-size:clamp(22px,3vw,28px);margin:48px 0 16px;scroll-margin-top:100px;}
+.article-body h3{font-family:var(--sans);font-weight:700;font-size:19px;margin:32px 0 12px;scroll-margin-top:100px;}
+.article-body h4{font-family:var(--sans);font-weight:700;font-size:17px;margin:28px 0 10px;scroll-margin-top:100px;}
+.article-body p{line-height:1.7;color:var(--grey-600);margin-bottom:16px;max-width:680px;}
+.article-body img{width:100%;border-radius:6px;margin:24px 0;box-shadow:var(--glow-shadow);}
+.article-body ul,.article-body ol{margin:0 0 16px 20px;color:var(--grey-600);line-height:1.7;}
 .article-body hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 .article-body table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-size:14.5px;max-width:680px;}
 .article-body th,.article-body td{padding:10px 14px;border:1px solid var(--line);text-align:left;}
-.article-body th{background:#fff;font-weight:600;color:var(--ink);}
-.article-body td{color:var(--grey);}
+.article-body th{background:#fff;font-weight:700;color:var(--ink);}
+.article-body td{color:var(--grey-600);}
 @media (max-width:640px){ .offre-qualif{grid-template-columns:1fr !important;} .article-body table{display:block;overflow-x:auto;} }
 </style>

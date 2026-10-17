@@ -5,47 +5,58 @@ layout: layouts/base.njk
 {% include "partials/breadcrumb.njk" %}
 <h1 style="margin-top:16px;">{{ h1 }}</h1>
 <p class="lede">{{ intro }}</p>
-<a class="btn-primary" style="margin:0 0 48px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span>Discuter de votre projet</span></a>
+<a class="link-cta" style="margin:0 0 56px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Discuter de votre projet<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 <h2>Les enjeux du secteur</h2>
 {% for e in enjeux %}
-<div class="prose-block">
-<div class="prose-highlight"><p>{{ e.titre }}</p></div>
-<p>{{ e.texte }}</p>
+<div style="display:grid;grid-template-columns:48px 1fr;gap:20px;padding:28px 0;border-top:1px solid var(--line);">
+<div style="font-family:var(--sans);font-weight:800;color:var(--orange);">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</div>
+<div>
+<p style="font-family:var(--sans);font-weight:700;font-size:19px;letter-spacing:-0.01em;margin-bottom:8px;">{{ e.titre }}</p>
+<p style="color:var(--grey-600);line-height:1.7;max-width:640px;">{{ e.texte }}</p>
+</div>
 </div>
 {% endfor %}
 
 <h2>Notre méthode</h2>
-<div class="prose-block">
-<div class="prose-highlight"><p>1. Audit UX/CRO</p></div>
-<p>On commence par comprendre ce qui bloque vraiment la conversion : analyse du site actuel, benchmark des concurrents directs, et croisement avec la donnée existante quand elle est disponible. L'objectif n'est pas de tout refaire, mais d'identifier les points de friction qui coûtent le plus cher.</p>
+<div style="border-top:1px solid var(--line);">
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);">
+<div style="font-family:var(--sans);font-weight:800;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">01</div>
+<div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Audit UX/CRO</h3>
+<p style="font-size:15px;line-height:1.7;color:var(--grey-600);max-width:640px;">On commence par comprendre ce qui bloque vraiment la conversion : analyse du site actuel, benchmark des concurrents directs, et croisement avec la donnée existante quand elle est disponible. L'objectif n'est pas de tout refaire, mais d'identifier les points de friction qui coûtent le plus cher.</p></div>
 </div>
-<div class="prose-block">
-<div class="prose-highlight"><p>2. Architecture et wireframes</p></div>
-<p>Avant de dessiner le moindre pixel, on pose la structure : parcours utilisateur, hiérarchie de l'information, arborescence des pages. Cette étape évite de devoir tout reprendre une fois le design engagé.</p>
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);">
+<div style="font-family:var(--sans);font-weight:800;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">02</div>
+<div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Architecture et wireframes</h3>
+<p style="font-size:15px;line-height:1.7;color:var(--grey-600);max-width:640px;">Avant de dessiner le moindre pixel, on pose la structure : parcours utilisateur, hiérarchie de l'information, arborescence des pages. Cette étape évite de devoir tout reprendre une fois le design engagé.</p></div>
 </div>
-<div class="prose-block">
-<div class="prose-highlight"><p>3. UI design</p></div>
-<p>Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire. Chaque choix visuel, typographie, couleur, composant, sert un objectif de conversion précis, pas seulement l'esthétique.</p>
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);">
+<div style="font-family:var(--sans);font-weight:800;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">03</div>
+<div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">UI design</h3>
+<p style="font-size:15px;line-height:1.7;color:var(--grey-600);max-width:640px;">Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire. Chaque choix visuel, typographie, couleur, composant, sert un objectif de conversion précis, pas seulement l'esthétique.</p></div>
 </div>
-<div class="prose-block">
-<div class="prose-highlight"><p>4. Handoff design</p></div>
-<p>Les maquettes sont livrées prêtes à intégrer, avec toutes les specs, variations et états nécessaires. Votre équipe ou votre prestataire technique peut développer sans allers-retours superflus.</p>
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);">
+<div style="font-family:var(--sans);font-weight:800;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">04</div>
+<div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Handoff design</h3>
+<p style="font-size:15px;line-height:1.7;color:var(--grey-600);max-width:640px;">Les maquettes sont livrées prêtes à intégrer, avec toutes les specs, variations et états nécessaires. Votre équipe ou votre prestataire technique peut développer sans allers-retours superflus.</p></div>
+</div>
 </div>
 
 {% set casSecteur = collections.realisations | inSecteur(page.fileSlug) %}
 {% if casSecteur.length %}
 <h2>Nos réalisations dans ce secteur</h2>
-<div class="case-grid">
+<div class="case-list" style="margin-top:8px;">
 {% for r in casSecteur %}
-<a class="case-card" href="/realisations/{{ r.fileSlug }}/">
-{% if r.data.cover and (r.data.cover | assetExists) %}
-<div class="case-preview"><img src="{{ r.data.cover }}" alt="{{ r.data.client }}" loading="lazy"/></div>
-{% endif %}
-<div class="case-tags">{% for tag in r.data.tags %}<span class="case-tag">{{ tag }}</span>{% endfor %}<span class="case-tag">{% if r.data.type == "ecommerce" %}Refonte E-commerce{% else %}Refonte Site vitrine{% endif %}</span><span class="case-tag">{{ r.data.year }}</span></div>
+<a class="case-row" href="/realisations/{{ r.fileSlug }}/">
+<span class="case-row-year">{{ r.data.year }}</span>
+<div class="case-row-title">
 <h3>{{ r.data.client }}</h3>
-<p>{{ r.data.description }}</p>
-<span class="case-link"><span class="case-link-icon">→</span> Voir le projet</span>
+<div class="case-row-meta"><span>{{ r.data.description }}</span></div>
+</div>
+{% if r.data.cover and (r.data.cover | assetExists) %}
+<div class="case-row-thumb"><img src="{{ r.data.cover }}" alt="{{ r.data.client }}" loading="lazy"/></div>
+{% endif %}
+<span class="case-row-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span>
 </a>
 {% endfor %}
 </div>
@@ -53,7 +64,7 @@ layout: layouts/base.njk
 
 {{ content | safe }}
 
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span>Prendre rendez-vous avec Sacha</span></a>
+<a class="link-cta" style="margin:0 0 80px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Prendre rendez-vous avec Sacha<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 <script type="application/ld+json">
 {

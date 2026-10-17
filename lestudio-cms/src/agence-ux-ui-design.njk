@@ -10,7 +10,7 @@ title: "Agence UX/UI Design"
 <h1 style="margin-top:16px;">Agence UX/UI Design : des interfaces pensées pour <em>convertir</em></h1>
 <p class="lede">Le Studio est une agence de design UX/UI spécialisée e-commerce et sites vitrines. On ne se contente pas de faire joli : chaque décision de design se justifie par une donnée, un comportement observé ou un objectif de conversion.</p>
 
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min" style="margin-bottom:64px;"><span>Prendre rendez-vous avec Sacha</span></a>
+<a class="link-cta" style="margin-bottom:64px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Prendre rendez-vous avec Sacha<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 <h2>Ce qui distingue une agence UX/UI design d'une agence de com'</h2>
 <p style="font-size:16px;line-height:1.7;color:var(--grey);max-width:680px;margin-bottom:24px;">Une agence de communication pense d'abord identité de marque et esthétique. Une agence UX/UI design part du parcours utilisateur : comment un visiteur comprend votre offre, où il hésite, ce qui le fait avancer ou décrocher. Le résultat visuel compte, mais il découle de l'analyse, pas l'inverse.</p>
@@ -35,37 +35,39 @@ title: "Agence UX/UI Design"
 <p style="font-size:16px;line-height:1.7;color:var(--grey);max-width:680px;margin-bottom:64px;">Sacha Vetzikian, fondateur, mène personnellement chaque projet : 5 ans en startup e-commerce, 3 ans en cabinet de conseil aux côtés de marques comme Yves Rocher, Speedy et Société Générale. Une question se tranche directement, pendant l'appel, sans arbitrage interne à attendre.</p>
 
 <h2>Nos réalisations</h2>
-<div class="case-grid">
+<div class="case-list" style="margin-top:8px;">
 {% set shown = 0 %}
 {% for r in collections.realisations %}
 {% if r.data.featured and shown < 3 %}
 {% set shown = shown + 1 %}
-<a class="card" href="/realisations/{{ r.fileSlug }}/">
-<h3>{{ r.data.client }}</h3><p>{{ r.data.description }}</p>
-<p style="margin-top:14px;color:var(--orange);font-weight:500;font-size:14px;">→ Voir le projet</p>
+<a class="case-row" href="/realisations/{{ r.fileSlug }}/">
+<span class="case-row-year">{{ r.data.year }}</span>
+<div class="case-row-title"><h3>{{ r.data.client }}</h3><div class="case-row-meta"><span>{{ r.data.description }}</span></div></div>
+{% if r.data.cover and (r.data.cover | assetExists) %}<div class="case-row-thumb"><img src="{{ r.data.cover }}" alt="{{ r.data.client }}" loading="lazy"/></div>{% endif %}
+<span class="case-row-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span>
 </a>
 {% endif %}
 {% endfor %}
 </div>
-<p style="margin:24px 0 64px;"><a href="/cas-clients/" style="color:var(--orange);font-weight:500;">→ Voir tous les cas clients</a></p>
+<a class="link-cta" style="margin:24px 0 64px;" href="/cas-clients/">Voir tous les cas clients<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 <h2 id="faq">Vos questions avant de vous décider</h2>
 <div style="margin-bottom:64px;">
 <details style="border-top:1px solid var(--line);padding:18px 0;">
-<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">Quelle est la différence entre UX et UI ?</summary>
+<summary style="font-family:var(--sans);font-weight:600;font-size:17px;cursor:pointer;">Quelle est la différence entre UX et UI ?</summary>
 <p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">L'UX (expérience utilisateur) concerne le parcours, la logique et la facilité d'usage. L'UI (interface utilisateur) concerne l'habillage visuel : couleurs, typographie, composants. Une bonne interface a besoin des deux, dans cet ordre.</p>
 </details>
 <details style="border-top:1px solid var(--line);padding:18px 0;">
-<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">Travaillez-vous avec des sites vitrines ou uniquement de l'e-commerce ?</summary>
+<summary style="font-family:var(--sans);font-weight:600;font-size:17px;cursor:pointer;">Travaillez-vous avec des sites vitrines ou uniquement de l'e-commerce ?</summary>
 <p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">Les deux. La méthode change selon l'objectif (achat pour l'e-commerce, prise de contact pour une vitrine), mais l'approche - analyse avant design - reste la même.</p>
 </details>
 <details style="border-top:1px solid var(--line);padding:18px 0;">
-<summary style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;cursor:pointer;">Combien coûte un projet UX/UI design ?</summary>
+<summary style="font-family:var(--sans);font-weight:600;font-size:17px;cursor:pointer;">Combien coûte un projet UX/UI design ?</summary>
 <p style="margin-top:12px;line-height:1.7;color:var(--grey);max-width:680px;">Ça dépend du format : un audit démarre à 1 500 €, une création ou refonte à 1 000 €, le design par abonnement à 900 €/mois. Le montant exact se cadre au premier appel, selon votre périmètre.</p>
 </details>
 </div>
 
-<a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><span>Prendre rendez-vous avec Sacha</span></a>
+<a class="link-cta" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Prendre rendez-vous avec Sacha<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 <script type="application/ld+json">
 {
