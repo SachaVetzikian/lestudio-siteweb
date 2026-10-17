@@ -7,5 +7,6 @@ year: 2026
 tags: [Immobilier · Vitrine, Viager]
 description: Refonte du site vitrine pour Néo Viager, expert du viager en France.
 video: /assets/cas-clients/neo-viager.mp4
+cover: /assets/uploads/cover-neo-viager.webp
 published: true
 ---
