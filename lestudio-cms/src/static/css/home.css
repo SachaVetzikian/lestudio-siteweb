@@ -25,8 +25,8 @@
 }
 
 h1{
-  font-family:var(--sans); font-weight:900; line-height:.98; letter-spacing:-0.03em;
-  font-size:clamp(44px, 8.4vw, 120px); max-width:1180px; margin:0 auto 24px; position:relative; color:#fff;
+  font-family:var(--sans); font-weight:900; line-height:1.04; letter-spacing:-0.02em;
+  font-size:clamp(30px, 4.2vw, 64px); max-width:880px; margin:0 auto 24px; position:relative; color:#fff;
   text-wrap:pretty;
 }
 h1 em{font-style:normal; font-weight:500; font-family:var(--sans); font-size:.72em; letter-spacing:-0.04em; color:var(--paper-60);}
@@ -217,7 +217,7 @@ section{padding:80px 0;}
 
 /* ── Final CTA ── */
 .final-cta{position:relative; overflow:hidden; background:linear-gradient(115deg, var(--ink) 0%, var(--ink) 40%, #262626 100%); color:#fff; text-align:center; padding:120px 0;}
-.final-cta h2{font-family:var(--sans); font-weight:900; font-size:clamp(36px,6.4vw,84px); line-height:.98; letter-spacing:-0.02em; color:#fff; margin:0 auto 20px; max-width:980px;}
+.final-cta h2{font-family:var(--sans); font-weight:900; font-size:clamp(26px,3.6vw,48px); line-height:1.08; letter-spacing:-0.015em; color:#fff; margin:0 auto 20px; max-width:760px;}
 .final-cta p{font-family:var(--sans); color:rgba(255,255,255,0.75); max-width:440px; margin:0 auto 36px;}
 .final-cta .link-cta{color:#fff; border-color:rgba(255,255,255,.4); justify-content:center;}
 
