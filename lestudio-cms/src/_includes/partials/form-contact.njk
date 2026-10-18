@@ -43,18 +43,18 @@
 
 <style>
 .ls-form-progress{display:flex;align-items:center;gap:8px;margin-bottom:32px;}
-.ls-dot{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:13px;color:var(--grey-400);background:#fff;transition:all .2s;}
+.ls-dot{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:13px;color:var(--ink-40);background:#fff;transition:all .2s;}
 .ls-dot.active{background:var(--ink);border-color:var(--ink);color:#fff;}
-.ls-dot.done{background:var(--orange);border-color:var(--orange);color:#fff;}
+.ls-dot.done{background:var(--ink-60);border-color:var(--ink-60);color:#fff;}
 .ls-bar{flex:1;height:1px;background:var(--line);}
 .ls-step{display:none;border:none;padding:0;margin:0;}
 .ls-step.active{display:block;}
-.ls-form label{display:block;font-size:13px;font-weight:600;color:var(--grey-400);text-transform:uppercase;letter-spacing:.04em;margin-bottom:22px;}
+.ls-form label{display:block;font-size:13px;font-weight:600;color:var(--ink-40);text-transform:uppercase;letter-spacing:.04em;margin-bottom:22px;}
 .ls-form input,.ls-form select,.ls-form textarea{display:block;width:100%;margin-top:8px;padding:10px 0;border:none;border-bottom:1px solid var(--line);border-radius:0;background:transparent;font-family:var(--sans);font-size:16px;color:var(--ink);box-sizing:border-box;}
-.ls-form input:focus,.ls-form select:focus,.ls-form textarea:focus{outline:none;border-color:var(--orange);}
+.ls-form input:focus,.ls-form select:focus,.ls-form textarea:focus{outline:none;border-color:var(--ink);}
 .ls-form-nav{display:flex;gap:28px;align-items:center;margin-top:8px;}
 .btn-form{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:15px;padding:0 0 6px;border:none;border-bottom:1px solid var(--ink);cursor:pointer;background:none;color:var(--ink);}
-.btn-form.ghost{border-color:var(--line);color:var(--grey-400);}
+.btn-form.ghost{border-color:var(--line);color:var(--ink-40);}
 </style>
 
 <script>

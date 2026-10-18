@@ -6,7 +6,7 @@ layout: layouts/base.njk
 <h1 style="margin-top:16px;">{{ h1 or title }}</h1>
 <p class="lede" style="margin-bottom:8px;">{{ accroche or description }}</p>
 <p style="font-family:var(--sans);font-size:22px;font-weight:900;letter-spacing:-0.01em;margin-bottom:8px;">{{ price }}</p>
-<p style="font-size:13px;color:var(--grey-400);margin-bottom:32px;">{{ cible }}</p>
+<p style="font-size:13px;color:var(--ink-40);margin-bottom:32px;">{{ cible }}</p>
 <a class="link-cta" style="margin:0 0 64px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Prendre rendez-vous avec Sacha<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
 
 {# ── Qualification ── #}
@@ -14,7 +14,7 @@ layout: layouts/base.njk
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-bottom:72px;background:var(--line);border:1px solid var(--line);" class="offre-qualif">
 <div style="background:#fff;padding:36px;">
 <h3 style="margin-bottom:18px;">Cette offre est pour vous si…</h3>
-{% for p in pour_qui %}<p style="padding:12px 0;border-top:1px solid var(--line);display:flex;gap:10px;"><span style="color:var(--orange);font-weight:700;">+</span>{{ p }}</p>{% endfor %}
+{% for p in pour_qui %}<p style="padding:12px 0;border-top:1px solid var(--line);display:flex;gap:10px;"><span style="color:var(--ink);font-weight:700;">+</span>{{ p }}</p>{% endfor %}
 </div>
 <div style="background:var(--ink);color:#fff;padding:36px;">
 <h3 style="margin-bottom:18px;color:#fff;">Elle n'est pas pour vous si…</h3>
@@ -28,10 +28,10 @@ layout: layouts/base.njk
 <h2>Le déroulé, sans surprise</h2>
 {% for step in roadmap %}
 <div style="display:grid;grid-template-columns:140px 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--line);" class="offre-step">
-<p style="font-family:var(--sans);font-weight:700;color:var(--orange);">{{ step.periode }}</p>
+<p style="font-family:var(--sans);font-weight:700;color:var(--ink);">{{ step.periode }}</p>
 <div>
 <h3 style="font-size:18px;margin-bottom:8px;">{{ step.titre }}</h3>
-{% for pt in step.points %}<p style="font-size:15px;line-height:1.7;color:var(--grey-600);">— {{ pt }}</p>{% endfor %}
+{% for pt in step.points %}<p style="font-size:15px;line-height:1.7;color:var(--ink-60);">— {{ pt }}</p>{% endfor %}
 </div>
 </div>
 {% endfor %}
@@ -41,10 +41,10 @@ layout: layouts/base.njk
 <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:1px;margin:64px 0;background:var(--line);border:1px solid var(--line);" class="offre-inclus">
 <div style="background:#fff;padding:36px;">
 <h3 style="margin-bottom:18px;">Ce qui est inclus</h3>
-{% for item in inclus %}<p style="padding:12px 0;border-top:1px solid var(--line);display:flex;gap:10px;"><span style="color:var(--orange);font-weight:700;">+</span>{{ item }}</p>{% endfor %}
+{% for item in inclus %}<p style="padding:12px 0;border-top:1px solid var(--line);display:flex;gap:10px;"><span style="color:var(--ink);font-weight:700;">+</span>{{ item }}</p>{% endfor %}
 </div>
 <div style="background:var(--ink);padding:36px;display:flex;flex-direction:column;justify-content:center;">
-<p style="font-size:12.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--orange);margin-bottom:10px;">Tarif</p>
+<p style="font-size:12.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--paper-60);margin-bottom:10px;">Tarif</p>
 <p style="font-family:var(--sans);font-size:32px;font-weight:900;letter-spacing:-0.01em;color:#fff;margin-bottom:10px;">{{ price }}</p>
 <p style="font-size:14px;line-height:1.6;color:rgba(255,255,255,0.65);margin-bottom:24px;">Le montant exact dépend de votre périmètre, fixé ensemble après le premier appel.</p>
 <p style="font-size:13px;color:rgba(255,255,255,0.5);">Outils : {{ outils | join(" · ") }}</p>
@@ -61,7 +61,7 @@ layout: layouts/base.njk
 {% for f in faq %}
 <details style="border-bottom:1px solid var(--line);padding:20px 0;">
 <summary style="font-family:var(--sans);font-weight:700;font-size:17px;cursor:pointer;">{{ f.q }}</summary>
-<p style="margin-top:14px;line-height:1.7;color:var(--grey-600);max-width:680px;">{{ f.r }}</p>
+<p style="margin-top:14px;line-height:1.7;color:var(--ink-60);max-width:680px;">{{ f.r }}</p>
 </details>
 {% endfor %}
 </div>

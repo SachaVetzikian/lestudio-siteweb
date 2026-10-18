@@ -10,10 +10,10 @@ layout: layouts/base.njk
 <h2>Les enjeux du secteur</h2>
 {% for e in enjeux %}
 <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;padding:28px 0;border-top:1px solid var(--line);">
-<div style="font-family:var(--sans);font-weight:900;color:var(--orange);">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</div>
+<div style="font-family:var(--sans);font-weight:900;color:var(--ink);">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</div>
 <div>
 <p style="font-family:var(--sans);font-weight:700;font-size:19px;letter-spacing:-0.01em;margin-bottom:8px;">{{ e.titre }}</p>
-<p style="color:var(--grey-600);line-height:1.7;max-width:640px;">{{ e.texte }}</p>
+<p style="color:var(--ink-60);line-height:1.7;max-width:640px;">{{ e.texte }}</p>
 </div>
 </div>
 {% endfor %}
@@ -21,24 +21,24 @@ layout: layouts/base.njk
 <h2>Notre méthode</h2>
 <div style="border-top:1px solid var(--line);">
 <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);">
-<div style="font-family:var(--sans);font-weight:900;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">01</div>
+<div style="font-family:var(--sans);font-weight:900;font-size:clamp(52px,8vw,108px);line-height:1;color:var(--line);">01</div>
 <div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Audit UX/CRO</h3>
-<p style="font-size:15px;line-height:1.7;color:var(--grey-600);max-width:640px;">On commence par comprendre ce qui bloque vraiment la conversion : analyse du site actuel, benchmark des concurrents directs, et croisement avec la donnée existante quand elle est disponible. L'objectif n'est pas de tout refaire, mais d'identifier les points de friction qui coûtent le plus cher.</p></div>
+<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:640px;">On commence par comprendre ce qui bloque vraiment la conversion : analyse du site actuel, benchmark des concurrents directs, et croisement avec la donnée existante quand elle est disponible. L'objectif n'est pas de tout refaire, mais d'identifier les points de friction qui coûtent le plus cher.</p></div>
 </div>
 <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);">
-<div style="font-family:var(--sans);font-weight:900;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">02</div>
+<div style="font-family:var(--sans);font-weight:900;font-size:clamp(52px,8vw,108px);line-height:1;color:var(--line);">02</div>
 <div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Architecture et wireframes</h3>
-<p style="font-size:15px;line-height:1.7;color:var(--grey-600);max-width:640px;">Avant de dessiner le moindre pixel, on pose la structure : parcours utilisateur, hiérarchie de l'information, arborescence des pages. Cette étape évite de devoir tout reprendre une fois le design engagé.</p></div>
+<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:640px;">Avant de dessiner le moindre pixel, on pose la structure : parcours utilisateur, hiérarchie de l'information, arborescence des pages. Cette étape évite de devoir tout reprendre une fois le design engagé.</p></div>
 </div>
 <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);">
-<div style="font-family:var(--sans);font-weight:900;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">03</div>
+<div style="font-family:var(--sans);font-weight:900;font-size:clamp(52px,8vw,108px);line-height:1;color:var(--line);">03</div>
 <div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">UI design</h3>
-<p style="font-size:15px;line-height:1.7;color:var(--grey-600);max-width:640px;">Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire. Chaque choix visuel, typographie, couleur, composant, sert un objectif de conversion précis, pas seulement l'esthétique.</p></div>
+<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:640px;">Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire. Chaque choix visuel, typographie, couleur, composant, sert un objectif de conversion précis, pas seulement l'esthétique.</p></div>
 </div>
 <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);">
-<div style="font-family:var(--sans);font-weight:900;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">04</div>
+<div style="font-family:var(--sans);font-weight:900;font-size:clamp(52px,8vw,108px);line-height:1;color:var(--line);">04</div>
 <div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Handoff design</h3>
-<p style="font-size:15px;line-height:1.7;color:var(--grey-600);max-width:640px;">Les maquettes sont livrées prêtes à intégrer, avec toutes les specs, variations et états nécessaires. Votre équipe ou votre prestataire technique peut développer sans allers-retours superflus.</p></div>
+<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:640px;">Les maquettes sont livrées prêtes à intégrer, avec toutes les specs, variations et états nécessaires. Votre équipe ou votre prestataire technique peut développer sans allers-retours superflus.</p></div>
 </div>
 </div>
 

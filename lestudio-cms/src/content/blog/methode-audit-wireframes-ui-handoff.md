@@ -22,13 +22,13 @@ Un projet de design qui traîne coûte plus cher qu'un projet mal ficelé au dé
 
 <div class="card" style="padding:28px;">
 <div style="display:flex;align-items:center;">
-<div style="display:flex;flex-direction:column;align-items:center;flex:1;"><div style="width:32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:8px;">1</div><p style="margin:0;font-size:13px;font-weight:500;color:var(--ink);text-align:center;">Audit UX/CRO</p></div>
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;"><div style="width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:8px;">1</div><p style="margin:0;font-size:13px;font-weight:500;color:var(--ink);text-align:center;">Audit UX/CRO</p></div>
 <div style="flex:0.6;height:2px;background:var(--line);margin-bottom:28px;"></div>
-<div style="display:flex;flex-direction:column;align-items:center;flex:1;"><div style="width:32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:8px;">2</div><p style="margin:0;font-size:13px;font-weight:500;color:var(--ink);text-align:center;">Architecture</p></div>
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;"><div style="width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:8px;">2</div><p style="margin:0;font-size:13px;font-weight:500;color:var(--ink);text-align:center;">Architecture</p></div>
 <div style="flex:0.6;height:2px;background:var(--line);margin-bottom:28px;"></div>
-<div style="display:flex;flex-direction:column;align-items:center;flex:1;"><div style="width:32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:8px;">3</div><p style="margin:0;font-size:13px;font-weight:500;color:var(--ink);text-align:center;">UI design</p></div>
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;"><div style="width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:8px;">3</div><p style="margin:0;font-size:13px;font-weight:500;color:var(--ink);text-align:center;">UI design</p></div>
 <div style="flex:0.6;height:2px;background:var(--line);margin-bottom:28px;"></div>
-<div style="display:flex;flex-direction:column;align-items:center;flex:1;"><div style="width:32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:8px;">4</div><p style="margin:0;font-size:13px;font-weight:500;color:var(--ink);text-align:center;">Handoff</p></div>
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;"><div style="width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:8px;">4</div><p style="margin:0;font-size:13px;font-weight:500;color:var(--ink);text-align:center;">Handoff</p></div>
 </div>
 </div>
 

@@ -8,8 +8,8 @@ layout: layouts/base.njk
 {% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Blog", url:"/blog/"}, {name: title} ] %}
 {% include "partials/breadcrumb.njk" %}
 
-<p style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--grey-400);margin-top:16px;text-transform:uppercase;letter-spacing:.04em;">
-<span style="color:var(--orange);font-weight:700;">{{ category or "Stratégie" }}</span>
+<p style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--ink-40);margin-top:16px;text-transform:uppercase;letter-spacing:.04em;">
+<span style="color:var(--ink);font-weight:700;">{{ category or "Stratégie" }}</span>
 <span>·</span>
 <span>{{ date | readableDate }}</span>
 <span>·</span>
@@ -32,11 +32,11 @@ layout: layouts/base.njk
 
 {% if quiz %}
 <div class="card" id="quiz-box" style="padding:32px 28px;">
-<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--orange);margin-bottom:10px;">Quiz interactif</p>
+<p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink);margin-bottom:10px;">Quiz interactif</p>
 <h3 style="margin-bottom:4px;">{{ quiz.title }}</h3>
 <p id="quiz-progress-label" style="font-size:13px;color:var(--grey);margin-bottom:16px;">Question 1/{{ quiz.questions.length }}</p>
 <div style="width:100%;height:4px;background:var(--line);border-radius:4px;margin-bottom:24px;overflow:hidden;">
-<div id="quiz-progress-bar" style="width:{{ (100/quiz.questions.length) }}%;height:100%;background:var(--orange);transition:width .3s ease;"></div>
+<div id="quiz-progress-bar" style="width:{{ (100/quiz.questions.length) }}%;height:100%;background:var(--ink);transition:width .3s ease;"></div>
 </div>
 {% for q in quiz.questions %}
 <div class="quiz-question" style="{% if not loop.first %}display:none;{% endif %}">
@@ -50,7 +50,7 @@ layout: layouts/base.njk
 {% for r in quiz.results %}
 <div class="quiz-result" data-value="{{ r.value }}" style="display:none;">
 <p style="font-weight:700;font-size:18px;margin-bottom:8px;color:var(--ink);">{{ r.title }}</p>
-<p style="color:var(--grey-600);margin-bottom:16px;">{{ r.text }}</p>
+<p style="color:var(--ink-60);margin-bottom:16px;">{{ r.text }}</p>
 {% if r.cta_url %}<a class="link-cta" style="margin:0;" href="{{ r.cta_url }}">{{ r.cta_label or "En savoir plus" }}<span class="arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>{% endif %}
 </div>
 {% endfor %}
@@ -102,7 +102,7 @@ layout: layouts/base.njk
 {% endif %}
 
 {% if reponse_courte %}
-<div style="border-left:2px solid var(--orange);padding:4px 0 4px 24px;margin-bottom:40px;">
+<div style="border-left:2px solid var(--ink);padding:4px 0 4px 24px;margin-bottom:40px;">
 <span class="eyebrow" style="margin-bottom:8px;">La réponse courte</span>
 <p style="color:var(--ink);font-size:17px;line-height:1.6;">{{ reponse_courte }}</p>
 </div>
@@ -111,7 +111,7 @@ layout: layouts/base.njk
 {% if key_takeaways %}
 <div style="background:var(--ink);border-radius:6px;padding:32px 36px;margin-bottom:40px;">
 <span class="eyebrow on-dark" style="margin-bottom:14px;">L'essentiel</span>
-{% for k in key_takeaways %}<p style="padding:10px 0;border-top:1px solid var(--line-dark);color:rgba(255,255,255,.85);display:flex;gap:10px;"><span style="color:var(--orange);font-weight:700;">+</span>{{ k }}</p>{% endfor %}
+{% for k in key_takeaways %}<p style="padding:10px 0;border-top:1px solid var(--line-dark);color:rgba(255,255,255,.85);display:flex;gap:10px;"><span style="color:var(--paper);font-weight:700;">+</span>{{ k }}</p>{% endfor %}
 </div>
 {% endif %}
 
@@ -119,7 +119,7 @@ layout: layouts/base.njk
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-bottom:40px;background:var(--line);border:1px solid var(--line);" class="offre-qualif">
 <div style="background:#fff;padding:28px;">
 <h3 style="margin-bottom:16px;">Fait pour vous si…</h3>
-{% for p in pour_qui %}<p style="padding:10px 0;border-top:1px solid var(--line);display:flex;gap:10px;"><span style="color:var(--orange);font-weight:700;">+</span>{{ p }}</p>{% endfor %}
+{% for p in pour_qui %}<p style="padding:10px 0;border-top:1px solid var(--line);display:flex;gap:10px;"><span style="color:var(--ink);font-weight:700;">+</span>{{ p }}</p>{% endfor %}
 </div>
 <div style="background:var(--ink);color:#fff;padding:28px;">
 <h3 style="margin-bottom:16px;color:#fff;">Pas pour vous si…</h3>
@@ -133,7 +133,7 @@ layout: layouts/base.njk
 <span class="eyebrow" style="margin-bottom:10px;">Sommaire</span>
 <ol style="list-style:none;">
 {% for item in toc %}
-<li style="{% if item.level == 3 %}margin-left:18px;{% endif %}padding:5px 0;"><a href="#{{ item.id }}" style="color:var(--grey-600);font-size:14.5px;">{{ item.text }}</a></li>
+<li style="{% if item.level == 3 %}margin-left:18px;{% endif %}padding:5px 0;"><a href="#{{ item.id }}" style="color:var(--ink-60);font-size:14.5px;">{{ item.text }}</a></li>
 {% endfor %}
 </ol>
 </nav>
@@ -146,7 +146,7 @@ layout: layouts/base.njk
 {% if bon_a_savoir %}
 <div style="border-left:2px solid var(--line);padding:4px 0 4px 24px;margin-bottom:40px;">
 <span class="eyebrow" style="margin-bottom:8px;">Bon à savoir</span>
-<p style="color:var(--grey-600);line-height:1.7;">{{ bon_a_savoir }}</p>
+<p style="color:var(--ink-60);line-height:1.7;">{{ bon_a_savoir }}</p>
 </div>
 {% endif %}
 
@@ -156,7 +156,7 @@ layout: layouts/base.njk
 {% for f in faq %}
 <details style="border-bottom:1px solid var(--line);padding:18px 0;">
 <summary style="font-family:var(--sans);font-weight:700;font-size:17px;cursor:pointer;">{{ f.q }}</summary>
-<p style="margin-top:12px;line-height:1.7;color:var(--grey-600);max-width:680px;">{{ f.r }}</p>
+<p style="margin-top:12px;line-height:1.7;color:var(--ink-60);max-width:680px;">{{ f.r }}</p>
 </details>
 {% endfor %}
 </div>
@@ -173,14 +173,14 @@ layout: layouts/base.njk
 <img src="/sacha-avatar.webp" alt="Sacha Vetzikian" width="56" height="56" loading="lazy" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;"/>
 <div>
 <p style="font-weight:700;color:var(--ink);">Sacha Vetzikian</p>
-<p style="font-size:13px;color:var(--grey-400);">Fondateur de LeStudio, designer UX/UI &amp; CRO depuis 2015 · <a href="https://www.linkedin.com/in/sacha-vetzikian/" target="_blank" rel="noopener" style="color:var(--orange);">LinkedIn</a></p>
+<p style="font-size:13px;color:var(--ink-40);">Fondateur de LeStudio, designer UX/UI &amp; CRO depuis 2015 · <a href="https://www.linkedin.com/in/sacha-vetzikian/" target="_blank" rel="noopener" style="color:var(--ink);">LinkedIn</a></p>
 </div>
 </div>
 
 {% if ressources_utiles %}
 <h2>Ressources utiles</h2>
 <div style="margin-bottom:32px;">
-{% for r in ressources_utiles %}<p style="padding:4px 0;">• <a href="{{ r.url }}" style="color:var(--orange);">{{ r.label }}</a></p>{% endfor %}
+{% for r in ressources_utiles %}<p style="padding:4px 0;">• <a href="{{ r.url }}" style="color:var(--ink);">{{ r.label }}</a></p>{% endfor %}
 </div>
 {% endif %}
 
@@ -238,13 +238,13 @@ layout: layouts/base.njk
 .article-body h2{font-family:var(--sans);font-weight:900;letter-spacing:-0.01em;font-size:clamp(22px,3vw,28px);margin:48px 0 16px;scroll-margin-top:100px;}
 .article-body h3{font-family:var(--sans);font-weight:700;font-size:19px;margin:32px 0 12px;scroll-margin-top:100px;}
 .article-body h4{font-family:var(--sans);font-weight:700;font-size:17px;margin:28px 0 10px;scroll-margin-top:100px;}
-.article-body p{line-height:1.7;color:var(--grey-600);margin-bottom:16px;max-width:680px;}
+.article-body p{line-height:1.7;color:var(--ink-60);margin-bottom:16px;max-width:680px;}
 .article-body img{width:100%;border-radius:6px;margin:24px 0;box-shadow:var(--glow-shadow);}
-.article-body ul,.article-body ol{margin:0 0 16px 20px;color:var(--grey-600);line-height:1.7;}
+.article-body ul,.article-body ol{margin:0 0 16px 20px;color:var(--ink-60);line-height:1.7;}
 .article-body hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 .article-body table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-size:14.5px;max-width:680px;}
 .article-body th,.article-body td{padding:10px 14px;border:1px solid var(--line);text-align:left;}
 .article-body th{background:#fff;font-weight:700;color:var(--ink);}
-.article-body td{color:var(--grey-600);}
+.article-body td{color:var(--ink-60);}
 @media (max-width:640px){ .offre-qualif{grid-template-columns:1fr !important;} .article-body table{display:block;overflow-x:auto;} }
 </style>
