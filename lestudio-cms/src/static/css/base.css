@@ -135,8 +135,8 @@ header.nav.menu-open .nav-cta{display:none;}
 @media (max-width:640px){.case-preview{aspect-ratio:3/4;}}
 .case-preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1);}
 .case-card:hover .case-preview img{transform:scale(1.06);}
-.case-tags{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
-.case-tag{font-size:12.5px;padding:6px 12px;border-radius:3px;background:#fff;border:1px solid var(--line);color:var(--ink);}
+.case-tags{display:flex;margin-bottom:12px;flex-wrap:wrap;font-size:12.5px;letter-spacing:0.02em;color:var(--ink-60);}
+.case-tag:not(:first-child)::before{content:"·";margin:0 10px;color:var(--ink-40);}
 .filter-tabs{display:flex;gap:28px;flex-wrap:wrap;margin:8px 0 40px;border-bottom:1px solid var(--line);}
 @media (max-width:640px){.filter-tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;}}
 .filter-tab{font-family:var(--sans);font-size:14.5px;font-weight:600;padding:0 0 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--ink-40);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:color .2s ease,border-color .2s ease;}
