@@ -29,7 +29,7 @@ h1{
   font-size:clamp(44px, 8.4vw, 120px); max-width:1180px; margin:0 auto 24px; position:relative; color:#fff;
   text-wrap:pretty;
 }
-h1 em{font-style:italic; font-weight:400; font-family:var(--serif); color:var(--orange);}
+h1 em{font-style:normal; font-weight:500; font-family:var(--sans); font-size:.72em; letter-spacing:-0.04em; color:var(--orange);}
 
 .lede{font-family:var(--sans); font-size:17px; line-height:1.5; color:rgba(255,255,255,.6); max-width:520px; margin:0 auto 32px; position:relative;}
 
