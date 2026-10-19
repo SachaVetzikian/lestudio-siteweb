@@ -504,17 +504,13 @@ padding: 16px<br>radius: 8px
     caseGrid.innerHTML = cases.map(function(c){
       return '<a class="case-card" href="/realisations/' + c.slug + '/">' +
         '<div class="case-preview">' +
-          '<div class="case-browser-bar"><span class="case-browser-dot red"></span><span class="case-browser-dot yellow"></span><span class="case-browser-dot green"></span><span class="case-browser-url"></span></div>' +
-          '<div class="case-shot">' +
-            caseVisual(c) +
-            (c.video ? '<video muted loop playsinline preload="none" onerror="this.style.display=\'none\'"><source src="' + c.video + '" type="video/mp4"></video>' : '') +
-          '</div>' +
+          caseVisual(c) +
+          (c.video ? '<video muted loop playsinline preload="none" onerror="this.style.display=\'none\'"><source src="' + c.video + '" type="video/mp4"></video>' : '') +
         '</div>' +
-        '<span class="case-badge">' + (c.type === 'ecommerce' ? 'E-commerce' : 'Vitrine') + ' · ' + c.tag1 + '</span>' +
+        '<div class="case-tags"><span class="case-tag">' + c.tag1 + '</span><span class="case-tag">' + c.tag2 + '</span><span class="case-tag">' + (c.type === 'ecommerce' ? 'Refonte E-commerce' : 'Refonte Site vitrine') + '</span></div>' +
         '<h3>' + c.name + '</h3>' +
         '<p>' + c.desc + '</p>' +
-        '<div class="case-divider"></div>' +
-        '<span class="case-link">Voir le projet →</span>' +
+        '<span class="case-link"><span class="case-link-icon">→</span> Voir le projet</span>' +
       '</a>';
     }).join('');
 
@@ -894,7 +890,7 @@ padding: 16px<br>radius: 8px
 <script type="text/javascript">
 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 Cal("init", "20min", {origin:"https://cal.com"});
-Cal.ns["20min"]("ui", {"theme":"light","styles":{"branding":{"brandColor":"#ff5a00"}},"hideEventTypeDetails":false,"layout":"month_view"});
+Cal.ns["20min"]("ui", {"theme":"light","styles":{"branding":{"brandColor":"#0a0a0a"}},"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
 </body>
 </html>
