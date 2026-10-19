@@ -6,7 +6,7 @@ seo_description: 8 ans à concevoir des parcours d'achat qui convertissent, entr
 seo_image: /sacha-avatar.webp
 ---
 {% set crumbs = [ {name:"Accueil", url:"/"}, {name:"À propos"} ] %}
-{% from "partials/icons.njk" import figma, hotjar, analytics, shop %}
+{% from "partials/icons.njk" import layout, figma, hotjar, analytics, shop %}
 {% include "partials/breadcrumb.njk" %}
 <h1 style="margin-top:16px;">Le moment où un <em>inconnu</em> devient un client.</h1>
 <p class="lede">C'est ce moment précis qui m'a accroché dès le début. Et comment le design et la psychologie peuvent tout changer dans ce parcours.</p>
@@ -19,6 +19,7 @@ seo_image: /sacha-avatar.webp
 <h2>Notre stack</h2>
 <p class="lede" style="margin-bottom:24px;">Les mêmes outils que ceux de vos équipes, pour un handoff sans friction.</p>
 <div class="case-grid" style="margin-top:0;">
+<div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ layout() }}</div><h3>Webflow</h3><p>Notre plateforme de prédilection : rapide à livrer, autonome pour vos équipes au quotidien.</p></div>
 <div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ figma() }}</div><h3>Figma</h3><p>Maquettes, prototypes et design system.</p></div>
 <div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ hotjar() }}</div><h3>Hotjar</h3><p>Heatmaps et enregistrements pour comprendre le comportement réel.</p></div>
 <div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ analytics() }}</div><h3>Google Analytics</h3><p>Données de trafic et de conversion pour prioriser les chantiers.</p></div>
