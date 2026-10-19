@@ -105,28 +105,6 @@ section{padding:80px 0;}
 .scroll-block p{color:var(--ink-60); font-size:15.5px; line-height:1.5; max-width:480px; margin-bottom:14px;}
 .deliverable{margin-top:4px; font-size:12.5px; color:var(--ink); font-weight:600;}
 
-/* ── Asset mockups riches ── */
-.asset-mock{background:#fff; border:1px solid var(--line); border-radius:6px; overflow:hidden; max-width:300px; margin-top:26px; box-shadow:var(--glow-shadow);}
-.asset-mock .am-chrome{display:flex; align-items:center; justify-content:space-between; padding:10px 12px; background:var(--ink); border-bottom:1px solid var(--line-dark);}
-.asset-mock .am-dots{display:flex; gap:5px;}
-.asset-mock .am-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);}
-.asset-mock .am-label{font-size:10px; color:rgba(255,255,255,.75); border:1px solid var(--line-dark); border-radius:2px; padding:3px 9px; display:flex; align-items:center; gap:4px;}
-.asset-mock .am-body{padding:16px; position:relative; min-height:130px;}
-.asset-mock .am-toolbar{display:flex; gap:12px; padding:8px 14px; border-top:1px solid var(--line); color:var(--ink-40);}
-.asset-mock .am-cursor{position:absolute; background:var(--ink); color:#fff; font-size:9px; font-weight:600; padding:4px 9px; border-radius:2px; white-space:nowrap;}
-.asset-mock .am-swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
-.am-wrap{position:relative; max-width:300px; margin-top:22px;}
-.am-wrap .asset-mock{margin-top:0;}
-.am-sticker{position:absolute; z-index:3; background:var(--ink); color:#fff; font-family:var(--sans); font-weight:700; font-size:11px; padding:7px 14px; border-radius:3px; transform:rotate(-4deg); white-space:nowrap; box-shadow:var(--glow-shadow);}
-.am-timeline{position:relative; height:56px; margin:8px 0 16px;}
-.am-timeline .am-ruler{position:absolute; top:8px; left:0; right:0; height:1px; background:var(--line);}
-.am-timeline .am-marker{position:absolute; top:8px; width:1.5px; height:24px; background:var(--ink);}
-.am-timeline .am-marker::before{content:''; position:absolute; top:-4px; left:50%; transform:translateX(-50%); width:7px; height:7px; border-radius:50%; background:var(--ink); box-shadow:0 0 0 3px rgba(10,10,10,.12);}
-.am-timeline .am-tick{position:absolute; top:40px; font-size:8.5px; color:var(--ink-40); font-family:monospace; letter-spacing:.02em; transform:translateX(-50%);}
-.am-timeline .am-tick:first-child{transform:none;}
-.am-timeline .am-tick:last-child{transform:translateX(-100%);}
-.am-filetag{display:inline-flex; align-items:center; gap:6px; border:1px dashed var(--line); border-radius:2px; padding:6px 10px; font-size:10px; color:var(--ink-40); font-family:monospace; background:#fff;}
-
 /* ── Offres : onglets + panneau ── */
 .offer-tabs{display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--line); overflow:hidden; margin-bottom:40px;}
 @media (max-width:760px){ .offer-tabs{grid-template-columns:1fr;} }

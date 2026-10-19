@@ -6,6 +6,7 @@ layout: layouts/base.njk
 {% set shareUrl = "https://www.lestudiodesign.fr" + page.url %}
 {% set sharePrompt = "Résume cet article : " + shareUrl %}
 {% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Blog", url:"/blog/"}, {name: title} ] %}
+{% from "partials/icons.njk" import check, cross %}
 {% include "partials/breadcrumb.njk" %}
 
 <p style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--ink-40);margin-top:16px;text-transform:uppercase;letter-spacing:.04em;">
@@ -111,7 +112,7 @@ layout: layouts/base.njk
 {% if key_takeaways %}
 <div style="background:var(--ink);border-radius:6px;padding:32px 36px;margin-bottom:40px;">
 <span class="eyebrow on-dark" style="margin-bottom:14px;">L'essentiel</span>
-{% for k in key_takeaways %}<p style="padding:10px 0;border-top:1px solid var(--line-dark);color:rgba(255,255,255,.85);display:flex;gap:10px;"><span style="color:var(--paper);font-weight:700;">+</span>{{ k }}</p>{% endfor %}
+{% for k in key_takeaways %}<p style="padding:10px 0;border-top:1px solid var(--line-dark);color:rgba(255,255,255,.85);display:flex;gap:12px;align-items:flex-start;"><span class="qual-badge no" style="background:rgba(255,255,255,.12);color:#fff;">{{ check() }}</span>{{ k }}</p>{% endfor %}
 </div>
 {% endif %}
 
@@ -119,11 +120,11 @@ layout: layouts/base.njk
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-bottom:40px;background:var(--line);border:1px solid var(--line);" class="offre-qualif">
 <div style="background:#fff;padding:28px;">
 <h3 style="margin-bottom:16px;">Fait pour vous si…</h3>
-{% for p in pour_qui %}<p style="padding:10px 0;border-top:1px solid var(--line);display:flex;gap:10px;"><span style="color:var(--ink);font-weight:700;">+</span>{{ p }}</p>{% endfor %}
+{% for p in pour_qui %}<p style="padding:10px 0;border-top:1px solid var(--line);display:flex;gap:12px;align-items:flex-start;"><span class="qual-badge yes">{{ check() }}</span>{{ p }}</p>{% endfor %}
 </div>
 <div style="background:var(--ink);color:#fff;padding:28px;">
 <h3 style="margin-bottom:16px;color:#fff;">Pas pour vous si…</h3>
-{% for p in pas_pour_qui %}<p style="padding:10px 0;border-top:1px solid var(--line-dark);color:rgba(255,255,255,.8);display:flex;gap:10px;"><span style="color:rgba(255,255,255,.4);font-weight:700;">–</span>{{ p }}</p>{% endfor %}
+{% for p in pas_pour_qui %}<p style="padding:10px 0;border-top:1px solid var(--line-dark);color:rgba(255,255,255,.8);display:flex;gap:12px;align-items:flex-start;"><span class="qual-badge no">{{ cross() }}</span>{{ p }}</p>{% endfor %}
 </div>
 </div>
 {% endif %}

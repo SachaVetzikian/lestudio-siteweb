@@ -6,6 +6,7 @@ seo_description: "Agence de design UX/UI spécialisée e-commerce, pour marques 
 title: "Agence e-commerce Paris"
 ---
 {% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Agence e-commerce Paris"} ] %}
+{% from "partials/icons.njk" import search, pentool, clock %}
 {% include "partials/breadcrumb.njk" %}
 <h1 style="margin-top:16px;">Agence e-commerce à <em>Paris</em> : un design qui convertit, pas juste qui plaît</h1>
 <p class="lede">Le Studio accompagne des marques e-commerce à Paris et partout en France sur tout ce qui touche à l'expérience d'achat : diagnostic, refonte, création, et suivi continu. Un seul interlocuteur, du premier appel à la livraison.</p>
@@ -18,9 +19,9 @@ title: "Agence e-commerce Paris"
 
 <h2>Nos trois formats d'accompagnement</h2>
 <div class="case-grid" style="margin-top:0;">
-<div class="card" style="margin-bottom:0;"><h3>Audit UX design</h3><p>Diagnostic priorisé de ce qui freine vos conversions, en deux semaines. Idéal si votre boutique a déjà du trafic.</p><p style="margin-top:14px;"><a href="/offres/audit-ux-ui-cro/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></p></div>
-<div class="card" style="margin-bottom:0;"><h3>Création / Refonte</h3><p>Conception complète de votre boutique, de la stratégie aux maquettes prêtes à coder.</p><p style="margin-top:14px;"><a href="/offres/creation-refonte-site/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></p></div>
-<div class="card" style="margin-bottom:0;"><h3>Design par abonnement</h3><p>Un designer dédié chaque mois pour vos besoins continus : pages, itérations, campagnes.</p><p style="margin-top:14px;"><a href="/offres/design-abonnement/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></p></div>
+<div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ search() }}</div><h3>Audit UX design</h3><p>Diagnostic priorisé de ce qui freine vos conversions, en deux semaines. Idéal si votre boutique a déjà du trafic.</p><p style="margin-top:14px;"><a href="/offres/audit-ux-ui-cro/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></p></div>
+<div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ pentool() }}</div><h3>Création / Refonte</h3><p>Conception complète de votre boutique, de la stratégie aux maquettes prêtes à coder.</p><p style="margin-top:14px;"><a href="/offres/creation-refonte-site/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></p></div>
+<div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ clock() }}</div><h3>Design par abonnement</h3><p>Un designer dédié chaque mois pour vos besoins continus : pages, itérations, campagnes.</p><p style="margin-top:14px;"><a href="/offres/design-abonnement/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></p></div>
 </div>
 
 <h2 style="margin-top:64px;">Une agence qui travaille avec des marques partout en France</h2>

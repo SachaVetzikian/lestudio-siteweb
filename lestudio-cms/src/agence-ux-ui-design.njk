@@ -6,6 +6,7 @@ seo_description: "Agence UX/UI spécialisée e-commerce et sites vitrines : audi
 title: "Agence UX/UI Design"
 ---
 {% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Agence UX/UI Design"} ] %}
+{% from "partials/icons.njk" import monitor, layout, smartphone, search, pentool, clock %}
 {% include "partials/breadcrumb.njk" %}
 <h1 style="margin-top:16px;">Agence UX/UI Design : des interfaces pensées pour <em>convertir</em></h1>
 <p class="lede">Le Studio est une agence de design UX/UI spécialisée e-commerce et sites vitrines. On ne se contente pas de faire joli : chaque décision de design se justifie par une donnée, un comportement observé ou un objectif de conversion.</p>
@@ -18,16 +19,16 @@ title: "Agence UX/UI Design"
 
 <h2>Nos domaines d'intervention</h2>
 <div class="case-grid" style="margin-top:0;">
-<div class="card" style="margin-bottom:0;"><h3>UX/UI pour e-commerce</h3><p>Fiches produit, tunnel de commande, panier : chaque gabarit pensé pour lever les frictions à l'achat.</p></div>
-<div class="card" style="margin-bottom:0;"><h3>UX/UI pour sites vitrines</h3><p>Clarté du positionnement, hiérarchie de l'information, appels à l'action qui génèrent des prises de contact.</p></div>
-<div class="card" style="margin-bottom:0;"><h3>UX/UI pour applications</h3><p>Charge cognitive, cohérence des patterns, facilité de prise en main pour un nouvel utilisateur.</p></div>
+<div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ monitor() }}</div><h3>UX/UI pour e-commerce</h3><p>Fiches produit, tunnel de commande, panier : chaque gabarit pensé pour lever les frictions à l'achat.</p></div>
+<div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ layout() }}</div><h3>UX/UI pour sites vitrines</h3><p>Clarté du positionnement, hiérarchie de l'information, appels à l'action qui génèrent des prises de contact.</p></div>
+<div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ smartphone() }}</div><h3>UX/UI pour applications</h3><p>Charge cognitive, cohérence des patterns, facilité de prise en main pour un nouvel utilisateur.</p></div>
 </div>
 
 <h2 style="margin-top:64px;">Nos trois formats d'accompagnement</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:64px;" class="offre-qualif">
-<div class="card" style="margin-bottom:0;"><h3 style="margin-bottom:12px;">Audit UX design</h3><p style="font-size:14px;color:var(--grey);margin-bottom:14px;">Diagnostic priorisé de ce qui bloque la conversion, en deux semaines.</p><a href="/offres/audit-ux-ui-cro/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></div>
-<div class="card" style="margin-bottom:0;"><h3 style="margin-bottom:12px;">Création / Refonte</h3><p style="font-size:14px;color:var(--grey);margin-bottom:14px;">Conception complète, de la stratégie aux maquettes prêtes à coder.</p><a href="/offres/creation-refonte-site/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></div>
-<div class="card" style="margin-bottom:0;"><h3 style="margin-bottom:12px;">Design par abonnement</h3><p style="font-size:14px;color:var(--grey);margin-bottom:14px;">Un designer dédié chaque mois pour vos besoins continus.</p><a href="/offres/design-abonnement/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></div>
+<div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ search() }}</div><h3 style="margin-bottom:12px;">Audit UX design</h3><p style="font-size:14px;color:var(--grey);margin-bottom:14px;">Diagnostic priorisé de ce qui bloque la conversion, en deux semaines.</p><a href="/offres/audit-ux-ui-cro/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></div>
+<div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ pentool() }}</div><h3 style="margin-bottom:12px;">Création / Refonte</h3><p style="font-size:14px;color:var(--grey);margin-bottom:14px;">Conception complète, de la stratégie aux maquettes prêtes à coder.</p><a href="/offres/creation-refonte-site/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></div>
+<div class="card" style="margin-bottom:0;"><div class="feat-icon">{{ clock() }}</div><h3 style="margin-bottom:12px;">Design par abonnement</h3><p style="font-size:14px;color:var(--grey);margin-bottom:14px;">Un designer dédié chaque mois pour vos besoins continus.</p><a href="/offres/design-abonnement/" style="color:var(--ink);font-weight:500;font-size:14px;">→ Découvrir l'offre</a></div>
 </div>
 
 <h2>Un interlocuteur unique, du diagnostic à la livraison</h2>
