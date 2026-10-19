@@ -2,8 +2,9 @@
 layout: layouts/base.njk
 ---
 {% set crumbs = [ {name:"Accueil", url:"/"}, {name: h1} ] %}
-{% from "partials/icons.njk" import methodMock %}
 {% include "partials/breadcrumb.njk" %}
+{% set casSecteur = collections.realisations | inSecteur(page.fileSlug) %}
+{% set casVisuel = casSecteur[0] %}
 <h1 style="margin-top:16px;">{{ h1 }}</h1>
 <p class="lede">{{ intro }}</p>
 <a class="link-cta" style="margin:0 0 56px;" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min">Discuter de votre projet<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
@@ -20,34 +21,39 @@ layout: layouts/base.njk
 {% endfor %}
 
 <h2>Notre méthode</h2>
-<div style="border-top:1px solid var(--line);">
-<div style="display:grid;grid-template-columns:120px 1fr auto;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);align-items:start;">
-<div style="font-family:var(--sans);font-weight:900;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">01</div>
+<div class="method-with-case">
+<div class="method-steps" style="border-top:1px solid var(--line);">
+<div style="padding:32px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:56px 1fr;gap:20px;">
+<div style="font-family:var(--sans);font-weight:900;color:var(--ink);">01</div>
 <div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Audit UX/CRO</h3>
-<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:640px;">On commence par comprendre ce qui bloque vraiment la conversion : analyse du site actuel, benchmark des concurrents directs, et croisement avec la donnée existante quand elle est disponible. L'objectif n'est pas de tout refaire, mais d'identifier les points de friction qui coûtent le plus cher.</p></div>
-<div class="offre-step-mock">{{ methodMock(1) }}</div>
+<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:560px;">On commence par comprendre ce qui bloque vraiment la conversion : analyse du site actuel, benchmark des concurrents directs, et croisement avec la donnée existante quand elle est disponible. L'objectif n'est pas de tout refaire, mais d'identifier les points de friction qui coûtent le plus cher.</p></div>
 </div>
-<div style="display:grid;grid-template-columns:120px 1fr auto;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);align-items:start;">
-<div style="font-family:var(--sans);font-weight:900;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">02</div>
+<div style="padding:32px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:56px 1fr;gap:20px;">
+<div style="font-family:var(--sans);font-weight:900;color:var(--ink);">02</div>
 <div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Architecture et wireframes</h3>
-<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:640px;">Avant de dessiner le moindre pixel, on pose la structure : parcours utilisateur, hiérarchie de l'information, arborescence des pages. Cette étape évite de devoir tout reprendre une fois le design engagé.</p></div>
-<div class="offre-step-mock">{{ methodMock(2) }}</div>
+<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:560px;">Avant de dessiner le moindre pixel, on pose la structure : parcours utilisateur, hiérarchie de l'information, arborescence des pages. Cette étape évite de devoir tout reprendre une fois le design engagé.</p></div>
 </div>
-<div style="display:grid;grid-template-columns:120px 1fr auto;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);align-items:start;">
-<div style="font-family:var(--sans);font-weight:900;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">03</div>
+<div style="padding:32px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:56px 1fr;gap:20px;">
+<div style="font-family:var(--sans);font-weight:900;color:var(--ink);">03</div>
 <div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">UI design</h3>
-<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:640px;">Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire. Chaque choix visuel, typographie, couleur, composant, sert un objectif de conversion précis, pas seulement l'esthétique.</p></div>
-<div class="offre-step-mock">{{ methodMock(3) }}</div>
+<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:560px;">Direction artistique et écrans finaux, pensés pour convertir autant que pour plaire. Chaque choix visuel, typographie, couleur, composant, sert un objectif de conversion précis, pas seulement l'esthétique.</p></div>
 </div>
-<div style="display:grid;grid-template-columns:120px 1fr auto;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);align-items:start;">
-<div style="font-family:var(--sans);font-weight:900;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--line);">04</div>
+<div style="padding:32px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:56px 1fr;gap:20px;">
+<div style="font-family:var(--sans);font-weight:900;color:var(--ink);">04</div>
 <div><h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Handoff design</h3>
-<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:640px;">Les maquettes sont livrées prêtes à intégrer, avec toutes les specs, variations et états nécessaires. Votre équipe ou votre prestataire technique peut développer sans allers-retours superflus.</p></div>
-<div class="offre-step-mock">{{ methodMock(4) }}</div>
+<p style="font-size:15px;line-height:1.7;color:var(--ink-60);max-width:560px;">Les maquettes sont livrées prêtes à intégrer, avec toutes les specs, variations et états nécessaires. Votre équipe ou votre prestataire technique peut développer sans allers-retours superflus.</p></div>
 </div>
+</div>
+{% if casVisuel %}
+<a class="method-case-visual" href="/realisations/{{ casVisuel.fileSlug }}/">
+{% if casVisuel.data.cover and (casVisuel.data.cover | assetExists) %}
+<img src="{{ casVisuel.data.cover }}" alt="{{ casVisuel.data.client }}" loading="lazy"/>
+{% endif %}
+<span class="method-case-visual-label"><span class="eyebrow" style="margin-bottom:4px;">Exemple concret</span>{{ casVisuel.data.client }}<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></span>
+</a>
+{% endif %}
 </div>
 
-{% set casSecteur = collections.realisations | inSecteur(page.fileSlug) %}
 {% if casSecteur.length %}
 <h2>Nos réalisations dans ce secteur</h2>
 <div class="case-list" style="margin-top:8px;">

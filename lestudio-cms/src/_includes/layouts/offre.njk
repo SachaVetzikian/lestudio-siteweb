@@ -2,8 +2,10 @@
 layout: layouts/base.njk
 ---
 {% set crumbs = [ {name:"Accueil", url:"/"}, {name:"Offres", url:"/#offres"}, {name: title} ] %}
-{% from "partials/icons.njk" import check, cross, methodMock, zap %}
+{% from "partials/icons.njk" import check, cross, zap %}
 {% include "partials/breadcrumb.njk" %}
+{% set casVisuel = none %}
+{% for r in collections.realisations %}{% if r.data.featured and not casVisuel %}{% set casVisuel = r %}{% endif %}{% endfor %}
 <h1 style="margin-top:16px;">{{ h1 or title }}</h1>
 <p class="lede" style="margin-bottom:8px;">{{ accroche or description }}</p>
 <p style="font-size:13px;color:var(--ink-40);margin-bottom:32px;">{{ cible }}</p>
@@ -49,16 +51,27 @@ layout: layouts/base.njk
 {# ── Déroulé ── #}
 {% if roadmap %}
 <h2>Le déroulé, sans surprise</h2>
+<div class="method-with-case">
+<div class="method-steps">
 {% for step in roadmap %}
-<div style="display:grid;grid-template-columns:140px 1fr auto;gap:24px;padding:24px 0;border-top:1px solid var(--line);align-items:start;" class="offre-step">
+<div style="display:grid;grid-template-columns:140px 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--line);align-items:start;" class="offre-step">
 <p style="font-family:var(--sans);font-weight:700;color:var(--ink);">{{ step.periode }}</p>
 <div>
 <h3 style="font-size:18px;margin-bottom:8px;">{{ step.titre }}</h3>
 {% for pt in step.points %}<p style="font-size:15px;line-height:1.7;color:var(--ink-60);">— {{ pt }}</p>{% endfor %}
 </div>
-<div class="offre-step-mock">{{ methodMock(loop.index) }}</div>
 </div>
 {% endfor %}
+</div>
+{% if casVisuel %}
+<a class="method-case-visual" href="/realisations/{{ casVisuel.fileSlug }}/">
+{% if casVisuel.data.cover and (casVisuel.data.cover | assetExists) %}
+<img src="{{ casVisuel.data.cover }}" alt="{{ casVisuel.data.client }}" loading="lazy"/>
+{% endif %}
+<span class="method-case-visual-label"><span class="eyebrow" style="margin-bottom:4px;">Exemple concret</span>{{ casVisuel.data.client }}<span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></span>
+</a>
+{% endif %}
+</div>
 {% endif %}
 
 {# ── Inclus + délai ── #}

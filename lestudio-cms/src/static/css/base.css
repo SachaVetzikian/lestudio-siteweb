@@ -204,6 +204,15 @@ header.nav.menu-open .nav-cta{display:none;}
 .offre-step-mock .asset-mock,.offre-step-mock .am-wrap{max-width:220px;margin-top:0;}
 @media (max-width:900px){ .offre-step-mock{display:none;} }
 
+/* ── Méthode + visuel de cas client réel, sticky à côté des étapes ── */
+.method-with-case{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start;}
+.method-case-visual{position:sticky;top:96px;display:block;border-radius:6px;overflow:hidden;box-shadow:var(--glow-shadow);}
+.method-case-visual img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;}
+.method-case-visual-label{display:flex;flex-direction:column;gap:2px;position:relative;background:var(--ink);color:#fff;padding:18px 20px;font-family:var(--sans);font-weight:700;font-size:16px;}
+.method-case-visual-label .arrow{position:absolute;top:18px;right:18px;color:rgba(255,255,255,.6);transition:transform .25s cubic-bezier(.16,1,.3,1);}
+.method-case-visual:hover .arrow{transform:translate(3px,-3px);}
+@media (max-width:900px){ .method-with-case{grid-template-columns:1fr;} .method-case-visual{position:static;max-width:360px;} }
+
 /* ── Petites icônes de feature (cards services/stack) ── */
 .feat-icon{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;color:var(--ink);margin-bottom:16px;flex-shrink:0;}
 .feat-icon svg{width:19px;height:19px;}
