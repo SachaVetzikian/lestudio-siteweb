@@ -7,6 +7,10 @@ year: 2024
 tags: [BTP, Location]
 description: Refonte du parcours d'achat pour la location et vente d'outillage professionnel.
 cover: /assets/uploads/cover-toolouer.webp
+gallery:
+  - /assets/uploads/gallery-toolouer-02.webp
+  - /assets/uploads/gallery-toolouer-03.webp
+  - /assets/uploads/gallery-toolouer-04.webp
 featured: true
 home_order: 11
 probleme: Une marketplace BTP où chaque friction du parcours coûte une commande à des professionnels pressés.

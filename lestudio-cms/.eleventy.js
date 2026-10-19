@@ -102,6 +102,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("assetExists", assetExists);
 
+  eleventyConfig.addFilter("mdInline", (text) =>
+    (text || "").replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+  );
+
   eleventyConfig.addFilter("casesJson", (items) =>
     JSON.stringify(items.map((r) => ({
       name: r.data.client,

@@ -24,7 +24,7 @@ seo_description: Toutes nos réalisations UX/UI & Webflow, e-commerce et vitrine
 <span class="case-row-year">{{ r.data.year }}</span>
 <div class="case-row-title">
 <h3>{{ r.data.client }}</h3>
-<div class="case-row-meta"><span>{% if r.data.type == "ecommerce" %}Refonte e-commerce{% else %}Refonte site vitrine{% endif %}</span>{% for tag in r.data.tags %}<span>· {{ tag }}</span>{% endfor %}</div>
+<div class="case-row-meta"><span>{% if r.data.type == "ecommerce" %}Refonte e-commerce{% else %}Refonte site vitrine{% endif %}</span>{% for tag in r.data.tags %}<span>· {{ tag }}</span>{% endfor %}{% if r.data.resultats %}<span>· {{ r.data.resultats[0].chiffre }} {{ r.data.resultats[0].label }}</span>{% endif %}</div>
 </div>
 {% if r.data.cover and (r.data.cover | assetExists) %}
 <div class="case-row-thumb"><img src="{{ r.data.cover }}" alt="{{ r.data.client }}" loading="lazy"/></div>

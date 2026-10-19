@@ -4,10 +4,14 @@ client: Cuure
 secteur: complements-alimentaires
 type: ecommerce
 year: 2026
-tags: [E-commerce · Abonnement, DTC]
+tags: [Abonnement, DTC]
 description: Optimisation du tunnel d'achat pour réduire les frictions du parcours d'abonnement.
 video: /assets/cas-clients/cuure.mp4
-cover: /assets/uploads/cover-cuure.webp
+cover: /assets/uploads/gallery-cuure-04.webp
+gallery:
+  - /assets/uploads/cover-cuure.webp
+  - /assets/uploads/gallery-cuure-02.webp
+  - /assets/uploads/gallery-cuure-03.webp
 featured: true
 home_order: 2
 probleme: Une marque de nutrition personnalisée, un parcours d'achat qui manquait de fluidité sur un marché compétitif.

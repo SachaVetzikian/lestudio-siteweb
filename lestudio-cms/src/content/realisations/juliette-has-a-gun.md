@@ -7,7 +7,11 @@ year: 2025
 tags: [Parfumerie de niche, Luxe]
 description: Refonte pour renforcer l'image premium et fluidifier le parcours d'achat.
 video: /assets/cas-clients/juliette-has-a-gun.mp4
-cover: /assets/uploads/cover-juliette-has-a-gun.webp
+cover: /assets/uploads/gallery-juliette-has-a-gun-02.webp
+gallery:
+  - /assets/uploads/cover-juliette-has-a-gun.webp
+  - /assets/uploads/gallery-juliette-has-a-gun-03.webp
+  - /assets/uploads/gallery-juliette-has-a-gun-04.webp
 featured: true
 home_order: 6
 probleme: Une maison de parfums de niche internationale, dont l'e-shop ne reflétait plus le positionnement luxe.

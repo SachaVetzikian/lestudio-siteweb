@@ -1,0 +1,39 @@
+<section class="trust-marquee-section">
+<div class="wrap" style="padding:0 24px 28px;">
+<h2 style="margin-top:12px;">Ils nous font <em style="font-style:normal; font-weight:600; color:var(--orange);">confiance.</em></h2>
+</div>
+<div class="wrap">
+<div class="marquee-wrap">
+<div class="marquee-track" id="marquee-track"></div>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  var clients = [
+    { name: "TRIUMVIRAT", logo: "/assets/uploads/logo-triumvirat.webp" },
+    { name: "JABERSON", logo: "/assets/uploads/logo-jaberson.webp" },
+    { name: "OCTOPUSH", logo: "/assets/uploads/logo-octopush.webp", scale: 1.2 },
+    { name: "AG2R LA MONDIALE", logo: "/assets/uploads/logo-ag2r-la-mondiale.webp" },
+    { name: "CRÉDIT DU NORD", logo: "/assets/uploads/logo-credit-du-nord.webp" },
+    { name: "CUURE", logo: "/assets/uploads/logo-cuure.webp", scale: 0.8 },
+    { name: "YVES ROCHER", logo: "/assets/uploads/logo-yves-rocher-mark.webp" },
+    { name: "DISNEY", logo: "/assets/uploads/logo-disney.webp" },
+    { name: "ARRAGO", logo: "/assets/uploads/logo-arrago.webp", scale: 1.25 },
+    { name: "LE PETIT FUMEUR", logo: "/assets/uploads/logo-le-petit-fumeur.webp" },
+    { name: "JULIETTE HAS A GUN", logo: "/assets/uploads/logo-juliette-has-a-gun.webp", scale: 0.8 },
+    { name: "CARGO SCHOOL", logo: "/assets/uploads/logo-cargo-school.webp" },
+    { name: "DYNVEO", logo: "/assets/uploads/logo-dynveo.webp", scale: 0.92 },
+    { name: "KALENT", logo: "/assets/uploads/logo-kalent.webp", scale: 0.92 },
+    { name: "RIVIERA CLUB", logo: "/assets/uploads/logo-riviera-club.webp" }
+  ];
+  var track = document.getElementById('marquee-track');
+  var doubled = clients.concat(clients);
+  track.innerHTML = doubled.map(function(c){
+    var styleAttr = c.scale ? ' style="--logo-scale:' + c.scale + '"' : '';
+    return c.logo
+      ? '<span class="marquee-item"' + styleAttr + '><img src="' + c.logo + '" alt="' + c.name + '" loading="lazy"></span>'
+      : '<span class="marquee-item">' + c.name + '</span>';
+  }).join('');
+})();
+</script>

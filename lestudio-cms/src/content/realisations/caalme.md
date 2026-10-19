@@ -6,7 +6,11 @@ type: ecommerce
 year: 2026
 tags: [Patchs bien-être, DTC]
 description: Refonte complète de la boutique pour une marque de patchs bien-être.
-cover: /assets/uploads/cover-caalme.webp
+cover: /assets/uploads/gallery-caalme-02.webp
+gallery:
+  - /assets/uploads/cover-caalme.webp
+  - /assets/uploads/gallery-caalme-03.webp
+  - /assets/uploads/gallery-caalme-04.webp
 featured: true
 home_order: 8
 probleme: Un produit innovant, sans site e-commerce, qui devait éduquer le visiteur avant de le convaincre d'acheter.
