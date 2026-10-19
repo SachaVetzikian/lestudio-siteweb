@@ -154,7 +154,7 @@ header.nav.menu-open .nav-cta{display:none;}
 .case-row:hover{padding-left:12px;}
 .case-row .case-row-year{font-size:14px;font-weight:600;color:var(--ink-40);width:56px;flex-shrink:0;}
 .case-row .case-row-title{flex:1;min-width:0;}
-.case-row h3{font-family:var(--sans);font-weight:900;letter-spacing:-0.02em;font-size:clamp(26px,3.6vw,46px);line-height:1;color:var(--ink);margin-bottom:6px;}
+.case-row h3{font-family:var(--sans);font-weight:700;letter-spacing:-0.01em;font-size:clamp(19px,2.2vw,27px);line-height:1.2;color:var(--ink);margin-bottom:6px;}
 .case-row .case-row-meta{display:flex;gap:10px;flex-wrap:wrap;}
 .case-row .case-row-meta span{font-size:12.5px;color:var(--ink-40);}
 .case-row .case-row-thumb{width:84px;height:64px;border-radius:4px;overflow:hidden;background:var(--ink);flex-shrink:0;box-shadow:var(--glow-shadow);}
