@@ -28,14 +28,6 @@
         "partenaires-pme"
       ]
     },
-    "cabinet": {
-      "page": "/qui-sommes-nous",
-      "appareil": "desktop",
-      "montre": [
-        "hero-cabinet",
-        "presentation-cabinet"
-      ]
-    },
     "clients": {
       "page": "/",
       "element": ".section_clients",
@@ -84,6 +76,16 @@
       "montre": [
         "temoignages"
       ]
+    },
+    "expertises": {
+      "page": "/expertises",
+      "appareil": "desktop",
+      "defiler": ".section_expertises",
+      "decalage": -150,
+      "montre": [
+        "grille-expertises"
+      ],
+      "attente": 2000
     }
   },
   "visuels": [
@@ -98,7 +100,7 @@
       "nom": "2-macbook",
       "gabarit": "photo",
       "mockup": "macbook-grille",
-      "ecran": "cabinet"
+      "ecran": "expertises"
     },
     {
       "nom": "3-pile",

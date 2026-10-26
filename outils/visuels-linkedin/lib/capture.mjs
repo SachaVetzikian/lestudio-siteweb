@@ -18,6 +18,8 @@ async function preparer(p, url, masquer) {
   const H = await p.evaluate(() => document.body.scrollHeight);
   for (let y = 0; y < H; y += 400) { await p.evaluate(v => scrollTo(0, v), y); await p.waitForTimeout(60); }
   await p.evaluate(() => scrollTo(0, 0));
+  // les blocs animés "à l'apparition" (Webflow) attendent un défilement : on en déclenche un, invisible
+  await p.waitForTimeout(300); await p.evaluate(() => scrollTo(0, 3)); await p.waitForTimeout(80); await p.evaluate(() => scrollTo(0, 0));
   await p.waitForTimeout(1500);
 }
 
@@ -41,7 +43,7 @@ export async function capturer(navigateur, site, c, sortie) {
         const r = document.querySelectorAll(s)[n].getBoundingClientRect(), top = r.top + scrollY;
         scrollTo(0, aligner === 'bas' ? top + r.height - innerHeight + dec : top - dec); // 'bas' : la section finit en bas de l'écran
       }, [c.defiler, c.n || 0, c.aligner, c.decalage || 0]);
-      await p.waitForTimeout(1200);
+      await p.waitForTimeout(c.attente || 1200); // 'attente' : laisser finir les animations d'apparition en cascade
     }
     if (c.masquerSous) { // zoom sur une zone : on masque ce qui suit un bloc dans sa propre colonne
       await p.evaluate(s => {

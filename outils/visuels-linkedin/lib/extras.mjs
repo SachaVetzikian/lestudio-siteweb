@@ -98,6 +98,16 @@ export async function animation(nav, site, v, dossier, sortieBase, rendreVitrine
   let images = [];
   for (let essai = 1; essai <= 3; essai++) {
     const ctx = await nav.newContext(APPAREILS.desktop(H)); const p = await ctx.newPage();
+    // 1er passage sans filmer : met en cache le fond du hero et les images (y compris celles chargées au scroll),
+    // pour que le chargement filmé montre les animations du site et non des cases vides
+    const url = new URL(v.page || '/', site.url).href;
+    await ctx.addInitScript(() => new MutationObserver(() => document.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; }))
+      .observe(document, { childList: true, subtree: true }));
+    await p.goto(url, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+    const Hp = await p.evaluate(() => document.body.scrollHeight).catch(() => 0);
+    for (let y = 0; y < Hp; y += 400) { await p.evaluate(s => scrollTo(0, s), y).catch(() => {}); await p.waitForTimeout(80); }
+    await p.waitForLoadState('networkidle').catch(() => {});
+    await p.goto('about:blank');
     const cdp = await ctx.newCDPSession(p); images = [];
     cdp.on('Page.screencastFrame', async f => { images.push({ t: f.metadata.timestamp, data: f.data }); await cdp.send('Page.screencastFrameAck', { sessionId: f.sessionId }).catch(() => {}); });
     await p.mouse.move(5, H - 5);
