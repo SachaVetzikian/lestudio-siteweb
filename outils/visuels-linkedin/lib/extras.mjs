@@ -54,7 +54,7 @@ export async function brandkit(nav, site, v, sortie) {
     const logoHTML = logo ? logo.outerHTML : '';
     const boutons = visibles.filter(e => /^(A|BUTTON)$/.test(e.tagName) && e.offsetWidth > 80 && e.offsetWidth < 320 && e.offsetHeight > 30 && e.offsetHeight < 80 && e.innerText.trim().length > 2 && (rgb(getComputedStyle(e).backgroundColor) || parseFloat(getComputedStyle(e).borderTopWidth) > 0))
       .filter((e, i, t) => t.findIndex(o => o.className === e.className) === i).slice(0, 3).map(e => e.outerHTML);
-    const phrase = (titre || h1.innerText).replace(/\s+/g, ' ').trim().slice(0, 48);
+    const phrase = (titre || h1.innerText).replace(/\s+/g, ' ').trim(); const phraseCourte = phrase.length > 70 ? phrase.slice(0, 70).replace(/\s+\S*$/, '') : phrase;
     const L = c => (c[0] * 299 + c[1] * 587 + c[2] * 114) / 1000 > 150;
     const D = hex(sombre), C = hex(clair);
     const lbl = t => `<div style="font:600 14px/1 ${fCorps};letter-spacing:.14em;text-transform:uppercase;color:${D};opacity:.55;margin-bottom:22px">${t}</div>`;
@@ -73,7 +73,7 @@ export async function brandkit(nav, site, v, sortie) {
             <div style="font-family:${fCorps};font-weight:400;font-size:150px;line-height:.9">Aa</div>
             <div><div style="font:600 26px ${fCorps}">${nomPolice(fCorps)}</div><div style="font:400 17px ${fCorps};opacity:.7;margin-top:6px">Textes courants</div></div></div>
         </div>
-        <div style="margin-top:28px;font-family:${fTitre};font-weight:${sTitre.fontWeight};text-transform:${sTitre.textTransform};letter-spacing:${sTitre.letterSpacing};font-size:46px;line-height:1.05">${phrase}</div></div>
+        <div style="margin-top:28px;font-family:${fTitre};font-weight:${sTitre.fontWeight};text-transform:${sTitre.textTransform};letter-spacing:${sTitre.letterSpacing};font-size:46px;line-height:1.05">${phraseCourte}</div></div>
       <div>${lbl('Couleurs')}
         <div style="display:grid;grid-template-columns:repeat(${couleurs.length},1fr);gap:16px">${couleurs.map(z => `
           <div style="height:210px;border-radius:24px;background:${hex(z.c)};box-shadow:0 0 0 1px rgba(0,0,0,.08) inset;padding:20px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;color:${L(z.c) ? D : '#fff'}">

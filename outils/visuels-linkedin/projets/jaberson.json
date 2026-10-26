@@ -1,0 +1,140 @@
+{
+  "nom": "jaberson",
+  "url": "https://www.jaberson.fr",
+  "couleurs": {
+    "studio": [
+      "#26305e",
+      "#0F1736",
+      "#070b1c"
+    ],
+    "voile": "rgba(15,23,54,.45)",
+    "barreStatut": {
+      "fond": "#ffffff",
+      "texte": "#0F1736"
+    }
+  },
+  "masquer": [],
+  "fonds": {
+    "fond-mer": "https://cdn.prod.website-files.com/687946243ed6bad9be416379/689367c743402ebf025381ce_hero-bg-jaberson_homepage.webp",
+    "fond-marseille": "https://cdn.prod.website-files.com/6885c0215f9cd58498b61bbd/6899e83621873e2bcc7ee5a9_Marseille_image.webp"
+  },
+  "captures": {
+    "pme-long": {
+      "page": "/nos-clients/pme",
+      "appareil": "desktop",
+      "hauteur": 1900,
+      "montre": [
+        "hero-pme",
+        "partenaires-pme"
+      ]
+    },
+    "cabinet": {
+      "page": "/qui-sommes-nous",
+      "appareil": "desktop",
+      "montre": [
+        "hero-cabinet",
+        "presentation-cabinet"
+      ]
+    },
+    "clients": {
+      "page": "/",
+      "element": ".section_clients",
+      "masquer": [
+        ".navigation"
+      ],
+      "montre": [
+        "nos-clients"
+      ]
+    },
+    "gptw": {
+      "page": "/",
+      "element": ".section_work",
+      "masquer": [
+        ".navigation"
+      ],
+      "montre": [
+        "great-place-to-work"
+      ]
+    },
+    "distinctions": {
+      "page": "/qui-sommes-nous",
+      "element": ".section_distinctions",
+      "masquer": [
+        ".navigation"
+      ],
+      "montre": [
+        "distinctions"
+      ]
+    },
+    "processus": {
+      "page": "/nos-clients/pme",
+      "element": ".section_approach",
+      "masquer": [
+        ".navigation"
+      ],
+      "montre": [
+        "processus"
+      ]
+    },
+    "m-temoignages": {
+      "page": "/",
+      "appareil": "mobile",
+      "defiler": ".section_t-moignages",
+      "decalage": 70,
+      "montre": [
+        "temoignages"
+      ]
+    }
+  },
+  "visuels": [
+    {
+      "nom": "1-vitrine",
+      "gabarit": "vitrine",
+      "ecran": "pme-long",
+      "fond": "fond-mer",
+      "adresse": "jaberson.fr/nos-clients/pme"
+    },
+    {
+      "nom": "2-macbook",
+      "gabarit": "photo",
+      "mockup": "macbook-grille",
+      "ecran": "cabinet"
+    },
+    {
+      "nom": "3-pile",
+      "gabarit": "pile",
+      "ecrans": [
+        "clients",
+        "gptw"
+      ],
+      "fond": "fond-marseille"
+    },
+    {
+      "nom": "4-main",
+      "gabarit": "photo",
+      "mockup": "iphone-main",
+      "ecran": "m-temoignages"
+    },
+    {
+      "nom": "5-brandkit",
+      "gabarit": "brandkit",
+      "phrase": "Un cabinet d'avocats et consultants à l'écoute des décideurs"
+    },
+    {
+      "nom": "6-animation",
+      "gabarit": "animation",
+      "fond": "fond-mer",
+      "adresse": "jaberson.fr"
+    },
+    {
+      "nom": "3-pile-b",
+      "gabarit": "pile",
+      "ecrans": [
+        "distinctions",
+        "processus"
+      ],
+      "fond": "fond-marseille",
+      "variante": true
+    }
+  ]
+}
