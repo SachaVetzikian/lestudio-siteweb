@@ -12,11 +12,13 @@ export async function brandkit(nav, site, v, sortie) {
   const ctx = await nav.newContext({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: 2 });
   const p = await ctx.newPage();
   for (let essai = 1; ; essai++) { // relance si la page n'a pas chargé (erreur réseau)
-    await p.goto(new URL(v.page || '/', site.url).href, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+    await p.goto(new URL(v.page || '/', site.url).href, { waitUntil: 'load', timeout: 60000 }).catch(() => {});
+    await p.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
     if (await p.evaluate(() => !!document.querySelector('h1')).catch(() => false)) break;
     if (essai === 3) throw new Error('brand kit : impossible de charger la page');
     console.warn(`brand kit : chargement raté, essai ${essai}/3`); await p.waitForTimeout(2000);
   }
+  if (site.masquer?.length) await p.addStyleTag({ content: site.masquer.map(x => `${x}{display:none!important}`).join('') }); // pas de boutons de bannière cookies
   await p.setViewportSize({ width: 1440, height: 900 }); await p.waitForTimeout(1200);
   await p.evaluate(({ titre, roles }) => {
     const cv = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
@@ -38,13 +40,15 @@ export async function brandkit(nav, site, v, sortie) {
     for (const z of aires.slice(0, 6)) ajoute(z.c, 'Fond');
     if (bouton) ajoute(rgb(getComputedStyle(bouton).backgroundColor), 'Action');
     visibles.forEach(e => { const c = rgb(getComputedStyle(e).color); if (c && Math.max(...c) - Math.min(...c) > 90) ajoute(c, 'Accent'); });
-    const couleurs = palette.slice(0, 6);
     const clair = aires.map(z => z.c).find(c => c[0] + c[1] + c[2] > 640) || [255, 255, 255];
     const lum = c => (c[0] * 299 + c[1] * 587 + c[2] * 114) / 1000;
-    const sombre = [...aires.slice(0, 8).map(z => z.c), rgb(getComputedStyle(h1).color)].filter(Boolean).sort((a, b) => lum(a) - lum(b))[0];
+    const sombre = [...aires.slice(0, 8).map(z => z.c), rgb(getComputedStyle(h1).color), rgb(getComputedStyle(corps || document.body).color)].filter(Boolean).sort((a, b) => lum(a) - lum(b))[0];
+    ajoute(sombre, 'Texte');
+    const grisNeutre = c => Math.max(...c) - Math.min(...c) < 30 && lum(c) > 60 && lum(c) < 235; // bordures, séparateurs : pas l'identité
+    const couleurs = palette.filter(z => !proche(z.c, sombre) && !grisNeutre(z.c)).slice(0, 4); couleurs.push(palette.find(z => proche(z.c, sombre)));
     const actionC = bouton ? rgb(getComputedStyle(bouton).backgroundColor) : null;
-    couleurs.forEach(z => { z.role = proche(z.c, sombre) ? 'Primaire' : proche(z.c, clair) || lum(z.c) > 235 ? 'Fond' : actionC && proche(z.c, actionC) ? 'Action' : 'Accent'; });
-    couleurs.sort((a, b) => ['Primaire', 'Fond', 'Action', 'Accent'].indexOf(a.role) - ['Primaire', 'Fond', 'Action', 'Accent'].indexOf(b.role));
+    couleurs.forEach(z => { const neutre = Math.max(...z.c) - Math.min(...z.c) < 30; z.role = proche(z.c, sombre) ? (neutre ? 'Texte' : 'Primaire') : proche(z.c, clair) || lum(z.c) > 235 ? 'Fond' : actionC && proche(z.c, actionC) ? 'Action' : 'Accent'; });
+    couleurs.sort((a, b) => ['Primaire', 'Action', 'Accent', 'Texte', 'Fond'].indexOf(a.role) - ['Primaire', 'Action', 'Accent', 'Texte', 'Fond'].indexOf(b.role));
     const nomPolice = f => f.split(',')[0].replace(/["']/g, '').replace(/variable ?font|wght|_|-?\b(regular|var)\b/gi, ' ').replace(/\s+/g, ' ').trim();
     const fTitre = getComputedStyle(h1).fontFamily.replace(/"/g, "'"), fCorps = getComputedStyle(corps || document.body).fontFamily.replace(/"/g, "'");
     const sTitre = getComputedStyle(h1);
@@ -52,10 +56,10 @@ export async function brandkit(nav, site, v, sortie) {
       .find(a => a.querySelector('img, svg') && a.getBoundingClientRect().top < 200);
     const logo = accueil ? accueil.querySelector('img, svg') : document.querySelector('header a img, header a svg, nav a img, nav a svg');
     const logoHTML = logo ? logo.outerHTML : '';
-    const boutons = visibles.filter(e => /^(A|BUTTON)$/.test(e.tagName) && e.offsetWidth > 80 && e.offsetWidth < 320 && e.offsetHeight > 30 && e.offsetHeight < 80 && e.innerText.trim().length > 2 && (rgb(getComputedStyle(e).backgroundColor) || parseFloat(getComputedStyle(e).borderTopWidth) > 0))
+    const boutons = visibles.filter(e => /^(A|BUTTON)$/.test(e.tagName) && e.offsetWidth > 80 && e.offsetWidth < 320 && e.offsetHeight > 30 && e.offsetHeight < 80 && e.innerText.trim().length > 2 && (rgb(getComputedStyle(e).backgroundColor) || (parseFloat(getComputedStyle(e).borderTopWidth) > 0 && (c => c[0] + c[1] + c[2] < 600)(rgb(getComputedStyle(e).color) || [0, 0, 0]))))
       .filter((e, i, t) => t.findIndex(o => o.className === e.className) === i).slice(0, 3).map(e => e.outerHTML);
     const phrase = (titre || h1.innerText).replace(/\s+/g, ' ').trim(); const phraseCourte = phrase.length > 70 ? phrase.slice(0, 70).replace(/\s+\S*$/, '') : phrase;
-    const L = c => (c[0] * 299 + c[1] * 587 + c[2] * 114) / 1000 > 150;
+    const L = c => (c[0] * 299 + c[1] * 587 + c[2] * 114) / 1000 > 185;
     const D = hex(sombre), C = hex(clair);
     const lbl = t => `<div style="font:600 14px/1 ${fCorps};letter-spacing:.14em;text-transform:uppercase;color:${D};opacity:.55;margin-bottom:22px">${t}</div>`;
     document.documentElement.style.cssText = 'background:' + C; document.body.removeAttribute('class');
@@ -100,9 +104,12 @@ export async function animation(nav, site, v, dossier, sortieBase, rendreVitrine
     const ctx = await nav.newContext(APPAREILS.desktop(H)); const p = await ctx.newPage();
     // 1er passage sans filmer : met en cache le fond du hero et les images (y compris celles chargées au scroll),
     // pour que le chargement filmé montre les animations du site et non des cases vides
-    const url = new URL(v.page || '/', site.url).href;
+    const url = new URL('/', site.url).href; // le GIF montre toujours le hero de la page d'accueil
     await ctx.addInitScript(() => new MutationObserver(() => document.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; }))
       .observe(document, { childList: true, subtree: true }));
+    // éléments à masquer (bannière cookies, chat...) : injectés dès le début du chargement
+    if (site.masquer?.length) await ctx.addInitScript(css => document.addEventListener('DOMContentLoaded', () => {
+      const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st); }), site.masquer.map(s => `${s}{display:none!important}`).join(''));
     await p.goto(url, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
     const Hp = await p.evaluate(() => document.body.scrollHeight).catch(() => 0);
     for (let y = 0; y < Hp; y += 400) { await p.evaluate(s => scrollTo(0, s), y).catch(() => {}); await p.waitForTimeout(80); }
@@ -113,7 +120,7 @@ export async function animation(nav, site, v, dossier, sortieBase, rendreVitrine
     await p.mouse.move(5, H - 5);
     await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 92, maxWidth: 2880, maxHeight: H * 2, everyNthFrame: 1 });
     let statut = 0;
-    p.goto(new URL(v.page || '/', site.url).href, { timeout: 60000 }).then(r => { statut = r ? r.status() : 0; }).catch(() => {});
+    p.goto(url, { timeout: 60000 }).then(r => { statut = r ? r.status() : 0; }).catch(() => {});
     // certains sites (Webflow) n'animent le hero qu'au premier défilement : micro-scroll invisible
     await p.waitForTimeout(1200);
     await p.evaluate(() => { scrollTo(0, 2); setTimeout(() => scrollTo(0, 0), 60); }).catch(() => {});

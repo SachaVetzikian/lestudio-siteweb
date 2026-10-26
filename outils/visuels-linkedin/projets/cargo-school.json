@@ -1,0 +1,143 @@
+{
+  "nom": "cargo-school",
+  "url": "https://www.cargo-school.com",
+  "couleurs": {
+    "studio": [
+      "#1f3d4f",
+      "#0f2532",
+      "#071219"
+    ],
+    "voile": "rgba(10,30,40,.45)",
+    "barreStatut": {
+      "fond": "#ffffff",
+      "texte": "#0f2532"
+    }
+  },
+  "masquer": [
+    ".cky-consent-container",
+    ".cky-overlay",
+    ".cky-btn-revisit-wrapper"
+  ],
+  "fonds": {
+    "fond-transport": "https://cdn.prod.website-files.com/68f787aa24d29c208dcbbef0/68fb845ba070312ade6c7eb7_transport.avif",
+    "fond-digital": "https://cdn.prod.website-files.com/68f787aa24d29c208dcbbef0/68fb902147b0681144056269_outils%20digitaux.avif"
+  },
+  "captures": {
+    "ecole-long": {
+      "page": "/ecole-du-transit",
+      "appareil": "desktop",
+      "hauteur": 1900,
+      "montre": [
+        "hero-ecole",
+        "ecole-section-2"
+      ]
+    },
+    "matieres": {
+      "page": "/formations/matieres-dangereuses",
+      "appareil": "desktop",
+      "montre": [
+        "hero-matieres-dangereuses"
+      ]
+    },
+    "accompagnement": {
+      "page": "/",
+      "element": ".section_accompagnement",
+      "montre": [
+        "accompagnement"
+      ],
+      "masquer": [
+        ".navbar_component"
+      ]
+    },
+    "certifications": {
+      "page": "/",
+      "element": ".section_certifications",
+      "montre": [
+        "certifications"
+      ],
+      "masquer": [
+        ".navbar_component"
+      ]
+    },
+    "avantages": {
+      "page": "/",
+      "element": ".section_avantages",
+      "montre": [
+        "avantages"
+      ],
+      "masquer": [
+        ".navbar_component"
+      ]
+    },
+    "chiffres": {
+      "page": "/",
+      "element": ".section_chiffres-cles",
+      "montre": [
+        "chiffres-cles"
+      ],
+      "masquer": [
+        ".navbar_component"
+      ]
+    },
+    "t-formations": {
+      "page": "/",
+      "appareil": "tablet",
+      "defiler": ".section_formations",
+      "decalage": 70,
+      "attente": 2500,
+      "montre": [
+        "formations"
+      ]
+    }
+  },
+  "visuels": [
+    {
+      "nom": "1-vitrine",
+      "gabarit": "vitrine",
+      "ecran": "ecole-long",
+      "fond": "fond-transport",
+      "adresse": "cargo-school.com/ecole-du-transit"
+    },
+    {
+      "nom": "2-macbook",
+      "gabarit": "photo",
+      "mockup": "macbook-grille",
+      "ecran": "matieres"
+    },
+    {
+      "nom": "3-pile",
+      "gabarit": "pile",
+      "ecrans": [
+        "accompagnement",
+        "certifications"
+      ],
+      "fond": "fond-digital"
+    },
+    {
+      "nom": "4-ipad",
+      "gabarit": "photo",
+      "mockup": "ipad-canape",
+      "ecran": "t-formations"
+    },
+    {
+      "nom": "5-brandkit",
+      "gabarit": "brandkit"
+    },
+    {
+      "nom": "6-animation",
+      "gabarit": "animation",
+      "fond": "fond-transport",
+      "adresse": "cargo-school.com"
+    },
+    {
+      "nom": "3-pile-b",
+      "gabarit": "pile",
+      "ecrans": [
+        "avantages",
+        "chiffres"
+      ],
+      "fond": "fond-digital",
+      "variante": true
+    }
+  ]
+}

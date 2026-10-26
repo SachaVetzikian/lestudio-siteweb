@@ -9,7 +9,9 @@ export const APPAREILS = {
 };
 
 async function preparer(p, url, masquer) {
-  await p.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+  // 'load' puis réseau calme si possible : certains sites ont des traceurs qui ne s'arrêtent jamais
+  await p.goto(url, { waitUntil: 'load', timeout: 60000 });
+  await p.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
   const vh = p.viewportSize().height;
   await p.mouse.move(5, vh - 5); // la souris ne doit pas survoler le menu
   if (masquer.length) await p.addStyleTag({ content: masquer.map(s => `${s}{display:none!important}`).join('') });
