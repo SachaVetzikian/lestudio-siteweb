@@ -2,6 +2,16 @@
 import fs from 'fs'; import path from 'path'; import { execFileSync } from 'child_process';
 import { APPAREILS } from './capture.mjs';
 
+// Encode un GIF fluide (25 i/s) et net : tramage ordonné (compresse 2x mieux que la diffusion d'erreur),
+// 192 puis 128 couleurs, et la largeur n'est réduite qu'en dernier recours pour rester sous MAX_GIF.
+function encoderGif(source, entree, sortie, fps, largeur) {
+  for (const l of [largeur, Math.round(largeur * .83)]) for (const c of [192, 128]) {
+    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', ...entree(source), '-vf',
+      `fps=${fps},scale=${l}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=${c}:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle`, '-loop', '0', sortie]);
+    if (fs.statSync(sortie).size < MAX_GIF) return;
+  }
+}
+
 // Poids maximal d'un GIF avant réduction de la largeur (Mo). 10 Mo par défaut : qualité d'abord.
 const MAX_GIF = (Number(process.env.GIF_MAX_MO) || 10) * 1e6;
 
@@ -97,7 +107,7 @@ export async function brandkit(nav, site, v, sortie) {
 // du gabarit vitrine. Sorties : MP4 (pour LinkedIn) et GIF léger.
 export async function animation(nav, site, v, dossier, sortieBase, rendreVitrine) {
   const tmp = path.join(dossier, '_anim'); fs.rmSync(tmp, { recursive: true, force: true }); fs.mkdirSync(tmp);
-  const H = v.hauteur || 1900, duree = v.duree || 5, fps = 25;
+  const H = v.hauteur || 1900, duree = v.duree || 5, fps = v.fps || 25; // 25 i/s : délai GIF exact de 4 cs, lu à la bonne vitesse partout
   // enregistrement, relancé si la page n'a pas chargé correctement (erreur réseau, page vide)
   let images = [];
   for (let essai = 1; essai <= 3; essai++) {
@@ -133,6 +143,7 @@ export async function animation(nav, site, v, dossier, sortieBase, rendreVitrine
     if (essai === 3) throw new Error('animation : impossible de charger la page');
   }
   // on démarre à la première image où le site est réellement peint (pas la page blanche)
+  console.log(`animation : ${images.length} images reçues en ${(images.at(-1).t - images[0].t).toFixed(1)} s`);
   const peint = images.findIndex((f, i) => i > 0 && f.data.length > images[0].data.length * 1.6);
   const debut = images[Math.max(0, peint)].t, fin = debut + duree;
   let k = 0;
@@ -157,11 +168,7 @@ for f in sorted(glob.glob(sys.argv[5] + '/f*.jpg')):
   const video = path.join(tmp, 'anim.mp4');
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', path.join(tmp, 'c%04d.jpg'),
     '-vf', 'tpad=stop_mode=clone:stop_duration=1.5', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '14', video]);
-  for (const l of [1080, 900, 720]) {
-    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', video, '-vf',
-      `fps=15,scale=${l}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=256:stats_mode=diff[p];[b][p]paletteuse=dither=sierra2_4a:diff_mode=rectangle`, '-loop', '0', `${sortieBase}.gif`]);
-    if (fs.statSync(`${sortieBase}.gif`).size < MAX_GIF) break;
-  }
+  encoderGif(video, v => ['-i', v], `${sortieBase}.gif`, fps, 1080);
   fs.rmSync(tmp, { recursive: true, force: true });
 }
 
@@ -170,7 +177,7 @@ for f in sorted(glob.glob(sys.argv[5] + '/f*.jpg')):
 // est incrustée en perspective dans l'écran de la photo. Sortie : GIF (< 5 Mo).
 export async function scrollPhoto(nav, site, v, mockup, racine, dossier, sortieBase) {
   const tmp = path.join(dossier, '_scroll'); fs.rmSync(tmp, { recursive: true, force: true }); fs.mkdirSync(tmp);
-  const fps = v.fps || 15, paliers = v.paliers || [0, 900, 1800], pause = v.pause ?? 0.9, trajet = v.trajet ?? 1.6;
+  const fps = v.fps || 25, paliers = v.paliers || [0, 900, 1800], pause = v.pause ?? 0.9, trajet = v.trajet ?? 1.6;
   const ctx = await nav.newContext(APPAREILS[mockup.capture](v.hauteur));
   const p = await ctx.newPage();
   for (let essai = 1; ; essai++) {
@@ -205,10 +212,6 @@ export async function scrollPhoto(nav, site, v, mockup, racine, dossier, sortieB
     taille_gif: mockup.size || [1080, 1350] };
   execFileSync(process.env.PYTHON || 'python3', [path.join(racine, 'lib', 'photo_seq.py'), JSON.stringify(conf)], { stdio: 'inherit' });
   const [w] = mockup.size || [1080];
-  for (const l of [w, Math.round(w * .83), Math.round(w * .67)]) {
-    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', path.join(tmp, 'c%04d.jpg'), '-vf',
-      `scale=${l}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=256:stats_mode=diff[p];[b][p]paletteuse=dither=sierra2_4a:diff_mode=rectangle`, '-loop', '0', `${sortieBase}.gif`]);
-    if (fs.statSync(`${sortieBase}.gif`).size < MAX_GIF) break;
-  }
+  encoderGif(path.join(tmp, 'c%04d.jpg'), v => ['-framerate', String(fps), '-i', v], `${sortieBase}.gif`, fps, w);
   fs.rmSync(tmp, { recursive: true, force: true });
 }
