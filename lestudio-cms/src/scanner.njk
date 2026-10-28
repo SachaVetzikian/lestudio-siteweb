@@ -1,0 +1,170 @@
+---
+layout: layouts/base.njk
+permalink: /scanner/
+seo_title: "Scanner de site SaaS gratuit · LeStudio"
+seo_description: "Score sur 100 de votre site en 30 secondes : homepage, visibilité dans les IA, blog, vitesse et pages manquantes. Gratuit, sans email."
+---
+<style>
+.sc-form{display:flex;gap:10px;flex-wrap:wrap;max-width:680px;margin-bottom:12px;}
+.sc-form input{flex:1;min-width:220px;font:500 17px 'DM Sans',sans-serif;padding:16px 22px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);}
+.sc-form input:focus{outline:2px solid var(--ink);outline-offset:2px;}
+.sc-form button{font:500 16px 'DM Sans',sans-serif;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:16px 28px;cursor:pointer;}
+.sc-form button:disabled{opacity:.5;cursor:default;}
+.sc-hint{font-size:14px;color:var(--grey);margin-bottom:56px;}
+.sc-loading{display:none;font-size:16px;color:var(--grey);margin:24px 0 64px;}
+.sc-loading.on{display:block;}
+.sc-err{display:none;border:1px solid var(--ink);border-radius:20px;padding:16px 20px;margin-bottom:40px;max-width:680px;}
+.sc-err.on{display:block;}
+.sc-result{display:none;}
+.sc-result.on{display:block;}
+.sc-top{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;margin-bottom:40px;}
+@media (max-width:640px){.sc-top{grid-template-columns:1fr;gap:20px;}}
+.sc-score{width:180px;height:180px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:conic-gradient(var(--orange) calc(var(--p)*1%), var(--line) 0);position:relative;}
+.sc-score::before{content:"";position:absolute;inset:14px;border-radius:50%;background:var(--paper);}
+.sc-score b,.sc-score span{position:relative;}
+.sc-score b{font-size:56px;font-weight:600;line-height:1;letter-spacing:-.03em;}
+.sc-score span{font-size:14px;color:var(--grey);}
+.sc-site{font-size:20px;font-weight:600;margin-bottom:8px;overflow-wrap:anywhere;}
+.sc-stack{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14px;margin-bottom:10px;}
+.sc-verdict{font-size:17px;line-height:1.5;color:var(--grey);max-width:560px;}
+.sc-bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:48px;}
+.sc-bar{background:#fff;border:1px solid var(--line);border-radius:24px;padding:18px 20px;}
+.sc-bar p{font-size:14px;color:var(--grey);margin-bottom:6px;}
+.sc-bar b{font-size:24px;font-weight:600;}
+.sc-bar small{font-size:14px;color:var(--grey);}
+.sc-bar i{display:block;height:6px;border-radius:3px;background:var(--line);margin-top:10px;overflow:hidden;}
+.sc-bar i em{display:block;height:100%;background:var(--orange);}
+.sc-recos{counter-reset:r;list-style:none;margin-bottom:48px;max-width:760px;}
+.sc-recos li{counter-increment:r;position:relative;padding:16px 0 16px 52px;border-bottom:1px solid var(--line);font-size:16.5px;line-height:1.55;}
+.sc-recos li::before{content:counter(r);position:absolute;left:0;top:14px;width:34px;height:34px;border-radius:50%;background:var(--orange-light);display:flex;align-items:center;justify-content:center;font-weight:600;}
+.sc-missing{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;}
+.sc-missing span{font-size:14px;padding:8px 16px;border-radius:14px;background:#fff;border:1px dashed var(--grey);}
+.sc-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-bottom:48px;}
+.sc-checks .card h3{margin-bottom:12px;}
+.sc-checks ul{list-style:none;}
+.sc-checks li{font-size:15px;line-height:1.45;padding:7px 0 7px 28px;position:relative;color:var(--grey);}
+.sc-checks li::before{position:absolute;left:0;top:6px;font-weight:600;}
+.sc-checks li.ok{color:var(--ink);}
+.sc-checks li.ok::before{content:"✓";color:#15803d;}
+.sc-checks li.ko::before{content:"✕";color:var(--orange);}
+.sc-checks li.info::before{content:"i";color:var(--grey);}
+.sc-cta{background:var(--ink);color:#fff;border-radius:36px;padding:36px;margin:24px 0 72px;}
+.sc-cta h2{margin:0 0 12px;color:#fff;}
+.sc-cta p{color:#d4d4d8;font-size:17px;line-height:1.6;max-width:620px;margin-bottom:8px;}
+.sc-cta .btn-primary{background:#fff;color:var(--ink);margin:16px 0 0;}
+.sc-note{font-size:13px;color:var(--grey);margin:-32px 0 48px;}
+</style>
+
+<h1>Votre site SaaS est-il <em>prêt à convertir</em>&nbsp;?</h1>
+<p class="lede">Collez l'adresse de votre site. En 30 secondes, vous obtenez un score sur 100 : homepage, visibilité dans ChatGPT et les IA, blog, vitesse et pages qui manquent. Gratuit, sans email.</p>
+
+<form class="sc-form" id="sc-form">
+  <label for="sc-url" class="visually-hidden" style="position:absolute;left:-9999px;">Adresse du site</label>
+  <input id="sc-url" name="url" type="text" inputmode="url" autocomplete="url" placeholder="votresaas.com" required/>
+  <button type="submit" id="sc-btn">Scanner mon site</button>
+</form>
+<p class="sc-hint">Analyse de la page d'accueil publique, du robots.txt, du sitemap et du blog. Rien n'est stocké.</p>
+
+<p class="sc-loading" id="sc-loading" aria-live="polite">Analyse en cours : homepage, robots IA, sitemap, blog, vitesse… (20 à 40 secondes)</p>
+<div class="sc-err" id="sc-err" role="alert"></div>
+
+<section class="sc-result" id="sc-result" aria-live="polite">
+  <div class="sc-top">
+    <div class="sc-score" id="sc-score" style="--p:0"><b id="sc-score-n">0</b><span>sur 100</span></div>
+    <div>
+      <p class="sc-site" id="sc-site"></p>
+      <p class="sc-stack" id="sc-stack"></p>
+      <p class="sc-verdict" id="sc-verdict"></p>
+    </div>
+  </div>
+  <div class="sc-bars" id="sc-bars"></div>
+
+  <h2>Les priorités</h2>
+  <ol class="sc-recos" id="sc-recos"></ol>
+
+  <div id="sc-missing-wrap">
+    <h2>Pages manquantes</h2>
+    <div class="sc-missing" id="sc-missing"></div>
+  </div>
+
+  <h2>Le détail</h2>
+  <div class="sc-checks" id="sc-checks"></div>
+  <p class="sc-note" id="sc-note"></p>
+
+  <div class="sc-cta">
+    <h2>Je vous fais la vidéo de 2 min</h2>
+    <p>Le score donne la direction. Pour savoir quoi changer en premier sur votre site, je l'analyse en vidéo, page par page, avec des recommandations concrètes. Gratuit, par passion du sujet.</p>
+    <a class="btn-primary" href="{{ settings.rdv }}" target="_blank" rel="noopener" data-cal-namespace="20min" data-cal-link="sacha-vetzikian/20min"><img alt="Sacha Vetzikian, fondateur de LeStudio" class="avatar avatar-inline" height="36" loading="lazy" src="/sacha-avatar.webp" width="36"/><span>Recevoir mon analyse vidéo</span></a>
+  </div>
+</section>
+
+<script>
+(function(){
+  var form=document.getElementById('sc-form'),input=document.getElementById('sc-url'),btn=document.getElementById('sc-btn');
+  var loading=document.getElementById('sc-loading'),err=document.getElementById('sc-err'),result=document.getElementById('sc-result');
+  var SECTION_ORDER=['homepage','ia','blog','vitesse','pages'];
+  var TITLES={homepage:'Homepage',ia:'Visibilité IA',blog:'Blog',vitesse:'Vitesse',pages:'Pages clés'};
+
+  function el(tag,cls,text){var n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n;}
+  function verdict(s){
+    if(s>=85)return "Très bon niveau. Les gains se jouent maintenant sur les détails qui font signer.";
+    if(s>=65)return "Une bonne base, mais plusieurs fuites coûtent des demandes de démo chaque mois.";
+    if(s>=45)return "Le site freine la croissance : il manque des éléments clés pour convertir et être cité par les IA.";
+    return "Le site ne travaille pas pour vous. C'est le bon moment pour le reprendre en main.";
+  }
+
+  function render(d){
+    var s=Math.max(0,Math.min(100,d.score));
+    document.getElementById('sc-score').style.setProperty('--p',s);
+    document.getElementById('sc-score-n').textContent=s;
+    document.getElementById('sc-site').textContent=d.url.replace(/^https?:\/\//,'').replace(/\/$/,'');
+    document.getElementById('sc-stack').textContent='Stack détectée : '+d.stack+(d.plugins?' · '+d.plugins+' plugins visibles':'');
+    document.getElementById('sc-verdict').textContent=verdict(s);
+
+    var bars=document.getElementById('sc-bars');bars.innerHTML='';
+    d.sections.forEach(function(x){
+      var b=el('div','sc-bar');b.appendChild(el('p',null,x.label));
+      var v=el('b',null,String(x.score));b.appendChild(v);b.appendChild(el('small',null,' / '+x.max));
+      var i=el('i');var e=el('em');e.style.width=(x.max?Math.round(x.score/x.max*100):0)+'%';i.appendChild(e);b.appendChild(i);bars.appendChild(b);
+    });
+
+    var recos=document.getElementById('sc-recos');recos.innerHTML='';
+    (d.recos.length?d.recos:['Rien de bloquant détecté automatiquement. La vidéo permet d\'aller plus loin sur le message et le parcours.']).forEach(function(r){recos.appendChild(el('li',null,r));});
+
+    var missing=d.details.pages.filter(function(p){return !p.found;});
+    var mw=document.getElementById('sc-missing-wrap'),m=document.getElementById('sc-missing');m.innerHTML='';
+    mw.style.display=missing.length?'':'none';
+    missing.forEach(function(p){m.appendChild(el('span',null,p.label));});
+
+    var checks=document.getElementById('sc-checks');checks.innerHTML='';
+    SECTION_ORDER.forEach(function(key){
+      var list=d.checks.filter(function(c){return c.section===key;});if(!list.length)return;
+      var card=el('div','card');card.appendChild(el('h3',null,TITLES[key]));var ul=el('ul');
+      list.forEach(function(c){ul.appendChild(el('li',c.ok===true?'ok':c.ok===false?'ko':'info',c.label));});
+      card.appendChild(ul);checks.appendChild(card);
+    });
+    var sp=d.details.speed;
+    document.getElementById('sc-note').textContent=sp.psi?'Vitesse mesurée avec Google PageSpeed (mobile).':'Vitesse estimée à partir du temps de réponse et du poids de la page. Pour la mesure Google complète, la vidéo d\'analyse inclut un test PageSpeed.';
+
+    result.classList.add('on');
+    result.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  async function scan(url){
+    err.classList.remove('on');result.classList.remove('on');loading.classList.add('on');btn.disabled=true;
+    try{
+      var r=await fetch('/api/scan',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({url:url})});
+      var d=await r.json().catch(function(){return {};});
+      if(!r.ok){throw new Error(d.message||'L\'analyse a échoué, réessayez dans un instant.');}
+      render(d);
+      try{history.replaceState(null,'','?url='+encodeURIComponent(url));}catch(e){}
+    }catch(e){err.textContent=e.message;err.classList.add('on');}
+    finally{loading.classList.remove('on');btn.disabled=false;}
+  }
+
+  form.addEventListener('submit',function(e){e.preventDefault();var v=input.value.trim();if(v)scan(v);});
+  // Lien partageable : /scanner/?url=exemple.com lance l'analyse directement.
+  var q=new URLSearchParams(location.search).get('url');
+  if(q){input.value=q;scan(q);}
+})();
+</script>
